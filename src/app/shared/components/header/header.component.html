@@ -1,1 +1,11 @@
-<p>header works!</p>
+<div class="content">
+    <div class="header-item">
+        <a href="/"><img class="logo" src="/assets/icons/00_header/Logo.svg"></a>
+    </div>
+    @for (link of links; track link.id; let i = $index) {
+        <div class="header-item" id="{{ link.id }}">
+            <a href="{{ link.ref }}">{{ getName(i) }}</a>
+            <img src="/assets/icons/00_header/{{ link.img }}">
+        </div>
+    }
+</div>
