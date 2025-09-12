@@ -7,3 +7,31 @@
     scroll-behavior: smooth;
     position: relative;
 }
+
+@font-face {
+    font-family: Bricolage;
+    src: url(/assets/fonts/Bricolage-Regular.ttf);
+}
+
+@font-face {
+    font-family: Bricolage;
+    src: url(/assets/fonts/Bricolage-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Kalam;
+    src: url(/assets/fonts/Kalam-Bold.ttf);
+}
+
+html {
+    font: 10px Bricolage;
+}
+
+body {
+    font-size: 20px;
+}
+
+.font-kalam {
+    font-family: Kalam;
+}
