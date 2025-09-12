@@ -1,3 +1,5 @@
+@use './all-styles' as all;
+
 * {
     margin: 0;
     padding: 0;
@@ -30,6 +32,10 @@ html {
 
 body {
     font-size: 20px;
+}
+
+header, section {
+    @include all.fl($jc: center);
 }
 
 .font-kalam {

@@ -1,6 +1,6 @@
 @mixin fl ($jc: flex-start, $ai: flex-start, $fd: row, $fg: 0) {
     display: flex;
-    justify-self: $js;
+    justify-content: $jc;
     align-items: $ai;
     flex-direction: $fd;
     gap: $fg;
