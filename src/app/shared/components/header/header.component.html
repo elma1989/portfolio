@@ -13,4 +13,11 @@
             <div class="lang" [ngClass]="{'lang-act': lang == curLang}" (click)="setCurLang(i)">{{ lang | uppercase }}</div>
         }
     </div>
+    <div class="mob-menu">
+        @if (overlayOpen) {
+            <img src="/assets/icons/00_header/mob-menu-close.png">
+        } @else {
+            <img src="/assets/icons/00_header/mob-menu.png">
+        }
+    </div>
 </div>

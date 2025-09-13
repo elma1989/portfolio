@@ -37,6 +37,7 @@ a:link, a:visited {
     @include all.fl($jc: center, $ai:center);
     width: 40px;
     height: 40px;
+    cursor: pointer;
     &::before {
         @include all.imgBefAft('/assets/icons/00_header/Logo.svg');
         opacity: 1;
@@ -63,6 +64,7 @@ a:link, a:visited {
     @include all.fl($jc: center, $ai: center);
     width: 32px;
     height: 32px;
+    cursor: pointer;
     &::before {
         @include all.imgBefAft('/assets/icons/00_header/Toggle.png');
         opacity: 0;
@@ -79,6 +81,16 @@ a:link, a:visited {
     }
     &::after {
         @include all.imgBefAft('/assets/icons/00_header/Check.png');
+    }
+}
+
+.mob-menu {
+    display: none;
+    width: 40px;
+    height: 40px;
+    img {
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -135,5 +147,14 @@ a:link, a:visited {
         img {
             transform: scaleX(1);
         }
+    }
+}
+
+@media (max-width: 750px) {
+    .header-item, .lang-sel {
+        display: none;
+    }
+    .mob-menu {
+        display: block;
     }
 }
