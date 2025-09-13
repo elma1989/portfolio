@@ -2,19 +2,19 @@
     <div class="logo">
         <a href="/"></a>
     </div>
-    @for (link of links; track link.id; let i = $index) {
+    @for (link of nav.links; track link.id; let i = $index) {
         <div class="header-item" id="{{ link.id }}">
-            <a href="{{ link.ref }}">{{ getName(i) }}</a>
+            <a href="{{ link.ref }}">{{ nav.getName(i) }}</a>
             <img src="/assets/icons/00_header/{{ link.img }}">
         </div>
     }
     <div class="lang-sel">
-        @for (lang of languages; track lang; let i = $index) {
-            <div class="lang" [ngClass]="{'lang-act': lang == curLang}" (click)="setCurLang(i)">{{ lang | uppercase }}</div>
+        @for (lang of nav.languages; track lang; let i = $index) {
+            <div class="lang" [ngClass]="{'lang-act': lang == nav.curLang}" (click)="nav.setCurLang(i)">{{ lang | uppercase }}</div>
         }
     </div>
     <div class="mob-menu">
-        @if (overlayOpen) {
+        @if (nav.overlayOpen) {
             <img src="/assets/icons/00_header/mob-menu-close.png">
         } @else {
             <img src="/assets/icons/00_header/mob-menu.png">
