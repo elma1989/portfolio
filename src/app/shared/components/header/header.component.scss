@@ -34,8 +34,43 @@ a:link, a:visited {
 }
 
 .logo {
-    &:hover {
-        content: url('/assets/icons/00_header/Logo-hover.svg');
+    @include all.fl($jc: center, $ai:center);
+    width: 40px;
+    height: 40px;
+    &:before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+
+    }
+}
+
+.lang-sel {
+    @include all.fl($fg: 16px);
+}
+
+.lang {
+    @include all.fl($jc: center, $ai: center);
+    width: 32px;
+    height: 32px;
+    &::before {
+        @include all.imgBefAft('/assets/icons/00_header/Toggle.png');
+        opacity: 0;
+        transition: opacity 300ms ease-in;
+    }
+    &:hover::before {
+        opacity: 1;
+    }
+}
+
+.lang-act {
+    &::before {
+        opacity: 1;
+    }
+    &::after {
+        @include all.imgBefAft('/assets/icons/00_header/Check.png');
     }
 }
 

@@ -10,7 +10,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  public curLang: string = 'en';
+  public languages: string[] = ['en', 'de'];
+  public curLang:string = this.languages[0];
   public links: {id:string, en:string, de:string, ref:string, img:string}[] = [
     {
       id:'nav-about',
@@ -27,7 +28,7 @@ export class HeaderComponent {
     }, {
       id:'nav-project',
       en: 'Projects',
-      de: 'Projete',
+      de: 'Projekte',
       ref: '#',
       img: '3.png'
     }, {
@@ -39,7 +40,18 @@ export class HeaderComponent {
     }
   ];
 
+  /**
+   * Gets name of link.
+   * @param index - Index of links.
+   * @returns - Name from Index.
+   */
   getName(index:number): string {
     return this.curLang == 'en' ? this.links[index].en : this.links[index].de;
+  }
+
+  setCurLang(index:number):void {
+    if (index < this.languages.length) {
+      this.curLang = this.languages[index]
+    }
   }
 }
