@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class NavService {
 
+  // region Attributes
   public overlayOpen: boolean = false;
   public languages: string[] = ['en', 'de'];
   public curLang!:string;
@@ -35,11 +36,13 @@ export class NavService {
       img: '4.png'
     }
   ];
+  // #endregion
 
   constructor() {
     this.curLang = this.getLang();
   }
 
+  // #region Methods
   /**
    * Gets name of link.
    * @param index - Index of links.
@@ -73,4 +76,10 @@ export class NavService {
     const stored = localStorage.getItem('curLang');
     return stored ? stored : 'en';
   }
+
+  /** Swichtes Overlay view and hide. */
+  toggleOverlay() {
+  this.overlayOpen = !this.overlayOpen
 }
+}
+// #endregion

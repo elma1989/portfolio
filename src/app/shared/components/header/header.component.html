@@ -13,7 +13,7 @@
             <div class="lang" [ngClass]="{'lang-act': lang == nav.curLang}" (click)="nav.setCurLang(i)">{{ lang | uppercase }}</div>
         }
     </div>
-    <div class="mob-menu">
+    <div class="mob-menu" (click)="nav.toggleOverlay()">
         @if (nav.overlayOpen) {
             <img src="/assets/icons/00_header/mob-menu-close.png">
         } @else {

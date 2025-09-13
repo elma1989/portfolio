@@ -2,14 +2,19 @@
 
 :host {
     @include all.fl($jc: center);
-    display: none;
     width: 100%;
     height: 80dvh;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     background: url(/assets/img/01_hero/bg.png);
     background-size: cover;
     background-position: center top;
     color: white;
+    transform: translate(0, -100%);
+    transition: transform 500ms ease-in;
+}
+
+:host(.active) {
+    transform: translate(0,0);
 }
