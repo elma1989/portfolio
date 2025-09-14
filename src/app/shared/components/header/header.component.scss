@@ -66,34 +66,6 @@ a:link, a:visited {
     }
 }
 
-.lang-sel {
-    @include all.fl($fg: 16px);
-}
-
-.lang {
-    @include all.fl($jc: center, $ai: center);
-    width: 32px;
-    height: 32px;
-    cursor: pointer;
-    &::before {
-        @include all.imgBefAft('/assets/icons/00_header/Toggle.png');
-        opacity: 0;
-        transition: opacity 300ms ease-in;
-    }
-    &:hover::before {
-        opacity: 1;
-    }
-}
-
-.lang-act {
-    &::before {
-        opacity: 1;
-    }
-    &::after {
-        @include all.imgBefAft('/assets/icons/00_header/Check.png');
-    }
-}
-
 .mob-menu {
     display: none;
     width: 40px;

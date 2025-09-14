@@ -1,0 +1,3 @@
+@for (lang of nav.languages; track lang; let i = $index) {
+    <div class="lang" [ngClass]="{'lang-act': lang == nav.curLang}" (click)="nav.setCurLang(i)">{{ lang | uppercase }}</div>
+}

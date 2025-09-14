@@ -8,11 +8,7 @@
             <img src="/assets/icons/00_header/{{ link.img }}">
         </div>
     }
-    <div class="lang-sel">
-        @for (lang of nav.languages; track lang; let i = $index) {
-            <div class="lang" [ngClass]="{'lang-act': lang == nav.curLang}" (click)="nav.setCurLang(i)">{{ lang | uppercase }}</div>
-        }
-    </div>
+    <app-lang-sel></app-lang-sel>
     <div class="mob-menu" (click)="nav.toggleOverlay()">
         @if (nav.overlayOpen) {
             <img src="/assets/icons/00_header/mob-menu-close.png">
