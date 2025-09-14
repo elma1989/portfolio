@@ -1,7 +1,5 @@
 <div class="content">
-    <div class="logo">
-        <a href="/"></a>
-    </div>
+    <app-logo></app-logo>
     @for (link of nav.links; track link.id; let i = $index) {
         <div class="header-item" id="{{ link.id }}">
             <a href="{{ link.ref }}">{{ nav.getName(i) }}</a>
