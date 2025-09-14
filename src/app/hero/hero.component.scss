@@ -9,7 +9,14 @@
 }
 
 .content {
-    @include all.fl($jc: center, $ai: center);
+    @include all.fl($fd: column, $jc: center, $ai: center);
+    padding: 0;
+    height: 100%;
+}
+
+.headline {
+    width: 60dvh;
+    height: 55%;
 }
 
 @include all.tablet {

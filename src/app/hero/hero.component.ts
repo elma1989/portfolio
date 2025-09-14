@@ -4,6 +4,7 @@ import { MobOverlayComponent } from './mob-overlay/mob-overlay.component';
 import { NavService } from '../shared/services/nav.service';
 import { CommonModule } from '@angular/common';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { HelloComponent } from './hello/hello.component';
 
 @Component({
   selector: 'section[app-hero]',
@@ -11,7 +12,8 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     HeaderComponent,
     MobOverlayComponent,
     CommonModule,
-    SocialMediaComponent
+    SocialMediaComponent,
+    HelloComponent
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'
