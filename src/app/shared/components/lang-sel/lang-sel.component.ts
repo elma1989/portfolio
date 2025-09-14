@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavService } from '../../services/nav.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lang-sel',
@@ -11,5 +12,13 @@ import { NavService } from '../../services/nav.service';
   styleUrl: './lang-sel.component.scss'
 })
 export class LangSelComponent {
+
+  private translate = inject(TranslateService)
+
   constructor (public nav:NavService) {}
+
+  useLanguage(langIndex:number): void {
+    this.nav.setCurLang(langIndex);
+    this.translate.use(this.nav.languages[langIndex]);
+  }
 }
