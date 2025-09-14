@@ -72,6 +72,10 @@ a:link, a:visited {
     }
 }
 
+a:link.black-link, a:visited.black-link {
+    color:black;
+}
+
 #nav-about {
     width: 105px;
     img {
