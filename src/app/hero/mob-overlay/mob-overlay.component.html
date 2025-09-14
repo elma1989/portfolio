@@ -1,1 +1,11 @@
 <header app-header></header>
+<main>
+    <nav>
+        @for (link of nav.links; track link.id; let i = $index) {
+        <div class="nav-item" id="{{ link.id }}">
+            <a href="{{ link.ref }}">{{ nav.getName(i) }}</a>
+        </div>
+    }
+    <app-lang-sel></app-lang-sel>
+    </nav>
+</main>

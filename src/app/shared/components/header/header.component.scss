@@ -50,16 +50,11 @@ a:link, a:visited {
     }
     &::before {
         @include all.imgBefAft('/assets/icons/00_header/Logo.svg');
-        opacity: 1;
-        transition: opacity 300ms ease-out;
     }
     &::after {
         @include all.imgBefAft('/assets/icons/00_header/Logo-hover.svg');
         opacity: 0;
-        transition: opacity 100ms ease-in 200ms;
-    }
-    &:hover::before {
-        opacity: 0;
+        transition: opacity 100ms ease-in;
     }
     &:hover::after {
         opacity: 1;
@@ -134,7 +129,7 @@ a:link, a:visited {
 }
 
 @media (max-width: 750px) {
-    .header-item, .lang-sel {
+    app-lang-sel, .header-item {
         display: none;
     }
     .mob-menu {
