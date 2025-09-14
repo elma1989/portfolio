@@ -35,7 +35,7 @@ body {
 }
 
 header, section {
-    @include all.fl($jc: center);
+    @include all.fl($fd: column, $ai: center);
 }
 
 .font-kalam {
@@ -45,4 +45,12 @@ header, section {
 .content {
     width: 100%;
     max-width: 1920px;
+    height: 100%;
+}
+
+section .content {
+    padding: 72px;
+    @include all.mobile {
+        padding: 16px;
+    }
 }

@@ -1,0 +1,45 @@
+@use '../../../all-styles' as all;
+@use '../../../colors' as *;
+
+:host {
+    @include all.fl($fd: column, $fg:8px);
+    position: absolute;
+    bottom: 72px;
+    left: 72px;
+    @include all.tablet {
+        @include all.fl($fg: 24px);
+        bottom: 64px;
+        left: auto;
+    }
+}
+
+.sm-box {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid white;
+    border-radius: 50%;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $highlightblue;
+        border-radius: 50%;
+        transform-origin: center bottom;
+        transform: scaleY(0);
+        transition: transform 200ms ease-in;
+    }
+    &:hover::before {
+        transform: scaleY(1);
+        @include all.tablet {
+            transform: scaleY(0);
+        }
+    }
+}

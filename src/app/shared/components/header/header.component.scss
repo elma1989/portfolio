@@ -128,7 +128,7 @@ a:link, a:visited {
     }
 }
 
-@media (max-width: 750px) {
+@include all.tablet {
     app-lang-sel, .header-item {
         display: none;
     }
