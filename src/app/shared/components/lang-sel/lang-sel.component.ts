@@ -15,7 +15,9 @@ export class LangSelComponent {
 
   private translate = inject(TranslateService)
 
-  constructor (public nav:NavService) {}
+  constructor (public nav:NavService) {
+    this.useLanguage(nav.curLang)
+  }
 
   useLanguage(langIndex:number): void {
     this.nav.setCurLang(langIndex);

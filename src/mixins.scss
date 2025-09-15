@@ -8,13 +8,22 @@
 
 @mixin imgBefAft ($img) {
     content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: url($img);
-        background-size: cover;
-        background-position: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url($img);
+    background-size: cover;
+    background-position: center;
+}
+
+@mixin bgBefore {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
 }

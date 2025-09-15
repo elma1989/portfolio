@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavService } from '../../shared/services/nav.service';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-hello',
@@ -12,6 +12,11 @@ import { TranslatePipe } from '@ngx-translate/core';
 })
 export class HelloComponent {
 
-  constructor (public nav: NavService) {}
+  public hoverHello: boolean = false;
 
+  constructor (public nav: NavService, private translate:TranslateService) {}
+
+  getDescription():string {
+    return this.hoverHello ? this.translate.instant('hello') : 'Hello World';
+  }
 }

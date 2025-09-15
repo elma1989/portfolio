@@ -8,7 +8,7 @@ export class NavService {
   // region Attributes
   public overlayOpen: boolean = false;
   public languages: string[] = ['en', 'de'];
-  public curLang!:string;
+  public curLang!: number;
   public links: {id:string, en:string, de:string, ref:string, img:string}[] = [
     {
       id:'nav-about',
@@ -49,7 +49,7 @@ export class NavService {
    * @returns - Name from Index.
    */
   getName(index:number): string {
-    return this.curLang == 'en' ? this.links[index].en : this.links[index].de;
+    return this.curLang == 0 ? this.links[index].en : this.links[index].de;
   }
 
   /**
@@ -58,23 +58,23 @@ export class NavService {
    */
   setCurLang(index:number):void {
     if (index < this.languages.length) {
-      this.curLang = this.languages[index];
+      this.curLang = index;
       this.saveLang();
     }
   }
 
   /** Seves current language in local storage. */
   saveLang():void {
-  localStorage.setItem('curLang', this.curLang)
+  localStorage.setItem('curLang', String(this.curLang))
   }
 
   /**
    * Gets language from local storage.
    * @returns stored language.
    */
-  getLang():string {
+  getLang():number {
     const stored = localStorage.getItem('curLang');
-    return stored ? stored : 'en';
+    return stored ? Number(stored) : 0;
   }
 
   /** Swichtes Overlay view and hide. */

@@ -1,3 +1,44 @@
+@use '../../../all-styles' as all;
+@use '../../../colors' as *;
+
 :host {
     color: white;
+}
+
+button {
+    padding: 12px 24px;
+    border: 1px solid white;
+    border-radius: 100px;
+    background-color: black;
+    color: white;
+    font-size: 22px;
+    width: 163px;
+    transition: width 300ms;
+    &:hover {
+        width: 237px;
+    }
+}
+
+.second {
+    position: absolute;
+    white-space: nowrap;
+    overflow-x: hidden;
+    left: 0;
+    opacity: 0;
+    transition: opacity 100ms ease-in 300ms;
+    transition: width 300ms ease-in;
+    z-index: 1;
+    &::before {
+        @include all.bgBefore;
+        background: $highlightblue;
+        border-radius: 100px;
+        transform: scaleX(0);
+        transition: transform 300ms ease-in;
+    }
+    &:hover::before {
+        transform: scaleX(1);
+    }
+    &:hover {
+        opacity: 1;
+    }
 }
