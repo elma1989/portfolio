@@ -1,0 +1,45 @@
+@use '../../../all-styles' as all;
+@use '../../../colors' as *;
+
+:host {
+    @include all.fl();
+    width: 100%;
+    color: white;
+    font-size: 128px;
+    font-weight: bold;
+    text-align: center;
+}
+
+:host(.right) {
+    @include all.fl($jc: flex-end);
+}
+
+.normal, .opposite {
+    transition: opacity 300ms ease;
+    display: inline-block;
+    width: 85px;
+}
+
+.normal {
+    opacity: 1;
+}
+
+.opposite {
+    position: absolute;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    color: $highlightyellow;
+}
+
+.wrapper {
+    cursor: pointer;
+    &:hover {
+        .normal {
+            opacity: 0;
+        }
+        .opposite {
+            opacity: 1;
+        }
+    }
+}

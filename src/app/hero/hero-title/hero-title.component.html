@@ -1,1 +1,6 @@
-
+@for ( char of title; track title; let i = $index) {
+    <span class="wrapper">
+        <span class="normal">{{ char }}</span>
+        <span class="opposite">{{ getLetter(i) }}</span>
+    </span>
+}
