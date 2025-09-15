@@ -7,6 +7,7 @@ import { SocialMediaComponent } from './social-media/social-media.component';
 import { HelloComponent } from './hello/hello.component';
 import { HeroTitleComponent } from './hero-title/hero-title.component';
 import { TranslatePipe } from '@ngx-translate/core';
+import { PortraitComponent } from './portrait/portrait.component';
 
 @Component({
   selector: 'section[app-hero]',
@@ -17,7 +18,8 @@ import { TranslatePipe } from '@ngx-translate/core';
     SocialMediaComponent,
     HelloComponent,
     HeroTitleComponent,
-    TranslatePipe
+    TranslatePipe,
+    PortraitComponent
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'

@@ -12,6 +12,7 @@
 
 :host(.right) {
     @include all.fl($jc: flex-end);
+    text-align: center;
 }
 
 .normal, .opposite {
