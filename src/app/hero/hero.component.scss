@@ -17,7 +17,7 @@
 .headline {
     @include all.fl($fd: column, $ai:center, $jc: center);
     width: 1000px;
-    padding-top: 72px;
+    padding: 78px 0 48px 0;
 }
 
 @include all.tablet {

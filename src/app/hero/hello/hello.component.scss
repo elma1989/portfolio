@@ -32,6 +32,7 @@ button {
     font-size: 22px;
     width: 163px;
     transition: width 300ms;
+    cursor: pointer;
     &:hover {
         width: 100%;
     }
