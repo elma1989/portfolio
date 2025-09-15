@@ -1,8 +1,23 @@
 @use '../../../all-styles' as all;
 @use '../../../colors' as *;
 
+$handSize: 40px;
+
 :host {
+    @include all.fl();
     color: white;
+    width: 237px;
+}
+
+img {
+    width: $handSize;
+    height: $handSize;
+    position: absolute;
+    right: $handSize;
+    top: -$handSize;
+    transform: translate(-100%, 0) rotate(-180deg);
+    opacity: 0;
+    transition: opacity 300ms ease-in, transform 300ms ease-in;
 }
 
 button {
@@ -15,7 +30,11 @@ button {
     width: 163px;
     transition: width 300ms;
     &:hover {
-        width: 237px;
+        width: 100%;
+    }
+    &:hover ~ img {
+        transform: translate(100%, 0) rotate(0deg);
+        opacity: 1;
     }
 }
 
