@@ -7,6 +7,9 @@ $handSize: 40px;
     @include all.fl();
     color: white;
     width: 237px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 img {
