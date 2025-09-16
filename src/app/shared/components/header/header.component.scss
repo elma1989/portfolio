@@ -8,6 +8,7 @@
     top: 0;
     left: 0;
     color: white;
+    background: rgba(0,0,0,0.2);
     @include all.mobile {
         height: 8dvh;
     }
