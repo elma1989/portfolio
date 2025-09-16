@@ -11,7 +11,6 @@
     @include all.fl($fd: column, $ai: center, $jc: center);
 }
 
-.dummy {
-    @include all.fl($w: 400px, $h: 100px);
-    border: 1px solid black;
+.about-descrioption {
+    padding-bottom: 56px;
 }

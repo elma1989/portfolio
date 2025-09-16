@@ -1,0 +1,25 @@
+@use '../../../all-styles' as all;
+
+:host(.yellow) {
+    transform: rotate(-3deg);
+    top: 40px;
+}
+
+:host(.red) {
+    transform: rotate(3deg);
+    bottom: 40px;
+    z-index: -1;
+}
+
+.desc {
+    @include all.fl($jc: center, $ai: center, $w: 100%, $h: 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-bottom: 24px;
+    color: white;
+}
+
+.desc-icon {
+    margin-right: 16px;
+}

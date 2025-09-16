@@ -1,6 +1,8 @@
 <div class="content">
     <div class="about-snipets">
-        <app-notice></app-notice>
+        <app-notice class="yellow" [type]="NoteType.YELLOW" desc="{{ 'aboutLocation' | translate }}"></app-notice>
+        <app-notice class="blue" [type]="NoteType.BLUE" desc="{{ 'aboutRelocation' | translate }}"></app-notice>
+        <app-notice class="red" [type]="NoteType.RED" desc="{{ 'aboutRemote' | translate }}"></app-notice>
     </div>
         <div class="about-descrioption">
             <p>{{ 'aboutDescSchool' | translate }}</p>

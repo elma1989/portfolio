@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
 import { ContactBtnComponent } from '../shared/components/contact-btn/contact-btn.component';
 import { NoticeComponent } from './notice/notice.component';
+import { NoteType } from './notice/note-type';
 
 @Component({
   selector: 'section[app-about]',
@@ -14,5 +15,5 @@ import { NoticeComponent } from './notice/notice.component';
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-
+  protected readonly NoteType = NoteType;
 }
