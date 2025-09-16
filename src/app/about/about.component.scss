@@ -12,5 +12,6 @@
 }
 
 .about-descrioption {
-    padding-bottom: 56px;
+    @include all.fl($fd: column, $w: 100%);
+    padding: 0 48px 56px 0;
 }

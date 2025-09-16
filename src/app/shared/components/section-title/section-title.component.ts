@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { LineType } from './line-type';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-section-title',
-  imports: [],
+  imports: [
+    CommonModule,
+  ],
   templateUrl: './section-title.component.html',
   styleUrl: './section-title.component.scss'
 })
 export class SectionTitleComponent {
-
+  @Input({required:true}) line!: LineType;
+  @Input({required:true}) title!: string;
+  @Input({required:true}) overline!: string;
+  protected readonly LineType = LineType;
 }

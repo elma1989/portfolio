@@ -4,6 +4,7 @@ import { ContactBtnComponent } from '../shared/components/contact-btn/contact-bt
 import { NoticeComponent } from './notice/notice.component';
 import { NoteType } from './notice/note-type';
 import { SectionTitleComponent } from '../shared/components/section-title/section-title.component';
+import { LineType } from '../shared/components/section-title/line-type';
 
 @Component({
   selector: 'section[app-about]',
@@ -17,5 +18,6 @@ import { SectionTitleComponent } from '../shared/components/section-title/sectio
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
+  protected readonly LineType = LineType;
   protected readonly NoteType = NoteType;
 }

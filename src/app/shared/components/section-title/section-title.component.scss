@@ -1,0 +1,35 @@
+:host(.about) {
+    img {
+        height: 16px;
+        bottom: 16px;
+        width: 350px;
+        transform-origin: left center;
+        animation: grow 4s linear infinite;
+    }
+
+    h1 {
+        padding-bottom: 32px;
+    }
+
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    position: absolute;
+}
+
+h1 {
+    font-size: 64px;
+}
+
+@keyframes grow {
+    0% {
+        transform: scaleX(0);
+    }
+    25% {
+        transform: scaleX(1);
+    }
+}

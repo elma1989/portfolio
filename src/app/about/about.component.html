@@ -5,7 +5,7 @@
         <app-notice class="red" [type]="NoteType.RED" desc="{{ 'aboutRemote' | translate }}"></app-notice>
     </div>
         <div class="about-descrioption">
-            <app-section-title></app-section-title>
+            <app-section-title class="about" [line]="LineType.UNDERLINE" overline="{{ 'aboutWho' | translate }}" title="{{ 'aboutHeadline' | translate}}"></app-section-title>
             <p>{{ 'aboutDescSchool' | translate }}</p>
             <p>{{ 'aboutDecEdu' | translate }}</p>
             <app-contact-btn description="{{ 'aboutContactBtn' | translate }}" btnclass="inverse"></app-contact-btn>
