@@ -1,0 +1,17 @@
+@use '../../all-styles' as all;
+
+.content {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 50% 50%;
+    gap: 48px
+}
+
+.about-snipets {
+    @include all.fl($fd: column, $ai: center, $jc: center);
+}
+
+.dummy {
+    @include all.fl($w: 400px, $h: 100px);
+    border: 1px solid black;
+}

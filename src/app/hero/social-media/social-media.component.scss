@@ -5,7 +5,7 @@
     @include all.fl($fd: column, $fg:8px);
     position: absolute;
     bottom: 72px;
-    left: 72px;
+    left: 0;
     @include all.tablet {
         @include all.fl($fg: 24px);
         bottom: 64px;

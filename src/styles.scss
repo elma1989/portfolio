@@ -38,6 +38,10 @@ header, section {
     @include all.fl($fd: column, $ai: center);
 }
 
+p {
+    margin-bottom: 2rem;
+}
+
 .font-kalam {
     font-family: Kalam;
 }

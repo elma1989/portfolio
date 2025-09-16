@@ -1,9 +1,11 @@
-@mixin fl ($jc: flex-start, $ai: flex-start, $fd: row, $fg: 0) {
+@mixin fl ($jc: flex-start, $ai: flex-start, $fd: row, $fg: 0, $w: auto, $h: auto) {
     display: flex;
     justify-content: $jc;
     align-items: $ai;
     flex-direction: $fd;
     gap: $fg;
+    width: $w;
+    height: $h;
 }
 
 @mixin imgBefAft ($img) {
