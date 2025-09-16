@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact-btn',
-  imports: [
-    TranslatePipe,
-  ],
+  imports: [],
   templateUrl: './contact-btn.component.html',
   styleUrl: './contact-btn.component.scss'
 })
 export class ContactBtnComponent {
-
+  @Input({required: true}) description!:string;
+  @Input() btnclass:string = '';
 }
