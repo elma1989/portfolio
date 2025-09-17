@@ -53,7 +53,7 @@ p {
 }
 
 section .content {
-    padding: 72px;
+    padding: 144px 72px;
     @include all.mobile {
         padding: 16px;
     }

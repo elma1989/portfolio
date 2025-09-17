@@ -7,7 +7,7 @@
 }
 
 .content {
-    @include all.fl($w: 100%);
+    @include all.fl($w: 100%, $fg: 32px);
 }
 
 .title-area {
@@ -16,4 +16,12 @@
 
 .title-area.eng-small {
     @include all.fl($w: 250px);
+}
+
+.skill-area {
+    width: 450px;
+}
+
+.skill-area.eng-large {
+    width: 550px;
 }

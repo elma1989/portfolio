@@ -2,10 +2,10 @@
     <div class="title-area" [ngClass]="{'eng-small':nav.curLang == 0}">
         <app-section-title id="link-skills" class="skills white right" [line]="LineType.CIRCLE" overline="{{ 'skillOverline' | translate }}" title="{{ 'skillHeadline' | translate}}"></app-section-title>
     </div>
-    <div class="skill-area">
-        Text
+    <div class="skill-area" [ngClass]="{'eng-large':nav.curLang == 0}">
+        <app-skill-summary></app-skill-summary>
     </div>
     <div class="surprise-area">
-        Text
+        
     </div>
 </div>
