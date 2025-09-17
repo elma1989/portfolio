@@ -20,7 +20,7 @@ export class NavService {
       id:'nav-skill',
       en: 'Skills',
       de: 'Skills',
-      ref: '#',
+      ref: '#link-skills',
       img: '2.png'
     }, {
       id:'nav-project',

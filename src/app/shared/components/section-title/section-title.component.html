@@ -1,7 +1,10 @@
-<p>{{ overline | uppercase }}</p>
-<h1>{{ title }}</h1>
 @switch (line) {
     @case (LineType.UNDERLINE) {
         <img src="/assets/img/02_about/underline.png">
     }
+    @case (LineType.CIRCLE) {
+        <img src="/assets/img/03_skills/circle.png">
+    }
 }
+<p>{{ overline | uppercase }}</p>
+<h1>{{ title }}</h1>

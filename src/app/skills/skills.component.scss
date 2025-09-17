@@ -1,5 +1,19 @@
+@use '../../all-styles' as all;
+
 :host {
     background: url(/assets/img/03_skills/skill_bg.png);
     background-size: cover;
     background-position: center bottom;
+}
+
+.content {
+    @include all.fl($w: 100%);
+}
+
+.title-area {
+    @include all.fl($w: 350px);
+}
+
+.title-area.eng-small {
+    @include all.fl($w: 250px);
 }
