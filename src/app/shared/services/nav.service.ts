@@ -14,7 +14,7 @@ export class NavService {
       id:'nav-about',
       en: 'About me',
       de: 'Über mich',
-      ref: '#',
+      ref: '#link-about',
       img: '1.png'
     }, {
       id:'nav-skill',

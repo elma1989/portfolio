@@ -2,8 +2,8 @@
     <app-logo></app-logo>
     @for (link of nav.links; track link.id; let i = $index) {
         <div class="header-item" id="{{ link.id }}">
-            <a href="{{ link.ref }}" [ngClass]="{'black-link': i < 2 && bicolor}">{{ nav.getName(i) }}</a>
             <img src="/assets/icons/00_header/{{ link.img }}">
+            <a href="{{ link.ref }}" [ngClass]="{'black-link': i < 2 && bicolor}">{{ nav.getName(i) }}</a>
         </div>
     }
     <app-lang-sel></app-lang-sel>
