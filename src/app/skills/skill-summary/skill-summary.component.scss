@@ -4,6 +4,10 @@
     @include all.fl($fd: column, $w: 100%, $h: 200px);
 }
 
+:host(.eng-small) {
+    height: 150px;
+}
+
 img {
     width: 100%;
     height: 100%;
