@@ -4,6 +4,11 @@
     </div>
     <div class="skill-area" [ngClass]="{'eng-large':nav.curLang == 0}">
         <app-skill-summary [ngClass]="{'eng-small':nav.curLang == 0}"></app-skill-summary>
+        <div class="skillbox">
+            @for (skill of ss.skills; track skill.name) {
+                <app-single-skill [skill]="skill"></app-single-skill>
+            }
+        </div>
     </div>
     <div class="surprise-area">
         

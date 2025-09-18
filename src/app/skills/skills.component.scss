@@ -11,17 +11,23 @@
 }
 
 .title-area {
-    @include all.fl($w: 350px);
+    @include all.fl($w: 40%px);
 }
 
 .title-area.eng-small {
-    @include all.fl($w: 250px);
+    @include all.fl($w: 30%px);
 }
 
 .skill-area {
-    width: 450px;
+    width: 40%;
 }
 
 .skill-area.eng-large {
-    width: 550px;
+    width: 50%;
+}
+
+.skillbox {
+    @include all.fl($jc: center,  $ai: center, $fg: 40px, $w: 100%);
+    flex-wrap: wrap;
+    margin-top: 32px;
 }

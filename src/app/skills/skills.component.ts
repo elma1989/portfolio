@@ -5,6 +5,8 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { NavService } from '../shared/services/nav.service';
 import { CommonModule } from '@angular/common';
 import { SkillSummaryComponent } from './skill-summary/skill-summary.component';
+import { SkillService } from '../shared/services/skill.service';
+import { SingleSkillComponent } from './single-skill/single-skill.component';
 
 @Component({
   selector: 'section[app-skills]',
@@ -12,12 +14,13 @@ import { SkillSummaryComponent } from './skill-summary/skill-summary.component';
     SectionTitleComponent,
     TranslatePipe,
     CommonModule,
-    SkillSummaryComponent
+    SkillSummaryComponent,
+    SingleSkillComponent
   ],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
 export class SkillsComponent {
   protected readonly LineType = LineType;
-  constructor(public nav:NavService){}
+  constructor(public nav:NavService, public ss:SkillService){}
 }

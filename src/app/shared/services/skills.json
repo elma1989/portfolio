@@ -1,47 +1,36 @@
 [
     {
         "name": "HTML",
-        "img": "01_html.png",
-        "hover": "01_html-h.png"
+        "img": "01_html.png"
     },{
         "name": "CSS",
-        "img": "02_css.png",
-        "hover": "02_css-h.png"
+        "img": "02_css.png"
     },{
         "name": "JavaScript",
-        "img": "03_js.png",
-        "hover": "03_js-h.png"
+        "img": "03_js.png"
     },{
         "name": "TypeScript",
-        "img": "04_ts.png",
-        "hover": "04_ts-h.png"
+        "img": "04_ts.png"
     },{
         "name": "Angular",
-        "img": "05_ang.png",
-        "hover": "05_ang-h.png"
+        "img": "05_ang.png"
     },{
         "name": "Firebase",
-        "img": "06_fb.png",
-        "hover": "06_fb-h.png"
+        "img": "06_fb.png"
     },{
         "name": "Git",
-        "img": "07_git.png",
-        "hover": "07_git-h.png"
+        "img": "07_git.png"
     },{
         "name": "REST-API",
-        "img": "08_rest.png",
-        "hover": "08_rest-h.png"
+        "img": "08_rest.png"
     },{
         "name": "Scrum",
-        "img": "09_scrum.png",
-        "hover": "01_html-h.png"
+        "img": "09_scrum.png"
     },{
         "name": "Material Design",
-        "img": "10_md.png",
-        "hover": "10_md-h.png"
+        "img": "10_md.png"
     },{
         "name": "Flask",
-        "img": "11_flask.png",
-        "hover": "11_flask.png"
+        "img": "11_flask.png"
     }
 ]
