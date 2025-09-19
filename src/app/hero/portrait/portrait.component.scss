@@ -4,7 +4,6 @@
     @include all.fl();
     width: 200px;
     height: 250px;
-    background: url(/assets/img/01_hero/me-sepia.jpg);
     background-size: cover;
     background-position: center top;
     position: absolute;
@@ -14,7 +13,7 @@
     cursor: pointer;
     &:hover {
         .color-pic {
-            opacity: 1;
+            filter: grayscale(0);
         }
         .smile {
             opacity: 0;
@@ -43,8 +42,9 @@ span {
 }
 
 .color-pic {
-    opacity: 0;
-    transition: opacity 300ms ease-in;
+    object-position: center bottom;
+    filter: grayscale(1);
+    transition: filter 300ms ease-in;
 }
 
 .subtitle {
