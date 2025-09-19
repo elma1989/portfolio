@@ -1,0 +1,22 @@
+[
+    {
+        "name": "El Pollo Loco",
+        "desc": {
+            "en": "A Jump- and Run-Game. Help the Mexican Pepe to hunt some chickens for his restaurant. At the end of level a very huge chicken waits for him.",
+            "de": "Ein Spring- und Rennspiel. Helfen Sie den Mexikaner Pepe Hühner für sein Restaurant zu jagen. Am Ende des Levels wartet ein riesige Huhn auf ihn."
+        },
+        "implementation": {
+            "en": "My first full JavaScript project, which redraws all objects on a canvas in a intervall. Falling- and collision-physics are also implemented.",
+            "de": "Mein erstes Projet, indem hauptsächlich JavaScript verwendet wurde. Dieses zeichnet alle Objekte auf eine Leinvand im Intervall neu: Außerdem wurde eine Fall- und Kollisionsphysik implementiert."            
+        },
+        "duration": {
+            "en": "3 weeks",
+            "de": "3 Wochen"
+        },
+        "technics": [0,1,2],
+        "img": "01_el-pollo-loco.jpg",
+        "url": "",
+        "previous": null,
+        "next": null
+    }
+]
