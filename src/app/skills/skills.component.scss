@@ -7,27 +7,29 @@
 }
 
 .content {
-    @include all.fl($w: 100%, $fg: 32px);
+    display: grid;
+    grid-template-columns: 25% auto 20%;
+    gap: 32px;
+    padding-bottom: 200px;
+}
+.content.ger {
+    grid-template-columns: 35% auto 20%;
 }
 
 .title-area {
-    @include all.fl($w: 40%px);
-}
-
-.title-area.eng-small {
-    @include all.fl($w: 30%px);
+    width: 100%;
 }
 
 .skill-area {
-    width: 40%;
-}
-
-.skill-area.eng-large {
-    width: 50%;
+    width: 100%;
 }
 
 .skillbox {
     @include all.fl($jc: center,  $ai: center, $fg: 40px, $w: 100%);
     flex-wrap: wrap;
     margin-top: 32px;
+}
+
+.surprise-area {
+    @include all.fl($jc: center, $ai: flex-end, $w: 100%, $h: 100%);
 }

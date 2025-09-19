@@ -1,9 +1,9 @@
-<div class="content">
-    <div class="title-area" [ngClass]="{'eng-small':nav.curLang == 0}">
+<div class="content" [ngClass]="{'ger':nav.curLang == 1}">
+    <div class="title-area">
         <app-section-title id="link-skills" class="skills white right" [line]="LineType.CIRCLE" overline="{{ 'skillOverline' | translate }}" title="{{ 'skillHeadline' | translate}}"></app-section-title>
     </div>
-    <div class="skill-area" [ngClass]="{'eng-large':nav.curLang == 0}">
-        <app-skill-summary [ngClass]="{'eng-small':nav.curLang == 0}"></app-skill-summary>
+    <div class="skill-area">
+        <app-skill-summary></app-skill-summary>
         <div class="skillbox">
             @for (skill of ss.skills; track skill.name) {
                 <app-single-skill [skill]="skill"></app-single-skill>
@@ -11,6 +11,6 @@
         </div>
     </div>
     <div class="surprise-area">
-        
+        <app-peel></app-peel>
     </div>
 </div>

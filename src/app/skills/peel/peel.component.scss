@@ -1,0 +1,52 @@
+@use '../../../all-styles' as all;
+
+:host {
+    width: 200px;
+    height: 200px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+        .default, .first, .second {
+            opacity: 0;
+        }
+    }
+}
+
+.layer {
+    @include all.fl($fd: column, $ai: center, $jc: center, $w: 100%, $h:100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
+.default {
+        font-size: 32px;
+    }
+
+.default, .first {
+    opacity: 1;
+    transition: opacity 200ms linear;
+}
+
+.second {
+    opacity: 1;
+    transition: opacity 200ms linear 300ms;
+}
+
+.skill-icon-wrapper {
+    @include all.fl($jc: center, $w: 100%, $fg: 8px);
+}
+
+.skill-icon {
+    img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 4px;
+    }
+}
+
+.arrow {
+    height: 40px;
+    display: block;
+}
