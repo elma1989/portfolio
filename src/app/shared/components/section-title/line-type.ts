@@ -1,4 +1,5 @@
 export enum LineType {
     UNDERLINE = 'underline',
-    CIRCLE = 'circle'
+    CIRCLE = 'circle',
+    WAVE = 'wave'
 }

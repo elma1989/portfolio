@@ -28,6 +28,20 @@
     }
 }
 
+:host(.projects) {
+    width: 280px;
+    h1 {
+        padding-bottom: 32px;
+    }
+    img {
+        width: 100%;
+        height: 32px;
+        bottom: 0;
+        transform-origin: left center;
+        animation: grow 4s ease-in infinite;
+    }
+}
+
 :host(.white) {
     h1, p {
         color: white;
