@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ContactBtnComponent } from '../shared/components/contact-btn/contact-btn.component';
 import { NoticeComponent } from './notice/notice.component';
 import { NoteType } from './notice/note-type';
 import { SectionTitleComponent } from '../shared/components/section-title/section-title.component';
 import { LineType } from '../shared/components/section-title/line-type';
+import { ButtonComponent } from '../shared/components/button/button.component';
 
 @Component({
   selector: 'section[app-about]',
   imports: [
     TranslatePipe,
-    ContactBtnComponent,
+    ButtonComponent,
     NoticeComponent,
     SectionTitleComponent
   ],

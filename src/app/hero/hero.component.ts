@@ -8,7 +8,7 @@ import { HelloComponent } from './hello/hello.component';
 import { HeroTitleComponent } from './hero-title/hero-title.component';
 import { TranslatePipe } from '@ngx-translate/core';
 import { PortraitComponent } from './portrait/portrait.component';
-import { ContactBtnComponent } from '../shared/components/contact-btn/contact-btn.component';
+import { ButtonComponent } from '../shared/components/button/button.component';
 
 @Component({
   selector: 'section[app-hero]',
@@ -21,7 +21,7 @@ import { ContactBtnComponent } from '../shared/components/contact-btn/contact-bt
     HeroTitleComponent,
     TranslatePipe,
     PortraitComponent,
-    ContactBtnComponent
+    ButtonComponent
   ],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.scss'

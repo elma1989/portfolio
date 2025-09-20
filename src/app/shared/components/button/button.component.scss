@@ -20,6 +20,7 @@ button {
     font-size: 22px;
     transform: translate(0, -4px);
     transition: transform 300ms ease border-bottom 300ms ease;
+    cursor: pointer;
     &:hover {
         transform: translate(0, 4px);
         border-bottom-width: 1px;
