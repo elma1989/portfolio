@@ -2,6 +2,7 @@
 <main class="content">
     <div class="left">
         <app-back-button (click)="goBack()"></app-back-button>
+        <app-section-title class="about {{ project.projectClass }}" [line]="LineType.UNDERLINE" title="{{ project.name }}"></app-section-title>
     </div>
     <div class="right">
 

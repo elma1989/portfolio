@@ -19,6 +19,7 @@ export class ProjectService {
         new Project({
           name: project.name,
           id: project.id,
+          projectClass: project.projectClass,
           desc: project.desc,
           implementation: project.implementation,
           duration: project.duration,

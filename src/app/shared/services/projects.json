@@ -16,6 +16,7 @@
         "technics": [0,1,2],
         "img": "01_el-pollo-loco.jpg",
         "id": "link-el-pollo-loco",
+        "projectClass": "pollo",
         "url": "/projects/el-pollo-loco",
         "previous": null,
         "next": null

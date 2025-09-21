@@ -6,6 +6,7 @@ export class Project {
 
     name: string;
     id: string;
+    projectClass: string;
     desc: {en:string, de:string};
     implementation: {en:string, de:string};
     duration: {en:string, de:string};
@@ -17,10 +18,11 @@ export class Project {
     ss: SkillService = inject(SkillService);
 
     constructor (
-        {name, id, desc, implementation, duration, technics, img, url, previous, next}:
+        {name, id, projectClass, desc, implementation, duration, technics, img, url, previous, next}:
         {
             name:string,
             id:string,
+            projectClass: string,
             desc:{en:string, de:string},
             implementation:{en:string, de:string},
             duration:{en:string, de:string},
@@ -33,6 +35,7 @@ export class Project {
     ) {
         this.name = name;
         this.id = id;
+        this.projectClass = projectClass;
         this.desc = desc;
         this.implementation = implementation;
         this.duration = duration;

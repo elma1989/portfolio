@@ -13,6 +13,6 @@ import { CommonModule } from '@angular/common';
 export class SectionTitleComponent {
   @Input({required:true}) line!: LineType;
   @Input({required:true}) title!: string;
-  @Input({required:true}) overline!: string;
+  @Input() overline: string | null = null;
   protected readonly LineType = LineType;
 }

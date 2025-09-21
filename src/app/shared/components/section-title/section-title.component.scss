@@ -18,6 +18,10 @@
     }
 }
 
+:host(.pollo) img {
+    width: 400px
+}
+
 :host(.skills) {
     img {
         width: 100%;
