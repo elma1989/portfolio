@@ -1,17 +1,22 @@
+import { inject } from "@angular/core";
+import { SkillService } from "../../services/skill.service";
+import { Skill } from "./skill";
+
 export class Project {
 
     name: string;
     desc: {en:string, de:string};
     implementation: {en:string, de:string};
     duration: {en:string, de:string};
-    technics: number[];
+    technics: Skill[] = [];
     img: string;
     url: string;
     previous: string | null;
     next: string | null;
+    ss: SkillService = inject(SkillService);
 
-
-    constructor ({name, desc, implementation, duration, technics, img, url, previous, next}:
+    constructor (
+        {name, desc, implementation, duration, technics, img, url, previous, next}:
         {
             name:string,
             desc:{en:string, de:string},
@@ -28,10 +33,20 @@ export class Project {
         this.desc = desc;
         this.implementation = implementation;
         this.duration = duration;
-        this.technics = technics;
         this.img = img;
         this.url = url;
         this.previous = previous;
         this.next = next;
+        this.loadSkills(technics);
+    }
+
+    /**
+     * Loads Skill Objects from Number-Array.
+     * @param technics Indizies of skill set.
+     */
+    loadSkills(technics:number[]): void {
+        for (let i = 0; i < technics.length; i++) {
+            this.technics.push(this.ss.skills[technics[i]])
+        }
     }
 }

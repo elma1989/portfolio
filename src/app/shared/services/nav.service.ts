@@ -26,7 +26,7 @@ export class NavService {
       id:'nav-project',
       en: 'Projects',
       de: 'Projekte',
-      ref: '#',
+      ref: '#link-projects',
       img: '3.png'
     }, {
       id:'nav-contact',
