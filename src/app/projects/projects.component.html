@@ -4,6 +4,6 @@
         <p>{{ 'projectIntroduction' | translate }}</p>
     </div>
     @for (project of ps.projects; track project.name) {
-        <article app-project-overview [project]="project"></article>
+        <article app-project-overview id="{{ project.id }}" [project]="project"></article>
     }
 </div>

@@ -8,4 +8,6 @@
 
 .content {
     padding: 13.3dvh 72px 0 72px;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }

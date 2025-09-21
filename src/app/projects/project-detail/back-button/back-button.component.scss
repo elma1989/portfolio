@@ -1,0 +1,19 @@
+@use '../../../../all-styles' as all;
+@use '../../../../colors' as *;
+
+:host {
+    @include all.fl($ai: center);
+    margin: 48px 0;
+    cursor: pointer;
+    &:hover span {
+        color: $highlightred;
+    }
+}
+
+img {
+    height: 20px;
+    margin-right: 8px;
+}
+span {
+    font-weight: bold;
+}

@@ -18,6 +18,7 @@ export class ProjectService {
       this.projects.push(
         new Project({
           name: project.name,
+          id: project.id,
           desc: project.desc,
           implementation: project.implementation,
           duration: project.duration,
