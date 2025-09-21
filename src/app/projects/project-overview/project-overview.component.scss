@@ -1,0 +1,49 @@
+@use '../../../all-styles' as all;
+
+.preview-wrapper {
+    @include all.fl($jc: center);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.img-overlay {
+    @include all.fl($w: 100%, $h: 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: background 300ms linear;
+    &:hover {
+        background: linear-gradient(
+            to bottom,
+            transparent,
+            rgba(0,0,0,0.7)
+        );
+        app-button {
+            display: flex;
+        }
+    }
+    &:hover ~ img {
+        transform: scale(1.2);
+    }
+}
+
+img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 300ms linear;
+}
+
+h2 {
+    margin: 64px 0 16px 0;
+    font-size: 24px;
+}
+
+app-button {
+    display: none;
+    bottom: 32px;
+    right: 32px;
+}

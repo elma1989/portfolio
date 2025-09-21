@@ -45,6 +45,13 @@ body {
         border-radius: 8px;
     }
 
+    &::-webkit-scrollbar-button:single-button:vertical:decrement {
+        background: url(/assets/icons/up.svg);
+    }
+
+    &::-webkit-scrollbar-button:single-button:vertical:increment {
+        background: url(/assets/icons/down.svg);
+    }
 }
 
 header, section {
