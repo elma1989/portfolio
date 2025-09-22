@@ -2,6 +2,9 @@
 <main class="content">
     <div class="left">
         <app-back-button (click)="goBack()"></app-back-button>
+    </div>
+    <div class="right"></div>
+    <div class="left">
         <div class="project-desc">
             <app-section-title class="about {{ project.projectClass }}" [line]="LineType.UNDERLINE" title="{{ project.name }}"></app-section-title>
             <h2>{{ 'project-section-desc' | translate }}</h2>
@@ -16,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="right">
-
+    <div class="view-area">
+        <img src="/assets/img/04_projects/{{ project.img }}">
     </div>
 </main>

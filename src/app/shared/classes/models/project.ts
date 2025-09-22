@@ -13,12 +13,14 @@ export class Project {
     technics: Skill[] = [];
     img: string;
     url: string;
+    github: string;
+    projectUrl: string;
     previous: string | null;
     next: string | null;
     ss: SkillService = inject(SkillService);
 
     constructor (
-        {name, id, projectClass, desc, implementation, duration, technics, img, url, previous, next}:
+        {name, id, projectClass, desc, implementation, duration, technics, img, url, github, projectUrl, previous, next}:
         {
             name:string,
             id:string,
@@ -29,6 +31,8 @@ export class Project {
             technics:number[],
             img:string,
             url:string,
+            github:string,
+            projectUrl:string
             previous: string | null,
             next: string | null
         }
@@ -41,6 +45,8 @@ export class Project {
         this.duration = duration;
         this.img = img;
         this.url = url;
+        this.github = github;
+        this.projectUrl = projectUrl
         this.previous = previous;
         this.next = next;
         this.loadSkills(technics);

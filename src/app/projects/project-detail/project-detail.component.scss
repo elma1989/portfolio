@@ -28,6 +28,19 @@ p {
     margin-bottom: 48px;
 }
 
+img {
+    width: 400px;
+    height: 270px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    margin-bottom: 96px;
+}
+
 .skill-box {
     @include all.fl($fg: 16px);
+}
+
+.view-area {
+    @include all.fl($jc: center);
 }

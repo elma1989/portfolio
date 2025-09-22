@@ -26,6 +26,8 @@ export class ProjectService {
           technics: project.technics,
           img: project.img,
           url: project.url,
+          github: project.github,
+          projectUrl: project.projectUrl,
           previous: project.previous,
           next: project.next
         })
