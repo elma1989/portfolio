@@ -22,5 +22,7 @@
     "project-back-btn": "Go Back",
     "project-section-desc": "Description",
     "project-section-impl": "Implementation Details",
-    "project-duration": "Duration"
+    "project-duration": "Duration",
+    "project-previous": "Previous Project",
+    "project-next": "Next Project"
 }

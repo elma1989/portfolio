@@ -10,6 +10,7 @@ import { NavService } from '../../shared/services/nav.service';
 import { CommonModule } from '@angular/common';
 import { ProjectSkillComponent } from './project-skill/project-skill.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
+import { NextButtonComponent } from './next-button/next-button.component';
 
 @Component({
   selector: 'app-project-detail',
@@ -20,7 +21,8 @@ import { ButtonComponent } from '../../shared/components/button/button.component
     TranslatePipe,
     CommonModule,
     ProjectSkillComponent,
-    ButtonComponent
+    ButtonComponent,
+    NextButtonComponent
   ],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
@@ -37,8 +39,20 @@ export class ProjectDetailComponent {
 
   /** Redirect to Main-Site. */
   goBack():void {
-    console.log(`#${this.project.id}`);
     this.router.navigate(['/'], {fragment: this.project.id});
   }
 
+  /** Redirct to next project. */
+  goNext():void {
+    if (this.project.next) {
+      this.router.navigate([this.project.next]);
+    }
+  }
+
+  /** Redirect to previous project. */
+  goPrevious():void {
+    if (this.project.previous) {
+      this.router.navigate([this.project.previous]);
+    }
+  }
 }

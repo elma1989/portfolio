@@ -22,5 +22,7 @@
     "project-back-btn": "Zurück",
     "project-section-desc": "Beschreibung",
     "project-section-impl": "Umsetzungsdetails",
-    "project-duration": "Dauer"
+    "project-duration": "Dauer",
+    "project-previous": "Vorheriges Projekt",
+    "project-next":"Nächstes Projekt"
 }

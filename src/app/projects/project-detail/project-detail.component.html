@@ -26,4 +26,13 @@
             <app-button ref="{{ project.projectUrl }}" description="Live Test" [external]="true"></app-button>
         </div>
     </div>
+    <div class="left"></div>
+    <div class="right">
+        @if (project.previous) {
+            <app-next-button class="previous" desc="{{ 'project-previous' | translate }}" (click)="goPrevious()"></app-next-button>
+        }
+        @if (project.next) {
+            <app-next-button desc="{{ 'project-next' | translate }}" (click)="goNext()"></app-next-button>
+        }
+    </div>
 </main>

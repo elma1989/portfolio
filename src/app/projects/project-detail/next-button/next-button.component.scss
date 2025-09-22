@@ -1,0 +1,29 @@
+@use '../../../../all-styles' as all;
+@use '../../../../colors.scss' as *;
+
+:host {
+    @include all.fl($ai:center);
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    &:hover {
+        color: $highlightyellow;
+    }
+}
+
+:host(.previous) {
+    flex-direction: row-reverse;
+    right: auto;
+    left: 72px;
+    img {
+        margin: 0 16px 0 0;
+        transform: rotate(180deg);
+    }
+}
+
+img {
+    height: 24px;
+    margin: 0 0 0 16px;
+}
