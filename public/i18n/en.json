@@ -19,5 +19,8 @@
     "projectHeadline": "Projects",
     "projectIntroduction": "In this section I want to present the most important projects, I have coded.",
     "project-details-btn": "Project details",
-    "project-back-btn": "Go Back"
+    "project-back-btn": "Go Back",
+    "project-section-desc": "Description",
+    "project-section-impl": "Implementation Details",
+    "project-duration": "Duration"
 }

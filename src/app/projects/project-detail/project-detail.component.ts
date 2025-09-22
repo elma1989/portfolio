@@ -5,13 +5,20 @@ import { BackButtonComponent } from './back-button/back-button.component';
 import { Router } from '@angular/router';
 import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 import { LineType } from '../../shared/components/section-title/line-type';
+import { TranslatePipe } from '@ngx-translate/core';
+import { NavService } from '../../shared/services/nav.service';
+import { CommonModule } from '@angular/common';
+import { ProjectSkillComponent } from './project-skill/project-skill.component';
 
 @Component({
   selector: 'app-project-detail',
   imports: [
     HeaderComponent,
     BackButtonComponent,
-    SectionTitleComponent
+    SectionTitleComponent,
+    TranslatePipe,
+    CommonModule,
+    ProjectSkillComponent
   ],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
@@ -21,7 +28,10 @@ export class ProjectDetailComponent {
   @Input({required:true}) project!:Project;
   protected readonly LineType = LineType;
 
-  constructor(private router:Router){}
+  constructor(
+    private router:Router,
+    protected nav: NavService
+  ){}
 
   /** Redirect to Main-Site. */
   goBack():void {

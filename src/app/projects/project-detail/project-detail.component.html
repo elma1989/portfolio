@@ -2,7 +2,19 @@
 <main class="content">
     <div class="left">
         <app-back-button (click)="goBack()"></app-back-button>
-        <app-section-title class="about {{ project.projectClass }}" [line]="LineType.UNDERLINE" title="{{ project.name }}"></app-section-title>
+        <div class="project-desc">
+            <app-section-title class="about {{ project.projectClass }}" [line]="LineType.UNDERLINE" title="{{ project.name }}"></app-section-title>
+            <h2>{{ 'project-section-desc' | translate }}</h2>
+            <p> {{ nav.curLang == 0 ? project.desc.en : project.desc.de }}</p>
+            <h2>{{ 'project-section-impl' | translate }}</h2>
+            <p>{{ nav.curLang == 0 ? project.implementation.en : project.implementation.de }}</p>
+            <p><b>{{ 'project-duration' | translate }}:</b> {{ nav.curLang == 0 ? project.duration.en : project.duration.de }}</p>
+            <div class="skill-box">
+                @for(skill of project.technics; track skill.name) {
+                    <app-project-skill [skill]="skill"></app-project-skill>
+                }
+            </div>
+        </div>
     </div>
     <div class="right">
 

@@ -1,0 +1,9 @@
+@use '../../../../all-styles' as all;
+
+:host {
+    @include all.fl($ai: center, $fg: 8px);
+}
+
+img {
+    height: 24px;
+}

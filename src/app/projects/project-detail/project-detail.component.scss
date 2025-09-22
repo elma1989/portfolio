@@ -1,3 +1,5 @@
+@use '../../../all-styles' as all;
+
 :host {
     display: block;
     background: url(/assets/img/04_projects/paper.png) center/cover no-repeat, #1d1d1d;
@@ -7,7 +9,25 @@
 }
 
 .content {
-    padding: 13.3dvh 72px 0 72px;
+    padding: 13.3dvh 72px 48px 72px;
     display: grid;
     grid-template-columns: 50% 50%;
+}
+
+.project-desc {
+    padding-left: 48px;
+}
+
+h2 {
+    margin: 48px 0 16px 0;
+    font-size: 24px;
+}
+
+p {
+    width: 90%;
+    margin-bottom: 48px;
+}
+
+.skill-box {
+    @include all.fl($fg: 16px);
 }

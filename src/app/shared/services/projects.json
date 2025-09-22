@@ -7,7 +7,7 @@
         },
         "implementation": {
             "en": "My first full JavaScript project, which redraws all objects on a canvas in a intervall. Falling- and collision-physics are also implemented.",
-            "de": "Mein erstes Projet, indem hauptsächlich JavaScript verwendet wurde. Dieses zeichnet alle Objekte auf eine Leinvand im Intervall neu: Außerdem wurde eine Fall- und Kollisionsphysik implementiert."            
+            "de": "Mein erstes Projekt, indem hauptsächlich JavaScript verwendet wurde. Dieses zeichnet alle Objekte auf eine Leinvand im Intervall neu: Außerdem wurde eine Fall- und Kollisionsphysik implementiert."            
         },
         "duration": {
             "en": "3 weeks",
