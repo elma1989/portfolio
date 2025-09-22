@@ -8,6 +8,7 @@
     font-size: 128px;
     font-weight: bold;
     text-align: center;
+    cursor: default;
 }
 
 :host(.right) {
@@ -34,7 +35,6 @@
 }
 
 .wrapper {
-    cursor: pointer;
     &:hover {
         .normal {
             opacity: 0;

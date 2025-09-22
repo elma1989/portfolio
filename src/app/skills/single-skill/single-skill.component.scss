@@ -10,7 +10,6 @@ img {
     filter: grayscale(100%);
     transform: scale(1);
     transition: transform 300ms linear, filter 300ms linear;
-    cursor: pointer;
     &:hover {
         transform: scale(0.778);
         filter: grayscale(0%);
