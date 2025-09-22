@@ -2,7 +2,7 @@
     <div class="img-overlay" (click)="goToProject()">
         <app-button description="{{ 'project-details-btn' | translate }}" ref="{{ project.url }}"></app-button>
     </div>
-    <img src="/assets/img/04_projects/{{ project.img }}">
+    <img src="assets/img/04_projects/{{ project.img }}">
 </div>
 <h2>{{ project.name }}</h2>
 <p>{{ nav.curLang == 0 ? project.desc.en : project.desc.de }}</p>

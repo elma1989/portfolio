@@ -13,7 +13,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { NextButtonComponent } from './next-button/next-button.component';
 
 @Component({
-  selector: 'app-project-detail',
+  selector: 'section[project-detail]',
   imports: [
     HeaderComponent,
     BackButtonComponent,

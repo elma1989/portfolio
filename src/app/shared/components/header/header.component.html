@@ -2,16 +2,16 @@
     <app-logo></app-logo>
     @for (link of nav.links; track link.id; let i = $index) {
         <div class="header-item" id="{{ link.id }}">
-            <img src="/assets/icons/00_header/{{ link.img }}">
+            <img src="assets/icons/00_header/{{ link.img }}">
             <a href="{{ link.ref }}" [ngClass]="{'black-link': i < 2 && bicolor}">{{ nav.getName(i) }}</a>
         </div>
     }
     <app-lang-sel></app-lang-sel>
     <div class="mob-menu" (click)="nav.toggleOverlay()">
         @if (nav.overlayOpen) {
-            <img src="/assets/icons/00_header/mob-menu-close.png">
+            <img src="assets/icons/00_header/mob-menu-close.png">
         } @else {
-            <img src="/assets/icons/00_header/mob-menu.png">
+            <img src="assets/icons/00_header/mob-menu.png">
         }
     </div>
 </div>
