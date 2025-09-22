@@ -24,5 +24,7 @@
     "project-section-impl": "Umsetzungsdetails",
     "project-duration": "Dauer",
     "project-previous": "Vorheriges Projekt",
-    "project-next":"Nächstes Projekt"
+    "project-next":"Nächstes Projekt",
+    "TestimonialsOverline": "In ihren eigenen Worten",
+    "TestimonialsHeadline": "Gedanken der Kollegen"
 }

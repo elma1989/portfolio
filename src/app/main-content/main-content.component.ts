@@ -3,6 +3,7 @@ import { HeroComponent } from '../hero/hero.component';
 import { AboutComponent } from '../about/about.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
+import { TestimonialsComponent } from "../testimonials/testimonials.component";
 
 @Component({
   selector: 'app-main-content',
@@ -10,8 +11,9 @@ import { ProjectsComponent } from '../projects/projects.component';
     HeroComponent,
     AboutComponent,
     SkillsComponent,
-    ProjectsComponent
-  ],
+    ProjectsComponent,
+    TestimonialsComponent
+],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss'
 })
