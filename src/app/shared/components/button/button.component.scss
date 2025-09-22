@@ -10,6 +10,10 @@
     }
 }
 
+:host(.git) {
+    right: 170px;
+}
+
 button {
     color: white;
     background: black;
@@ -18,11 +22,9 @@ button {
     border-bottom-width: 5px;
     border-radius: 100px;
     font-size: 22px;
-    transform: translate(0, -4px);
     transition: transform 300ms ease border-bottom 300ms ease;
     cursor: pointer;
     &:hover {
-        transform: translate(0, 4px);
         border-bottom-width: 1px;
         background: $highlightred;
     }

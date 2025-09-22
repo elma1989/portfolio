@@ -9,6 +9,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { NavService } from '../../shared/services/nav.service';
 import { CommonModule } from '@angular/common';
 import { ProjectSkillComponent } from './project-skill/project-skill.component';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,7 +19,8 @@ import { ProjectSkillComponent } from './project-skill/project-skill.component';
     SectionTitleComponent,
     TranslatePipe,
     CommonModule,
-    ProjectSkillComponent
+    ProjectSkillComponent,
+    ButtonComponent
   ],
   templateUrl: './project-detail.component.html',
   styleUrl: './project-detail.component.scss'
