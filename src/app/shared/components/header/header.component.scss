@@ -48,11 +48,7 @@ a:link, a:visited {
         width: 32px;
         height: 32px;
     }
-    &::before {
-        @include all.imgBefAft('/assets/icons/00_header/Logo.svg');
-    }
     &::after {
-        @include all.imgBefAft('/assets/icons/00_header/Logo-hover.svg');
         opacity: 0;
         transition: opacity 100ms ease-in;
     }

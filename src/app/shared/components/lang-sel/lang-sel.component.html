@@ -1,3 +1,7 @@
 @for (lang of nav.languages; track lang; let i = $index) {
-    <div class="lang" [ngClass]="{'lang-act': lang == nav.languages[nav.curLang]}" (click)="useLanguage(i)">{{ lang | uppercase }}</div>
+    <div class="lang-wrapper" [ngClass]="{'lang-act': lang == nav.languages[nav.curLang]}" (click)="useLanguage(i)">
+        <img src="assets/icons/00_header/Toggle.png" class="checkbox">
+        <div class="lang">{{ lang | uppercase }}</div>
+        <img src="assets/icons/00_header/Check.png" alt="" class="checkmark">
+    </div>
 }

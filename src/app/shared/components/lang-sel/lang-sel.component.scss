@@ -1,7 +1,34 @@
 @use '../../../../all-styles' as all;
 
 :host {
-    @include all.fl($fg: 16px);
+    @include all.fl($fg: 16px, $w:80px, $h:32px);
+}
+
+.lang-wrapper {
+    display: block;
+    width: 32px;
+    height: 32px;
+    &:hover .checkbox {
+        opacity: 1;
+    }
+}
+
+.lang-act {
+    .checkbox, .checkmark {
+        opacity: 1;
+    }
+}
+
+img, .lang {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.checkbox, .checkmark {
+    opacity: 0;
 }
 
 .lang {
