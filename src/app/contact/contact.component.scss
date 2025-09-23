@@ -1,9 +1,22 @@
+@use '../../all-styles' as all;
+
 :host {
     background: url('../../../public/assets/img/06_contact/bg.png') top/cover;
     color: white;
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    @include all.fl($jc: space-between, $fg: 32px);
+}
+
+.left, .right {
+    @include all.fl($fd: column, $ai: flex-end, $w: 50%)
+}
+
+p {
+    text-align: justify
+}
+
+img {
+    width: 50%;
 }

@@ -31,7 +31,7 @@ export class FormComponent {
   constructor(protected nav:NavService){}
 
   getPolicyLink():string {
-    return `<a href="#">${this.nav.curLang == 0 ? 'privacy policy' : "Datenschutzrichtlinie"}</a>`
+    return `<a href="#" class="pol-link">${this.nav.curLang == 0 ? 'privacy policy' : "Datenschutzrichtlinie"}</a>`
     // TODO: Create Privacy Policy
   }
 

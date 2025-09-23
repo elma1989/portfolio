@@ -1,0 +1,27 @@
+@use '../../../all-styles' as all;
+@use '../../../colors' as *;
+
+:host {
+    @include all.fl($fd: column, $ai: flex-end, $w:80%);
+}
+
+.in-field {
+    @include all.fl($fd: column, $jc: center, $w: 100%, $h: 96px);
+}
+
+.check-field {
+    a:link, a:visited {
+        color: blue;
+    }
+}
+
+.pol-link {
+    color: blue;
+}
+
+label, input[type=text] {
+    display: block;
+    width: 100%;
+}
+
+// TODO: complete styling
