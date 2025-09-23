@@ -1,0 +1,39 @@
+[
+    {
+        "id": "contact-name",
+        "en": {
+            "label":"What's your name?",
+            "placeholder":"Your name goes here",
+            "error":"OOps! It seems your name is missing"
+        },
+        "de": {
+            "label":"Wie ist Ihr Name?",
+            "placeholder":"Ihr name kommt hierhin",
+            "error":"OOps! Der name scheint nicht vorhanden zu sein"
+        }
+    }, {
+        "id": "contact-email",
+        "en": {
+            "label":"What's your email?",
+            "placeholder":"youremail@email.com",
+            "error":"Hoppla! Your E-Mail is required"
+        },
+        "de": {
+            "label":"Was ist ihre E-Mail-Adresse?",
+            "placeholder":"youremail@email.com",
+            "error":"Hoppla! Die E-Mail wird benötigt"
+        }
+    }, {
+        "id": "contact-position",
+        "en": {
+            "label":"How can I help you?",
+            "placeholder":"Hello Marco, I am interested in ...",
+            "error":"What do you need to develop?"
+        },
+        "de": {
+            "label":"Wie kann ich Ihnen helfen?",
+            "placeholder":"Hallo Marco, ich habe Interesse an ...",
+            "error":"Was benötigen Sie zum Entwickeln?"
+        }
+    }
+]
