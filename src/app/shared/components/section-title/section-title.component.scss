@@ -46,6 +46,15 @@
     }
 }
 
+:host(.testimonials) {
+    img {
+        height: 32px;
+        right: 270px;
+        transform-origin: right center;
+        animation: grow 4s ease-in infinite;
+    }
+}
+
 :host(.white) {
     h1, p {
         color: white;
@@ -54,6 +63,12 @@
 
 :host(.right) {
     p {
+        text-align: right;
+    }
+}
+
+:host(.hlright) {
+    h1 {
         text-align: right;
     }
 }
