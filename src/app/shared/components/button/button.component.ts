@@ -11,12 +11,17 @@ export class ButtonComponent {
   @Input({required: true}) description!:string;
   @Input() btnclass:string = '';
   @Input({required: true}) ref!:string;
+  @Input() fragment: string|null = null;
   @Input() external:boolean = false;
 
   constructor(private router:Router){}
 
   fallow() {
-    this.router.navigate([this.ref]);
+    if (this.fragment) {
+      this.router.navigate([this.ref], {fragment: this.fragment});  
+    } else {
+      this.router.navigate([this.ref]);
+    }
   }
 
   open() {
