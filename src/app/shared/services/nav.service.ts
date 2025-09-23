@@ -32,7 +32,7 @@ export class NavService {
       id:'nav-contact',
       en: 'Contact',
       de: 'Kontakt',
-      ref: '#',
+      ref: '#link-contact',
       img: '4.png'
     }
   ];

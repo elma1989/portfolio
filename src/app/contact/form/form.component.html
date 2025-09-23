@@ -1,0 +1,13 @@
+@for (field of data; track field.id) {
+    <div class="field in-field">
+        <label for="{{ field.id }}">{{ nav.curLang == 0 ? field.en.label : field.de.label }}</label>
+        <input type="text" name="{{ field.id }}" id="{{ field.id }}" placeholder="{{ nav.curLang == 0 ? field.en.placeholder : field.de.placeholder }}">
+    </div>
+}
+<div class="field check-field">
+    <input type="checkbox" name="chk-pol" id="chk-pol">
+    <label for="chk-pol" [innerHTML]="getPolicyLabel()"></label>
+</div>
+<div class="field submit-btn">
+    <input type="submit" value="{{ 'FormSubmit' | translate}}">
+</div>

@@ -1,10 +1,12 @@
 <div class="content">
     <div class="left">
-        <app-section-title class="white" overline="{{ 'ContactOverline' | translate }}" title="{{ 'ContactHeadline' | translate }}"></app-section-title>
+        <app-section-title id="link-contact" class="white" overline="{{ 'ContactOverline' | translate }}" title="{{ 'ContactHeadline' | translate }}"></app-section-title>
         <p>{{ 'ContactMain' | translate }}</p>
         <img src="assets/img/06_contact/arrow.png">
     </div>
     <div class="right">
-        <form app-form></form>
+        <form app-form method="POST"></form>
+        <!-- TODO: Validation -->
+        <!-- TODO: Form action -->
     </div>
 </div>
