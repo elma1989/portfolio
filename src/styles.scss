@@ -12,18 +12,18 @@
 
 @font-face {
     font-family: Bricolage;
-    src: url('/assets/fonts/Bricolage-Regular.ttf');
+    src: url('../public/assets/fonts/Bricolage-Regular.ttf');
 }
 
 @font-face {
     font-family: Bricolage;
-    src: url('/assets/fonts/Bricolage-Bold.ttf');
+    src: url('../public/assets/fonts/Bricolage-Bold.ttf');
     font-weight: bold;
 }
 
 @font-face {
     font-family: Kalam;
-    src: url('/assets/fonts/Kalam-Bold.ttf');
+    src: url('../public/assets/fonts/Kalam-Bold.ttf');
 }
 
 html {
@@ -48,11 +48,11 @@ body {
     }
 
     &::-webkit-scrollbar-button:single-button:vertical:decrement {
-        background: url('/assets/icons/up.svg');
+        background: url('../public/assets/icons/up.svg');
     }
 
     &::-webkit-scrollbar-button:single-button:vertical:increment {
-        background: url('/assets/icons/down.svg');
+        background: url('../public/assets/icons/down.svg');
     }
 }
 

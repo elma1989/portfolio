@@ -1,7 +1,7 @@
 @use '../../all-styles' as all;
 
 :host {
-    background: url(/assets/img/03_skills/skill_bg.png);
+    background: url('./../../../public/assets/img/03_skills/skill_bg.png');
     background-size: cover;
     background-position: center bottom;
 }
