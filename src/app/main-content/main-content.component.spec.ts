@@ -143,7 +143,7 @@ describe('MainContentComponent', () => {
       () => element.querySelector('section[skills]')
 
     beforeEach(() => {
-      sec.section = SectionType.ABOUT;
+      sec.section = SectionType.SKILLS;
       fixture.detectChanges();
     });
 
@@ -189,7 +189,7 @@ describe('MainContentComponent', () => {
       () => element.querySelector('section[projects]')
 
     beforeEach(() => {
-      sec.section = SectionType.ABOUT;
+      sec.section = SectionType.PROJECTS;
       fixture.detectChanges();
     });
 
@@ -225,8 +225,54 @@ describe('MainContentComponent', () => {
       expect(projects()?.classList.contains('justify-center') ?? false).toBeTrue();
     });
 
-    it('should have black background', () => {
+    it('should have white background', () => {
       expect(projects()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+    });
+  });
+
+  describe('References', () => {
+    const ref: () => HTMLElement | null =
+      () => element.querySelector('section[references]')
+
+    beforeEach(() => {
+      sec.section = SectionType.REFERENCES;
+      fixture.detectChanges();
+    });
+
+    it('should exist on mobile', () => {
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(ref()).toBeTruthy();
+    });
+
+    it('should exist on desktop', () => {
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(ref()).toBeTruthy();
+    });
+
+    it('should have full viewport size', () => {
+      expect(ref()?.classList.contains('h-dvh') ?? false).toBeTrue();
+      expect(ref()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should padding top 9dvh on mobile', () => {
+      expect(ref()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
+    });
+
+    it('should padding top 10dvh on desktop', () => {
+      expect(ref()?.classList.contains('lg:pt-[10dvh]') ?? false).toBeTrue();
+    });
+
+    it('should content x-center', () => {
+      expect(ref()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(ref()?.classList.contains('justify-center') ?? false).toBeTrue();
+    });
+
+    it('should have blue background', () => {
+      expect(ref()?.classList.contains('bg-blue') ?? false).toBeTrue();
     });
   });
 });
