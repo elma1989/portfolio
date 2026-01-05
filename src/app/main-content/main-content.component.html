@@ -11,6 +11,9 @@
     <section projects class=
     "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
     flex justify-center bg-cwhite"></section>
+    <section references class=
+    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    flex justify-center bg-blue"></section>
 } @else {
     @switch (section()) {
         @case (SectionType.HERO) {
@@ -35,6 +38,12 @@
             <section projects class=
             "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
             flex justify-center bg-cwhite"></section>
+        }
+
+        @case (SectionType.REFERENCES) {
+            <section references class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-blue"></section>
         }
     }
 }
