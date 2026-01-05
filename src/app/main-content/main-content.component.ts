@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { AboutSectionComponent } from './about-section/about-section.component';
+import { SkillsSectionComponent } from './skills-section/skills-section.component';
 
 @Component({
   selector: 'app-main-content',
   imports: [
     CommonModule,
     HeroSectionComponent,
-    AboutSectionComponent
+    AboutSectionComponent,
+    SkillsSectionComponent
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css'

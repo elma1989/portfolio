@@ -180,7 +180,7 @@ describe('MainContentComponent', () => {
     });
 
     it('should have black background', () => {
-      expect(skills()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+      expect(skills()?.classList.contains('bg-cblack') ?? false).toBeTrue();
     });
   });
 
