@@ -9,4 +9,5 @@
 
 html {
     font: 16px Quicksand;
+    color: var(--white);
 }

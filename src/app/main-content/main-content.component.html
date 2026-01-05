@@ -1,5 +1,13 @@
 @if (mobile()) {
-    Mobile
+    <section hero class=
+    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    flex justify-center bg-blue"></section>
 } @else {
-    Desktop
+    @switch (section()) {
+        @case (SectionType.HERO) {
+            <section hero class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-blue"></section>
+        }
+    }
 }
