@@ -133,7 +133,7 @@ describe('MainContentComponent', () => {
       expect(about()?.classList.contains('justify-center') ?? false).toBeTrue();
     });
 
-    it('should have whihte background', () => {
+    it('should have white background', () => {
       expect(about()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
     });
   });
@@ -181,6 +181,52 @@ describe('MainContentComponent', () => {
 
     it('should have black background', () => {
       expect(skills()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+    });
+  });
+
+  describe('Projects', () => {
+    const projects: () => HTMLElement | null =
+      () => element.querySelector('section[projects]')
+
+    beforeEach(() => {
+      sec.section = SectionType.ABOUT;
+      fixture.detectChanges();
+    });
+
+    it('should exist on mobile', () => {
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(projects()).toBeTruthy();
+    });
+
+    it('should exist on desktop', () => {
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(projects()).toBeTruthy();
+    });
+
+    it('should have full viewport size', () => {
+      expect(projects()?.classList.contains('h-dvh') ?? false).toBeTrue();
+      expect(projects()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should padding top 9dvh on mobile', () => {
+      expect(projects()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
+    });
+
+    it('should padding top 10dvh on desktop', () => {
+      expect(projects()?.classList.contains('lg:pt-[10dvh]') ?? false).toBeTrue();
+    });
+
+    it('should content x-center', () => {
+      expect(projects()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(projects()?.classList.contains('justify-center') ?? false).toBeTrue();
+    });
+
+    it('should have black background', () => {
+      expect(projects()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
     });
   });
 });
