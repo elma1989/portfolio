@@ -5,6 +5,7 @@ import { SectionType } from '../shared/enums/section-type';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { AboutSectionComponent } from './about-section/about-section.component';
 import { SkillsSectionComponent } from './skills-section/skills-section.component';
+import { ProjectsSectionComponent } from './projects-section/projects-section.component';
 
 @Component({
   selector: 'app-main-content',
@@ -12,7 +13,8 @@ import { SkillsSectionComponent } from './skills-section/skills-section.componen
     CommonModule,
     HeroSectionComponent,
     AboutSectionComponent,
-    SkillsSectionComponent
+    SkillsSectionComponent,
+    ProjectsSectionComponent
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css'

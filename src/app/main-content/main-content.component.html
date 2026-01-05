@@ -8,6 +8,9 @@
     <section skills class=
     "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
     flex justify-center bg-cblack"></section>
+    <section projects class=
+    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    flex justify-center bg-cwhite"></section>
 } @else {
     @switch (section()) {
         @case (SectionType.HERO) {
@@ -26,6 +29,12 @@
             <section skills class=
             "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
             flex justify-center bg-cblack"></section>
+        }
+
+        @case (SectionType.PROJECTS) {
+            <section projects class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-cwhite"></section>
         }
     }
 }
