@@ -3,6 +3,14 @@ import { SectionService } from './section.service';
 import { computed } from '@angular/core';
 import { SectionType } from '../enums/section-type';
 
+function setWindowWidth(width: number) {
+  Object.defineProperty(window, 'innerWidth', {
+    configurable: true,
+    writable: true,
+    value: width
+  })
+}
+
 describe('SectionService', () => {
   let service: SectionService;
 
@@ -27,13 +35,13 @@ describe('SectionService', () => {
 
   describe('Mobile', () => {
     it('should isMobile() true on mobile', () => {
-      spyOnProperty(window, 'innerWidth').and.returnValue(672);
+      setWindowWidth(672);
       window.dispatchEvent(new Event('resize'));
       expect(service.isMobile()).toBeTrue();
     });
 
     it('should isMobile() false on mobile', () => {
-      spyOnProperty(window, 'innerWidth').and.returnValue(1024);
+      setWindowWidth(1024);
       window.dispatchEvent(new Event('resize'));
       expect(service.isMobile()).toBeFalse();
     });
