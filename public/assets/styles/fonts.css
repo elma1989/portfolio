@@ -1,0 +1,28 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(../fonts/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Quicksand;
+    font-weight: bold;
+    src: url(../fonts/Quicksand-Bold.ttf);
+}
+
+@font-face {
+    font-family: Eczar;
+    src: url(../fonts/Eczar-Bold.ttf);
+}
+
+@font-face {
+    font-family: TitanOne;
+    src: url(../fonts/TitanOne-Regular.ttf);
+}
+
+.font-eczar {
+    font-family: Eczar;
+}
+
+.font-titanone {
+    font-family: TitanOne;
+}

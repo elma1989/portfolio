@@ -1,1 +1,11 @@
 @import 'tailwindcss';
+@import '../public/assets/styles/fonts.css';
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    font: 16px Quicksand;
+}
