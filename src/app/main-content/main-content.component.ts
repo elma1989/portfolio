@@ -3,12 +3,14 @@ import { SectionService } from '../shared/services/section.service';
 import { CommonModule } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { AboutSectionComponent } from './about-section/about-section.component';
 
 @Component({
   selector: 'app-main-content',
   imports: [
     CommonModule,
-    HeroSectionComponent
+    HeroSectionComponent,
+    AboutSectionComponent
   ],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css'
