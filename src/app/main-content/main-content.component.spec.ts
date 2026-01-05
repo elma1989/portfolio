@@ -91,4 +91,50 @@ describe('MainContentComponent', () => {
       expect(hero()?.classList.contains('bg-blue') ?? false).toBeTrue();
     });
   });
+
+  describe('About', () => {
+    const about: () => HTMLElement | null =
+      () => element.querySelector('section[about]')
+
+    beforeEach(() => {
+      sec.section = SectionType.ABOUT;
+      fixture.detectChanges();
+    });
+
+    it('should exist on mobile', () => {
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(about()).toBeTruthy();
+    });
+
+    it('should exist on desktop', () => {
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(about()).toBeTruthy();
+    });
+
+    it('should have full viewport size', () => {
+      expect(about()?.classList.contains('h-dvh') ?? false).toBeTrue();
+      expect(about()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should padding top 9dvh on mobile', () => {
+      expect(about()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
+    });
+
+    it('should padding top 10dvh on desktop', () => {
+      expect(about()?.classList.contains('lg:pt-[10dvh]') ?? false).toBeTrue();
+    });
+
+    it('should content x-center', () => {
+      expect(about()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(about()?.classList.contains('justify-center') ?? false).toBeTrue();
+    });
+
+    it('should have whihte background', () => {
+      expect(about()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+    });
+  });
 });
