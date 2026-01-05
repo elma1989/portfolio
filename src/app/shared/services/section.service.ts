@@ -5,7 +5,7 @@ import { SectionType } from '../enums/section-type';
   providedIn: 'root'
 })
 export class SectionService {
-  private _mobile: WritableSignal<boolean> = signal<boolean>(false);
+  private _mobile: WritableSignal<boolean> = signal<boolean>(this.isMobile());
   private _section: WritableSignal<SectionType> = signal<SectionType>(SectionType.HERO);
 
   get mobile(): Signal<boolean> { return this._mobile.asReadonly() }
@@ -18,10 +18,5 @@ export class SectionService {
 
   isMobile(): boolean {
     return window.innerWidth <= 672;
-  }
-
-  @HostListener('window.resize')
-  onResize() {
-    this._mobile.set(this.isMobile())
   }
 }
