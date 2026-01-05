@@ -14,6 +14,9 @@
     <section references class=
     "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
     flex justify-center bg-blue"></section>
+    <section contact class=
+    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    flex justify-center bg-cblack"></section>
 } @else {
     @switch (section()) {
         @case (SectionType.HERO) {
@@ -44,6 +47,12 @@
             <section references class=
             "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
             flex justify-center bg-blue"></section>
+        }
+
+        @case (SectionType.CONTACT) {
+            <section contact class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-cblack"></section>
         }
     }
 }
