@@ -275,4 +275,50 @@ describe('MainContentComponent', () => {
       expect(ref()?.classList.contains('bg-blue') ?? false).toBeTrue();
     });
   });
+
+  describe('Contact', () => {
+    const contact: () => HTMLElement | null =
+      () => element.querySelector('section[contact]')
+
+    beforeEach(() => {
+      sec.section = SectionType.CONTACT;
+      fixture.detectChanges();
+    });
+
+    it('should exist on mobile', () => {
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(contact()).toBeTruthy();
+    });
+
+    it('should exist on desktop', () => {
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(contact()).toBeTruthy();
+    });
+
+    it('should have full viewport size', () => {
+      expect(contact()?.classList.contains('h-dvh') ?? false).toBeTrue();
+      expect(contact()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should padding top 9dvh on mobile', () => {
+      expect(contact()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
+    });
+
+    it('should padding top 10dvh on desktop', () => {
+      expect(contact()?.classList.contains('lg:pt-[10dvh]') ?? false).toBeTrue();
+    });
+
+    it('should content x-center', () => {
+      expect(contact()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(contact()?.classList.contains('justify-center') ?? false).toBeTrue();
+    });
+
+    it('should have black background', () => {
+      expect(contact()?.classList.contains('bg-cblack') ?? false).toBeTrue();
+    });
+  });
 });
