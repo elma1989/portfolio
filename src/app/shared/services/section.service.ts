@@ -17,11 +17,11 @@ export class SectionService {
   set section(section: SectionType) { this._section.set(section) }
 
   isMobile(): boolean {
-    return false;
+    return window.innerWidth <= 672;
   }
 
   @HostListener('window.resize')
   onResize() {
-    
+    this._mobile.set(this.isMobile())
   }
 }
