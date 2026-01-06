@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { TranslationService } from './translation.service';
 import { HttpTestingController, provideHttpClientTesting} from '@angular/common/http/testing'
+import { computed } from '@angular/core';
 
 describe('TranslationService', () => {
   let service: TranslationService;
@@ -24,5 +25,19 @@ describe('TranslationService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should English default language', () => {
+    expect(service.lang()).toBe('en');
+  });
+
+  it('should works with computed values', () => {
+    const lang = computed(() => service.lang());
+
+    service.lang = 'de';
+    expect(lang()).toBe('de');
+
+    service.lang = 'en';
+    expect(lang()).toBe('en');
   });
 });
