@@ -42,5 +42,4 @@ export class TranslationService {
       .reduce<any>((acc, part) => acc?.[part], this.translations());
     return typeof value == 'string' ? value : key
   }
-
 }
