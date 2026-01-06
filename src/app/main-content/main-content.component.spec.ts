@@ -351,6 +351,10 @@ describe('MainContentComponent', () => {
       it('should have x-center-content', () => {
         expect(header()?.classList.contains('flex') ?? false).toBeTrue();
         expect(header()?.classList.contains('justify-center') ?? false).toBeTrue();
+      });
+
+      it('should have Z-index 1', () => {
+        expect(header()?.classList.contains('z-1') ?? false).toBeTrue();
       })
   })
 });

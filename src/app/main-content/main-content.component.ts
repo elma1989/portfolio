@@ -8,6 +8,7 @@ import { SkillsSectionComponent } from './skills-section/skills-section.componen
 import { ProjectsSectionComponent } from './projects-section/projects-section.component';
 import { ReferencesSectionComponent } from './references-section/references-section.component';
 import { ContactSectionComponent } from './contact-section/contact-section.component';
+import { HeaderComponent } from "../shared/components/header/header.component";
 
 @Component({
   selector: 'app-main-content',
@@ -18,8 +19,9 @@ import { ContactSectionComponent } from './contact-section/contact-section.compo
     SkillsSectionComponent,
     ProjectsSectionComponent,
     ReferencesSectionComponent,
-    ContactSectionComponent
-  ],
+    ContactSectionComponent,
+    HeaderComponent
+],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.css'
 })
