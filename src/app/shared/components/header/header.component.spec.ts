@@ -102,35 +102,6 @@ describe('HeaderComponent', () => {
     it('should have pedding-x 4.5rem on deskop', () => {
       expect(content()?.classList.contains('lg:px-18') ?? false).toBeTrue();
     });
-
-    // it('should have social media on deskop in hero-section', () => {
-    //   const social: () => HTMLElement | null =
-    //     () => element.querySelector('social-media');
-    //   (window as any).innerWidth = 672;
-    //   window.dispatchEvent(new Event('resize'));
-    //   fixture.detectChanges();
-    //   expect(social()).toBeNull();
-
-    //   (window as any).innerWidth = 1024;
-    //   window.dispatchEvent(new Event('resize'));
-    //   fixture.detectChanges();
-    //   expect(social()).toBeTruthy();
-
-    //   sec.section = SectionType.ABOUT;
-    //   expect(social()).toBeNull();
-
-    //   sec.section = SectionType.SKILLS;
-    //   expect(social()).toBeNull();
-
-    //   sec.section = SectionType.PROJECTS;
-    //   expect(social()).toBeNull();
-
-    //   sec.section = SectionType.REFERENCES;
-    //   expect(social()).toBeNull();
-
-    //   sec.section = SectionType.CONTACT;
-    //   expect(social()).toBeNull();
-    // });
   });
 
   describe('Logo-Area', () => {

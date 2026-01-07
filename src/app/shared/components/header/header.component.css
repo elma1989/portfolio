@@ -1,3 +1,13 @@
 .logo-area:hover {
     color: var(--orange);
 }
+
+.lang-sel {
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    padding: 0.5rem;
+}
+
+.lang-sel:hover {
+    background: var(--orange);
+}
