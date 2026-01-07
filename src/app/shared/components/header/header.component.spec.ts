@@ -46,6 +46,7 @@ describe('HeaderComponent', () => {
     it('should hasSocialMedia() works', () => {
       (window as any).innerWidth = 1024;
       window.dispatchEvent(new Event('resize'));
+      sec.section = SectionType.HERO;
       fixture.detectChanges();
       expect(component.hasSocialMedia()).toBeTrue();
 
@@ -313,7 +314,7 @@ describe('HeaderComponent', () => {
     });
 
     it('click on lang sel btn works', () => {
-      translationServiceMock.lang = 'en';
+      translationServiceMock.lang = 'en'; 
       fixture.detectChanges();
       langSelBtn()?.click();
       fixture.detectChanges();
