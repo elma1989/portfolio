@@ -21,15 +21,24 @@ export class HeaderComponent {
   private section: Signal<SectionType> = computed(() => this.sec.section());
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
 
+  /**
+   * Checks, if social media is in on header.
+   * @returns True if social media is on header.
+   */
   hasSocialMedia() {
     if(this.mobile()) return false;
     return this.section() == SectionType.HERO;
   }
 
+  /**
+   * Checks if section is dark.
+   * @returns True, if seciton is dark.
+   */
   isSectionDark() {
     return this.section() == SectionType.ABOUT || this.section() == SectionType.PROJECTS;
   }
 
+  /** Switches the language. */
   switchLang() {
     const lang: 'en'|'de' = this.lang() == 'en' ? 'de' : 'en';
     this.ts.lang = lang
