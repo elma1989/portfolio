@@ -78,4 +78,70 @@ describe('HeaderComponent', () => {
       expect(social()).toBeNull();
     });
   });
+
+  describe('Logo-Area', () => {
+    const area: () => HTMLDivElement | null =
+      () => element.querySelector('.content>.logo-area');
+    const img: () => HTMLImageElement | null =
+      () => element.querySelector('.logo-area>img');
+
+    it('should have logo-area', () => {
+      expect(area()).toBeTruthy();
+    });
+
+    it('should have y-center', () => {
+      expect(area()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(area()?.classList.contains('justify-center') ?? false).toBeTrue();
+    })
+
+    it('should have font "TitanOne"', () => {
+      expect(area()?.classList.contains('font-titanone') ?? false).toBeTrue();
+    });
+
+    it('should have font-size 1.5rem', () => {
+      expect(area()?.classList.contains('text-[1.5rem]') ?? false).toBeTrue();
+    });
+
+    it('shoult content be "Elste"', () => {
+      expect(area()?.textContent).toBe('Elste');
+    });
+
+    it('should have image', () => {
+      expect(img()).toBeTruthy();
+    });
+
+    it('img should have height 2.5rem', () => {
+      expect(img()?.classList.contains('h-10') ?? false).toBeTrue();
+    });
+
+    it('img should have margin-right 0.75rem', () => {
+      expect(img()?.classList.contains('mr-3') ?? false).toBeTrue();
+    });
+
+    it('should have darak text', () => {
+      sec.section = SectionType.HERO;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section = SectionType.ABOUT;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeTrue();
+
+      sec.section = SectionType.SKILLS;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section = SectionType.PROJECTS;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeTrue();
+
+      sec.section = SectionType.REFERENCES;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section = SectionType.CONTACT;
+      fixture.detectChanges();
+      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+    })
+  })
 });
