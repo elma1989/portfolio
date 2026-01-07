@@ -1,4 +1,7 @@
 <div class="content px-4 lg:px-18 flex justify-between items-center">
+    @if (hasSocialMedia()) {
+        <social-media></social-media>
+    }
     <div class="logo-area flex items-center font-titanone text-[1.5rem]" [class.tx-black]="isSectionDark()">
         <img src="assets/img/00_header/logo.svg" class="h-10 mr-3">Elste</div>
     <div class="settings flex gap-4">

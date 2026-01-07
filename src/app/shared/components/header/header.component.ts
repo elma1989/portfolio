@@ -2,10 +2,15 @@ import { Component, computed, inject, Signal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
+import { CommonModule } from '@angular/common';
+import { SocialMediaComponent } from '../social-media/social-media.component';
 
 @Component({
   selector: 'header[app-header]',
-  imports: [],
+  imports: [
+    CommonModule,
+    SocialMediaComponent
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -27,6 +32,6 @@ export class HeaderComponent {
 
   switchLang() {
     const lang: 'en'|'de' = this.lang() == 'en' ? 'de' : 'en';
-    this.ts.lang = lang;
+    this.ts.lang = lang
   }
 }
