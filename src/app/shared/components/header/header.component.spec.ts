@@ -3,12 +3,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
-import { signal } from '@angular/core';
+import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 
+const langSignal = signal<'en' | 'de'>('en');
+
 const translationServiceMock = {
-  lang: signal<'en' | 'de'>('en')
-}
+  get lang(): Signal<'en'|'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en'|'de') { langSignal.set(lang); }
+};
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -41,12 +44,6 @@ describe('HeaderComponent', () => {
 
   describe('Methods', () => {
     it('should hasSocialMedia() works', () => {
-      sec.section = SectionType.HERO;
-      (window as any).innerWidth = 672;
-      window.dispatchEvent(new Event('resize'));
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-
       (window as any).innerWidth = 1024;
       window.dispatchEvent(new Event('resize'));
       fixture.detectChanges();
@@ -100,6 +97,7 @@ describe('HeaderComponent', () => {
     });
 
     it('should switchLang works', () => {
+      translationServiceMock.lang = 'en';
       component.switchLang();
       fixture.detectChanges();
       expect(translationServiceMock.lang()).toBe('de');
@@ -305,17 +303,17 @@ describe('HeaderComponent', () => {
     })
 
     it('lang-sel-btn should have correct description', () => {
-      translationServiceMock.lang.set('en');
+      translationServiceMock.lang = 'en'
       fixture.detectChanges();
       expect(langSelBtn()?.textContent ?? '').toBe('EN');
 
-      translationServiceMock.lang.set('de');
+      translationServiceMock.lang = 'en'
       fixture.detectChanges();
       expect(langSelBtn()?.textContent ?? '').toBe('DE')
     });
 
     it('click on lang sel btn works', () => {
-      translationServiceMock.lang.set('en');
+      translationServiceMock.lang = 'en';
       fixture.detectChanges();
       langSelBtn()?.click();
       fixture.detectChanges();

@@ -1,5 +1,7 @@
 import { Component, computed, inject, Signal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { SectionService } from '../../services/section.service';
+import { SectionType } from '../../enums/section-type';
 
 @Component({
   selector: 'header[app-header]',
@@ -8,23 +10,23 @@ import { TranslationService } from '../../services/translation.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  private readonly ts!: TranslationService;
-  private lang!: Signal<'en'|'de'>;
-
-  constructor() {
-    this.ts = inject(TranslationService);
-    this.lang = computed(() => this.ts.lang());
-  }
+  private readonly ts: TranslationService = inject(TranslationService);
+  private readonly sec: SectionService = inject(SectionService);
+  protected lang: Signal<'en'|'de'> = computed(() => this.ts.lang());
+  private section: Signal<SectionType> = computed(() => this.sec.section());
+  private mobile: Signal<boolean> = computed(() => this.sec.mobile());
 
   hasSocialMedia() {
-    return false;
+    if(this.mobile()) return false;
+    return this.section() == SectionType.HERO;
   }
 
   isSectionDark() {
-    return false;
+    return this.section() == SectionType.ABOUT || this.section() == SectionType.PROJECTS;
   }
 
   switchLang() {
-
+    const lang: 'en'|'de' = this.lang() == 'en' ? 'de' : 'en';
+    this.ts.lang = lang;
   }
 }
