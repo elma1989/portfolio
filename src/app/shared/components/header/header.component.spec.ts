@@ -201,6 +201,11 @@ describe('HeaderComponent', () => {
       expect(img()?.classList.contains('mr-3') ?? false).toBeTrue();
     });
 
+    it('img should have corrrect source', () => {
+      expect(img()?.src ?? '')
+        .toBe('http://localhost:9876/assets/img/00_header/logo.svg');
+    })
+
     it('should have darak text', () => {
       sec.section = SectionType.HERO;
       fixture.detectChanges();
@@ -225,6 +230,96 @@ describe('HeaderComponent', () => {
       sec.section = SectionType.CONTACT;
       fixture.detectChanges();
       expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+    });
+  });
+
+  describe('Settings', () => {
+    const settings: () => HTMLDivElement | null = 
+      () => element.querySelector('.content>.settings');
+    const langSelBtn: () => HTMLButtonElement | null =
+      () => element.querySelector('.settings>.lang-sel')
+    
+    it('should exist' ,() => {
+      expect(settings()).toBeTruthy();
+    });
+
+    it('should have gap 1rem', () => {
+      expect(settings()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(settings()?.classList.contains('gap-4') ?? false).toBeTrue();
+    });
+
+    it('should have lang-sel-btn', () => {
+      expect(langSelBtn()).toBeTruthy();
+    });
+
+    it('should have dark text', () => {
+      sec.section =  SectionType.HERO;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.ABOUT;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeTrue();
+
+      sec.section =  SectionType.SKILLS;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.PROJECTS;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeTrue();
+
+      sec.section =  SectionType.REFERENCES;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.CONTACT;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('tx-black') ?? false).toBeFalse();
+    });
+
+    it('should have dark border', () => {
+      sec.section =  SectionType.HERO;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.ABOUT;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeTrue();
+
+      sec.section =  SectionType.SKILLS;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.PROJECTS;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeTrue();
+
+      sec.section =  SectionType.REFERENCES;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeFalse();
+
+      sec.section =  SectionType.CONTACT;
+      fixture.detectChanges();
+      expect(langSelBtn()?.classList.contains('bd-black') ?? false).toBeFalse();
     })
-  })
+
+    it('lang-sel-btn should have correct description', () => {
+      translationServiceMock.lang.set('en');
+      fixture.detectChanges();
+      expect(langSelBtn()?.textContent ?? '').toBe('EN');
+
+      translationServiceMock.lang.set('de');
+      fixture.detectChanges();
+      expect(langSelBtn()?.textContent ?? '').toBe('DE')
+    });
+
+    it('click on lang sel btn works', () => {
+      translationServiceMock.lang.set('en');
+      fixture.detectChanges();
+      langSelBtn()?.click();
+      fixture.detectChanges();
+      expect(translationServiceMock.lang()).toBe('de')
+    });
+  });
 });
