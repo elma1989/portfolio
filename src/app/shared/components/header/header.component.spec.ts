@@ -280,7 +280,7 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
       expect(langSelBtn()?.textContent ?? '').toBe('EN');
 
-      translationServiceMock.lang = 'en'
+      translationServiceMock.lang = 'de'
       fixture.detectChanges();
       expect(langSelBtn()?.textContent ?? '').toBe('DE')
     });
