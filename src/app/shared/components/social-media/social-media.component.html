@@ -1,1 +1,6 @@
-<p>social-media works!</p>
+@for (media of medias; track media.link; let i = $index) {
+    <a href="{{ media.link }}" target="_blank"
+    (mouseenter)="medias[i].hover = true"
+    (mouseleave)="medias[i].hover = false">
+        <img src="assets/img/00_header/social/{{ getImg(i) }}" ></a>
+}

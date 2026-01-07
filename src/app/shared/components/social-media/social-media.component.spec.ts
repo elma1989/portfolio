@@ -20,4 +20,9 @@ describe('SocialMediaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have 3 images', () => {
+    const imgs = fixture.nativeElement.querySelectorAll('img');
+    expect(imgs.length).toBe(3);
+  });
 });
