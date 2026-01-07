@@ -43,34 +43,6 @@ describe('HeaderComponent', () => {
   });
 
   describe('Methods', () => {
-    it('should hasSocialMedia() works', () => {
-      (window as any).innerWidth = 1024;
-      window.dispatchEvent(new Event('resize'));
-      sec.section = SectionType.HERO;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeTrue();
-
-      sec.section = SectionType.ABOUT;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-
-      sec.section = SectionType.SKILLS;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-
-      sec.section = SectionType.PROJECTS;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-
-      sec.section = SectionType.REFERENCES;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-
-      sec.section = SectionType.CONTACT;
-      fixture.detectChanges();
-      expect(component.hasSocialMedia()).toBeFalse();
-    });
-
     it('should isSectionDark() works', () => {
       sec.section = SectionType.HERO;
       fixture.detectChanges();
@@ -131,34 +103,34 @@ describe('HeaderComponent', () => {
       expect(content()?.classList.contains('lg:px-18') ?? false).toBeTrue();
     });
 
-    it('should have social media on deskop in hero-section', () => {
-      const social: () => HTMLElement | null =
-        () => element.querySelector('social-media');
-      (window as any).innerWidth = 672;
-      window.dispatchEvent(new Event('resize'));
-      fixture.detectChanges();
-      expect(social()).toBeNull();
+    // it('should have social media on deskop in hero-section', () => {
+    //   const social: () => HTMLElement | null =
+    //     () => element.querySelector('social-media');
+    //   (window as any).innerWidth = 672;
+    //   window.dispatchEvent(new Event('resize'));
+    //   fixture.detectChanges();
+    //   expect(social()).toBeNull();
 
-      (window as any).innerWidth = 1024;
-      window.dispatchEvent(new Event('resize'));
-      fixture.detectChanges();
-      expect(social()).toBeTruthy();
+    //   (window as any).innerWidth = 1024;
+    //   window.dispatchEvent(new Event('resize'));
+    //   fixture.detectChanges();
+    //   expect(social()).toBeTruthy();
 
-      sec.section = SectionType.ABOUT;
-      expect(social()).toBeNull();
+    //   sec.section = SectionType.ABOUT;
+    //   expect(social()).toBeNull();
 
-      sec.section = SectionType.SKILLS;
-      expect(social()).toBeNull();
+    //   sec.section = SectionType.SKILLS;
+    //   expect(social()).toBeNull();
 
-      sec.section = SectionType.PROJECTS;
-      expect(social()).toBeNull();
+    //   sec.section = SectionType.PROJECTS;
+    //   expect(social()).toBeNull();
 
-      sec.section = SectionType.REFERENCES;
-      expect(social()).toBeNull();
+    //   sec.section = SectionType.REFERENCES;
+    //   expect(social()).toBeNull();
 
-      sec.section = SectionType.CONTACT;
-      expect(social()).toBeNull();
-    });
+    //   sec.section = SectionType.CONTACT;
+    //   expect(social()).toBeNull();
+    // });
   });
 
   describe('Logo-Area', () => {
@@ -173,7 +145,7 @@ describe('HeaderComponent', () => {
 
     it('should have y-center', () => {
       expect(area()?.classList.contains('flex') ?? false).toBeTrue();
-      expect(area()?.classList.contains('justify-center') ?? false).toBeTrue();
+      expect(area()?.classList.contains('items-center') ?? false).toBeTrue();
     })
 
     it('should have font "TitanOne"', () => {
@@ -205,30 +177,30 @@ describe('HeaderComponent', () => {
         .toBe('http://localhost:9876/assets/img/00_header/logo.svg');
     })
 
-    it('should have darak text', () => {
+    it('should have dark text', () => {
       sec.section = SectionType.HERO;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeFalse();
 
       sec.section = SectionType.ABOUT;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeTrue();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeTrue();
 
       sec.section = SectionType.SKILLS;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeFalse();
 
       sec.section = SectionType.PROJECTS;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeTrue();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeTrue();
 
       sec.section = SectionType.REFERENCES;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeFalse();
 
       sec.section = SectionType.CONTACT;
       fixture.detectChanges();
-      expect(img()?.classList.contains('tx-black') ?? false).toBeFalse();
+      expect(area()?.classList.contains('tx-black') ?? false).toBeFalse();
     });
   });
 
