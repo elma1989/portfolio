@@ -3,6 +3,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
+import { signal } from '@angular/core';
+import { TranslationService } from '../../services/translation.service';
+
+const translationServiceMock = {
+  lang: signal<'en' | 'de'>('en')
+}
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -12,7 +18,13 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderComponent]
+      imports: [HeaderComponent],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
     .compileComponents();
 
@@ -26,6 +38,77 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('Methods', () => {
+    it('should hasSocialMedia() works', () => {
+      sec.section = SectionType.HERO;
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeTrue();
+
+      sec.section = SectionType.ABOUT;
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+
+      sec.section = SectionType.SKILLS;
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+
+      sec.section = SectionType.PROJECTS;
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+
+      sec.section = SectionType.REFERENCES;
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+
+      sec.section = SectionType.CONTACT;
+      fixture.detectChanges();
+      expect(component.hasSocialMedia()).toBeFalse();
+    });
+
+    it('should isSectionDark() works', () => {
+      sec.section = SectionType.HERO;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeFalse();
+
+      sec.section = SectionType.ABOUT;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeTrue();
+
+      sec.section = SectionType.SKILLS;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeFalse();
+
+      sec.section = SectionType.PROJECTS;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeTrue();
+
+      sec.section = SectionType.REFERENCES;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeFalse();
+
+      sec.section = SectionType.CONTACT;
+      fixture.detectChanges();
+      expect(component.isSectionDark()).toBeFalse();
+    });
+
+    it('should switchLang works', () => {
+      component.switchLang();
+      fixture.detectChanges();
+      expect(translationServiceMock.lang()).toBe('de');
+
+      component.switchLang();
+      fixture.detectChanges();
+      expect(translationServiceMock.lang()).toBe('en');
+    });
+  })
 
   describe('Content', () => {
     const content: () => HTMLDivElement | null =

@@ -1,8 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MainContentComponent } from './main-content.component';
 import { SectionService } from '../shared/services/section.service';
 import { SectionType } from '../shared/enums/section-type';
+import { signal } from '@angular/core';
+import { TranslationService } from '../shared/services/translation.service';
+
+const translationServiceMock = {
+  lang: signal<'en' | 'de'>('en')
+}
 
 describe('MainContentComponent', () => {
   let component: MainContentComponent;
@@ -12,9 +17,15 @@ describe('MainContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainContentComponent]
+      imports: [MainContentComponent],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MainContentComponent);
     component = fixture.componentInstance;
@@ -28,7 +39,7 @@ describe('MainContentComponent', () => {
   });
 
   describe('Sections', () => {
-    const sections: () => NodeListOf<HTMLElement> = 
+    const sections: () => NodeListOf<HTMLElement> =
       () => element.querySelectorAll('section');
 
     it('should be 6 Sections on mobile', () => {
@@ -326,35 +337,35 @@ describe('MainContentComponent', () => {
     const header: () => HTMLElement | null =
       () => element.querySelector('header[app-header]');
 
-      it('shoule exist', () => {
-        expect(header()).toBeTruthy();
-      });
+    it('shoule exist', () => {
+      expect(header()).toBeTruthy();
+    });
 
-      it('should have full width', () => {
-        expect(header()?.classList.contains('w-full') ?? false).toBeTrue();
-      });
+    it('should have full width', () => {
+      expect(header()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
 
-      it('shoulde have height 9dvh on Mobile', () => {
-        expect(header()?.classList.contains('h-[9dvh]') ?? false).toBeTrue();
-      });
+    it('shoulde have height 9dvh on Mobile', () => {
+      expect(header()?.classList.contains('h-[9dvh]') ?? false).toBeTrue();
+    });
 
-      it('should have height 10dvh on Desktop', () => {
-        expect(header()?.classList.contains('lg:h-[10dvh]') ?? false).toBeTrue();
-      });
+    it('should have height 10dvh on Desktop', () => {
+      expect(header()?.classList.contains('lg:h-[10dvh]') ?? false).toBeTrue();
+    });
 
-      it('should have position fixed', () => {
-        expect(header()?.classList.contains('fixed') ?? false).toBeTrue();
-        expect(header()?.classList.contains('top-0') ?? false).toBeTrue();
-        expect(header()?.classList.contains('left-0') ?? false).toBeTrue();
-      });
+    it('should have position fixed', () => {
+      expect(header()?.classList.contains('fixed') ?? false).toBeTrue();
+      expect(header()?.classList.contains('top-0') ?? false).toBeTrue();
+      expect(header()?.classList.contains('left-0') ?? false).toBeTrue();
+    });
 
-      it('should have x-center-content', () => {
-        expect(header()?.classList.contains('flex') ?? false).toBeTrue();
-        expect(header()?.classList.contains('justify-center') ?? false).toBeTrue();
-      });
+    it('should have x-center-content', () => {
+      expect(header()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(header()?.classList.contains('justify-center') ?? false).toBeTrue();
+    });
 
-      it('should have Z-index 1', () => {
-        expect(header()?.classList.contains('z-1') ?? false).toBeTrue();
-      })
+    it('should have Z-index 1', () => {
+      expect(header()?.classList.contains('z-1') ?? false).toBeTrue();
+    })
   })
 });
