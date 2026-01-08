@@ -286,6 +286,15 @@ describe('HeaderComponent', () => {
       expect(menuBtn()).toBeTruthy();
     });
 
+    it('menu-btn should have direction colum', () => {
+      expect(menuBtn()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(menuBtn()?.classList.contains('flex-col') ?? false).toBeTrue()
+    });
+
+    it('should have gap 0.25 rem', () => {
+      expect(menuBtn()?.classList.contains('gap-1') ?? false).toBeTrue()
+    })
+
     it('menu-btn should have 3 spans', () => {
       const spans: NodeListOf<HTMLSpanElement> = element.querySelectorAll('.menu-btn>span');
       expect(spans.length).toBe(3);

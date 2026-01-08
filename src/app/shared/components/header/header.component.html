@@ -9,5 +9,11 @@
         [class.tx-black]="isSectionDark()"
         [class.bd-black]="isSectionDark()"
         (click)="switchLang()">{{ lang() == 'en'? 'EN':'DE' }}</button>
+        <button class="menu-btn flex flex-col gap-1 justify-center"
+        (click)="openMenu()">
+            <span [class.bd-black]="isSectionDark()"></span>
+            <span [class.bd-black]="isSectionDark()"></span>
+            <span [class.bd-black]="isSectionDark()"></span>
+        </button>
     </div>
 </div>

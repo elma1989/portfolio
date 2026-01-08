@@ -12,6 +12,10 @@ html {
     color: var(--white);
 }
 
+button {
+    cursor: pointer;
+}
+
 .content {
     width: 100%;
     max-width: 1920px;
