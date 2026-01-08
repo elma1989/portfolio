@@ -81,4 +81,39 @@ describe('MenuOverlayComponent', () => {
       expect(close()?.textContent ?? '').toBe('X');
     });
   });
+
+  describe('Nav', () => {
+    const nav: () => HTMLElement | null =
+      () => element.querySelector('nav');
+    const ul: () => HTMLElement | null = 
+      () => element.querySelector('nav>ol');
+    const items: () => NodeListOf<HTMLLIElement> = 
+      () => element.querySelectorAll('nav>ol>li');
+
+    it('shoud have nav', () => {
+      expect(nav()).toBeTruthy();
+    });
+
+    it('should have ul', () => {
+      expect(ul()).toBeTruthy();
+    });
+
+    it('ul should have direction column', () => {
+      expect(ul()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(ul()?.classList.contains('flex-col') ?? false).toBeTrue();
+    });
+
+    it('ul should have gap 0.5rem', () => {
+      expect(ul()?.classList.contains('gap-2') ?? false).toBeTrue();
+    });
+
+    it('should have 5 items', () => {
+      expect(items().length).toBe(5);
+    });
+
+    it('All items should bold', () => {
+      const allBold: boolean = [...items()].every(item => item.classList.contains('bold'));
+      expect(allBold).toBeTrue();
+    });
+  })
 });
