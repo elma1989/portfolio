@@ -311,21 +311,20 @@ describe('HeaderComponent', () => {
     const getOverlay: () => HTMLElement | null =
       () => element.querySelector('menu-overlay');
 
-    it('should not render on menu close', () => {
-      component.menu.set(false);
-      fixture.detectChanges();
-      expect(getOverlay()).toBeNull();
-    });
-
-    it('should render on menu open', () => {
-      component.menu.set(true);
-      fixture.detectChanges();
+    it('should allways render ', () => {
       expect(getOverlay()).toBeTruthy();
     });
 
-    beforeEach(() => {
+    it('should have class open on open', () => {
       component.menu.set(true);
       fixture.detectChanges();
+      expect(getOverlay()?.classList.contains('open') ?? false).toBeTrue();
+    });
+
+    it('should not have class open on close', () => {
+      component.menu.set(false);
+      fixture.detectChanges();
+      expect(getOverlay()?.classList.contains('open') ?? false).toBeFalse();
     })
 
     it('should have width 13rem', () => {
