@@ -3,6 +3,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 import { SectionType } from '../../enums/section-type';
 import { SectionService } from '../../services/section.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 type NavItem = {
   transId: string,
@@ -13,7 +14,8 @@ type NavItem = {
 @Component({
   selector: 'menu-overlay',
   imports: [
-    TranslatePipe
+    TranslatePipe,
+    CommonModule
   ],
   templateUrl: './menu-overlay.component.html',
   styleUrl: './menu-overlay.component.css'
@@ -60,5 +62,6 @@ export class MenuOverlayComponent {
       this.sec.section = this.items[index].section;
       this.router.navigate([], { fragment: this.items[index].navId });
     }
+    this.close();
   }
 }

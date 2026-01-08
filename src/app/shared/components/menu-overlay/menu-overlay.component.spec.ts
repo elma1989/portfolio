@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuOverlayComponent } from './menu-overlay.component';
 import { MockTranslatePipe } from '../../pipes/mock-translate.pipe';
+import { CommonModule } from '@angular/common';
 
 describe('MenuOverlayComponent', () => {
   let component: MenuOverlayComponent;
@@ -15,7 +16,8 @@ describe('MenuOverlayComponent', () => {
     .overrideComponent(MenuOverlayComponent, {
       set: {
         imports: [
-          MockTranslatePipe
+          MockTranslatePipe,
+          CommonModule
         ]
       }
     })
@@ -86,9 +88,9 @@ describe('MenuOverlayComponent', () => {
     const nav: () => HTMLElement | null =
       () => element.querySelector('nav');
     const ul: () => HTMLElement | null = 
-      () => element.querySelector('nav>ol');
+      () => element.querySelector('nav>ul');
     const items: () => NodeListOf<HTMLLIElement> = 
-      () => element.querySelectorAll('nav>ol>li');
+      () => element.querySelectorAll('nav>ul>li');
 
     it('shoud have nav', () => {
       expect(nav()).toBeTruthy();
@@ -112,8 +114,18 @@ describe('MenuOverlayComponent', () => {
     });
 
     it('All items should bold', () => {
-      const allBold: boolean = [...items()].every(item => item.classList.contains('bold'));
+      const allBold: boolean = [...items()].every(item => item.classList.contains('font-bold'));
       expect(allBold).toBeTrue();
     });
+
+    it('All items should have font size 1.5rem', () => {
+      const allSize: boolean = [...items()].every(item => item.classList.contains('text-[1.5rem]'));
+      expect(allSize).toBeTrue();
+    });
+
+    it('All intems should have cursor pointer', () => {
+      const allPointer: boolean = [...items()].every(item => item.classList.contains('cursor-pointer'));
+      expect(allPointer).toBeTrue();
+    })
   })
 });
