@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output, OutputEmitterRef } from '@angular/core';
 
 @Component({
   selector: 'menu-overlay',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './menu-overlay.component.css'
 })
 export class MenuOverlayComponent {
+  closed: OutputEmitterRef<void> = output();
 
+  close(): void {
+    this.closed.emit();
+  }
 }

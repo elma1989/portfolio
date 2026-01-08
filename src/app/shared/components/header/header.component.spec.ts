@@ -336,6 +336,14 @@ describe('HeaderComponent', () => {
       expect(getOverlay()?.classList.contains('flex-col') ?? false).toBeTrue();
     });
 
+    it('should have gap 1rem', () => {
+      expect(getOverlay()?.classList.contains('gap-4') ?? false).toBeTrue();
+    });
+
+    it('should have padding 1rem', () => {
+      expect(getOverlay()?.classList.contains('p-4') ?? false).toBeTrue();
+    })
+
     it('should have white background', () => {
       expect(getOverlay()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
     });
