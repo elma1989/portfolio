@@ -85,7 +85,13 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
       expect(component.menu()).toBeTrue();
     })
-  })
+
+    it('should closeMenu() works', () => {
+      component.closeMenu();
+      fixture.detectChanges();
+      expect(component.menu()).toBeFalse();
+    })
+  });
 
   describe('Content', () => {
     const content: () => HTMLDivElement | null =
@@ -335,5 +341,5 @@ describe('HeaderComponent', () => {
     it('should have position right 4.5rem on desktop', () => {
       expect(getOverlay()?.classList.contains('lg:right-18') ?? false).toBeTrue();
     });
-  })
+  });
 });

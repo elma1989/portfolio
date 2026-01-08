@@ -45,7 +45,13 @@ export class HeaderComponent {
     this.ts.lang = lang
   }
 
+  /** Opens the menu. */
   openMenu():void {
+    this.menu.set(true);
+  }
 
+  /** Closes the menu. */
+  closeMenu(): void {
+    this.menu.set(false);
   }
 }
