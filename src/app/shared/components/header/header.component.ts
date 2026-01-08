@@ -1,4 +1,4 @@
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, computed, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
@@ -20,6 +20,7 @@ export class HeaderComponent {
   protected lang: Signal<'en'|'de'> = computed(() => this.ts.lang());
   private section: Signal<SectionType> = computed(() => this.sec.section());
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
+  menu: WritableSignal<boolean> = signal<boolean>(false);
 
   /**
    * Checks, if social media is in on header.
@@ -39,8 +40,12 @@ export class HeaderComponent {
   }
 
   /** Switches the language. */
-  switchLang() {
+  switchLang():void {
     const lang: 'en'|'de' = this.lang() == 'en' ? 'de' : 'en';
     this.ts.lang = lang
+  }
+
+  openMenu():void {
+
   }
 }

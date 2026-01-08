@@ -79,6 +79,12 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
       expect(translationServiceMock.lang()).toBe('en');
     });
+
+    it('should openMenu() works', () => {
+      component.openMenu();
+      fixture.detectChanges();
+      expect(component.menu()).toBeTrue();
+    })
   })
 
   describe('Content', () => {
@@ -101,6 +107,10 @@ describe('HeaderComponent', () => {
 
     it('should have pedding-x 4.5rem on deskop', () => {
       expect(content()?.classList.contains('lg:px-18') ?? false).toBeTrue();
+    });
+
+    it('should have overlow-x: hidden', () => {
+      expect(content()?.classList.contains('overflow-x-hidden') ?? false).toBeTrue();
     });
   });
 
@@ -179,7 +189,9 @@ describe('HeaderComponent', () => {
     const settings: () => HTMLDivElement | null = 
       () => element.querySelector('.content>.settings');
     const langSelBtn: () => HTMLButtonElement | null =
-      () => element.querySelector('.settings>.lang-sel')
+      () => element.querySelector('.settings>.lang-sel');
+    const menuBtn: () => HTMLButtonElement | null =
+      () => element.querySelector('.settings>.menu-btn')
     
     it('should exist' ,() => {
       expect(settings()).toBeTruthy();
@@ -263,5 +275,65 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
       expect(translationServiceMock.lang()).toBe('de')
     });
+
+    it('should have menu-btn', () => {
+      expect(menuBtn()).toBeTruthy();
+    });
+
+    it('menu-btn should have 3 spans', () => {
+      const spans: NodeListOf<HTMLSpanElement> = element.querySelectorAll('.menu-btn>span');
+      expect(spans.length).toBe(3);
+    });
+
+    it('sould click on menu-btn', () => {
+      menuBtn()?.click();
+      fixture.detectChanges();
+      expect(component.menu()).toBeTrue();
+    });
   });
+
+  describe('Menu-Overlay', () => {
+    const getOverlay: () => HTMLElement | null =
+      () => element.querySelector('menu-overlay');
+
+    it('should not render on menu close', () => {
+      component.menu.set(false);
+      fixture.detectChanges();
+      expect(getOverlay()).toBeNull();
+    });
+
+    it('should render on menu open', () => {
+      component.menu.set(true);
+      fixture.detectChanges();
+      expect(getOverlay()).toBeTruthy();
+    });
+
+    beforeEach(() => {
+      component.menu.set(true);
+      fixture.detectChanges();
+    })
+
+    it('should have width 13rem', () => {
+      expect(getOverlay()?.classList.contains('w-52') ?? false).toBeTrue();
+    });
+
+    it('should have direction column', () => {
+      expect(getOverlay()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('flex-col') ?? false).toBeTrue();
+    });
+
+    it('should have white background', () => {
+      expect(getOverlay()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+    });
+
+    it('should have position top-right', () => {
+      expect(getOverlay()?.classList.contains('absolute') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('top-0') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('right-0') ?? false).toBeTrue();
+    });
+
+    it('should have position right 4.5rem on desktop', () => {
+      expect(getOverlay()?.classList.contains('lg:right-18') ?? false).toBeTrue();
+    });
+  })
 });
