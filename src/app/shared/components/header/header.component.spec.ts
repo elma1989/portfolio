@@ -5,6 +5,9 @@ import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { MockTranslatePipe } from '../../pipes/mock-translate.pipe';
+import { CommonModule } from '@angular/common';
+import { MenuOverlayComponent } from '../menu-overlay/menu-overlay.component';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -29,6 +32,14 @@ describe('HeaderComponent', () => {
         }
       ]
     })
+    .overrideComponent(MenuOverlayComponent, {
+          set: {
+            imports: [
+              MockTranslatePipe,
+              CommonModule
+            ]
+          }
+        })
     .compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);

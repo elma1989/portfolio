@@ -1,3 +1,10 @@
 {
-    
+    "menu": {
+        "title": "Menü",
+        "about": "Über mich",
+        "skill": "Skillset",
+        "project": "Portfolio",
+        "reference": "Referencen",
+        "contact": "Kontact"
+    }
 }

@@ -17,14 +17,14 @@ menu-overlay {
     background: var(--orange);
 }
 
-.bd-black {
-    border-color: var(--black);
-}
-
-.menu-btn span {
+span {
     border: 1px solid var(--white);
     width: 1rem;
     height: 1px
+}
+
+.bd-black {
+    border-color: var(--black);
 }
 
 .menu-btn:hover span {

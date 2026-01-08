@@ -1,1 +1,13 @@
-<p>menu-overlay works!</p>
+<header class="flex justify-between items-center text-[2rem]">
+    <h2 class="menu-desc tx-blue font-bold text-[2rem]">{{ 'menu.title' | translate }}</h2>
+    <button class="close-btn tx-yellow font-bold"
+    (click)="close()">X</button>
+</header>
+<nav>
+    <ul class="flex flex-col gap-2">
+        @for (item of items; track item.navId; let i = $index) {
+            <li class="font-bold cursor-pointer text-[1.5rem]"
+            (click)="navigate(i)">{{ item.transId | translate }}</li>
+        }
+    </ul>
+</nav>
