@@ -4,12 +4,14 @@ import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
 import { CommonModule } from '@angular/common';
 import { SocialMediaComponent } from '../social-media/social-media.component';
+import { MenuOverlayComponent } from '../menu-overlay/menu-overlay.component';
 
 @Component({
   selector: 'header[app-header]',
   imports: [
     CommonModule,
-    SocialMediaComponent
+    SocialMediaComponent,
+    MenuOverlayComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
@@ -20,7 +22,7 @@ export class HeaderComponent {
   protected lang: Signal<'en'|'de'> = computed(() => this.ts.lang());
   private section: Signal<SectionType> = computed(() => this.sec.section());
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
-  menu: WritableSignal<boolean> = signal<boolean>(false);
+  menu: WritableSignal<boolean> = signal<boolean>(true);
 
   /**
    * Checks, if social media is in on header.
