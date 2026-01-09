@@ -89,8 +89,6 @@ describe('MenuOverlayComponent', () => {
       () => element.querySelector('nav');
     const ul: () => HTMLElement | null = 
       () => element.querySelector('nav>ul');
-    const items: () => NodeListOf<HTMLLIElement> = 
-      () => element.querySelectorAll('nav>ul>li');
 
     it('shoud have nav', () => {
       expect(nav()).toBeTruthy();
@@ -108,8 +106,13 @@ describe('MenuOverlayComponent', () => {
     it('ul should have gap 0.5rem', () => {
       expect(ul()?.classList.contains('gap-2') ?? false).toBeTrue();
     });
+  });
 
-    it('should have 5 items', () => {
+  describe('Nav-Items', () => {
+    const items: () => NodeListOf<HTMLLIElement> = 
+      () => element.querySelectorAll('ul>li');
+
+      it('should have 5 items', () => {
       expect(items().length).toBe(5);
     });
 
@@ -126,7 +129,12 @@ describe('MenuOverlayComponent', () => {
     it('All intems should have cursor pointer', () => {
       const allPointer: boolean = [...items()].every(item => item.classList.contains('cursor-pointer'));
       expect(allPointer).toBeTrue();
-    })
+    });
+
+    it('All items should be a hover group', () => {
+      const allGroup: boolean = [...items()].every(item => item.classList.contains('group'));
+      expect(allGroup).toBeTrue();
+    });
   });
 
   describe('Hover-Flower', () => {
@@ -159,6 +167,11 @@ describe('MenuOverlayComponent', () => {
       it('should shown on hover', () => {
         const allShown: boolean = [...flowers()].every(fl => fl.classList.contains('group-hover:inline'));
         expect(allShown).toBeTrue();
+      });
+
+      it('should have correct source', () => {
+        const allSrc: boolean =  [...flowers()].every(fl => 
+          fl.src == 'http://localhost:9876/assets/img/00_header/hover-flower.png')
       })
-  })
+  });
 });
