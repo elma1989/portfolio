@@ -178,4 +178,27 @@ describe('HeroSectionComponent', () => {
       expect(sec.section()).toBe(SectionType.CONTACT);
     });
   });
+
+  describe('Image-Area', () => {
+    const area: () => HTMLDivElement | null = 
+      () => element.querySelector('.content-area>.img-area');
+
+    it('should have image-area', () => {
+      expect(area()).toBeTruthy();
+    });
+
+    it('should have full width and half height on mobile', () => {
+      expect(area()?.classList.contains('w-full') ?? false).toBeTrue();
+      expect(area()?.classList.contains('h-1/2') ?? false).toBeTrue();
+    });
+
+    it('should have half-width and full height on desktop', () => {
+      expect(area()?.classList.contains('lg:h-full') ?? false).toBeTrue();
+      expect(area()?.classList.contains('lg:w-1/2') ?? false).toBeTrue();
+    });
+
+    it('should have position relative', () => {
+      expect(area()?.classList.contains('relative') ?? false).toBeTrue();
+    });
+  });
 });
