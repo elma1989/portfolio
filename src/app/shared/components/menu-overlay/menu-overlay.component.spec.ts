@@ -172,6 +172,7 @@ describe('MenuOverlayComponent', () => {
       it('should have correct source', () => {
         const allSrc: boolean =  [...flowers()].every(fl => 
           fl.src == 'http://localhost:9876/assets/img/00_header/hover-flower.png')
-      })
+        expect(allSrc).toBeTrue();
+      });
   });
 });
