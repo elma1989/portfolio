@@ -85,4 +85,36 @@ describe('HeroSectionComponent', () => {
       expect(desc()?.classList.contains('lg:h-full') ?? false).toBeTrue();
     });
   });
+
+  describe('H1 in desc', () => {
+    const h1s: () => NodeListOf<HTMLDivElement> = 
+      () => element.querySelectorAll('.desc-area>h1');
+    
+    it('should have 2 h1', () => {
+      expect(h1s().length).toBe(2);
+    });
+
+    it('should have font "Eczar"', () => {
+      const allEczar:boolean = [...h1s()].every(h1 => h1.classList.contains('font-eczar'));
+      expect(allEczar).toBeTrue();
+    });
+
+    it('should have font size 4.5rem and line-hight 4.5rem on mobile', () => {
+      const allSize: boolean = [...h1s()].every(h1 => h1.classList.contains('text-[4.5rem]/[4.5rem]'));
+      expect(allSize).toBeTrue();
+    });
+
+    it('should have font size 6rem and line height 6rem on desktop', () => {
+      const allSize: boolean = [...h1s()].every(h1 => h1.classList.contains('lg:text-[6rem]/[6rem]'));
+      expect(allSize).toBeTrue();
+    });
+
+    it('First H1 schould be "Marco"', () => {
+      expect(h1s()[0]?.textContent ?? '').toBe('Marco');
+    });
+
+    it('Secound h1 should be "Elste"', () => {
+      expect(h1s()[1]?.textContent ?? '').toBe('Elste');
+    });
+  });
 });
