@@ -201,4 +201,28 @@ describe('HeroSectionComponent', () => {
       expect(area()?.classList.contains('relative') ?? false).toBeTrue();
     });
   });
+
+  describe('Portrait', () => {
+    const portrait: () => HTMLImageElement | null = 
+      () => element.querySelector('.img-area>.portrait');
+
+    it('should have protrait', () => {
+      expect(portrait()).toBeTruthy();
+    });
+
+    it('should havv position buttom left', () => {
+      expect(portrait()?.classList.contains('absolute') ?? false).toBeTrue();
+      expect(portrait()?.classList.contains('bottom-0') ?? false).toBeTrue();
+      expect(portrait()?.classList.contains('left-0') ?? false).toBeTrue();
+    });
+
+    it('should have full width', () => {
+      expect(portrait()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should have correct source', () => {
+      expect(portrait()?.src ?? '')
+        .toBe('http://localhost:9876/assets/img/01_hero/me.png');
+    });
+  });
 });
