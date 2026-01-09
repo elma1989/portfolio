@@ -225,4 +225,32 @@ describe('HeroSectionComponent', () => {
         .toBe('http://localhost:9876/assets/img/01_hero/me.png');
     });
   });
+
+  describe('Flower', () => {
+    const flower: () => HTMLImageElement | null =
+      () => element.querySelector('.img-area>.flower');
+
+    it('should have flover', () => {
+      expect(flower()).toBeTruthy();
+    });
+
+    it('should have positon absolute', () => {
+      expect(flower()?.classList.contains('absolute') ?? false).toBeTrue();
+    });
+
+    it('should have size 16rem on mobile', () => {
+      expect(flower()?.classList.contains('w-64') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('h-64') ?? false).toBeTrue();
+    });
+
+    it('should have size 32rem on deskop', () => {
+      expect(flower()?.classList.contains('lg:w-128') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('lg:h-128') ?? false).toBeTrue();
+    });
+
+    it('should be source correct', () => {
+      expect(flower()?.src ?? '')
+        .toBe('http://localhost:9876/assets/img/01_hero/flower.png');
+    })
+  });
 });
