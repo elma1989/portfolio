@@ -1,11 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeroSectionComponent } from './hero-section.component';
+import { SectionService } from '../../shared/services/section.service';
+import { SectionType } from '../../shared/enums/section-type';
 
 describe('HeroSectionComponent', () => {
   let component: HeroSectionComponent;
   let fixture: ComponentFixture<HeroSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -16,6 +19,7 @@ describe('HeroSectionComponent', () => {
     fixture = TestBed.createComponent(HeroSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -145,5 +149,33 @@ describe('HeroSectionComponent', () => {
       expect(h2s()[1]?.textContent ?? '')
         .toBe('Frontend Developer');
     })
-  })
+  });
+
+  describe('Button in desc', () => {
+    const btn: () => HTMLButtonElement | null = 
+      () => element.querySelector('.desc-area>button');
+
+    it('should have Contact-Button', () => {
+      expect(btn()).toBeTruthy();
+    });
+
+    it('should have class "btn-default"', () => {
+      expect(btn()?.classList.contains('btn-default') ?? false).toBeTrue();
+    });
+
+    it('should have content "translated: hero.btn"', () => {
+      expect(btn()?.textContent ?? '')
+        .toBe('translated: hero.btn');
+    });
+
+    it('shoud have margin top 2rem' , () => {
+      expect(btn()?.classList.contains('mt-8') ?? false).toBeTrue();
+    });
+
+    it('should click on button', () => {
+      btn()?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.CONTACT);
+    });
+  });
 });
