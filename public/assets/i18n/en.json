@@ -6,5 +6,8 @@
         "project": "Portfolio",
         "reference": "References",
         "contact": "Contact"
+    },
+    "hero": {
+        "greating": "Hello there! I'm"
     }
 }
