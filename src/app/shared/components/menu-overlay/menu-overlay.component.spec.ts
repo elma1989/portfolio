@@ -127,5 +127,38 @@ describe('MenuOverlayComponent', () => {
       const allPointer: boolean = [...items()].every(item => item.classList.contains('cursor-pointer'));
       expect(allPointer).toBeTrue();
     })
+  });
+
+  describe('Hover-Flower', () => {
+    const flowers: () => NodeListOf<HTMLImageElement> =
+      () => element.querySelectorAll('ul img');
+
+      it('should have 5 flowers', () => {
+        expect(flowers().length).toBe(5);
+      });
+
+      it('should all flowers have size 1.25rem', () => {
+        const allSize: boolean = [...flowers()].every(fl => {
+          const width: boolean = fl.classList.contains('w-5');
+          const height: boolean = fl.classList.contains('h-5');
+          return width && height;
+        });
+        expect(allSize).toBeTrue();
+      });
+
+      it('should all flowers be hidden', () => {
+        const allHiddden: boolean = [...flowers()].every(fl => fl.classList.contains('hidden'));
+        expect(allHiddden).toBeTrue();
+      });
+
+      it('should have margin-right 0.25rem', () => {
+        const allMargin: boolean = [...flowers()].every(fl => fl.classList.contains('mr-1'));
+        expect(allMargin).toBeTrue();
+      });
+
+      it('should shown on hover', () => {
+        const allShown: boolean = [...flowers()].every(fl => fl.classList.contains('group-hover:inline'));
+        expect(allShown).toBeTrue();
+      })
   })
 });
