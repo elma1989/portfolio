@@ -87,7 +87,7 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('H1 in desc', () => {
-    const h1s: () => NodeListOf<HTMLDivElement> = 
+    const h1s: () => NodeListOf<HTMLElement> = 
       () => element.querySelectorAll('.desc-area>h1');
     
     it('should have 2 h1', () => {
@@ -117,4 +117,33 @@ describe('HeroSectionComponent', () => {
       expect(h1s()[1]?.textContent ?? '').toBe('Elste');
     });
   });
+
+  describe('H2 in desc', () => {
+    const h2s: () => NodeListOf<HTMLElement> = 
+      () => element.querySelectorAll('.desc-area>h2');
+    
+    it('should have 2 h2', () => {
+      expect(h2s().length).toBe(2);
+    });
+
+    it('should have size 2rem and 2rem line height on mobile', () => {
+      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('text-[2rem]/[2rem]'));
+      expect(bothSize).toBeTrue();
+    });
+
+    it('should have font size 3rem and line height 3rem on desktop', () => {
+      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('lg:text-[3rem]/[3rem]'));
+      expect(bothSize).toBeTrue();
+    });
+
+    it('Frist h2 should have content "translated: hero.greating"', () => {
+      expect(h2s()[0]?.textContent ?? '')
+        .toBe('translated: hero.greating');
+    });
+
+    it('Second h2 should have content "Frontend Developer"', () => {
+      expect(h2s()[1]?.textContent ?? '')
+        .toBe('Frontend Developer');
+    })
+  })
 });
