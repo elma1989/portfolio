@@ -2,15 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainContentComponent } from './main-content.component';
 import { SectionService } from '../shared/services/section.service';
 import { SectionType } from '../shared/enums/section-type';
-import { signal } from '@angular/core';
+import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../shared/services/translation.service';
 import { MockTranslatePipe } from '../shared/pipes/mock-translate.pipe';
 import { CommonModule } from '@angular/common';
-import { MenuOverlayComponent } from '../shared/components/menu-overlay/menu-overlay.component';
+
+const langSignal = signal<'en' | 'de'>('en');
 
 const translationServiceMock = {
-  lang: signal<'en' | 'de'>('en')
-}
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('MainContentComponent', () => {
   let component: MainContentComponent;
@@ -20,7 +23,11 @@ describe('MainContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainContentComponent],
+      imports: [
+        MainContentComponent,
+        CommonModule,
+        MockTranslatePipe
+      ],
       providers: [
         {
           provide: TranslationService,
@@ -28,14 +35,14 @@ describe('MainContentComponent', () => {
         }
       ]
     })
-      .overrideComponent(MenuOverlayComponent, {
-            set: {
-              imports: [
-                CommonModule,
-                MockTranslatePipe
-              ]
-            }
-          })
+      // .overrideComponent(MenuOverlayComponent, {
+      //       set: {
+      //         imports: [
+      //           CommonModule,
+      //           MockTranslatePipe
+      //         ]
+      //       }
+      //     })
       .compileComponents();
 
     fixture = TestBed.createComponent(MainContentComponent);

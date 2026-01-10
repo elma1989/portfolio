@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MenuOverlayComponent } from './menu-overlay.component';
 import { MockTranslatePipe } from '../../pipes/mock-translate.pipe';
 import { CommonModule } from '@angular/common';

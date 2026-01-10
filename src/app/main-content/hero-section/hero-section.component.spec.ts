@@ -1,8 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeroSectionComponent } from './hero-section.component';
 import { SectionService } from '../../shared/services/section.service';
 import { SectionType } from '../../shared/enums/section-type';
+import { Signal, signal } from '@angular/core';
+import { TranslationService } from '../../shared/services/translation.service';
+import { CommonModule } from '@angular/common';
+import { MockTranslatePipe } from '../../shared/pipes/mock-translate.pipe';
+
+const langSignal = signal<'en' | 'de'>('en');
+
+const translationServiceMock = {
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('HeroSectionComponent', () => {
   let component: HeroSectionComponent;
@@ -12,7 +23,17 @@ describe('HeroSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeroSectionComponent]
+      imports: [
+        HeroSectionComponent,
+        CommonModule,
+        MockTranslatePipe
+      ],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
       .compileComponents();
 
@@ -54,7 +75,7 @@ describe('HeroSectionComponent', () => {
     });
 
     it('should have width 90% on desktop', () => {
-      expect(area()?.classList.contains('w-9/10') ?? false).toBeTrue();
+      expect(area()?.classList.contains('lg:w-9/10') ?? false).toBeTrue();
     });
 
     it('should have position relative', () => {
@@ -68,7 +89,18 @@ describe('HeroSectionComponent', () => {
 
     it('should have direction row on desktop', () => {
       expect(area()?.classList.contains('lg:flex-row') ?? false).toBeTrue();
-    })
+    });
+
+    it('should have padding 1rem on mobile', () => {
+      expect(area()?.classList.contains('p-4') ?? false).toBeTrue();
+    });
+
+    it('should have padding 10 0 0 7 on desktop', () => {
+      expect(area()?.classList.contains('lg:pt-40') ?? false).toBeTrue();
+      expect(area()?.classList.contains('lg:pr-0') ?? false).toBeTrue();
+      expect(area()?.classList.contains('lg:pb-0') ?? false).toBeTrue();
+      expect(area()?.classList.contains('lg:pl-28') ?? false).toBeTrue();
+    });
   });
 
   describe('Desc-Area', () => {
@@ -91,15 +123,15 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('H1 in desc', () => {
-    const h1s: () => NodeListOf<HTMLElement> = 
+    const h1s: () => NodeListOf<HTMLElement> =
       () => element.querySelectorAll('.desc-area>h1');
-    
+
     it('should have 2 h1', () => {
       expect(h1s().length).toBe(2);
     });
 
     it('should have font "Eczar"', () => {
-      const allEczar:boolean = [...h1s()].every(h1 => h1.classList.contains('font-eczar'));
+      const allEczar: boolean = [...h1s()].every(h1 => h1.classList.contains('font-eczar'));
       expect(allEczar).toBeTrue();
     });
 
@@ -123,9 +155,9 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('H2 in desc', () => {
-    const h2s: () => NodeListOf<HTMLElement> = 
+    const h2s: () => NodeListOf<HTMLElement> =
       () => element.querySelectorAll('.desc-area>h2');
-    
+
     it('should have 2 h2', () => {
       expect(h2s().length).toBe(2);
     });
@@ -152,7 +184,7 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('Button in desc', () => {
-    const btn: () => HTMLButtonElement | null = 
+    const btn: () => HTMLButtonElement | null =
       () => element.querySelector('.desc-area>button');
 
     it('should have Contact-Button', () => {
@@ -168,7 +200,7 @@ describe('HeroSectionComponent', () => {
         .toBe('translated: hero.btn');
     });
 
-    it('shoud have margin top 2rem' , () => {
+    it('shoud have margin top 2rem', () => {
       expect(btn()?.classList.contains('mt-8') ?? false).toBeTrue();
     });
 
@@ -180,7 +212,7 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('Image-Area', () => {
-    const area: () => HTMLDivElement | null = 
+    const area: () => HTMLDivElement | null =
       () => element.querySelector('.content-area>.img-area');
 
     it('should have image-area', () => {
@@ -203,7 +235,7 @@ describe('HeroSectionComponent', () => {
   });
 
   describe('Portrait', () => {
-    const portrait: () => HTMLImageElement | null = 
+    const portrait: () => HTMLImageElement | null =
       () => element.querySelector('.img-area>.portrait');
 
     it('should have protrait', () => {
