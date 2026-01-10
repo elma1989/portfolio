@@ -162,8 +162,8 @@ describe('HeroSectionComponent', () => {
       expect(h2s().length).toBe(2);
     });
 
-    it('should have size 2rem and 2rem line height on mobile', () => {
-      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('text-[2rem]/[2rem]'));
+    it('should have size 1.5rem and 1.5rem line height on mobile', () => {
+      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('text-[1.5rem]/[1.5rem]'));
       expect(bothSize).toBeTrue();
     });
 
