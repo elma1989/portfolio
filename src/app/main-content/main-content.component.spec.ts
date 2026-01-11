@@ -35,14 +35,6 @@ describe('MainContentComponent', () => {
         }
       ]
     })
-      // .overrideComponent(MenuOverlayComponent, {
-      //       set: {
-      //         imports: [
-      //           CommonModule,
-      //           MockTranslatePipe
-      //         ]
-      //       }
-      //     })
       .compileComponents();
 
     fixture = TestBed.createComponent(MainContentComponent);

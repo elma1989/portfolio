@@ -1,5 +1,5 @@
 <div class="content flex">
-    <div class="content-area relative w-full h-full flex flex-col p-4 lg:flex-row lg:w-9/10 lg:pt-40 lg:pr-0 lg:pb-0 lg:pl-28">
+    <div class="content-area relative w-full h-full flex flex-col p-4 pb-0 lg:flex-row lg:w-9/10 lg:pt-40 lg:pr-0 lg:pb-0 lg:pl-28">
         <div class="desc-area w-full h-1/2 lg:w-1/2 lg:h-full">
             <h2 class="text-[1.5rem]/[1.5rem] lg:text-[3rem]/[3rem] mb-2">{{ 'hero.greating' | translate }}</h2>
             <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">Marco</h1>
@@ -7,6 +7,10 @@
             <h2 class="text-[1.5rem]/[1.5rem] lg:text-[3rem]/[3rem]">Frontend Developer</h2>
             <button class="btn-default mt-8"
             (click)="goToContact()">{{ 'hero.btn' | translate }}</button>
+        </div>
+        <div class="img-area w-full h-1/2 lg:w-1/2 lg:h-full relative">
+            <img src="assets/img/01_hero/flower.png" class="flower absolute w-64 h-64 lg:w-lg lg:h-128 lg:left-8">
+            <img src="assets/img/01_hero/me.png" class="portrait w-full absolute bottom-0 left-0">
         </div>
     </div>
 </div>

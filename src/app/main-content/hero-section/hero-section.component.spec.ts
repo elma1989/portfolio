@@ -276,7 +276,7 @@ describe('HeroSectionComponent', () => {
     });
 
     it('should have size 32rem on deskop', () => {
-      expect(flower()?.classList.contains('lg:w-128') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('lg:w-lg') ?? false).toBeTrue();
       expect(flower()?.classList.contains('lg:h-128') ?? false).toBeTrue();
     });
 
