@@ -283,6 +283,75 @@ describe('HeroSectionComponent', () => {
     it('should be source correct', () => {
       expect(flower()?.src ?? '')
         .toBe('http://localhost:9876/assets/img/01_hero/flower.png');
-    })
+    });
+  });
+
+  describe('Scroll-Down-Btn', () => {
+    const scrBtn: () => HTMLButtonElement | null =
+      () => element.querySelector('.content-area>.scroll-btn');
+    const img: () => HTMLImageElement | null =
+      () => element.querySelector('.scroll-btn>img')
+
+    it('should have scroll btn', () => {
+      expect(scrBtn()).toBeTruthy();
+    });
+
+    it('should have postion bottom 1rem, left 1rem on mobile', () => {
+      expect(scrBtn()?.classList.contains('absolute') ?? false).toBeTrue();
+      expect(scrBtn()?.classList.contains('bottom-4') ?? false).toBeTrue();
+      expect(scrBtn()?.classList.contains('left-4') ?? false).toBeTrue();
+    });
+
+    it('should have position left 7rem. bottom 6rem on desktop', () => {
+      expect(scrBtn()?.classList.contains('lg:bottom-24') ?? false).toBeTrue();
+      expect(scrBtn()?.classList.contains('lg:left-28') ?? false).toBeTrue();
+    });
+
+    it('should have size 5rem on mobile', () => {
+      expect(scrBtn()?.classList.contains('w-20') ?? false).toBeTrue();
+      expect(scrBtn()?.classList.contains('h-20') ?? false).toBeTrue();
+    });
+
+    it('should have size 9rem on desktop', () => {
+      expect(scrBtn()?.classList.contains('lg:w-36') ?? false).toBeTrue();
+      expect(scrBtn()?.classList.contains('lg:h-36') ?? false).toBeTrue();
+    });
+
+    it('should be round', () => {
+      expect(scrBtn()?.classList.contains('rounded-full') ?? false).toBeTrue();
+    });
+
+    it('should have blue background', () => {
+      expect(scrBtn()?.classList.contains('bg-blue') ?? false).toBeTrue();
+    });
+
+    it('should have content down-arrow', () => {
+      expect(scrBtn()?.textContent ?? '')
+        .toBe('⬇');
+    });
+
+    it('should go to Contact on click', () => {
+      scrBtn()?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.CONTACT);
+    });
+
+    it('schould have image', () => {
+      expect(img()).toBeTruthy();
+    });
+
+    it('Image schould have full-size', () => {
+      expect(img()?.classList.contains('w-full') ?? false).toBeTrue();
+      expect(img()?.classList.contains('h-full') ?? false).toBeTrue();
+    });
+
+    it('img should be round', () => {
+      expect(img()?.classList.contains('rounded-full') ?? false).toBeTrue();
+    });
+
+    it('should have correct source', () => {
+      expect(img()?.src ?? '')
+        .toBe('http://localhost:9876/assets/img/02_hero/scroll-down.png');
+    });
   });
 });
