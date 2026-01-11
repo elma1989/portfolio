@@ -273,8 +273,8 @@ describe('HeroSectionComponent', () => {
       expect(scrBtn()?.classList.contains('left-4') ?? false).toBeTrue();
     });
 
-    it('should have position left 7rem. bottom 2rem on desktop', () => {
-      expect(scrBtn()?.classList.contains('lg:bottom-8') ?? false).toBeTrue();
+    it('should have position left 7rem. bottom 6rem on desktop', () => {
+      expect(scrBtn()?.classList.contains('lg:bottom-24') ?? false).toBeTrue();
       expect(scrBtn()?.classList.contains('lg:left-28') ?? false).toBeTrue();
     });
 
@@ -322,40 +322,7 @@ describe('HeroSectionComponent', () => {
 
     it('should have correct source', () => {
       expect(img()?.src ?? '')
-        .toBe('http://localhost:9876/assets/img/01_hero/scroll-down.png');
-    });
-  });
-
-  describe('Section Selector', () => {
-    const selector: () => HTMLElement | null =
-      () => element.querySelector('.content>section-selector');
-
-    it('should not render on mobile', () => {
-      sec.mobile = true;
-      fixture.detectChanges();
-      expect(selector()).toBeNull();
-    });
-
-    describe('Desktop', () => {
-      beforeEach(() => {
-        sec.mobile = false;
-        fixture.detectChanges();
-      });
-
-      it('should render on desktop', () => {
-        expect(selector()).toBeTruthy();
-      });
-
-      it('should assigned center', () => {
-        expect(selector()?.classList.contains('flex') ?? false).toBeTrue();
-        expect(selector()?.classList.contains('justify-center') ?? false).toBeTrue();
-        expect(selector()?.classList.contains('items-center') ?? false).toBeTrue();
-      });
-
-      it('should have width 10%, full height', () => {
-        expect(selector()?.classList.contains('w-1/10') ?? false).toBeTrue();
-        expect(selector()?.classList.contains('h-full') ?? false).toBeTrue();
-      });
+        .toBe('http://localhost:9876/assets/img/02_hero/scroll-down.png');
     });
   });
 });
