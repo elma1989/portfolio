@@ -327,7 +327,7 @@ describe('HeroSectionComponent', () => {
 
     it('should have content down-arrow', () => {
       expect(scrBtn()?.textContent ?? '')
-        .toBe(' ⬇ ');
+        .toBe('⬇');
     });
 
     it('should go to Contact on click', () => {
