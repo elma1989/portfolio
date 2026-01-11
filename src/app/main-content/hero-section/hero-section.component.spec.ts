@@ -241,6 +241,16 @@ describe('HeroSectionComponent', () => {
       expect(flower()?.classList.contains('absolute') ?? false).toBeTrue();
     });
 
+    it('should have size 16rem on mobile', () => {
+      expect(flower()?.classList.contains('w-64') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('h-64') ?? false).toBeTrue();
+    });
+
+    it('should have size 32rem on deskop', () => {
+      expect(flower()?.classList.contains('lg:w-lg') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('lg:h-128') ?? false).toBeTrue();
+    });
+
     it('should be source correct', () => {
       expect(flower()?.src ?? '')
         .toBe('http://localhost:9876/assets/img/01_hero/flower.png');
