@@ -354,4 +354,37 @@ describe('HeroSectionComponent', () => {
         .toBe('http://localhost:9876/assets/img/01_hero/scroll-down.png');
     });
   });
+
+  describe('Section Selector', () => {
+    const selector: () => HTMLElement | null =
+      () => element.querySelector('.content>section-selector');
+    
+    it('should not render on mobile', () => {
+      (window as any).innerWidth = 672;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+      expect(selector()).toBeNull();
+    });
+
+    beforeEach(() => {
+      (window as any).innerWidth = 1024;
+      window.dispatchEvent(new Event('resize'));
+      fixture.detectChanges();
+    });
+
+    it('should render on desktop', () => {
+      expect(selector()).toBeTruthy();
+    });
+
+    it('should assigned center', () => {
+      expect(selector()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(selector()?.classList.contains('justify-center') ?? false).toBeTrue();
+      expect(selector()?.classList.contains('items-center') ?? false).toBeTrue();
+    });
+
+    it('should have width 10%, full height', () => {
+      expect(selector()?.classList.contains('w-1/10') ?? false).toBeTrue();
+      expect(selector()?.classList.contains('h-full') ?? false).toBeTrue();
+    });
+  });
 });
