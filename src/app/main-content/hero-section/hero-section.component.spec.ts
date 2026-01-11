@@ -95,8 +95,8 @@ describe('HeroSectionComponent', () => {
       expect(area()?.classList.contains('p-4') ?? false).toBeTrue();
     });
 
-    it('should have padding 10 0 0 7 on desktop', () => {
-      expect(area()?.classList.contains('lg:pt-40') ?? false).toBeTrue();
+    it('should have padding 6 0 0 7 on desktop', () => {
+      expect(area()?.classList.contains('lg:pt-24') ?? false).toBeTrue();
       expect(area()?.classList.contains('lg:pr-0') ?? false).toBeTrue();
       expect(area()?.classList.contains('lg:pb-0') ?? false).toBeTrue();
       expect(area()?.classList.contains('lg:pl-28') ?? false).toBeTrue();
@@ -273,8 +273,8 @@ describe('HeroSectionComponent', () => {
       expect(scrBtn()?.classList.contains('left-4') ?? false).toBeTrue();
     });
 
-    it('should have position left 7rem. bottom 6rem on desktop', () => {
-      expect(scrBtn()?.classList.contains('lg:bottom-24') ?? false).toBeTrue();
+    it('should have position left 7rem. bottom 2rem on desktop', () => {
+      expect(scrBtn()?.classList.contains('lg:bottom-8') ?? false).toBeTrue();
       expect(scrBtn()?.classList.contains('lg:left-28') ?? false).toBeTrue();
     });
 

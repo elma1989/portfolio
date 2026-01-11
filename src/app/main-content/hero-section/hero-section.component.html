@@ -1,5 +1,6 @@
 <div class="content flex">
-    <div class="content-area relative w-full h-full flex flex-col p-4 pb-0 lg:flex-row lg:w-9/10 lg:pt-40 lg:pr-0 lg:pb-0 lg:pl-28">
+    <div class="content-area relative w-full h-full flex flex-col p-4 pb-0 
+    lg:flex-row lg:w-9/10 lg:pt-24 lg:pr-0 lg:pb-0 lg:pl-28">
         <div class="desc-area w-full h-1/2 lg:w-1/2 lg:h-full">
             <h2 class="text-[1.5rem]/[1.5rem] lg:text-[3rem]/[3rem] mb-2">{{ 'hero.greating' | translate }}</h2>
             <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">Marco</h1>
@@ -14,10 +15,11 @@
         </div>
         <button class="
         scroll-btn w-20 h-20 absolute bottom-4 left-4 rounded-full bg-blue 
-        lg:w-36 lg:h-36 lg:left-28 lg:bottom-24"
+        lg:w-36 lg:h-36 lg:left-28 lg:bottom-8
+        font-bold felx justify-center items-center text-[2rem]"
         (click)="goToContact()">
-            <img src="assets/img/01_hero/scroll-down.png" class="rounded-full w-full h-full">
-            ⬇
+        <img src="assets/img/01_hero/scroll-down.png" class="rounded-full w-full h-full absolute top-0 left-0">
+        <span class="absolute top-0 left-0 w-full h-full flex justify-center items-center">⬇</span>
         </button>
     </div>
 </div>
