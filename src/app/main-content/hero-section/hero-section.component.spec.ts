@@ -298,7 +298,7 @@ describe('HeroSectionComponent', () => {
 
     it('should have content down-arrow', () => {
       expect(scrBtn()?.textContent ?? '')
-        .toBe('⬇');
+        .toBe(' ⬇ ');
     });
 
     it('should go to Contact on click', () => {
@@ -322,7 +322,7 @@ describe('HeroSectionComponent', () => {
 
     it('should have correct source', () => {
       expect(img()?.src ?? '')
-        .toBe('http://localhost:9876/assets/img/02_hero/scroll-down.png');
+        .toBe('http://localhost:9876/assets/img/01_hero/scroll-down.png');
     });
   });
 });
