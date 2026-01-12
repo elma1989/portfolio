@@ -13,7 +13,7 @@ describe('SectionSelectorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SectionSelectorComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SectionSelectorComponent);
     component = fixture.componentInstance;
@@ -29,7 +29,7 @@ describe('SectionSelectorComponent', () => {
   describe('Selection-Area', () => {
     const area: () => HTMLElement | null =
       () => element.querySelector('.selection-area');
-    
+
     it('should have selection area', () => {
       expect(area()).toBeTruthy();
     });
@@ -47,7 +47,7 @@ describe('SectionSelectorComponent', () => {
       expect(elem!.classList).toContain('gap-5');
     });
   });
-  
+
   describe('Selectors', () => {
     const selectors: () => NodeListOf<HTMLButtonElement> =
       () => element.querySelectorAll('.selection-area>.selector');
@@ -63,7 +63,7 @@ describe('SectionSelectorComponent', () => {
 
     it('should have content "●" on other indeces', () => {
       const array: HTMLButtonElement[] = [...selectors()]
-      if(array[0]) array.splice(0, 1);
+      if (array[0]) array.splice(0, 1);
       const allContent: boolean = array.every(sel => sel.textContent = ' ● ');
       expect(allContent).toBeTrue();
     });
@@ -91,31 +91,29 @@ describe('SectionSelectorComponent', () => {
 
     it('should chenge section on click', () => {
       const elems: NodeListOf<HTMLButtonElement> = selectors();
-      if (elems.length == 6) {
-        elems[0].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.HERO);
+      elems[0]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.HERO);
 
-        elems[1].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.ABOUT);
+      elems[1]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.ABOUT);
 
-        elems[2].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.SKILLS);
+      elems[2]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.SKILLS);
 
-        elems[3].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.PROJECTS);
+      elems[3]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.PROJECTS);
 
-        elems[4].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.REFERENCES);
+      elems[4]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.REFERENCES);
 
-        elems[5].click();
-        fixture.detectChanges();
-        expect(sec.section()).toBe(SectionType.CONTACT);
-      }
+      elems[5]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.CONTACT);
     });
   });
 });
