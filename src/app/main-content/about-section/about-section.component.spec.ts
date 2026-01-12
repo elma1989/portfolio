@@ -97,4 +97,53 @@ describe('AboutSectionComponent', () => {
       expect(elem).toBeTruthy();
     });
   });
+
+  describe('H1', () => {
+    const h1: () => HTMLElement | null =
+      () => element.querySelector('content-area>h1');
+
+    it('should have h1', () => {
+      expect(h1()).toBeTruthy();
+    });
+
+    it('should have right-align', () => {
+      const elem: HTMLElement | null = h1();
+      if(elem) {
+        expect(elem.classList).toContain('text-right');
+      }
+      expect(elem).toBeTruthy();
+    });
+
+    it('should have font "Eczar"', () => {
+      const elem: HTMLElement | null = h1();
+      if(elem) {
+        expect(elem.classList).toContain('font-eczar');
+      }
+      expect(elem).toBeTruthy();
+    });
+
+    it('should have font-size 2.5 on Mobile', () => {
+      const elem: HTMLElement | null = h1();
+      if(elem) {
+        expect(elem.classList).toContain('text-[2.5rem]/[2.5rem]');
+      }
+      expect(elem).toBeTruthy();
+    });
+
+    it('should have font-size 4.5rem on Desktop', () => {
+      const elem: HTMLElement | null = h1();
+      if(elem) {
+        expect(elem.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
+      }
+      expect(elem).toBeTruthy();
+    });
+
+    it('should be bold font', () => {
+      const elem: HTMLElement | null = h1();
+      if(elem) {
+        expect(elem.classList).toContain('font-bold');
+      }
+      expect(elem).toBeTruthy();
+    });
+  });
 });
