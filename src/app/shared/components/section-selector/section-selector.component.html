@@ -1,1 +1,9 @@
-<p>section-selector works!</p>
+<div class="selection-area flex flex-col gap-5">
+    @for(selector of selectors; track selector; let i = $index) {
+        <button class="
+        selector block {{ getColorClass(i) }}"
+        (click)="changeSection(i)">
+            {{ getContent(i) }}
+        </button>
+    }
+</div>

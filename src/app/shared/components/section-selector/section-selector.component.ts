@@ -1,17 +1,20 @@
 import { Component, inject, input, InputSignal } from '@angular/core';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'section-selector',
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   templateUrl: './section-selector.component.html',
   styleUrl: './section-selector.component.css'
 })
 export class SectionSelectorComponent {
   index: InputSignal<number> = input<number>(0);
-  sec: SectionService = inject(SectionService);
-  selectors: SectionType[] = [
+  private sec: SectionService = inject(SectionService);
+  protected selectors: SectionType[] = [
     SectionType.HERO,
     SectionType.ABOUT,
     SectionType.SKILLS,
