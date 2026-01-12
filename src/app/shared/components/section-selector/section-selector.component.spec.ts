@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SectionSelectorComponent } from './section-selector.component';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
@@ -14,7 +13,7 @@ describe('SectionSelectorComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SectionSelectorComponent]
     })
-      .compileComponents();
+    .compileComponents();
 
     fixture = TestBed.createComponent(SectionSelectorComponent);
     component = fixture.componentInstance;
@@ -30,7 +29,7 @@ describe('SectionSelectorComponent', () => {
   describe('Selection-Area', () => {
     const area: () => HTMLElement | null =
       () => element.querySelector('.selection-area');
-
+    
     it('should have selection area', () => {
       expect(area()).toBeTruthy();
     });

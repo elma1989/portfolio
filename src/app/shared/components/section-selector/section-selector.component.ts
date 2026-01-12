@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule
   ],
-  templateUrl: './section-selector.component.html',
-  styleUrl: './section-selector.component.css'
+  templateUrl: './section-selector.component.html'
 })
 export class SectionSelectorComponent {
   index: InputSignal<number> = input<number>(0);
