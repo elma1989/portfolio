@@ -351,4 +351,37 @@ describe('AboutSectionComponent', () => {
         .toBe('http://localhost:9876/assets/img/02_about/smile.png')
     });
   });
+
+  describe('Section Selector', () => {
+    const sel: () => HTMLElement | null =
+      () => element.querySelector('.content>section-selector');
+    
+    it('should not render on mobile', () => {
+      sec.mobile = true;
+      fixture.detectChanges();
+      expect(sel()).toBeNull();
+    });
+
+    describe('Desktop', () => {
+      beforeEach(() => {
+        sec.mobile = false;
+        fixture.detectChanges();
+      });
+
+      it('should render', () => {
+        expect(sel()).toBeTruthy();
+      });
+
+      it('should have all content center', () => {
+        const elem: HTMLElement | null = sel();
+        expect(elem?.classList).toContain('flex');
+        expect(elem?.classList).toContain('justify-center');
+        expect(elem?.classList).toContain('items-center');
+      });
+
+      it('should have index 1', () => {
+        expect(sel()?.getAttribute('index')).toBe('1');
+      });
+    });
+  });
 });
