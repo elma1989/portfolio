@@ -204,4 +204,43 @@ describe('AboutSectionComponent', () => {
         .toBe('http://localhost:9876/assets/img/02_about/me-orange.png');
     });
   });
+
+  describe('Description', () => {
+    const desc: () => HTMLDivElement | null =
+      () => element.querySelector('.content-area>.desc-area');
+
+    it('should exist desc-area', () => {
+      expect(desc()).toBeTruthy();
+    });
+
+    it('should have width 30% on Mobile', () => {
+      expect(desc()?.classList).toContain('w-3/10');
+    });
+
+    it('should have width 50% on Desktop', () => {
+      expect(desc()?.classList).toContain('lg:w-1/2');
+    });
+
+    it('should have position absolute', () => {
+      expect(desc()?.classList).toContain('absolute');
+    });
+
+    it('should have background black', () => {
+      expect(desc()?.classList).toContain('bg-cblack');
+    });
+
+    it('should have padding 1rem on Mobile', () => {
+      expect(desc()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on Desktop', () => {
+      expect(desc()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have gap 2rem column', () => {
+      expect(desc()?.classList).toContain('flex');
+      expect(desc()?.classList).toContain('flex-col');
+      expect(desc()?.classList).toContain('gap-8');
+    });
+  });
 });
