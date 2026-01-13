@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Signal, signal, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'section[about]',
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './about-section.component.css'
 })
 export class AboutSectionComponent {
+  private _overlay: WritableSignal<boolean> = signal<boolean>(false);
 
+  get overlay(): Signal<boolean> { return this._overlay.asReadonly()};
 }

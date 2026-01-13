@@ -3,6 +3,8 @@ import { AboutSectionComponent } from './about-section.component';
 import { Signal, signal } from '@angular/core';
 import { MockTranslatePipe } from '../../shared/pipes/mock-translate.pipe';
 import { TranslationService } from '../../shared/services/translation.service';
+import { SectionService } from '../../shared/services/section.service';
+import { SectionType } from '../../shared/enums/section-type';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -16,6 +18,7 @@ describe('AboutSectionComponent', () => {
   let component: AboutSectionComponent;
   let fixture: ComponentFixture<AboutSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -35,6 +38,7 @@ describe('AboutSectionComponent', () => {
     fixture = TestBed.createComponent(AboutSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -289,6 +293,62 @@ describe('AboutSectionComponent', () => {
       expect(ft?.classList).toContain('flex');
       expect(ft?.classList).toContain('justify-between');
       expect(ft?.classList).toContain('items-center');
+    });
+  });
+
+  describe('buttons in footer', () => {
+    const btns: () => NodeListOf<HTMLButtonElement> =
+      () => element.querySelectorAll('.desc-area button');
+    const img: () => HTMLImageElement | null =
+      () => element.querySelector('.smile>img');
+    
+    it('should have 2 buttons', () => {
+      expect(btns().length).toBe(2);
+    });
+
+    it('1st btn should be default', () => {
+      expect(btns()[0]?.classList).toContain('btn-default');
+    });
+
+    it('1st btn should have content "about.contact-btn"', () => {
+      expect(btns()[0]?.textContent ?? '')
+        .toBe('translated: about.contact-btn');
+    });
+
+    it('should go to contact on click 1st button', () => {
+      btns()[0]?.click();
+      fixture.detectChanges();
+      expect(sec.section()).toBe(SectionType.CONTACT)
+    });
+
+    it('2nd button should have class "smile"', () => {
+      expect(btns()[1]?.classList).toContain('smile')
+    });
+
+    it('2nd button should have size 2rem', () => {
+      expect(btns()[1]?.classList).toContain('w-8');
+      expect(btns()[1]?.classList).toContain('h-8');
+    });
+
+    it('2nd button should open overlay on click', () => {
+      btns()[2]?.click();
+      fixture.detectChanges();
+      expect(component.overlay()).toBeTrue();
+    });
+
+    it('2nd button should have an image', () => {
+      expect(img()).toBeTruthy();
+    });
+
+    it('button image should have full size', () => {
+      const btnimg: HTMLImageElement | null = img();
+      expect(btnimg?.classList).toContain('w-full');
+      expect(btnimg?.classList).toContain('h-full');
+    });
+
+    it('button image source should be correct', () => {
+      expect(img()?.src)
+        .toBe('http://localhost:9876/assets/img/02_about/smile.png')
     });
   });
 });
