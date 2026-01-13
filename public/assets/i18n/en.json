@@ -10,5 +10,10 @@
     "hero": {
         "greating": "Hello there! I'm",
         "btn": "Get in Touch"
+    },
+    "about": {
+        "title": "About me",
+        "p1": "Hey there. I'am Marco. After I passed high scool diploma, I had studied mathematics and informatics for teaching position on secundary schools. Because I hadn't enough money for study, I had to cancel my study.",
+        "p2": "Now I became a frontend webdeveloper and I want to create awesome applications."
     }
 }

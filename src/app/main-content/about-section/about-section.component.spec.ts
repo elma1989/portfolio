@@ -243,4 +243,36 @@ describe('AboutSectionComponent', () => {
       expect(desc()?.classList).toContain('gap-8');
     });
   });
+
+  describe('Paragraphs in desc', () => {
+    const ps: () => NodeListOf<HTMLParagraphElement> =
+      () => element.querySelectorAll('.desc-area>p');
+
+    it('should have 2 paragraphs', () => {
+      expect(ps().length).toBe(2);
+    });
+
+    it('all p should have white text', () => {
+      ps().forEach(p =>
+        expect(p.classList).toContain('tx-black')
+      );
+    });
+
+    it('should have text justify and auto hyphens on Desktop', () => {
+      ps().forEach(p => {
+        expect(p.classList).toContain('hyphens-auto');
+        expect(p.classList).toContain('lg:text-justify');
+      });
+    });
+
+    it('should first paragraph have content "translated: about.p1"', () => {
+      expect(ps()[0]?.textContent ?? '')
+        .toBe('translated: about.p1');
+    });
+
+    it('should secound paragraph have content "translated: about.p2"', () => {
+      expect(ps()[1]?.textContent ?? '')
+        .toBe('translated: about.p2');
+    })
+  });
 });
