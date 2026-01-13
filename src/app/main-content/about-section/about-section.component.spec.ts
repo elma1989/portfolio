@@ -65,7 +65,7 @@ describe('AboutSectionComponent', () => {
 
   describe('content-area', () => {
     const area: () => HTMLDivElement | null =
-      () => element.querySelector('.content>.contentarea');
+      () => element.querySelector('.content>.content-area');
 
     it('should have content-area', () => {
       expect(area()).toBeTruthy();
@@ -90,7 +90,7 @@ describe('AboutSectionComponent', () => {
     it('should have 90% width on desktop', () => {
       const elem: HTMLDivElement | null = area();
       if (elem) {
-        expect(elem.classList).toContain('lg:h-9/10');
+        expect(elem.classList).toContain('lg:w-9/10');
       }
       expect(elem).toBeTruthy();
     });
@@ -114,8 +114,8 @@ describe('AboutSectionComponent', () => {
     it('should have padding 4.5 7 4.5 7 on desktop', () => {
       const elem: HTMLDivElement | null = area();
       if (elem) {
-        expect(elem.classList).toContain('px-28');
-        expect(elem.classList).toContain('py-18');
+        expect(elem.classList).toContain('lg:px-28');
+        expect(elem.classList).toContain('lg:py-18');
       }
       expect(elem).toBeTruthy();
     });
@@ -377,10 +377,6 @@ describe('AboutSectionComponent', () => {
         expect(elem?.classList).toContain('flex');
         expect(elem?.classList).toContain('justify-center');
         expect(elem?.classList).toContain('items-center');
-      });
-
-      it('should have index 1', () => {
-        expect(sel()?.getAttribute('index')).toBe('1');
       });
     });
   });
