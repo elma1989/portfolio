@@ -275,4 +275,20 @@ describe('AboutSectionComponent', () => {
         .toBe('translated: about.p2');
     })
   });
+
+  describe('Footer in desc', () => {
+    const footer: () => HTMLElement | null =
+      () => element.querySelector('.desc-area>footer');
+
+    it('should have a footer', () => {
+      expect(footer()).toBeTruthy();
+    });
+
+    it('should have x space between and y center', () => {
+      const ft: HTMLElement | null = footer();
+      expect(ft?.classList).toContain('flex');
+      expect(ft?.classList).toContain('justify-between');
+      expect(ft?.classList).toContain('items-center');
+    });
+  });
 });
