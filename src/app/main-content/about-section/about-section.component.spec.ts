@@ -1,6 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AboutSectionComponent } from './about-section.component';
+import { Signal, signal } from '@angular/core';
+import { MockTranslatePipe } from '../../shared/pipes/mock-translate.pipe';
+import { TranslationService } from '../../shared/services/translation.service';
+
+const langSignal = signal<'en' | 'de'>('en');
+
+const translationServiceMock = {
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('AboutSectionComponent', () => {
   let component: AboutSectionComponent;
@@ -9,9 +19,18 @@ describe('AboutSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AboutSectionComponent]
+      imports: [
+        AboutSectionComponent,
+        MockTranslatePipe
+      ],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AboutSectionComponent);
     component = fixture.componentInstance;
@@ -43,7 +62,7 @@ describe('AboutSectionComponent', () => {
   describe('content-area', () => {
     const area: () => HTMLDivElement | null =
       () => element.querySelector('.content>.contentarea');
-    
+
     it('should have content-area', () => {
       expect(area()).toBeTruthy();
     });
@@ -108,7 +127,7 @@ describe('AboutSectionComponent', () => {
 
     it('should have right-align', () => {
       const elem: HTMLElement | null = h1();
-      if(elem) {
+      if (elem) {
         expect(elem.classList).toContain('text-right');
       }
       expect(elem).toBeTruthy();
@@ -116,7 +135,7 @@ describe('AboutSectionComponent', () => {
 
     it('should have font "Eczar"', () => {
       const elem: HTMLElement | null = h1();
-      if(elem) {
+      if (elem) {
         expect(elem.classList).toContain('font-eczar');
       }
       expect(elem).toBeTruthy();
@@ -124,7 +143,7 @@ describe('AboutSectionComponent', () => {
 
     it('should have font-size 2.5 on Mobile', () => {
       const elem: HTMLElement | null = h1();
-      if(elem) {
+      if (elem) {
         expect(elem.classList).toContain('text-[2.5rem]/[2.5rem]');
       }
       expect(elem).toBeTruthy();
@@ -132,7 +151,7 @@ describe('AboutSectionComponent', () => {
 
     it('should have font-size 4.5rem on Desktop', () => {
       const elem: HTMLElement | null = h1();
-      if(elem) {
+      if (elem) {
         expect(elem.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
       }
       expect(elem).toBeTruthy();
@@ -140,10 +159,49 @@ describe('AboutSectionComponent', () => {
 
     it('should be bold font', () => {
       const elem: HTMLElement | null = h1();
-      if(elem) {
+      if (elem) {
         expect(elem.classList).toContain('font-bold');
       }
       expect(elem).toBeTruthy();
+    });
+
+    it('should have content "translated: about.title"', () => {
+      expect(h1()?.textContent ?? '')
+        .toBe('translated: about.title')
+    });
+  });
+
+  describe('Portait', () => {
+    const portrait: () => HTMLImageElement | null =
+      () => element.querySelector('.content-area>.portait')
+
+    it('should have portrait', () => {
+      expect(portrait()).toBeTruthy();
+    });
+
+    it('should have width 30% on mobile', () => {
+      expect(portrait()?.classList).toContain('w-3/10')
+    });
+
+    it('should have width 40% on desktop', () => {
+      expect(portrait()?.classList).toContain('w-2/5');
+    });
+
+    it('should have position left 1rem top 5rem on mobile', () => {
+      expect(portrait()?.classList).toContain('absolute');
+      expect(portrait()?.classList).toContain('top-20');
+      expect(portrait()?.classList).toContain('left-4');
+    });
+
+    it('should have position bottom 0 left 7rem', () => {
+      expect(portrait()?.classList).toContain('lg:top-auto');
+      expect(portrait()?.classList).toContain('lg:left-28');
+      expect(portrait()?.classList).toContain('lg:bottom-0');
+    });
+
+    it('should source be correct', () => {
+      expect(portrait()?.src ?? '')
+        .toBe('http://localhost:9876/assets/img/02_about/me-orange.png');
     });
   });
 });
