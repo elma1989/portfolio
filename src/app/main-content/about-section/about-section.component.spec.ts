@@ -119,6 +119,10 @@ describe('AboutSectionComponent', () => {
       }
       expect(elem).toBeTruthy();
     });
+
+    it('should have overflow y hidden', () => {
+      expect(area()?.classList).toContain('overflow-y-hidden');
+    })
   });
 
   describe('H1', () => {
@@ -283,7 +287,7 @@ describe('AboutSectionComponent', () => {
       () => element.querySelectorAll('.desc-area button');
     const img: () => HTMLImageElement | null =
       () => element.querySelector('.smile>img');
-    
+
     it('should have 2 buttons', () => {
       expect(btns().length).toBe(2);
     });
@@ -331,7 +335,7 @@ describe('AboutSectionComponent', () => {
   describe('Section Selector', () => {
     const sel: () => HTMLElement | null =
       () => element.querySelector('.content>section-selector');
-    
+
     it('should not render on mobile', () => {
       sec.mobile = true;
       fixture.detectChanges();
@@ -361,51 +365,51 @@ describe('AboutSectionComponent', () => {
     const overlay: () => HTMLElement | null =
       () => element.querySelector('about-overlay');
 
-    it('schuld not reder, if close', () => {
+    it('should render on open', () => {
+      expect(overlay()).toBeTruthy();
+    });
+
+    it('should have class open if open', () => {
+      const elem: HTMLElement | null = overlay();
+
+      component.openOvelay();
+      fixture.detectChanges();
+      expect(elem?.classList).toContain('open');
+
       component.closeOverlay();
       fixture.detectChanges();
-      expect(overlay()).toBeNull();
+      expect(elem?.classList).not.toContain('open');
     });
 
-    describe('open', () => {
-      beforeEach(() => {
-        component.openOvelay();
-        fixture.detectChanges();
-      });
-
-      it('should render on open', () => {
-        expect(overlay()).toBeTruthy();
-      });
-
-      it('should have with 17rem' ,() => {
-        expect(overlay()?.classList).toContain('w-68');
-      });
-
-      it('should have blue background', () => {
-        expect(overlay()?.classList).toContain('bg-blue');
-      });
-
-      it('should have white text' ,() => {
-        expect(overlay()?.classList).toContain('tx-white');
-      });
-
-      it('should have posittion bottom right corner', () => {
-        const elem: HTMLElement | null = overlay();
-        expect(elem?.classList).toContain('absolute');
-        expect(elem?.classList).toContain('bottom-0');
-        expect(elem?.classList).toContain('right-0');
-      });
-
-      it('should have padding 2rem', () => {
-        expect(overlay()?.classList).toContain('p-8');
-      });
-
-      it('should have dirction column, gap 1rem', () => {
-        const elem: HTMLElement | null = overlay();
-        expect(elem?.classList).toContain('flex');
-        expect(elem?.classList).toContain('flex-col');
-        expect(elem?.classList).toContain('gap-4');
-      });
+    it('should have with 17rem', () => {
+      expect(overlay()?.classList).toContain('w-68');
     });
+
+    it('should have blue background', () => {
+      expect(overlay()?.classList).toContain('bg-blue');
+    });
+
+    it('should have white text', () => {
+      expect(overlay()?.classList).toContain('tx-white');
+    });
+
+    it('should have posittion bottom right corner', () => {
+      const elem: HTMLElement | null = overlay();
+      expect(elem?.classList).toContain('absolute');
+      expect(elem?.classList).toContain('bottom-0');
+      expect(elem?.classList).toContain('right-0');
+    });
+
+    it('should have padding 2rem', () => {
+      expect(overlay()?.classList).toContain('p-8');
+    });
+
+    it('should have dirction column, gap 1rem', () => {
+      const elem: HTMLElement | null = overlay();
+      expect(elem?.classList).toContain('flex');
+      expect(elem?.classList).toContain('flex-col');
+      expect(elem?.classList).toContain('gap-4');
+    });
+
   });
 });
