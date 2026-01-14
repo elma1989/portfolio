@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { SectionType } from '../../shared/enums/section-type';
+import { AboutOverlayComponent } from './about-overlay/about-overlay.component';
 
 @Component({
   selector: 'section[about]',
   imports: [
     CommonModule,
     SectionSelectorComponent,
-    TranslatePipe
+    TranslatePipe,
+    AboutOverlayComponent
   ],
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.css'
@@ -58,7 +60,5 @@ export class AboutSectionComponent {
   closeOverlayOnLeave(): void {
     if(this.desktop()) this.closeOverlay();
   }
-
-  
   // #endregion
 }

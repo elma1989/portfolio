@@ -1,5 +1,5 @@
 <div class="content flex">
-    <div class="content-area relative h-full w-full p-4
+    <div class="content-area relative h-full w-full p-4 overflow-y-hidden
     lg:w-9/10 lg:px-28 lg:py-18">
         <h1 class="font-eczar text-right text-[2.5rem]/[2.5rem]
         lg:text-[4.5rem]/[4.5rem]">{{ 'about.title' | translate }}</h1>
@@ -23,6 +23,10 @@
                 </button>
             </footer>
         </div>
+        <about-overlay class="bg-blue tx-white
+        w-68 p-8 flex flex-col gap-4 absolute bottom-0 right-0"
+        [class.open]="overlay()"
+        (closed)="closeOverlay()"></about-overlay>
     </div>
     @if (desktop()) {
         <section-selector class="flex w-1/10 justify-center items-center"
