@@ -3,6 +3,7 @@ import { SectionSelectorComponent } from '../../shared/components/section-select
 import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { SectionType } from '../../shared/enums/section-type';
 
 @Component({
   selector: 'section[about]',
@@ -22,4 +23,28 @@ export class AboutSectionComponent {
   get desktop(): Signal<boolean> { return this._desktop};
 
   get overlay(): Signal<boolean> { return this._overlay.asReadonly()};
+
+  /** Goes to contact. */
+  goToContact(): void {
+    this.sec.section = SectionType.CONTACT;
+    if (!this.desktop()) {
+      const contact = document.getElementById('contact');
+      contact?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  /** Opens Overlay on click. */
+  openOverlayOnClick() {
+    if(!this.desktop()) this._overlay.set(true);
+  }
+
+  /** Opens Overlay on hover. */
+  openOverlayOnHover(): void {
+    if(this.desktop()) this._overlay.set(true);
+  }
+
+  /** Closes Overlay on leave. */
+  closeOverlayOnLeave(): void {
+    if(this.desktop()) this._overlay.set(false)
+  }
 }

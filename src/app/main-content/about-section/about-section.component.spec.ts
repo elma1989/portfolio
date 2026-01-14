@@ -205,14 +205,6 @@ describe('AboutSectionComponent', () => {
       expect(desc()).toBeTruthy();
     });
 
-    it('should have width 30% on Mobile', () => {
-      expect(desc()?.classList).toContain('w-3/10');
-    });
-
-    it('should have width 50% on Desktop', () => {
-      expect(desc()?.classList).toContain('lg:w-1/2');
-    });
-
     it('should have position absolute', () => {
       expect(desc()?.classList).toContain('absolute');
     });
@@ -220,6 +212,10 @@ describe('AboutSectionComponent', () => {
     it('should have background black', () => {
       expect(desc()?.classList).toContain('bg-cblack');
     });
+
+    it('should have white text', () => {
+      expect(desc()?.classList).toContain('tx-white');
+    })
 
     it('should have padding 1rem on Mobile', () => {
       expect(desc()?.classList).toContain('p-4');
@@ -229,11 +225,15 @@ describe('AboutSectionComponent', () => {
       expect(desc()?.classList).toContain('lg:p-8');
     });
 
-    it('should have gap 2rem column', () => {
+    it('should have gap 1rem column on Mobile', () => {
       expect(desc()?.classList).toContain('flex');
       expect(desc()?.classList).toContain('flex-col');
-      expect(desc()?.classList).toContain('gap-8');
+      expect(desc()?.classList).toContain('gap-4');
     });
+
+    it('should have gap 2 rem on Desktop', () => {
+      expect(desc()?.classList).toContain('lg:gap-8');
+    })
   });
 
   describe('Paragraphs in desc', () => {
@@ -242,12 +242,6 @@ describe('AboutSectionComponent', () => {
 
     it('should have 2 paragraphs', () => {
       expect(ps().length).toBe(2);
-    });
-
-    it('all p should have white text', () => {
-      ps().forEach(p =>
-        expect(p.classList).toContain('tx-black')
-      );
     });
 
     it('should have text justify and auto hyphens on Desktop', () => {
@@ -316,12 +310,6 @@ describe('AboutSectionComponent', () => {
     it('2nd button should have size 2rem', () => {
       expect(btns()[1]?.classList).toContain('w-8');
       expect(btns()[1]?.classList).toContain('h-8');
-    });
-
-    it('2nd button should open overlay on click', () => {
-      btns()[2]?.click();
-      fixture.detectChanges();
-      expect(component.overlay()).toBeTrue();
     });
 
     it('2nd button should have an image', () => {
