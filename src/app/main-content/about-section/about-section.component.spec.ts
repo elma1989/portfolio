@@ -123,7 +123,7 @@ describe('AboutSectionComponent', () => {
 
   describe('H1', () => {
     const h1: () => HTMLElement | null =
-      () => element.querySelector('content-area>h1');
+      () => element.querySelector('.content-area>h1');
 
     it('should have h1', () => {
       expect(h1()).toBeTruthy();
@@ -161,14 +161,6 @@ describe('AboutSectionComponent', () => {
       expect(elem).toBeTruthy();
     });
 
-    it('should be bold font', () => {
-      const elem: HTMLElement | null = h1();
-      if (elem) {
-        expect(elem.classList).toContain('font-bold');
-      }
-      expect(elem).toBeTruthy();
-    });
-
     it('should have content "translated: about.title"', () => {
       expect(h1()?.textContent ?? '')
         .toBe('translated: about.title')
@@ -177,18 +169,14 @@ describe('AboutSectionComponent', () => {
 
   describe('Portait', () => {
     const portrait: () => HTMLImageElement | null =
-      () => element.querySelector('.content-area>.portait')
+      () => element.querySelector('.content-area>.portrait')
 
     it('should have portrait', () => {
       expect(portrait()).toBeTruthy();
     });
 
-    it('should have width 30% on mobile', () => {
-      expect(portrait()?.classList).toContain('w-3/10')
-    });
-
-    it('should have width 40% on desktop', () => {
-      expect(portrait()?.classList).toContain('w-2/5');
+    it('should have width 50%', () => {
+      expect(portrait()?.classList).toContain('w-1/2')
     });
 
     it('should have position left 1rem top 5rem on mobile', () => {

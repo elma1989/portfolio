@@ -2,12 +2,14 @@ import { Component, computed, inject, Signal, signal, WritableSignal } from '@an
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'section[about]',
   imports: [
     CommonModule,
-    SectionSelectorComponent
+    SectionSelectorComponent,
+    TranslatePipe
   ],
   templateUrl: './about-section.component.html',
   styleUrl: './about-section.component.css'

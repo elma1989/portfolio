@@ -1,6 +1,12 @@
 <div class="content flex">
     <div class="content-area relative h-full w-full p-4
-    lg:w-9/10 lg:px-28 lg:py-18"></div>
+    lg:w-9/10 lg:px-28 lg:py-18">
+        <h1 class="font-eczar text-right text-[2.5rem]/[2.5rem]
+        lg:text-[4.5rem]/[4.5rem]">{{ 'about.title' | translate }}</h1>
+        <img src="assets/img/02_about/me-orange.png" class="portrait
+        absolute top-20 left-4 w-1/2 
+        lg:top-auto lg:left-28 lg:bottom-0 lg:w-9/20">
+    </div>
     @if (desktop()) {
         <section-selector class="flex w-1/10 justify-center items-center"
         [index]="1"></section-selector>
