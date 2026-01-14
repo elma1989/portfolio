@@ -33,18 +33,32 @@ export class AboutSectionComponent {
     }
   }
 
+  // #region Overlay
+  /**opens Overlay */
+  openOvelay(): void {
+    this._overlay.set(true);
+  }
+
   /** Opens Overlay on click. */
-  openOverlayOnClick() {
-    if(!this.desktop()) this._overlay.set(true);
+  openOverlayOnClick(): void {
+    if(!this.desktop()) this.openOvelay();
   }
 
   /** Opens Overlay on hover. */
   openOverlayOnHover(): void {
-    if(this.desktop()) this._overlay.set(true);
+    if(this.desktop()) this.openOvelay();
+  }
+
+  /** closees overlay. */
+  closeOverlay(): void {
+    this._overlay.set(false);
   }
 
   /** Closes Overlay on leave. */
   closeOverlayOnLeave(): void {
-    if(this.desktop()) this._overlay.set(false)
+    if(this.desktop()) this.closeOverlay();
   }
+
+  
+  // #endregion
 }

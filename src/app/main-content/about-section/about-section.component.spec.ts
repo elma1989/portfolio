@@ -356,4 +356,56 @@ describe('AboutSectionComponent', () => {
       });
     });
   });
+
+  describe('About Overlay', () => {
+    const overlay: () => HTMLElement | null =
+      () => element.querySelector('about-overlay');
+
+    it('schuld not reder, if close', () => {
+      component.closeOverlay();
+      fixture.detectChanges();
+      expect(overlay()).toBeNull();
+    });
+
+    describe('open', () => {
+      beforeEach(() => {
+        component.openOvelay();
+        fixture.detectChanges();
+      });
+
+      it('should render on open', () => {
+        expect(overlay()).toBeTruthy();
+      });
+
+      it('should have with 17rem' ,() => {
+        expect(overlay()?.classList).toContain('w-68');
+      });
+
+      it('should have blue background', () => {
+        expect(overlay()?.classList).toContain('bg-blue');
+      });
+
+      it('should have white text' ,() => {
+        expect(overlay()?.classList).toContain('tx-white');
+      });
+
+      it('should have posittion bottom right corner', () => {
+        const elem: HTMLElement | null = overlay();
+        expect(elem?.classList).toContain('absolute');
+        expect(elem?.classList).toContain('bottom-0');
+        expect(elem?.classList).toContain('right-0');
+      });
+
+      it('should have padding 2rem', () => {
+        expect(overlay()?.classList).toContain('p-8');
+      });
+
+      it('should have dirction column, gap 1rem', () => {
+        const elem: HTMLElement | null = overlay();
+        expect(elem?.classList).toContain('flex');
+        expect(elem?.classList).toContain('flex-col');
+        expect(elem?.classList).toContain('gap-4');
+      });
+    });
+  });
 });
