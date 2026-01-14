@@ -10,5 +10,10 @@
     "hero": {
         "greating": "Hallo, ich bin",
         "btn": "Kontakt"
+    },
+    "about": {
+        "title": "Über mich",
+        "p1": "Hallo, Ich bin Marco. Nachdem ich mein Abitur bestanden hatte, habe ich Mathematik und Informatik auf Lehramt an Sekundarschulen studiert. Weil mir zum Studieren nicht genügend Geld zur Verfügung stand, musste ich mein Studium abbrechen.",
+        "p2": "Nun bin ich Frontend-Webentwickler geworden und ich möchte großartige Apps erstellen."
     }
 }
