@@ -400,8 +400,12 @@ describe('AboutSectionComponent', () => {
       expect(elem?.classList).toContain('right-0');
     });
 
-    it('should have padding 2rem', () => {
-      expect(overlay()?.classList).toContain('p-8');
+    it('should have padding 1rem on mobile', () => {
+      expect(overlay()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:p-8');
     });
 
     it('should have dirction column, gap 1rem', () => {

@@ -65,7 +65,7 @@ describe('AboutOverlayComponent', () => {
     });
 
     it('should have bold text', () => {
-      expect(header()?.classList).toContain('text-bold')
+      expect(header()?.classList).toContain('font-bold')
     });
   });
 
@@ -142,7 +142,7 @@ describe('AboutOverlayComponent', () => {
       const elem: HTMLElement | null = ul();
       expect(elem?.classList).toContain('flex');
       expect(elem?.classList).toContain('flex-col');
-      expect(elem?.classList).toContain('gap-8');
+      expect(elem?.classList).toContain('gap-2');
     });
   });
 
