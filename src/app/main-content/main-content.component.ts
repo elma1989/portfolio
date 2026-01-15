@@ -35,4 +35,21 @@ export class MainContentComponent {
   onResize() {
     this.sec.mobile = this.sec.isMobile();
   }
+
+  // #region Background-Indicator
+  isBackgroundBlue(): boolean {
+    return this.section() == SectionType.HERO
+    || this.section() == SectionType.REFERENCES;
+  }
+
+  isBackgroundBlack(): boolean {
+    return this.section() == SectionType.SKILLS
+    || this.section() == SectionType.CONTACT;
+  }
+
+  isBackgroundWhite(): boolean {
+    return this.section() == SectionType.ABOUT
+    || this.section() == SectionType.PROJECTS;
+  }
+  // #endregion
 }
