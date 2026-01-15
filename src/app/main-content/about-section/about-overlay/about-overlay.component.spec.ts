@@ -125,4 +125,54 @@ describe('AboutOverlayComponent', () => {
       });
     });
   });
+
+  describe('UL', () => {
+    const ul: () => HTMLElement | null =
+      () => element.querySelector('ul');
+
+    it('should have ul', () => {
+      expect(ul()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(ul()?.classList).toContain('w-full');
+    });
+
+    it('should have gap 0.5 column', () => {
+      const elem: HTMLElement | null = ul();
+      expect(elem?.classList).toContain('flex');
+      expect(elem?.classList).toContain('flex-col');
+      expect(elem?.classList).toContain('gap-8');
+    });
+  });
+
+  describe('Items', () => {
+    const imgs: () => NodeListOf<HTMLImageElement> =
+      () => element.querySelectorAll('ul img');
+
+    it('should have 6 Items', () => {
+      const items: NodeListOf<HTMLLIElement> = element.querySelectorAll('li');
+      expect(items.length).toBe(6);
+    });
+
+    it('should have size 1rem', () => {
+      imgs().forEach(e => {
+        expect(e.classList).toContain('w-4');
+        expect(e.classList).toContain('h-4');
+      });
+    });
+
+    it('should have margin right 0.5', () => {
+      imgs().forEach(img => {
+        expect(img.classList).toContain('mr-2');
+      });
+    });
+
+    it('schould have correect source', () => {
+      imgs().forEach(img => {
+        expect(img.src)
+          .toBe('http://localhost:9876/assets/img/02_about/check.png');
+      });
+    });
+  });
 });
