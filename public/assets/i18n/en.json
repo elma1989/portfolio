@@ -15,6 +15,13 @@
         "title": "About me",
         "p1": "Hey there. I'am Marco. After I passed high scool diploma, I had studied mathematics and informatics for teaching position on secundary schools.",
         "p2": "Now I became a frontend webdeveloper and I want to create awesome applications.",
-        "contact-btn": "Let's Talk"
+        "contact-btn": "Let's Talk",
+        "overlay-title": "More aboute me",
+        "overlay-first": "Team player",
+        "ovelray-second": "Continously learning",
+        "overlay-third": "Creative Thinker",
+        "overlay-fourth": "Based in Halle(Saale)",
+        "overlay-fifth": "Open to work remote",
+        "overlay-sixth": "Open to relocate"
     }
 }

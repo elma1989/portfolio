@@ -15,6 +15,13 @@
         "title": "Über mich",
         "p1": "Hallo, Ich bin Marco. Nachdem ich mein Abitur bestanden hatte, habe ich Mathematik und Informatik auf Lehramt an Sekundarschulen studiert.",
         "p2": "Nun bin ich Frontend-Webentwickler geworden und ich möchte großartige Apps erstellen.",
-        "contact-btn": "Kontakt"
+        "contact-btn": "Kontakt",
+        "overlay-title": "More aboute me",
+        "overlay-first": "Team player",
+        "ovelray-second": "Continously learning",
+        "overlay-third": "Creative Thinker",
+        "overlay-fourth": "Based in Halle(Saale)",
+        "overlay-fifth": "Open to work remote",
+        "overlay-sixth": "Open to relocate"
     }
 }
