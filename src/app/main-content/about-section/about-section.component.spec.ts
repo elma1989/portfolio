@@ -393,11 +393,17 @@ describe('AboutSectionComponent', () => {
       expect(overlay()?.classList).toContain('tx-white');
     });
 
-    it('should have posittion bottom right corner', () => {
+    it('should have posittion bottom left corner mobile', () => {
       const elem: HTMLElement | null = overlay();
       expect(elem?.classList).toContain('absolute');
       expect(elem?.classList).toContain('bottom-0');
-      expect(elem?.classList).toContain('right-0');
+      expect(elem?.classList).toContain('left-0');
+    });
+
+    it('should have posittion bottom right corner desktop', () => {
+      const elem: HTMLElement | null = overlay();
+      expect(elem?.classList).toContain('lg:right-0');
+      expect(elem?.classList).toContain('lg:left-auto');
     });
 
     it('should have padding 1rem on mobile', () => {
