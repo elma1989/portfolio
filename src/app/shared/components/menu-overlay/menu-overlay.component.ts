@@ -2,7 +2,7 @@ import { Component, inject, output, OutputEmitterRef } from '@angular/core';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { SectionType } from '../../enums/section-type';
 import { SectionService } from '../../services/section.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 type NavItem = {
@@ -16,7 +16,7 @@ type NavItem = {
   imports: [
     TranslatePipe,
     CommonModule
-  ],
+],
   templateUrl: './menu-overlay.component.html',
   styleUrl: './menu-overlay.component.css'
 })

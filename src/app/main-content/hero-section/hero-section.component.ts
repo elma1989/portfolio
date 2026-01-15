@@ -26,7 +26,8 @@ export class HeroSectionComponent {
     this.sec.section = SectionType.CONTACT;
 
     if(this.mobile()) {
-      this.router.navigate([], { fragment: 'contact'});
+      document.getElementById('contact')
+        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   } 
 }
