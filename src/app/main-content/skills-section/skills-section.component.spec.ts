@@ -100,4 +100,39 @@ describe('SkillsSectionComponent', () => {
         .toBe('translated: skills.title');
     });
   });
+
+  describe('Description', () => {
+    const desc: () => HTMLDivElement | null =
+      () => element.querySelector('.content-area>.desc');
+
+    it('should have desc', () => {
+      expect(desc()).toBeTruthy();
+    });
+
+    it('should have blue background', () => {
+      expect(desc()?.classList).toContain('bg-blue');
+    });
+
+    it('should have full width om mobile', () => {
+      expect(desc()?.classList).toContain('w-full');
+    });
+
+    it('should have width 38rem on desktop', () => {
+      expect(desc()?.classList).toContain('lg:w-152');
+    });
+
+    it('should have 1rem padding on mobile', () => {
+      expect(desc()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desksop', () => {
+      expect(desc()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have text-justifi and auto hyphens', () => {
+      const elem: HTMLElement | null = desc();
+      expect(elem?.classList).toContain('text-justify');
+      expect(elem?.classList).toContain('hyphens-auto');
+    });
+  });
 });
