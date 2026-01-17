@@ -1,12 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SkillsSectionComponent } from './skills-section.component';
 import { Skill } from '../../shared/interfaces/skill';
+import { SectionService } from '../../shared/services/section.service';
 
 describe('SkillsSectionComponent', () => {
   let component: SkillsSectionComponent;
   let fixture: ComponentFixture<SkillsSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -17,6 +18,7 @@ describe('SkillsSectionComponent', () => {
     fixture = TestBed.createComponent(SkillsSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -255,9 +257,9 @@ describe('SkillsSectionComponent', () => {
       });
     });
 
-    it('should have full size on hover', () => {
+    it('should have full size on hover for desktop', () => {
       imgs().forEach(img =>
-        expect(img.classList).toContain('hover:size-full')
+        expect(img.classList).toContain('lg:hover:size-full')
       );
     });
 
@@ -274,6 +276,51 @@ describe('SkillsSectionComponent', () => {
       spans.forEach((span, i) => 
         expect(span.textContent).toBe(skills[i].name)
       );
+    });
+  });
+
+  describe('Overlay Button', () => {
+    const olBtn: () => HTMLButtonElement | null =
+      () => element.querySelector('.content-area>.btn-overlay');
+
+    it('sould have overlay button', () => {
+      expect(olBtn()).toBeTruthy();
+    });
+
+    it('should have size 7.5rem', () => {
+      expect(olBtn()?.classList).toContain('size-30');
+    });
+
+    it('should have position 1rem left and corner on mobile', () => {
+      const btn = olBtn();
+      expect(btn?.classList).toContain('absolute');
+      expect(btn?.classList).toContain('left-4');
+      expect(btn?.classList).toContain('bottom-4');
+    });
+
+    it('should have position bottom 2rem, left 7rem on desktop', () => {
+      const btn = olBtn();
+      expect(btn?.classList).toContain('lg:left-28');
+      expect(btn?.classList).toContain('lg:bottom-8');
+    });
+
+    it('shuould be round', () => {
+      expect(olBtn()?.classList).toContain('rounded-full');
+    });
+
+    it('should open overlay on click mobile only', () => {
+      const btn = olBtn();
+      sec.mobile = false;
+      fixture.detectChanges();
+      btn?.click();
+      fixture.detectChanges()
+      expect(component.overlay).toBeFalse();
+
+      sec.mobile = true;
+      fixture.detectChanges();
+      btn?.click();
+      fixture.detectChanges()
+      expect(component.overlay).toBeTrue();
     });
   });
 });
