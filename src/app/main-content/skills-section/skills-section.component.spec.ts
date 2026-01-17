@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SkillsSectionComponent } from './skills-section.component';
+import { Skill } from '../../shared/interfaces/skill';
 
 describe('SkillsSectionComponent', () => {
   let component: SkillsSectionComponent;
@@ -152,9 +153,10 @@ describe('SkillsSectionComponent', () => {
       expect(wrapper()?.classList).toContain('lg:w-208');
     });
 
-    it('should have 0.75rem gap on mobile', () => {
+    it('should have 0.75rem gap flex-wrap on mobile', () => {
       const elem: HTMLDivElement | null = wrapper();
       expect(elem?.classList).toContain('flex');
+      expect(elem?.classList).toContain('flex-wrap');
       expect(elem?.classList).toContain('gap-3');
     });
 
@@ -170,6 +172,8 @@ describe('SkillsSectionComponent', () => {
   describe('Skill-Elements', () => {
     const skills: () => NodeListOf<HTMLDivElement> =
       () => element.querySelectorAll('.skill-wrapper>.skill');
+    const imgWrapper: () => NodeListOf<HTMLDivElement> = 
+      () => element.querySelectorAll('.skill-wrapper .img-wrapper');
 
     it('should have 13 Skills', () => {
       expect(skills().length).toBe(13);
@@ -195,6 +199,81 @@ describe('SkillsSectionComponent', () => {
         expect(skill.classList).toContain('justify-between');
         expect(skill.classList).toContain('items-center');
       });
+    });
+
+    it('Every skill should have img wrapper', () => {
+      skills().forEach(skill => {
+        const wrapper = skill.querySelector('.img-wrapper');
+        expect(wrapper).toBeTruthy();
+      });
+    });
+
+    it('Every skill wrapper should have size 5rem on mobile', () => {
+      imgWrapper().forEach(imgW => 
+        expect(imgW.classList).toContain('size-20')
+      );
+    });
+
+    it('Every skill wrapper should have size 6rem on desktop', () => {
+      imgWrapper().forEach(imgW => 
+        expect(imgW.classList).toContain('size-24')
+      );
+    });
+
+    it('Every skill wrapper should have centered images', () => {
+      imgWrapper().forEach(imgW => {
+        expect(imgW.classList).toContain('flex');
+        expect(imgW.classList).toContain('justify-center');
+        expect(imgW.classList).toContain('items-center');
+      });
+    });
+  });
+
+  describe('Single-Skills', () => {
+    const skills: Skill[] = [
+      { name: 'HTML', img: 'html' },
+      { name: 'CSS', img: 'css' },
+      { name: 'Tailwind', img: 'tw' },
+      { name: 'JavaScript', img: 'js' },
+      { name: 'TypeScript', img: 'ts' },
+      { name: 'Angular', img: 'ng' },
+      { name: 'Firebase', img: 'fb' },
+      { name: 'Git', img: 'git' },
+      { name: 'REST-API', img: 'api' },
+      { name: 'Scrum', img: 'scrum' },
+      { name: 'Material Design', img: 'mat' },
+      { name: 'Python', img: 'py' },
+      { name: 'Flask', img: 'flask' }
+    ];
+    const imgs: () => NodeListOf<HTMLImageElement> =
+      () => element.querySelectorAll('.skill-wrapper img');
+
+    it('should have size 75%', () => {
+      imgs().forEach(img => {
+        expect(img.classList).toContain('w-3/4');
+        expect(img.classList).toContain('h-3/4');
+      });
+    });
+
+    it('should have full size on hover', () => {
+      imgs().forEach(img =>
+        expect(img.classList).toContain('hover:size-full')
+      );
+    });
+
+    it('should have corect source', () => {
+      imgs().forEach((img, i) => 
+        expect(img.src)
+          .toBe(`http://localhost:9876/assets/img/03_skills/${skills[i].img}.png`)
+      );
+    });
+
+    it('should have correct description', () => {
+      const spans: NodeListOf<HTMLSpanElement> = 
+        element.querySelectorAll('.skill-wrapper span');
+      spans.forEach((span, i) => 
+        expect(span.textContent).toBe(skills[i].name)
+      );
     });
   });
 });
