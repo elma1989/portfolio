@@ -166,4 +166,35 @@ describe('SkillsSectionComponent', () => {
       expect(wrapper()?.classList).toContain('lg:self-end');
     });
   });
+
+  describe('Skill-Elements', () => {
+    const skills: () => NodeListOf<HTMLDivElement> =
+      () => element.querySelectorAll('.skill-wrapper>.skill');
+
+    it('should have 13 Skills', () => {
+      expect(skills().length).toBe(13);
+    });
+
+    it('should have 5rem width 6rem height on mobile', () => {
+      skills().forEach(skill => {
+        expect(skill.classList).toContain('w-20');
+        expect(skill.classList).toContain('h-24');
+      });
+    });
+
+    it('should have have 6rem width, 8rem height on deskop', () => {
+      skills().forEach(skill => {
+        expect(skill.classList).toContain('lg:w-24');
+        expect(skill.classList).toContain('lg:h-32');
+      });
+    });
+
+    it('should have x-center, y-between, column', () => {
+      skills().forEach(skill => {
+        expect(skill.classList).toContain('flex');
+        expect(skill.classList).toContain('justify-between');
+        expect(skill.classList).toContain('items-center');
+      });
+    });
+  });
 });
