@@ -23,5 +23,8 @@
         "overlay-fourth": "Based in Halle(Saale)",
         "overlay-fifth": "Open to work remote",
         "overlay-sixth": "Open to relocate"
+    },
+    "skills": {
+        "title": "Core Competencies"
     }
 }

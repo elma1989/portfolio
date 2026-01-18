@@ -1,9 +1,12 @@
 import { Component, Signal, signal, WritableSignal } from '@angular/core';
 import { Skill } from '../../shared/interfaces/skill';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'section[skills]',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './skills-section.component.html',
   styleUrl: './skills-section.component.css'
 })

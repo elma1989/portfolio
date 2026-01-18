@@ -2,6 +2,16 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SkillsSectionComponent } from './skills-section.component';
 import { Skill } from '../../shared/interfaces/skill';
 import { SectionService } from '../../shared/services/section.service';
+import { Signal, signal } from '@angular/core';
+import { TranslationService } from '../../shared/services/translation.service';
+
+const langSignal = signal<'en' | 'de'>('en');
+
+const translationServiceMock = {
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('SkillsSectionComponent', () => {
   let component: SkillsSectionComponent;
@@ -11,9 +21,15 @@ describe('SkillsSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SkillsSectionComponent]
+      imports: [SkillsSectionComponent],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SkillsSectionComponent);
     component = fixture.componentInstance;
@@ -65,9 +81,9 @@ describe('SkillsSectionComponent', () => {
 
     it('should have padding 10 0 10 7 on desktop', () => {
       const elem: HTMLElement | null = area();
-      expect(elem?.classList).toContain('py-40');
-      expect(elem?.classList).toContain('pr-0');
-      expect(elem?.classList).toContain('pl-28');
+      expect(elem?.classList).toContain('lg:py-40');
+      expect(elem?.classList).toContain('lg:pr-0');
+      expect(elem?.classList).toContain('lg:pl-28');
     });
 
     it('should have gap 2rem col', () => {
@@ -90,8 +106,12 @@ describe('SkillsSectionComponent', () => {
       expect(h1()?.classList).toContain('font-eczar');
     });
 
-    it('should have size 2.5rem on mobile', () => {
-      expect(h1()?.classList).toContain('text-[2.5rem]/[2.5rem]');
+    it('should have size 1.8rem on xs mobile', () => {
+      expect(h1()?.classList).toContain('text-[1.8rem]/[1.8rem]');
+    })
+
+    it('should have size 2.25rem on mobile', () => {
+      expect(h1()?.classList).toContain('min-[390px]:text-[2.25rem]/[2.25rem]');
     });
 
     it('should have size 4.5rem on desktop', () => {
@@ -140,7 +160,7 @@ describe('SkillsSectionComponent', () => {
   });
 
   describe('Skill Wrapper', () => {
-    const wrapper: () => HTMLDivElement | null = 
+    const wrapper: () => HTMLDivElement | null =
       () => element.querySelector('.content-area>.skill-wrapper');
 
     it('should have skill wrapper', () => {
@@ -174,7 +194,7 @@ describe('SkillsSectionComponent', () => {
   describe('Skill-Elements', () => {
     const skills: () => NodeListOf<HTMLDivElement> =
       () => element.querySelectorAll('.skill-wrapper>.skill');
-    const imgWrapper: () => NodeListOf<HTMLDivElement> = 
+    const imgWrapper: () => NodeListOf<HTMLDivElement> =
       () => element.querySelectorAll('.skill-wrapper .img-wrapper');
 
     it('should have 13 Skills', () => {
@@ -211,13 +231,13 @@ describe('SkillsSectionComponent', () => {
     });
 
     it('Every skill wrapper should have size 5rem on mobile', () => {
-      imgWrapper().forEach(imgW => 
+      imgWrapper().forEach(imgW =>
         expect(imgW.classList).toContain('size-20')
       );
     });
 
     it('Every skill wrapper should have size 6rem on desktop', () => {
-      imgWrapper().forEach(imgW => 
+      imgWrapper().forEach(imgW =>
         expect(imgW.classList).toContain('size-24')
       );
     });
@@ -264,16 +284,16 @@ describe('SkillsSectionComponent', () => {
     });
 
     it('should have corect source', () => {
-      imgs().forEach((img, i) => 
+      imgs().forEach((img, i) =>
         expect(img.src)
           .toBe(`http://localhost:9876/assets/img/03_skills/${skills[i].img}.png`)
       );
     });
 
     it('should have correct description', () => {
-      const spans: NodeListOf<HTMLSpanElement> = 
+      const spans: NodeListOf<HTMLSpanElement> =
         element.querySelectorAll('.skill-wrapper span');
-      spans.forEach((span, i) => 
+      spans.forEach((span, i) =>
         expect(span.textContent).toBe(skills[i].name)
       );
     });
