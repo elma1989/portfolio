@@ -364,5 +364,25 @@ describe('SkillsSectionComponent', () => {
       expect(getFlower()?.src)
         .toBe('http://localhost:9876/assets/img/01_hero/flower.png');
     });
-  })
+  });
+
+  describe('Learn-Icon', () => {
+    const learnIcon: () => HTMLImageElement | null =
+      () => element.querySelector('.btn-overlay>.learn');
+
+    it('schould have learn icon', () => {
+      expect(learnIcon()).toBeTruthy();
+    });
+
+    it('should have size 2.5rem', () => {
+      const icon = learnIcon();
+      expect(icon?.classList).toContain('w-10');
+      expect(icon?.classList).toContain('h-10');
+    });
+
+    it('should have source "learn.png"', () => {
+      expect(learnIcon()?.src)
+        .toBe('http://localhost:9876/assets/img/03_skills/learn.png')
+    });
+  });
 });
