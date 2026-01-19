@@ -19,11 +19,17 @@
                     size-20 lg:size-24
                     flex justify-center items-center">
                         <img src="assets/img/03_skills/{{ skill.img }}.png"
-                        class="size-3/4 lg:hover:size-full">
+                        class="w-3/4 h-3/4 lg:hover:size-full">
                     </div>
                     <span class="text-center">{{ skill.name }}</span>
                 </div>
             }
         </div>
+        <button class="btn-overlay size-30 rounded-full bg-blue"
+        (click)="openOverlayOnClick()"
+        (pointerenter)="openOverlayOnHover()"
+        (pointerleave)="closeOverlayOnLeave()">
+            T
+        </button>
     </div>
 </div>

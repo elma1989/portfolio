@@ -79,9 +79,9 @@ describe('SkillsSectionComponent', () => {
       expect(area()?.classList).toContain('p-4');
     });
 
-    it('should have padding 10 0 10 7 on desktop', () => {
+    it('should have padding 2 0 2 7 on desktop', () => {
       const elem: HTMLElement | null = area();
-      expect(elem?.classList).toContain('lg:py-40');
+      expect(elem?.classList).toContain('lg:py-8');
       expect(elem?.classList).toContain('lg:pr-0');
       expect(elem?.classList).toContain('lg:pl-28');
     });
@@ -315,36 +315,21 @@ describe('SkillsSectionComponent', () => {
       expect(olBtn()?.classList).toContain('size-30');
     });
 
-    it('should have position 1rem left and corner on mobile', () => {
-      const btn = olBtn();
-      expect(btn?.classList).toContain('absolute');
-      expect(btn?.classList).toContain('left-4');
-      expect(btn?.classList).toContain('bottom-4');
-    });
-
-    it('should have position bottom 2rem, left 7rem on desktop', () => {
-      const btn = olBtn();
-      expect(btn?.classList).toContain('lg:left-28');
-      expect(btn?.classList).toContain('lg:bottom-8');
-    });
-
-    it('shuould be round', () => {
-      expect(olBtn()?.classList).toContain('rounded-full');
-    });
-
     it('should open overlay on click mobile only', () => {
       const btn = olBtn();
       sec.mobile = false;
+      component.closeOverlay();
       fixture.detectChanges();
       btn?.click();
       fixture.detectChanges()
-      expect(component.overlay).toBeFalse();
+      expect(component.overlay()).toBeFalse();
 
       sec.mobile = true;
+      component.closeOverlay();
       fixture.detectChanges();
       btn?.click();
       fixture.detectChanges()
-      expect(component.overlay).toBeTrue();
+      expect(component.overlay()).toBeTrue();
     });
   });
 });

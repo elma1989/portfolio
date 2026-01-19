@@ -1,7 +1,8 @@
-import { Component, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { Skill } from '../../shared/interfaces/skill';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { CommonModule } from '@angular/common';
+import { SectionService } from '../../shared/services/section.service';
 
 @Component({
   selector: 'section[skills]',
@@ -28,7 +29,34 @@ export class SkillsSectionComponent {
     { name: 'Python', img: 'py' },
     { name: 'Flask', img: 'flask' }
   ];
+  private sec: SectionService = inject(SectionService);
+  private mobile: Signal<boolean> = computed(() => this.sec.mobile());
   private _overlay: WritableSignal<boolean> = signal<boolean>(false);
 
   get overlay(): Signal<boolean> { return this._overlay.asReadonly(); }
+
+  // #region Overlay
+  openOverylay(): void {
+    this._overlay.set(true)
+  }
+  /** Opens overlay on click. */
+  openOverlayOnClick(): void {
+    if(this.mobile()) this._overlay.set(true);
+  }
+
+  /** Opens overlay on hover. */
+  openOverlayOnHover(): void {
+    if(!this.mobile()) this._overlay.set(true);
+  }
+
+  /** Closes overlay anytime. */
+  closeOverlay(): void {
+    this._overlay.set(false);
+  }
+
+  /** Closes overlay on leave. */
+  closeOverlayOnLeave(): void {
+    if(!this.mobile()) this._overlay.set(false);
+  }
+  // #endregion
 }
