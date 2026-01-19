@@ -36,17 +36,18 @@ export class SkillsSectionComponent {
   get overlay(): Signal<boolean> { return this._overlay.asReadonly(); }
 
   // #region Overlay
+  /** Opens overlay anytime. */
   openOverylay(): void {
     this._overlay.set(true)
   }
   /** Opens overlay on click. */
   openOverlayOnClick(): void {
-    if(this.mobile()) this._overlay.set(true);
+    if(this.mobile()) this.openOverylay()
   }
 
   /** Opens overlay on hover. */
   openOverlayOnHover(): void {
-    if(!this.mobile()) this._overlay.set(true);
+    if(!this.mobile()) this.openOverylay();
   }
 
   /** Closes overlay anytime. */
@@ -56,7 +57,7 @@ export class SkillsSectionComponent {
 
   /** Closes overlay on leave. */
   closeOverlayOnLeave(): void {
-    if(!this.mobile()) this._overlay.set(false);
+    if(!this.mobile()) this.closeOverlay();
   }
   // #endregion
 }

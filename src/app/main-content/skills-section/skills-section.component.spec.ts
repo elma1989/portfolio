@@ -385,4 +385,67 @@ describe('SkillsSectionComponent', () => {
         .toBe('http://localhost:9876/assets/img/03_skills/learn.png')
     });
   });
+
+  describe('Skills Overlay', () => {
+    const skillsOverlay: () => HTMLElement | null =
+      () => element.querySelector('.content-area>skills-overlay');
+    
+    it('should have overlay', () => {
+      expect(skillsOverlay()).toBeTrue();
+    });
+
+    it('should have class "open" on open overlay only', () => {
+      const overlay = skillsOverlay();
+
+      component.openOverylay();
+      fixture.detectChanges();
+      expect(overlay?.classList).toContain('open');
+
+      component.closeOverlay();
+      fixture.detectChanges();
+      expect(overlay?.classList).not.toContain('open');
+    });
+
+    it('should have yello background', () => {
+      expect(skillsOverlay()?.classList).toContain('bg-yellow');
+    });
+
+    it('should have full width on mobile', () => {
+      expect(skillsOverlay()?.classList).toContain('w-full');
+    });
+
+    it('should have width 22.5rem on desktop', () => {
+      expect(skillsOverlay()?.classList).toContain('lg:w-90');
+    });
+
+    it('should have postion bottom, 1rem left on mobile', () => {
+      const overlay = skillsOverlay();
+      expect(overlay?.classList).toContain('absolute');
+      expect(overlay?.classList).toContain('bottom-0');
+      expect(overlay?.classList).toContain('left-4');
+    });
+
+    it('should have position left 15rem on desktop', () => {
+      expect(skillsOverlay()?.classList).toContain('lg:left-50');
+    });
+
+    it('should have padding 1rem on mobile', () => {
+      expect(skillsOverlay()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desktop', () => {
+      expect(skillsOverlay()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have 1rem gap colum on mobile', () => {
+      const overlay = skillsOverlay();
+      expect(overlay?.classList).toContain('flex');
+      expect(overlay?.classList).toContain('flex-col');
+      expect(overlay?.classList).toContain('gop-4');
+    });
+
+    it('should have gap 2rem on desktop', () => {
+      expect(skillsOverlay()?.classList).toContain('lg:gop-8');
+    });
+  });
 });
