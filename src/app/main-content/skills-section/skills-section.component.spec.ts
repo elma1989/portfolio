@@ -331,5 +331,38 @@ describe('SkillsSectionComponent', () => {
       fixture.detectChanges()
       expect(component.overlay()).toBeTrue();
     });
+
+    it('should have position relative', () => {
+      expect(olBtn()?.classList).toContain('relative');
+    });
   });
+
+  describe('Overlay Flower', () => {
+    const getFlower: () => HTMLImageElement | null =
+      () => element.querySelector('.btn-overlay>.flower');
+
+    it('should have flower-image', () => {
+      expect(getFlower()).toBeTruthy();
+    });
+
+    it('should have full size', () => {
+      expect(getFlower()?.classList).toContain('size-full');
+    });
+
+    it('sould be a circle', () => {
+      expect(getFlower()?.classList).toContain('rounded-full');
+    });
+
+    it('should have positon top-left', () => {
+      const flower = getFlower();
+      expect(flower?.classList).toContain('absolute');
+      expect(flower?.classList).toContain('top-0');
+      expect(flower?.classList).toContain('left-0');
+    });
+
+    it('should have source "flower.png"', () => {
+      expect(getFlower()?.src)
+        .toBe('http://localhost:9876/assets/img/01_hero/flower.png');
+    });
+  })
 });

@@ -1,3 +1,7 @@
 :host {
     height: auto;
 }
+
+.flower {
+    animation: rotate 6000ms linear infinite;
+}
