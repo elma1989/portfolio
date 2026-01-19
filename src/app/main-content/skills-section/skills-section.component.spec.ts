@@ -238,7 +238,7 @@ describe('SkillsSectionComponent', () => {
 
     it('Every skill wrapper should have size 6rem on desktop', () => {
       imgWrapper().forEach(imgW =>
-        expect(imgW.classList).toContain('size-24')
+        expect(imgW.classList).toContain('lg:size-24')
       );
     });
 
@@ -269,6 +269,10 @@ describe('SkillsSectionComponent', () => {
     ];
     const imgs: () => NodeListOf<HTMLImageElement> =
       () => element.querySelectorAll('.skill-wrapper img');
+
+    it('should have 13 images', () => {
+      expect(imgs().length).toBe(13);
+    });
 
     it('should have size 75%', () => {
       imgs().forEach(img => {

@@ -25,6 +25,7 @@
         "overlay-sixth": "Open to relocate"
     },
     "skills": {
-        "title": "Core Competencies"
+        "title": "Core Competencies",
+        "desc": "During my continuing eduction for froentend webdeveloper I have earned the following skills. One backend skill I learned before education."
     }
 }

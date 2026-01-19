@@ -1,9 +1,29 @@
 <div class="content flex">
     <div class="content-area
-    w-full h-full lg:w-9/10 p-4 lg:py-40 lg:pr-0 lg:pl-28
+    w-full h-full lg:w-9/10 p-4 lg:py-8 lg:pr-0 lg:pl-28
     flex flex-col gap-8">
         <h1 class="font-eczar
         text-[1.8rem]/[1.8rem] min-[390px]:text-[2.25rem]/[2.25rem] lg:text-[4.5rem]/[4.5rem]"
         >{{ 'skills.title' | translate }}</h1>
+        <div class="desc bg-blue
+        w-full lg:w-152 p-4 lg:p-8 
+        text-justify hyphens-auto">{{ 'skills.desc' | translate }}</div>
+        <div class="skill-wrapper
+        w-full lg:w-208
+        flex flex-wrap gap-3 lg:gap-8 lg:self-end">
+            @for (skill of skills; track skill.name) {
+                <div class="skill
+                w-20 h-24 lg:w-24 lg:h-32
+                flex flex-col justify-between items-center">
+                    <div class="img-wrapper
+                    size-20 lg:size-24
+                    flex justify-center items-center">
+                        <img src="assets/img/03_skills/{{ skill.img }}.png"
+                        class="size-3/4 lg:hover:size-full">
+                    </div>
+                    <span class="text-center">{{ skill.name }}</span>
+                </div>
+            }
+        </div>
     </div>
 </div>
