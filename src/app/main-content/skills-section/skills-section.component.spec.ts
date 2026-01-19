@@ -391,7 +391,7 @@ describe('SkillsSectionComponent', () => {
       () => element.querySelector('.content-area>skills-overlay');
     
     it('should have overlay', () => {
-      expect(skillsOverlay()).toBeTrue();
+      expect(skillsOverlay()).toBeTruthy();
     });
 
     it('should have class "open" on open overlay only', () => {
@@ -411,7 +411,7 @@ describe('SkillsSectionComponent', () => {
     });
 
     it('should have full width on mobile', () => {
-      expect(skillsOverlay()?.classList).toContain('w-full');
+      expect(skillsOverlay()?.classList).toContain('w-[100%-2rem]');
     });
 
     it('should have width 22.5rem on desktop', () => {
@@ -441,11 +441,11 @@ describe('SkillsSectionComponent', () => {
       const overlay = skillsOverlay();
       expect(overlay?.classList).toContain('flex');
       expect(overlay?.classList).toContain('flex-col');
-      expect(overlay?.classList).toContain('gop-4');
+      expect(overlay?.classList).toContain('gap-4');
     });
 
     it('should have gap 2rem on desktop', () => {
-      expect(skillsOverlay()?.classList).toContain('lg:gop-8');
+      expect(skillsOverlay()?.classList).toContain('lg:gap-8');
     });
   });
 });

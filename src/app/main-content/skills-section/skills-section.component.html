@@ -1,5 +1,5 @@
 <div class="content flex">
-    <div class="content-area
+    <div class="content-area relative
     w-full h-full lg:w-9/10 p-4 lg:py-8 lg:pr-0 lg:pl-28
     flex flex-col gap-8">
         <h1 class="font-eczar
@@ -36,5 +36,10 @@
             <img src="assets/img/03_skills/learn.png" 
             class="learn w-10 h-10 z-1">
         </button>
+        <skills-overlay class="bg-yellow
+        w-[100%-2rem] lg:w-90 p-4 lg:p-8
+        absolute bottom-0 left-4 right-4 lg:left-50 lg:right-auto
+        flex flex-col gap-4 lg:gap-8"
+        [class.open]="overlay()"></skills-overlay>
     </div>
 </div>

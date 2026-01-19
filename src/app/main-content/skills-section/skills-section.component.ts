@@ -3,17 +3,20 @@ import { Skill } from '../../shared/interfaces/skill';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
+import { SkillsOverlayComponent } from './skills-overlay/skills-overlay.component';
 
 @Component({
   selector: 'section[skills]',
   imports: [
     TranslatePipe,
-    CommonModule
+    CommonModule,
+    SkillsOverlayComponent
   ],
   templateUrl: './skills-section.component.html',
   styleUrl: './skills-section.component.css'
 })
 export class SkillsSectionComponent {
+  // #region Attributes
   protected skills: Skill[] = [
     { name: 'HTML', img: 'html' },
     { name: 'CSS', img: 'css' },
@@ -32,6 +35,7 @@ export class SkillsSectionComponent {
   private sec: SectionService = inject(SectionService);
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
   private _overlay: WritableSignal<boolean> = signal<boolean>(false);
+  // #endregion
 
   get overlay(): Signal<boolean> { return this._overlay.asReadonly(); }
 
