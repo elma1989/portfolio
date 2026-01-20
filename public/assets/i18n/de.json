@@ -26,6 +26,7 @@
     },
     "skills": {
         "title": "Kern Kopetenzen",
-        "desc": "Währeend meiner Weiterbildung zum Frontend Webentwickler habe ich die folgenden Technologien gelernt. Eine Backend-Technologie war mir bereits vor der Weiterbildung bekannt."
+        "desc": "Währeend meiner Weiterbildung zum Frontend Webentwickler habe ich die folgenden Technologien gelernt. Eine Backend-Technologie war mir bereits vor der Weiterbildung bekannt.",
+        "overlay-title": "Sie sehen nicht die Technologie, die Sie suchen?"
     }
 }

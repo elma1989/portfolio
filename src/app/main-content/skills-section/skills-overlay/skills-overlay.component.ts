@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, output, OutputEmitterRef, Signal } from '@angular/core';
 import { SectionService } from '../../../shared/services/section.service';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'skills-overlay',
   imports: [
-    CommonModule
+    CommonModule,
+    TranslatePipe
   ],
   templateUrl: './skills-overlay.component.html',
   styleUrl: './skills-overlay.component.css'
