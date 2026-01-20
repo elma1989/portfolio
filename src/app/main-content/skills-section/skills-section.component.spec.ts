@@ -92,6 +92,14 @@ describe('SkillsSectionComponent', () => {
       expect(elem?.classList).toContain('flex-col');
       expect(elem?.classList).toContain('gap-8');
     });
+
+    it('should have position relative', () => {
+      expect(area()?.classList).toContain('relative');
+    });
+
+    it('should have overflow-y hidden', () => {
+      expect(area()?.classList).toContain('overflow-y-hidden');
+    });
   });
 
   describe('H1', () => {
@@ -389,7 +397,7 @@ describe('SkillsSectionComponent', () => {
   describe('Skills Overlay', () => {
     const skillsOverlay: () => HTMLElement | null =
       () => element.querySelector('.content-area>skills-overlay');
-    
+
     it('should have overlay', () => {
       expect(skillsOverlay()).toBeTruthy();
     });
@@ -446,6 +454,27 @@ describe('SkillsSectionComponent', () => {
 
     it('should have gap 2rem on desktop', () => {
       expect(skillsOverlay()?.classList).toContain('lg:gap-8');
+    });
+
+    describe('Mobile', () => {
+      const overlayClose: () => HTMLButtonElement | null =
+      () => element.querySelector('skills-overlay button');
+
+      beforeEach(() => {
+        sec.mobile = true;
+        component.openOverylay();
+        fixture.detectChanges();
+      });
+
+      it('should have close button on overlay', () => {
+        expect(overlayClose()).toBeTruthy();
+      })
+
+      it('should close on click on button in overlay', () => {
+        overlayClose()?.click();
+        fixture.detectChanges();
+        expect(component.overlay()).toBeFalse();
+      });
     });
   });
 });

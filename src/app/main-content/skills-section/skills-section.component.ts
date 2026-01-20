@@ -37,9 +37,8 @@ export class SkillsSectionComponent {
   private _overlay: WritableSignal<boolean> = signal<boolean>(false);
   // #endregion
 
-  get overlay(): Signal<boolean> { return this._overlay.asReadonly(); }
-
   // #region Overlay
+  get overlay(): Signal<boolean> { return this._overlay.asReadonly(); }
   /** Opens overlay anytime. */
   openOverylay(): void {
     this._overlay.set(true)

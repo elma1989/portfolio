@@ -1,1 +1,6 @@
-<p>skills-overlay works!</p>
+@if(mobile()) {
+    <div class="btn-wrapper w-full flex justify-end">
+        <button class="size-8 font-bold"
+        (click)="close()">X</button>
+    </div>
+}
