@@ -104,4 +104,26 @@ describe('SkillsOverlayComponent', () => {
         .toBe('translated: skills.overlay-title');
     });
   });
+
+  describe('Description', () => {
+    const descElem: () => HTMLParagraphElement | null =
+      () => element.querySelector('p');
+
+    it('should have description', () => {
+      expect(descElem()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(descElem()?.classList).toContain('w-full');
+    });
+
+    it('should have justify text', () => {
+      expect(descElem()?.classList).toContain('text-justify');
+    });
+
+    it('should have content "translated: skills.overlay-desc"', () => {
+      expect(descElem()?.textContent)
+        .toBe('translated: skills.overlay-desc');
+    });
+  })
 });
