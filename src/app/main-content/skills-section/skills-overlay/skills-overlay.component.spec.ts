@@ -3,6 +3,7 @@ import { SkillsOverlayComponent } from './skills-overlay.component';
 import { SectionService } from '../../../shared/services/section.service';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../../shared/services/translation.service';
+import { Skill } from '../../../shared/interfaces/skill';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -125,5 +126,53 @@ describe('SkillsOverlayComponent', () => {
       expect(descElem()?.textContent)
         .toBe('translated: skills.overlay-desc');
     });
-  })
+  });
+
+  describe('Footer', () => {
+    const footerElem: () => HTMLElement | null =
+      () => element.querySelector('footer');
+
+    it('should have footer', () => {
+      expect(footerElem()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(footerElem()?.classList).toContain('w-full')
+    });
+
+    it('sould be x-center', () => {
+      const footer = footerElem();
+      expect(footer?.classList).toContain('flex');
+      expect(footer?.classList).toContain('justify-center');
+    });
+
+    it('should have gap 2.5rem', () => {
+      expect(footerElem()?.classList).toContain('gap-10')
+    });
+  });
+
+  describe('Skills', () => {
+    const skills: () => NodeListOf<HTMLDivElement> =
+      () => element.querySelectorAll('footer>.skill');
+    
+    it('should have 2 skills', () => {
+      expect(skills().length).toBe(2);
+    });
+
+    it('should have width 3rem, height 4rem', () => {
+      skills().forEach(skill => {
+        expect(skill.classList).toContain('w-12');
+        expect(skill.classList).toContain('h-16');
+      });
+    });
+
+    it('should have space between column, center-x', () => {
+      skills().forEach(skill => {
+        expect(skill.classList).toContain('flex');
+        expect(skill.classList).toContain('flex-row');
+        expect(skill.classList).toContain('justify-between');
+        expect(skill.classList).toContain('items-center');
+      });
+    });
+  });
 });
