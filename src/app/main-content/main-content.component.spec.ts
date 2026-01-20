@@ -182,10 +182,16 @@ describe('MainContentComponent', () => {
       expect(skills()).toBeTruthy();
     });
 
-    it('should have full viewport size', () => {
-      expect(skills()?.classList.contains('h-dvh') ?? false).toBeTrue();
+    it('should have full width', () => {
       expect(skills()?.classList.contains('w-full') ?? false).toBeTrue();
     });
+
+    it('should have full height on moble, auto height on tablet and full height on desktop', () => {
+      const skillSec = skills();
+      expect(skillSec?.classList).toContain('h-auto');
+      expect(skillSec?.classList).toContain('md:h-dvh');
+      expect(skillSec?.classList).toContain('lg:h-auto');
+    })
 
     it('should padding top 9dvh on mobile', () => {
       expect(skills()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
