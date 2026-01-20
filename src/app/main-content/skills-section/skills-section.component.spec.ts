@@ -433,8 +433,8 @@ describe('SkillsSectionComponent', () => {
       expect(overlay?.classList).toContain('left-4');
     });
 
-    it('should have position left 15rem on desktop', () => {
-      expect(skillsOverlay()?.classList).toContain('lg:left-50');
+    it('should have position left 16rem on desktop', () => {
+      expect(skillsOverlay()?.classList).toContain('lg:left-64');
     });
 
     it('should have padding 1rem on mobile', () => {

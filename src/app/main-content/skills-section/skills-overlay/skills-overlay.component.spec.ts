@@ -169,10 +169,45 @@ describe('SkillsOverlayComponent', () => {
     it('should have space between column, center-x', () => {
       skills().forEach(skill => {
         expect(skill.classList).toContain('flex');
-        expect(skill.classList).toContain('flex-row');
+        expect(skill.classList).toContain('flex-col');
         expect(skill.classList).toContain('justify-between');
         expect(skill.classList).toContain('items-center');
       });
+    });
+  });
+
+  describe('Skills Images and Descriptions', () => {
+    const skills: Skill[] = [
+      {name: 'React', img: 'react'},
+      {name: 'Vue.js', img: 'vue'}
+    ];
+    const imgs: () => NodeListOf<HTMLImageElement> =
+      () => element.querySelectorAll('footer img');
+    const descs: () => NodeListOf<HTMLSpanElement> =
+      () => element.querySelectorAll('footer span');
+
+    it('should have 2 imgs, 2 descs',() => {
+      expect(imgs().length).toBe(2);
+      expect(descs().length).toBe(2);
+    });
+
+    it('Images should have size 2.5rem', () => {
+      imgs().forEach(img => 
+        expect(img.classList).toContain('size-10')
+      );
+    });
+
+    it('Images should have correct sources', () => {
+      imgs().forEach((img, i) =>
+        expect(img.src)
+          .toBe(`http://localhost:9876/assets/img/03_skills/${skills[i].img}.png`)
+      );
+    });
+
+    it('Descriptions should be correct', () => {
+      descs().forEach((desc, i) =>
+        expect(desc.textContent).toBe(skills[i].name)
+      );
     });
   });
 });

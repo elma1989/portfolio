@@ -34,7 +34,7 @@ export class SkillsSectionComponent {
   ];
   private sec: SectionService = inject(SectionService);
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
-  private _overlay: WritableSignal<boolean> = signal<boolean>(true);
+  private _overlay: WritableSignal<boolean> = signal<boolean>(false);
   // #endregion
 
   // #region Overlay
