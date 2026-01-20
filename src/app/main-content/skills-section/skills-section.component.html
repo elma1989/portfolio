@@ -1,4 +1,4 @@
-<div class="content flex">
+<div class="content flex h-full">
     <div class="content-area relative overflow-y-hidden
     w-full h-full lg:w-9/10 p-4 lg:py-8 lg:pr-0 lg:pl-28
     flex flex-col gap-8">
@@ -43,4 +43,9 @@
         [class.open]="overlay()"
         (closed)="closeOverlay()"></skills-overlay>
     </div>
+    @if(!mobile()) {
+        <section-selector class="w-1/10 h-full
+        flex justify-center items-center self-center"
+        [index]="2"></section-selector>
+    }
 </div>

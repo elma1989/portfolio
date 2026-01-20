@@ -4,6 +4,8 @@ import { Skill } from '../../shared/interfaces/skill';
 import { SectionService } from '../../shared/services/section.service';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { By } from '@angular/platform-browser';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -458,7 +460,7 @@ describe('SkillsSectionComponent', () => {
 
     describe('Mobile', () => {
       const overlayClose: () => HTMLButtonElement | null =
-      () => element.querySelector('skills-overlay button');
+        () => element.querySelector('skills-overlay button');
 
       beforeEach(() => {
         sec.mobile = true;
@@ -477,4 +479,47 @@ describe('SkillsSectionComponent', () => {
       });
     });
   });
+
+  describe('Section Selector', () => {
+    const selector: () => HTMLElement | null =
+      () => element.querySelector('section-selector');
+
+    it('should not render on mobile', () => {
+      sec.mobile = true;
+      fixture.detectChanges();
+      expect(selector()).toBeNull();
+    });
+
+    describe('Desktop', () => {
+      beforeEach(() => {
+        sec.mobile = false;
+        fixture.detectChanges();
+      });
+
+      it('should render on Desktop', () => {
+        expect(selector()).toBeTruthy();
+      });
+
+      it('should have full height, 10% width', () => {
+        const sel = selector();
+        expect(sel?.classList).toContain('w-1/10');
+        expect(sel?.classList).toContain('h-full');
+      });
+
+      it('should be x-center, y-center', () => {
+        const sel = selector();
+        expect(sel?.classList).toContain('flex');
+        expect(sel?.classList).toContain('justify-center');
+        expect(sel?.classList).toContain('items-center');
+      })
+
+      it('should have index=2', () => {
+        const selectorCompoent: SectionSelectorComponent =
+          fixture.debugElement
+            .query(By.directive(SectionSelectorComponent))
+            .componentInstance;
+        expect(selectorCompoent.index()).toBe(2);
+      });
+    });
+  })
 });

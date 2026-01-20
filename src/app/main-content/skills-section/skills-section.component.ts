@@ -4,13 +4,15 @@ import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
 import { SkillsOverlayComponent } from './skills-overlay/skills-overlay.component';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
 @Component({
   selector: 'section[skills]',
   imports: [
     TranslatePipe,
     CommonModule,
-    SkillsOverlayComponent
+    SkillsOverlayComponent,
+    SectionSelectorComponent
   ],
   templateUrl: './skills-section.component.html',
   styleUrl: './skills-section.component.css'
@@ -33,7 +35,7 @@ export class SkillsSectionComponent {
     { name: 'Flask', img: 'flask' }
   ];
   private sec: SectionService = inject(SectionService);
-  private mobile: Signal<boolean> = computed(() => this.sec.mobile());
+  protected mobile: Signal<boolean> = computed(() => this.sec.mobile());
   private _overlay: WritableSignal<boolean> = signal<boolean>(false);
   // #endregion
 
