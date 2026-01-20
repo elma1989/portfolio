@@ -31,11 +31,6 @@ export class MainContentComponent {
   protected section: Signal<SectionType> = computed(() => this.sec.section());
   protected SectionType = SectionType;
 
-  @HostListener('window:resize')
-  onResize() {
-    this.sec.mobile = this.sec.isMobile();
-  }
-
   // #region Background-Indicator
   isBackgroundBlue(): boolean {
     return this.section() == SectionType.HERO

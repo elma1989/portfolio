@@ -112,6 +112,11 @@ export class HeaderComponent implements AfterViewInit {
       }
     }
   }
+
+  @HostListener('window:resize')
+  onResize() {
+    this.sec.mobile = this.sec.isMobile();
+  }
   // #endregion
   // #endregion
 }
