@@ -60,7 +60,6 @@ export class MenuOverlayComponent {
   navigate(index: number) {
     if (index < 5) {
       this.sec.section = this.items[index].section;
-      this.router.navigate([], { fragment: this.items[index].navId });
     }
     this.close();
   }
