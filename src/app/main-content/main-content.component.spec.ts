@@ -380,8 +380,8 @@ describe('MainContentComponent', () => {
       expect(header()?.classList.contains('justify-center') ?? false).toBeTrue();
     });
 
-    it('should have Z-index 1', () => {
-      expect(header()?.classList.contains('z-1') ?? false).toBeTrue();
-    })
-  })
+    it('should have Z-index 2', () => {
+      expect(header()?.classList.contains('z-2') ?? false).toBeTrue();
+    });
+  });
 });

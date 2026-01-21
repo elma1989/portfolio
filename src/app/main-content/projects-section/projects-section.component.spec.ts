@@ -75,10 +75,11 @@ describe('ProjectsSectionComponent', () => {
       expect(area()?.classList).toContain('p-4');
     });
 
-    it('should have padding 2 0 2 7 on desktop', () => {
-      expect(area()?.classList).toContain('lg:py-8');
-      expect(area()?.classList).toContain('lg:pl-28');
+    it('should have padding 2 0 7 7 on desktop', () => {
+      expect(area()?.classList).toContain('lg:pt-8');
       expect(area()?.classList).toContain('lg:pr-0');
+      expect(area()?.classList).toContain('lg:pb-28')
+      expect(area()?.classList).toContain('lg:pl-28');
     });
 
     it('should have gap 2rem column', () => {
@@ -104,8 +105,8 @@ describe('ProjectsSectionComponent', () => {
       expect(header()?.classList).toContain('lg:w-3/4');
     });
 
-    it('should have height 7rem', () => {
-      expect(header()?.classList).toContain('h-28');
+    it('should have height 7rem on desktop', () => {
+      expect(header()?.classList).toContain('lg:h-28');
     });
 
     it('should have gap 2rem column', () => {
@@ -164,6 +165,30 @@ describe('ProjectsSectionComponent', () => {
     it('desc should have content "translated: projects.desc"', () => {
       expect(desc()?.textContent)
         .toBe('translated: projects.desc');
+    });
+  });
+
+  describe('Projects Area', () => {
+    const projectsArea: () => HTMLDivElement | null =
+      () => element.querySelector('.content-area>.projects-area');
+
+    it('should have projects-area', () => {
+      expect(projectsArea()).toBeTruthy();
+    });
+
+    it('should have full size', () => {
+      expect(projectsArea()?.classList).toContain('size-full');
+    });
+
+    it('should have gap 2em column', () => {
+      const area = projectsArea();
+      expect(area?.classList).toContain('flex');
+      expect(area?.classList).toContain('flex-col');
+      expect(area?.classList).toContain('gap-8');
+    });
+
+    it('should have direction row on desktop', () => {
+      expect(projectsArea()?.classList).toContain('lg:flex-row');
     });
   })
 });
