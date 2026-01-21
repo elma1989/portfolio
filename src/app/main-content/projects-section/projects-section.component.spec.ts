@@ -1,6 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ProjectsSectionComponent } from './projects-section.component';
+import { Signal, signal } from '@angular/core';
+import { TranslationService } from '../../shared/services/translation.service';
+
+const langSignal = signal<'en' | 'de'>('en');
+
+const translationServiceMock = {
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent;
@@ -9,9 +18,15 @@ describe('ProjectsSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProjectsSectionComponent]
+      imports: [ProjectsSectionComponent],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ProjectsSectionComponent);
     component = fixture.componentInstance;
@@ -70,6 +85,40 @@ describe('ProjectsSectionComponent', () => {
       expect(area()?.classList).toContain('flex');
       expect(area()?.classList).toContain('flex-col');
       expect(area()?.classList).toContain('gap-8');
+    });
+  });
+
+  describe('Header', () => {
+    const header: () => HTMLElement | null =
+      () => element.querySelector('.content-area>header');
+
+    it('should have header', () => {
+      expect(header()).toBeTruthy();
+    });
+
+    it('should have full width on mobile', () => {
+      expect(header()?.classList).toContain('w-full');
+    });
+
+    it('should have 75% width on desktop', () => {
+      expect(header()?.classList).toContain('lg:w-3/4');
+    });
+
+    it('should have height 7rem', () => {
+      expect(header()?.classList).toContain('h-28');
+    });
+
+    it('should have gap 2rem column', () => {
+      const headerE = header();
+      expect(headerE?.classList).toContain('flex');
+      expect(headerE?.classList).toContain('flex-col');
+      expect(headerE?.classList).toContain('gap-8');
+    });
+
+    it('should have direction row, y-center on Mobile', () => {
+      const headerE = header();
+      expect(headerE?.classList).toContain('lg:flex-row');
+      expect(headerE?.classList).toContain('lg:items-center');
     });
   });
 });
