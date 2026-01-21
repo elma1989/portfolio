@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProjectsSectionComponent } from './projects-section.component';
-import { Signal, signal } from '@angular/core';
+import { ElementRef, Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
 
 const langSignal = signal<'en' | 'de'>('en');
@@ -121,4 +121,49 @@ describe('ProjectsSectionComponent', () => {
       expect(headerE?.classList).toContain('lg:items-center');
     });
   });
+
+  describe('Title, Description', () => {
+    const title: () => HTMLElement | null =
+      () => element.querySelector('header>h1');
+    const desc: () => HTMLParagraphElement | null =
+      () => element.querySelector('header>p');
+
+    it('should have title', () => {
+      expect(title()).toBeTruthy();
+    });
+
+    it('title should have font "Eczar"', () => {
+      expect(title()?.classList).toContain('font-eczar');
+    });
+
+    it('title should have size 2.5rem on mobile', () => {
+      expect(title()?.classList).toContain('text-[2.5rem]/[2.5rem]');
+    })
+
+    it('title should have size 4.5rem on deskop', () => {
+      expect(title()?.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
+    });
+
+    it('title should have content "translated: projects.title"', () => {
+      expect(title()?.textContent)
+        .toBe('translated: projects.title');
+    });
+
+    it('should have Description', () => {
+      expect(desc()).toBeTruthy();
+    });
+
+    it('desc should grow on desktop', () => {
+      expect(desc()?.classList).toContain('lg:flex-1');
+    });
+
+    it('desc should have x-padding 2rem on desktop', () => {
+      expect(desc()?.classList).toContain('lg:px-8');
+    });
+
+    it('desc should have content "translated: projects.desc"', () => {
+      expect(desc()?.textContent)
+        .toBe('translated: projects.desc');
+    });
+  })
 });

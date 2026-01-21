@@ -29,5 +29,9 @@
         "desc": "Währeend meiner Weiterbildung zum Frontend Webentwickler habe ich die folgenden Technologien gelernt. Eine Backend-Technologie war mir bereits vor der Weiterbildung bekannt.",
         "overlay-title": "Sie sehen nicht die Technologie, die Sie suchen?",
         "overlay-desc": "Kontaktieren Sie mich ruhig. Ich erweitere gerne mein bisheriges Wissen. Ich habe ein spezielles Interesse dies Technologien zu lernen:"
+    },
+    "projects": {
+        "title": "Meine Arbeit",
+        "desc": "Erkunden Sie Auswahl von meiner Arbeit hier - Interagieren Sie mit den projekten, um meine Fähigkeiten in Aktion zu sehen."
     }
 }

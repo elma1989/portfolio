@@ -29,5 +29,9 @@
         "desc": "During my continuing eduction for froentend webdeveloper I have earned the following skills. One backend skill I learned before education.",
         "overlay-title": "Don't see the skill are you looking for?",
         "overlay-desc": "Feel free to contact me. I look forward to expanding my previous knowladge. Also I have special interest in learning:"
+    },
+    "projects": {
+        "title": "My work",
+        "desc": "Explore a selection of my work here - Interact with the projects to see my skills in action."
     }
 }
