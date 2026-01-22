@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 type Project = {
@@ -21,8 +21,8 @@ type Project = {
   styleUrl: './projects-section.component.css'
 })
 export class ProjectsSectionComponent {
-  protected currentProject: WritableSignal<number> = signal(0);
-  protected projects: Project[] = [
+  private _index: WritableSignal<number> = signal(0);
+  private _projects: Project[] = [
     {
       name: 'Join',
       icon: 'check',
@@ -43,4 +43,7 @@ export class ProjectsSectionComponent {
       url: 'https://marco-elste.developerakademie.net/el-pollo-loco/'
     }
   ]
+
+  get projects(): Project[] { return this._projects; };
+  get index(): Signal<number> { return this._index.asReadonly() };
 }

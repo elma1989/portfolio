@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, HostListener, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, effect, HostListener, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
@@ -16,31 +16,45 @@ import { MenuOverlayComponent } from '../menu-overlay/menu-overlay.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
   // #region Attributes
   private readonly ts: TranslationService = inject(TranslationService);
   private readonly sec: SectionService = inject(SectionService);
-  protected lang: Signal<'en'|'de'> = computed(() => this.ts.lang());
+  protected lang: Signal<'en' | 'de'> = computed(() => this.ts.lang());
   private section: Signal<SectionType> = computed(() => this.sec.section());
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
+  private prevMobile: WritableSignal<boolean> = signal<boolean>(false);
+  private needsToCalc: WritableSignal<boolean> = signal<boolean>(false);
   menu: WritableSignal<boolean> = signal<boolean>(false);
-  private secPos: {id: string, top: number, bottom: number}[] =[];
+  private secPos: { id: string, top: number, bottom: number }[] = [];
   // #endregion
 
-  // #region Methods
-  ngAfterViewInit(): void {
-    if(!this.isTestMode()) {
-      this.calcSecPos();
-    }
-  }
+  // FIXME: Error message in breackpoint.
+  constructor() {
+    effect(() => {
+      const isMobile = this.mobile();
+      const wasMobile = this.prevMobile();
 
+      if (!this.isTestMode() && isMobile && !wasMobile) this.needsToCalc.set(true);
+      this.prevMobile.set(isMobile);
+    });
+
+    afterNextRender(() => {
+      if (!this.needsToCalc()) return;
+
+      this.calcSecPos();
+      this.needsToCalc.set(false);
+    });
+  };
+
+  // #region Methods
   // #region Indicators
   /**
    * Checks, if social media is in on header.
    * @returns True if social media is on header.
    */
   hasSocialMedia() {
-    if(this.mobile()) return false;
+    if (this.mobile()) return false;
     return this.section() == SectionType.HERO;
   }
 
@@ -62,13 +76,13 @@ export class HeaderComponent implements AfterViewInit {
   // #endregion
 
   /** Switches the language. */
-  switchLang():void {
-    const lang: 'en'|'de' = this.lang() == 'en' ? 'de' : 'en';
+  switchLang(): void {
+    const lang: 'en' | 'de' = this.lang() == 'en' ? 'de' : 'en';
     this.ts.lang = lang
   }
 
   /** Opens the menu. */
-  openMenu():void {
+  openMenu(): void {
     this.menu.set(true);
   }
 
@@ -91,13 +105,13 @@ export class HeaderComponent implements AfterViewInit {
   private calcSecPos() {
     const secIds = ['hero', 'about', 'skills', 'projects', 'references', 'contact'];
 
-    if(this.mobile()) {
+    if (this.mobile()) {
       this.secPos = secIds.map(id => {
         const elem: HTMLElement = this.getElemnt(id);
         const rect = elem.getBoundingClientRect();
         const top = rect.top + window.scrollY;
         const bottom = rect.top + rect.height;
-        return {id, top, bottom}
+        return { id, top, bottom };
       });
     }
   }
@@ -116,6 +130,8 @@ export class HeaderComponent implements AfterViewInit {
   @HostListener('window:resize')
   onResize() {
     this.sec.mobile = this.sec.isMobile();
+    if (this.mobile()) this.calcSecPos();
+    console.log('Modus: ', this.mobile() ? 'Mobile' : 'Desktop');
   }
   // #endregion
   // #endregion
