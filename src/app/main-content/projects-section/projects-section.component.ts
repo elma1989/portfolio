@@ -7,6 +7,7 @@ type Project = {
   background: string,
   flower: string,
   screenschot: string,
+  langKey: string,
   skills: string[],
   github: string,
   url: string
@@ -29,6 +30,7 @@ export class ProjectsSectionComponent {
       background: 'yellow',
       flower: 'orange',
       screenschot: 'join',
+      langKey: 'join',
       skills: ['HTML', 'CSS', 'TypeScript', 'Angular', 'Firebase'],
       github: 'https://github.com/elma1989/join',
       url: 'https://marco-elste.developerakademie.net/angular-projects/join/'
@@ -38,6 +40,7 @@ export class ProjectsSectionComponent {
       background: 'orange',
       flower: 'yellow',
       screenschot: 'el-pollo-loco',
+      langKey: 'loco',
       skills: ['HTML', 'CSS', 'JavaScript'],
       github: 'https://github.com/elma1989/join',
       url: 'https://marco-elste.developerakademie.net/el-pollo-loco/'

@@ -252,4 +252,31 @@ describe('ProjectsSectionComponent', () => {
       expect(fl?.classList).toContain('left-0');
     });
   });
+
+  describe('Screenshot', () => {
+    const screenshot: () => HTMLImageElement | null =
+      () => element.querySelector('.preview>.screenshot');
+
+    it('should have screenshot', () => {
+      expect(screenshot()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(screenshot()?.classList).toContain('w-full');
+    });
+
+    it('should have aspect ratio 4/3', () => {
+      expect(screenshot()?.classList).toContain('aspect-4/3');
+    });
+
+    it('should have cover and positon center', () => {
+      const screen = screenshot();
+      expect(screen?.classList).toContain('object-cover');
+      expect(screen?.classList).toContain('object-center');
+    });
+
+    it('should have z-index 1', () => {
+      expect(screenshot()?.classList).toContain('z-1');
+    });
+  })
 });
