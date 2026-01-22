@@ -228,4 +228,28 @@ describe('ProjectsSectionComponent', () => {
       expect(preview()?.classList).toContain('lg:px-8');
     });
   });
+
+  describe('Flower', () => {
+    const flower: () => HTMLImageElement | null =
+      () => element.querySelector('.preview>.flower');
+    
+    it('should have a flower', () => {
+      expect(flower()).toBeTruthy();
+    });
+
+    it('should have size 8rem on mobile', ()  => {
+      expect(flower()?.classList).toContain('size-32');
+    });
+
+    it('should have size 12rem on desktop', () => {
+      expect(flower()?.classList).toContain('lg:size-36');
+    });
+
+    it('should have postion bottom left', () => {
+      const fl = flower();
+      expect(fl?.classList).toContain('absolute');
+      expect(fl?.classList).toContain('bottom-0');
+      expect(fl?.classList).toContain('left-0');
+    });
+  });
 });

@@ -12,8 +12,12 @@
         <div class="projects-area size-full
         flex flex-col lg:flex-row gap-8">
             <div class="preview aspect-square bg-{{ projects[index()].background }}
-            w-full lg:w-auto lg:h-full px-4 lg:px-8
-            flex justify-center items-center"></div>
+            w-full lg:w-auto lg:h-full px-4 lg:px-8 relative
+            flex justify-center items-center">
+                <img src="assets/img/04_projects/flower-{{ projects[index()].flower }}.png" 
+                class="flower size-32 lg:size-36
+                absolute bottom-0 left-0">
+            </div>
         </div>
     </div>
 </div>
