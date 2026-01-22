@@ -37,7 +37,7 @@ export class ProjectsSectionComponent {
       icon: 'ckicken',
       background: 'orange',
       flower: 'yellow',
-      screenschot: 'join',
+      screenschot: 'el-pollo-loco',
       skills: ['HTML', 'CSS', 'JavaScript'],
       github: 'https://github.com/elma1989/join',
       url: 'https://marco-elste.developerakademie.net/el-pollo-loco/'
