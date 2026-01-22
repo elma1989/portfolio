@@ -234,10 +234,13 @@ describe('MainContentComponent', () => {
       expect(projects()).toBeTruthy();
     });
 
-    it('should have full viewport size', () => {
-      expect(projects()?.classList.contains('h-dvh') ?? false).toBeTrue();
-      expect(projects()?.classList.contains('w-full') ?? false).toBeTrue();
+    it('should have full width', () => {
+      expect(projects()?.classList).toContain('w-full');
     });
+
+    it('should have viewport height on desktop', () => {
+      expect(projects()?.classList).toContain('lg:h-dvh');
+    })
 
     it('should padding top 9dvh on mobile', () => {
       expect(projects()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();

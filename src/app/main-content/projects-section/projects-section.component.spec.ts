@@ -190,5 +190,42 @@ describe('ProjectsSectionComponent', () => {
     it('should have direction row on desktop', () => {
       expect(projectsArea()?.classList).toContain('lg:flex-row');
     });
-  })
+  });
+
+  describe('Preview', () => {
+    const preview: () => HTMLDivElement | null =
+      () => element.querySelector('.projects-area>.preview');
+
+    it('should have preview', () => {
+      expect(preview()).toBeTruthy();
+    });
+
+    it('should have full width on mobile', () => {
+      expect(preview()?.classList).toContain('w-full');
+    })
+
+    it('should have full height on desktop', () => {
+      expect(preview()?.classList).toContain('lg:h-full');
+      expect(preview()?.classList).toContain('lg:w-auto');
+    });
+
+    it('should be square', () => {
+      expect(preview()?.classList).toContain('aspect-square');
+    });
+
+    it('should have center content', () => {
+      const prev = preview();
+      expect(prev?.classList).toContain('flex');
+      expect(prev?.classList).toContain('justify-center');
+      expect(prev?.classList).toContain('items-center');
+    });
+
+    it('should have x-padding 1rem on mobile', () => {
+      expect(preview()?.classList).toContain('px-4');
+    });
+
+    it('should have x-padding 2rem on desktop', () => {
+      expect(preview()?.classList).toContain('lg:px-8');
+    });
+  });
 });
