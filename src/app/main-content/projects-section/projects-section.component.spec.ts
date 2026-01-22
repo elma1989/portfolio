@@ -278,5 +278,28 @@ describe('ProjectsSectionComponent', () => {
     it('should have z-index 1', () => {
       expect(screenshot()?.classList).toContain('z-1');
     });
-  })
+  });
+
+  describe('Details area', () => {
+    const details: () => HTMLDivElement | null =
+      () => element.querySelector('.projects-area>.details-area');
+
+    it('should have details-area', () => {
+      expect(details()).toBeTruthy();
+    });
+
+    it('should have full size', () => {
+      expect(details()?.classList).toContain('size-full');
+    });
+
+    it('should have padding top 2rem on desktop', () => {
+      expect(details()?.classList).toContain('lg:pt-8');
+    });
+
+    it('should have direciton column', () => {
+      const detail = details();
+      expect(detail?.classList).toContain('flex');
+      expect(detail?.classList).toContain('flex-col');
+    });
+  });
 });
