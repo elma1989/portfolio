@@ -302,4 +302,41 @@ describe('ProjectsSectionComponent', () => {
       expect(detail?.classList).toContain('flex-col');
     });
   });
+
+  describe('Board', () => {
+    const board: () => HTMLDivElement | null =
+      () => element.querySelector('.details-area>.board');
+
+    it('should have boar', () => {
+      expect(board()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(board()?.classList).toContain('w-full');
+    });
+
+    it('should grow', () => {
+      expect(board()?.classList).toContain('flex-1');
+    });
+
+    it('should have black background', () => {
+      expect(board()?.classList).toContain('bg-cblack');
+    });
+
+    it('should have padding 1rem on mobile', () => {
+      expect(board()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desktop', () => {
+      expect(board()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have gap 2 rem column y-center', () => {
+      const b = board();
+      expect(b?.classList).toContain('flex');
+      expect(b?.classList).toContain('flex-col');
+      expect(b?.classList).toContain('justify-center');
+      expect(b?.classList).toContain('gap-8');
+    });
+  });
 });
