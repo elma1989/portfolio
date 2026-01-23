@@ -1,5 +1,6 @@
 import { Component, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { CommonModule } from '@angular/common';
 
 type Project = {
   name: string,
@@ -16,7 +17,8 @@ type Project = {
 @Component({
   selector: 'section[projects]',
   imports: [
-    TranslatePipe
+    TranslatePipe,
+    CommonModule
   ],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css'

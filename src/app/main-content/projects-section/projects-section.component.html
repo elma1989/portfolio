@@ -33,6 +33,12 @@
                         <img src="assets/img/04_projects/{{ projects[index()].icon }}.png"
                         class="size-8">
                     </header>
+                    <p class="tx-blue">
+                        @for(skill of projects[index()].skills; track skill; let i = $index) {
+                            {{ skill + (i < projects[index()].skills.length - 1 ? ' | ' : '') }}
+                        }
+                    </p>
+                    <p>{{ `${projects[index()].langKey}-desc` }}</p>
                 </div>
             </div>
         </div>

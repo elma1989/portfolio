@@ -387,4 +387,17 @@ describe('ProjectsSectionComponent', () => {
       expect(icon()?.classList).toContain('size-8');
     });
   });
+
+  describe('Paragraphs', ()  => {
+    const paragraphs: () => NodeListOf<HTMLParagraphElement> = 
+      () => element.querySelectorAll('.board>p');
+
+    it('should have 2 paragraphs', () => {
+      expect(paragraphs().length).toBe(2);
+    });
+
+    it('first paragraph should be bloe', () => {
+      expect(paragraphs()[0]?.classList).toContain('tx-blue');
+    });
+  });
 });
