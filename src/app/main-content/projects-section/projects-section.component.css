@@ -1,3 +1,16 @@
 .flower {
     animation: rotate 6000ms linear infinite;
 }
+
+.board img {
+    animation: jump 1000ms linear infinite;
+}
+
+@keyframes jump {
+    50% {
+        transform: translateY(-0.5rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

@@ -323,6 +323,10 @@ describe('ProjectsSectionComponent', () => {
       expect(board()?.classList).toContain('bg-cblack');
     });
 
+    it('should have white text', () => {
+      expect(board()?.classList).toContain('tx-white');
+    });
+
     it('should have padding 1rem on mobile', () => {
       expect(board()?.classList).toContain('p-4');
     });
@@ -337,6 +341,50 @@ describe('ProjectsSectionComponent', () => {
       expect(b?.classList).toContain('flex-col');
       expect(b?.classList).toContain('justify-center');
       expect(b?.classList).toContain('gap-8');
+    });
+  });
+
+  describe('Board-Header', () => {
+    const boardHeader: () => HTMLElement | null =
+      () => element.querySelector('.board>header');
+    const title: () => HTMLElement | null =
+      () => element.querySelector('.board h2');
+    const icon: () => HTMLImageElement | null =
+      () => element.querySelector('.board img');
+
+    it('should have header', () => {
+      expect(boardHeader()).toBeTruthy();
+    });
+
+    it('should have full width, height 2.5rem', () => {
+      const header = boardHeader();
+      expect(header?.classList).toContain('w-full');
+      expect(header?.classList).toContain('h-10');
+    });
+
+    it('should have x-space-between, y-bottom', () => {
+      const header = boardHeader();
+      expect(header?.classList).toContain('flex');
+      expect(header?.classList).toContain('justify-between');
+      expect(header?.classList).toContain('items-end');
+    });
+
+    it('should have title', () => {
+      expect(title()).toBeTruthy();
+    });
+
+    it('title should have font 2rem bold', () => {
+      const h2 = title();
+      expect(h2?.classList).toContain('text-[2rem]/[2rem]');
+      expect(h2?.classList).toContain('font-bold');
+    });
+
+    it('should have project-icon', () => {
+      expect(icon()).toBeTruthy();
+    });
+
+    it('icon should have size 2rem', () => {
+      expect(icon()?.classList).toContain('size-8');
     });
   });
 });
