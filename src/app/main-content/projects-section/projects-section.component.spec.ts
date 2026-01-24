@@ -396,7 +396,7 @@ describe('ProjectsSectionComponent', () => {
       expect(paragraphs().length).toBe(2);
     });
 
-    it('first paragraph should be bloe', () => {
+    it('first paragraph should be blue', () => {
       expect(paragraphs()[0]?.classList).toContain('tx-blue');
     });
   });
@@ -496,6 +496,37 @@ describe('ProjectsSectionComponent', () => {
       const nav = navEl();
       expect(nav?.classList).toContain('flex');
       expect(nav?.classList).toContain('justify-between');
+    });
+  });
+
+  describe('Nav-Buttons', () => {
+    const navBtns: () => NodeListOf<HTMLButtonElement> =
+      () => element.querySelectorAll('nav>button');
+
+    it('should have 2 buttons', () => {
+      expect(navBtns().length).toBe(2);
+    });
+
+    it('should be inline block', () => {
+      navBtns().forEach(btn => 
+        expect(btn.classList).toContain('inline-block')
+      );
+    });
+
+    it('should have font bold', () => {
+      navBtns().forEach(btn => 
+        expect(btn.classList).toContain('font-bold')
+      );
+    });
+
+    it('should have content "<< translated: projects.prev" on first button', () => {
+      expect(navBtns()[0]?.textContent)
+        .toBe('<< translated: projects.prev');
+    });
+
+    it('should have content "translated: projects.next >>" on second button"', () => {
+      expect(navBtns()[1]?.textContent)
+        .toBe('translated: projects.next >>');
     });
   });
 });

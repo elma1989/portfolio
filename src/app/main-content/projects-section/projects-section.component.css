@@ -6,6 +6,10 @@
     animation: jump 1000ms linear infinite;
 }
 
+nav>button:hover, nav>button:active {
+    color: var(--orange);
+}
+
 @keyframes jump {
     50% {
         transform: translateY(-0.5rem);

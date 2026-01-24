@@ -38,7 +38,7 @@ export class ProjectsSectionComponent {
       url: 'angular-projects/join/'
     }, {
       name: 'El Pollo Loco',
-      icon: 'ckicken',
+      icon: 'chicken',
       background: 'orange',
       flower: 'yellow',
       screenschot: 'el-pollo-loco',
@@ -51,4 +51,20 @@ export class ProjectsSectionComponent {
 
   get projects(): Project[] { return this._projects; };
   get index(): Signal<number> { return this._index.asReadonly() };
+
+  // #region Navigation
+  /** Shows previous project. */
+  prev() {
+    let i = this.index();
+    i = i - 1 >= 0 ? i - 1 : this.projects.length - 1;
+    this._index.set(i);
+  }
+
+  /** Shows next project. */
+  next() {
+    let i = this.index();
+    i = i + i < this.projects.length - 1 ? i + 1 : 0;
+    this._index.set(i);
+  }
+  // #endregion
 }
