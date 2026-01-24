@@ -400,4 +400,29 @@ describe('ProjectsSectionComponent', () => {
       expect(paragraphs()[0]?.classList).toContain('tx-blue');
     });
   });
+
+  describe('footer', () => {
+    const footer: () => HTMLElement | null =
+      () => element.querySelector('.board>footer');
+
+    it('should have footer', () => {
+      expect(footer());
+    });
+
+    it('should have full width', () => {
+      expect(footer()?.classList).toContain('w-full');
+    });
+
+    it('should hava x space between on mobile' , () => {
+      const foot = footer();
+      expect(foot?.classList).toContain('flex');
+      expect(foot?.classList).toContain('justify-between');
+    });
+
+    it('should have align left, gap 2rem on desktop', () => {
+      const foot = footer();
+      expect(foot?.classList).toContain('lg:justify-start');
+      expect(foot?.classList).toContain('lg:gap-8');
+    });
+  });
 });
