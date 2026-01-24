@@ -475,4 +475,27 @@ describe('ProjectsSectionComponent', () => {
       expect(links()[1]?.href).toContain('https://marco-elste.developerakademie.net/');
     });
   });
+
+  describe('Nav', () => {
+    const navEl: () => HTMLElement | null =
+      () => element.querySelector('.details-area>nav');
+
+    it('should have nav', () => {
+      expect(navEl()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(navEl()?.classList).toContain('w-full');
+    });
+
+    it('should have y padding 2rem', () => {
+      expect(navEl()?.classList).toContain('py-8');
+    });
+
+    it('should have x space between', () => {
+      const nav = navEl();
+      expect(nav?.classList).toContain('flex');
+      expect(nav?.classList).toContain('justify-between');
+    });
+  });
 });
