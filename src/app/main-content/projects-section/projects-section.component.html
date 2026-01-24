@@ -40,8 +40,14 @@
                     </p>
                     <p>{{ `${projects[index()].langKey}-desc` }}</p>
                     <footer class="w-full
-                    flex justify-between lg:justify-start lg:gap-8"
-                    ></footer>
+                    flex flex-col gap-4 
+                    min-[390px]:flex-row min-[390px]:justify-between 
+                    lg:justify-start lg:gap-8">
+                        <a href="https://github.com/elma1989/{{ projects[index()].github }}" target="_blank" 
+                        class="block btn-default">GitHub ➜</a>
+                        <a href="https://marco-elste.developerakademie.net/{{ projects[index()].url }}" target="_blank" 
+                        class="block btn-default">Live Test ➜</a>
+                    </footer>
                 </div>
             </div>
         </div>

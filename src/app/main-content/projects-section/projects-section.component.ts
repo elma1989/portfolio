@@ -34,8 +34,8 @@ export class ProjectsSectionComponent {
       screenschot: 'join',
       langKey: 'join',
       skills: ['HTML', 'CSS', 'TypeScript', 'Angular', 'Firebase'],
-      github: 'https://github.com/elma1989/join',
-      url: 'https://marco-elste.developerakademie.net/angular-projects/join/'
+      github: 'join',
+      url: 'angular-projects/join/'
     }, {
       name: 'El Pollo Loco',
       icon: 'ckicken',
@@ -44,8 +44,8 @@ export class ProjectsSectionComponent {
       screenschot: 'el-pollo-loco',
       langKey: 'loco',
       skills: ['HTML', 'CSS', 'JavaScript'],
-      github: 'https://github.com/elma1989/join',
-      url: 'https://marco-elste.developerakademie.net/el-pollo-loco/'
+      github: 'el-pollo-loco',
+      url: 'el-pollo-loco/'
     }
   ]
 

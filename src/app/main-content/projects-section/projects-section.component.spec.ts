@@ -406,23 +406,73 @@ describe('ProjectsSectionComponent', () => {
       () => element.querySelector('.board>footer');
 
     it('should have footer', () => {
-      expect(footer());
+      expect(footer()).toBeTruthy();
     });
 
     it('should have full width', () => {
       expect(footer()?.classList).toContain('w-full');
     });
 
-    it('should hava x space between on mobile' , () => {
+    it('should have direction column, gap 1rem on xs-mobile', () => {
       const foot = footer();
       expect(foot?.classList).toContain('flex');
-      expect(foot?.classList).toContain('justify-between');
+      expect(foot?.classList).toContain('flex-col');      
+      expect(foot?.classList).toContain('gap-4');      
+    });
+
+    it('should hava x space between on mobile' , () => {
+      const foot = footer();
+      expect(foot?.classList).toContain('min-[390px]:flex-row');
+      expect(foot?.classList).toContain('min-[390px]:justify-between');
     });
 
     it('should have align left, gap 2rem on desktop', () => {
       const foot = footer();
       expect(foot?.classList).toContain('lg:justify-start');
       expect(foot?.classList).toContain('lg:gap-8');
+    });
+  });
+
+  describe('links in footer', () => {
+    const links: () => NodeListOf<HTMLAnchorElement> =
+      () => element.querySelectorAll('.board>footer>a');
+
+    it('should have 2 anchors', () => {
+      expect(links().length).toBe(2);
+    });
+
+    it('should be a block', () => {
+      links().forEach(link =>
+        expect(link.classList).toContain('block')
+      );
+    });
+
+    it('should default button be in use', () => {
+      links().forEach(link =>
+        expect(link.classList).toContain('btn-default')
+      );
+    });
+
+    it('should have target blank', () => {
+      links().forEach(link =>
+        expect(link.target).toBe('_blank')
+      );
+    });
+
+    it('frist link should have content "GitHub ➜"', () => {
+      expect(links()[0]?.textContent).toBe('GitHub ➜');
+    });
+
+    it('first link goes to github', () => {
+      expect(links()[0]?.href).toContain('https://github.com/elma1989/');
+    });
+
+    it('second link should have context "Live Test ➜"', () => {
+      expect(links()[1]?.textContent).toBe('Live Test ➜');
+    });
+
+    it('second link goes to webserver', () => {
+      expect(links()[1]?.href).toContain('https://marco-elste.developerakademie.net/');
     });
   });
 });
