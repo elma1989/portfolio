@@ -32,6 +32,12 @@
     },
     "projects": {
         "title": "My work",
-        "desc": "Explore a selection of my work here - Interact with the projects to see my skills in action."
+        "desc": "Explore a selection of my work here - Interact with the projects to see my skills in action.",
+        "join-desc": "Task manager inpired by the Konbon System. Create and organize tasks using drag and drop functions, assign users and categories.",
+        "join-impl": "My first huge project working in a team.",
+        "loco-desc": "A simple Jump-and-Run game based on object-oriented approach. Help Pepe to hunt lots of chicken for his restauant. Fight against a boss at the end of level.",
+        "loco-impl": "My first game based on JavaScript.",
+        "prev": "Previous project",
+        "next": "Next project"
     }
 }

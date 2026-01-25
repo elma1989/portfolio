@@ -604,8 +604,8 @@ describe('ProjectsSectionComponent', () => {
       expect(overlay()?.classList).toContain('bottom-[calc(100%+0.5rem)]');
     });
 
-    it('should have position 90% bottom on desktop', () => {
-      expect(overlay()?.classList).toContain('lg:bottom-9/10');
+    it('should have position 1rem below top of box on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:bottom-[calc(100%-1rem)]');
     });
 
     it('should have gap 1rem column', () => {

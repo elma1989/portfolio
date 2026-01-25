@@ -31,7 +31,7 @@
                         <h2 class="font-bold text-[2rem]/[2rem]"
                         >{{ projects[index()].name }}</h2>
                         <img src="assets/img/04_projects/{{ projects[index()].icon }}.png"
-                        class="size-8 pointer"
+                        class="size-8 cursor-pointer lg:cursor-auto"
                         (pointerdown)="openOnClick()"
                         (pointerenter)="openOnEnter()"
                         (pointerleave)="closeOnLeave()">
@@ -54,7 +54,7 @@
                     <div class="overlay bg-blue rounded-sm
                     p-4 lg:p-8 lg:w-4/5
                     absolute left-4 right-0 bottom-[calc(100%+0.5rem)]
-                    lg:right-8 lg:bottom-9/10 lg:left-auto
+                    lg:right-8 lg:bottom-[calc(100%-1rem)] lg:left-auto
                     flex flex-col gap-4"
                     [class.open]="overlay()">
                         @if(mobile()) {
@@ -64,7 +64,7 @@
                             </header>
                         }
                         <p class="h-16 lg:h-8 hyphens-auto"
-                        >{{ `projects.${projects[index()].langKey}-implementation` | translate }}</p>
+                        >{{ `projects.${projects[index()].langKey}-impl` | translate }}</p>
                     </div>
                 </div>
                 <nav class="w-full py-8

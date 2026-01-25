@@ -32,6 +32,12 @@
     },
     "projects": {
         "title": "Meine Arbeit",
-        "desc": "Erkunden Sie Auswahl von meiner Arbeit hier - Interagieren Sie mit den projekten, um meine Fähigkeiten in Aktion zu sehen."
+        "desc": "Erkunden Sie Auswahl von meiner Arbeit hier - Interagieren Sie mit den projekten, um meine Fähigkeiten in Aktion zu sehen.",
+        "join-desc": "Ein Aufgabenplaner anglehnt an das Kanban System. Erstellen und organisieren Sie Aufgaben,  Verwenden Sie ziehen und loslassen, um Benutzer und Kategorien zuzuweisen.",
+        "join-impl": "Mein erstes großes Projekt in Team-Arbeit.",
+        "loco-desc": "Ein einfaches Jump-'n'-Run-Spiel, das auf objektorientierter Programmierung basiert. Helfen Sie Pepe, Hühner für sein Restaurant zu jagen. Kämpfen Sie gegen den Endgegner am Ende des Levels.",
+        "loco-impl": "Mein erstes JavaScript-Spiel.",
+        "prev": "Vorheriges Projekt",
+        "next": "Nächstes Projekt"
     }
 }
