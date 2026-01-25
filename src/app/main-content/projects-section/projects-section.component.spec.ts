@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProjectsSectionComponent } from './projects-section.component';
 import { ElementRef, Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
+import { SectionService } from '../../shared/services/section.service';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -15,6 +16,7 @@ describe('ProjectsSectionComponent', () => {
   let component: ProjectsSectionComponent;
   let fixture: ComponentFixture<ProjectsSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,6 +33,7 @@ describe('ProjectsSectionComponent', () => {
     fixture = TestBed.createComponent(ProjectsSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -236,12 +239,12 @@ describe('ProjectsSectionComponent', () => {
   describe('Flower', () => {
     const flower: () => HTMLImageElement | null =
       () => element.querySelector('.preview>.flower');
-    
+
     it('should have a flower', () => {
       expect(flower()).toBeTruthy();
     });
 
-    it('should have size 8rem on mobile', ()  => {
+    it('should have size 8rem on mobile', () => {
       expect(flower()?.classList).toContain('size-32');
     });
 
@@ -404,8 +407,8 @@ describe('ProjectsSectionComponent', () => {
     });
   });
 
-  describe('Paragraphs', ()  => {
-    const paragraphs: () => NodeListOf<HTMLParagraphElement> = 
+  describe('Paragraphs', () => {
+    const paragraphs: () => NodeListOf<HTMLParagraphElement> =
       () => element.querySelectorAll('.board>p');
 
     it('should have 2 paragraphs', () => {
@@ -432,11 +435,11 @@ describe('ProjectsSectionComponent', () => {
     it('should have direction column, gap 1rem on xs-mobile', () => {
       const foot = footer();
       expect(foot?.classList).toContain('flex');
-      expect(foot?.classList).toContain('flex-col');      
-      expect(foot?.classList).toContain('gap-4');      
+      expect(foot?.classList).toContain('flex-col');
+      expect(foot?.classList).toContain('gap-4');
     });
 
-    it('should hava x space between on mobile' , () => {
+    it('should hava x space between on mobile', () => {
       const foot = footer();
       expect(foot?.classList).toContain('min-[390px]:flex-row');
       expect(foot?.classList).toContain('min-[390px]:justify-between');
@@ -524,13 +527,13 @@ describe('ProjectsSectionComponent', () => {
     });
 
     it('should be inline block', () => {
-      navBtns().forEach(btn => 
+      navBtns().forEach(btn =>
         expect(btn.classList).toContain('inline-block')
       );
     });
 
     it('should have font bold', () => {
-      navBtns().forEach(btn => 
+      navBtns().forEach(btn =>
         expect(btn.classList).toContain('font-bold')
       );
     });
@@ -547,7 +550,7 @@ describe('ProjectsSectionComponent', () => {
   });
 
   describe('Overlay', () => {
-    const overlay: () => HTMLDivElement | null = 
+    const overlay: () => HTMLDivElement | null =
       () => element.querySelector('.board>.overlay');
 
     it('should have overlay', () => {
@@ -587,7 +590,7 @@ describe('ProjectsSectionComponent', () => {
     });
 
     it('should have position align right 1rem from left on mobile', () => {
-      const ol= overlay();
+      const ol = overlay();
       expect(ol?.classList).toContain('absolute');
       expect(ol?.classList).toContain('left-4');
       expect(ol?.classList).toContain('right-0');
@@ -606,10 +609,64 @@ describe('ProjectsSectionComponent', () => {
     });
 
     it('should have gap 1rem column', () => {
-      const ol= overlay();
+      const ol = overlay();
       expect(ol?.classList).toContain('flex');
       expect(ol?.classList).toContain('flex-col');
       expect(ol?.classList).toContain('gap-4');
+    });
+  });
+
+  describe('Overlay Header', () => {
+    const headerEl: () => HTMLElement | null =
+      () => element.querySelector('.overlay>header');
+
+    beforeEach(() => {
+      component.overlay.set(true);
+      fixture.detectChanges();
+    });
+
+    it('should not have header on desktop', () => {
+      sec.mobile = false;
+      fixture.detectChanges();
+      expect(headerEl()).toBeNull();
+    });
+
+    describe('Mobile', () => {
+      beforeEach(() => {
+        sec.mobile = true;
+        fixture.detectChanges();
+      });
+
+      const closeBtn: () => HTMLButtonElement | null =
+        () => headerEl()?.querySelector('button') ?? null;
+
+      it('should have header on mobile', () => {
+        expect(headerEl()).toBeTruthy();
+      });
+
+      it('should have full width', () => {
+        expect(headerEl()?.classList).toContain('w-full');
+      });
+
+      it('should have align right', () => {
+        const header = headerEl();
+        expect(header?.classList).toContain('flex');
+        expect(header?.classList).toContain('justify-center');
+      });
+
+      it('should button have size 2rem', () => {
+        expect(closeBtn()?.classList).toContain('size-8');
+      });
+
+      it('should button have content "X"', () => {
+        expect(closeBtn()?.textContent).toBe('X');
+      });
+
+      it('should close on click of button', () => {
+        closeBtn()?.click();
+        fixture.detectChanges();
+        expect(component.overlay()).toBeFalse();
+      });
     });
   });
 });
