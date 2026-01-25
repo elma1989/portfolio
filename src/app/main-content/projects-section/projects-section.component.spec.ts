@@ -577,8 +577,8 @@ describe('ProjectsSectionComponent', () => {
       expect(overlay()?.classList).toContain('rounded-sm');
     });
 
-    it('should have width 60% on desktop', () => {
-      expect(overlay()?.classList).toContain('lg:w-3/5');
+    it('should have width 80% on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:w-4/5');
     });
 
     it('should have padding 1rem mobile', () => {
@@ -604,8 +604,8 @@ describe('ProjectsSectionComponent', () => {
       expect(overlay()?.classList).toContain('bottom-[calc(100%+0.5rem)]');
     });
 
-    it('should have position 80% bottom on desktop', () => {
-      expect(overlay()?.classList).toContain('lg:bottom-4/5');
+    it('should have position 90% bottom on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:bottom-9/10');
     });
 
     it('should have gap 1rem column', () => {
@@ -651,7 +651,7 @@ describe('ProjectsSectionComponent', () => {
       it('should have align right', () => {
         const header = headerEl();
         expect(header?.classList).toContain('flex');
-        expect(header?.classList).toContain('justify-center');
+        expect(header?.classList).toContain('justify-end');
       });
 
       it('should button have size 2rem', () => {
