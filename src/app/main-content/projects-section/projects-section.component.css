@@ -22,7 +22,7 @@ nav>button:hover, nav>button:active {
 }
 
 .open {
-    z-index: 0;
+    z-index: 1;
     opacity: 1;
 }
 

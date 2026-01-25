@@ -669,4 +669,25 @@ describe('ProjectsSectionComponent', () => {
       });
     });
   });
+
+  describe('Overlay Paragraph', () => {
+    const paragraph: () => HTMLParagraphElement | null =
+      () => element.querySelector('.overlay>p');
+
+    it('should have paragraph', () => {
+      expect(paragraph()).toBeTruthy();
+    });
+
+    it('should have height 4rem on mobile', () => {
+      expect(paragraph()?.classList).toContain('h-16');
+    });
+
+    it('should have height 2rem on desktop', () => {
+      expect(paragraph()?.classList).toContain('lg:h-8');
+    });
+
+    it('should have auto hyphens', () => {
+      expect(paragraph()?.classList).toContain('hyphens-auto');
+    });
+  });
 });
