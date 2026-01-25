@@ -2,6 +2,10 @@
     animation: rotate 6000ms linear infinite;
 }
 
+.preview {
+    border: 1px solid var(--black);
+}
+
 .board img {
     animation: jump 1000ms linear infinite;
 }

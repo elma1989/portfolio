@@ -200,9 +200,13 @@ describe('ProjectsSectionComponent', () => {
       expect(preview()).toBeTruthy();
     });
 
+    it('should have round corners', () => {
+      expect(preview()?.classList).toContain('rounded-sm');
+    });
+
     it('should have full width on mobile', () => {
       expect(preview()?.classList).toContain('w-full');
-    })
+    });
 
     it('should have full height on desktop', () => {
       expect(preview()?.classList).toContain('lg:h-full');
@@ -261,6 +265,10 @@ describe('ProjectsSectionComponent', () => {
       expect(screenshot()).toBeTruthy();
     });
 
+    it('should have round corners', () => {
+      expect(screenshot()?.classList).toContain('rounded-sm');
+    });
+
     it('should have full width', () => {
       expect(screenshot()?.classList).toContain('w-full');
     });
@@ -313,6 +321,10 @@ describe('ProjectsSectionComponent', () => {
 
     it('should have full width', () => {
       expect(board()?.classList).toContain('w-full');
+    });
+
+    it('should have rounded corners', () => {
+      expect(board()?.classList).toContain('rounded-sm');
     });
 
     it('should grow', () => {
