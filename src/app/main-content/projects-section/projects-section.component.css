@@ -10,6 +10,10 @@ nav>button:hover, nav>button:active {
     color: var(--orange);
 }
 
+.overlay {
+    border: 1px solid var(--color-white);
+}
+
 @keyframes jump {
     50% {
         transform: translateY(-0.5rem);

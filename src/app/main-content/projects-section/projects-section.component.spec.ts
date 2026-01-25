@@ -342,6 +342,10 @@ describe('ProjectsSectionComponent', () => {
       expect(b?.classList).toContain('justify-center');
       expect(b?.classList).toContain('gap-8');
     });
+
+    it('should have positon relative', () => {
+      expect(board()?.classList).toContain('relative');
+    });
   });
 
   describe('Board-Header', () => {
@@ -527,6 +531,73 @@ describe('ProjectsSectionComponent', () => {
     it('should have content "translated: projects.next >>" on second button"', () => {
       expect(navBtns()[1]?.textContent)
         .toBe('translated: projects.next >>');
+    });
+  });
+
+  describe('Overlay', () => {
+    const overlay: () => HTMLDivElement | null = 
+      () => element.querySelector('.board>.overlay');
+
+    it('should have overlay', () => {
+      expect(overlay()).toBeTruthy();
+    });
+
+    it('should have class "open" if open', () => {
+      component.overlay.set(true);
+      fixture.detectChanges();
+      expect(overlay()?.classList).toContain('open');
+    });
+
+    it('should not have class "open" if not open', () => {
+      component.overlay.set(false);
+      fixture.detectChanges();
+      expect(overlay()?.classList).not.toContain('open');
+    });
+
+    it('should have blue background', () => {
+      expect(overlay()?.classList).toContain('bg-blue');
+    });
+
+    it('should have rounded 0.25rem', () => {
+      expect(overlay()?.classList).toContain('rounded-sm');
+    });
+
+    it('should have width 60% on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:w-3/5');
+    });
+
+    it('should have padding 1rem mobile', () => {
+      expect(overlay()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have position align right 1rem from left on mobile', () => {
+      const ol= overlay();
+      expect(ol?.classList).toContain('absolute');
+      expect(ol?.classList).toContain('left-4');
+      expect(ol?.classList).toContain('right-0');
+    });
+
+    it('should have positon right 2rem on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:right-8');
+    })
+
+    it('should have position 0.5rem above', () => {
+      expect(overlay()?.classList).toContain('bottom-[calc(100%+0.5rem)]');
+    });
+
+    it('should have position 80% bottom on desktop', () => {
+      expect(overlay()?.classList).toContain('lg:bottom-4/5');
+    });
+
+    it('should have gap 1rem column', () => {
+      const ol= overlay();
+      expect(ol?.classList).toContain('flex');
+      expect(ol?.classList).toContain('flex-col');
+      expect(ol?.classList).toContain('gap-4');
     });
   });
 });

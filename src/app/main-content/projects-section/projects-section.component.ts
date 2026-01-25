@@ -48,6 +48,7 @@ export class ProjectsSectionComponent {
       url: 'el-pollo-loco/'
     }
   ]
+  overlay: WritableSignal<boolean> = signal<boolean>(true);
 
   get projects(): Project[] { return this._projects; };
   get index(): Signal<number> { return this._index.asReadonly() };

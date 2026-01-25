@@ -23,7 +23,7 @@
             </div>
             <div class="details-area
             size-full lg:pt-8 flex flex-col">
-                <div class="board bg-cblack tx-white
+                <div class="board bg-cblack tx-white relative
                 w-full flex-1 p-4 lg:p-8
                 flex flex-col justify-center gap-8">
                     <header class="w-full h-10
@@ -48,6 +48,12 @@
                         <a href="https://marco-elste.developerakademie.net/{{ projects[index()].url }}" target="_blank" 
                         class="block btn-default">Live Test ➜</a>
                     </footer>
+                    <div class="overlay bg-blue rounded-sm
+                    lg:w-3/5 p-4 lg:p-8
+                    absolute left-4 right-0 bottom-[calc(100%+0.5rem)]
+                    lg:right-8 lg:bottom-4/5
+                    flex flex-col gap-4"
+                    [class.open]="overlay()">X</div>
                 </div>
                 <nav class="w-full py-8
                 flex justify-between">
