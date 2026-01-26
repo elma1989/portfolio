@@ -23,50 +23,10 @@
             </div>
             <div class="details-area
             size-full lg:pt-8 flex flex-col">
-                <div class="board bg-cblack tx-white rounded-sm relative
+                <project-board class="bg-cblack tx-white rounded-sm relative
                 w-full flex-1 p-4 lg:p-8
-                flex flex-col justify-center gap-8">
-                    <header class="w-full h-10
-                    flex justify-between items-end">
-                        <h2 class="font-bold text-[2rem]/[2rem]"
-                        >{{ projects[index()].name }}</h2>
-                        <img src="assets/img/04_projects/{{ projects[index()].icon }}.png"
-                        class="size-8 cursor-pointer lg:cursor-auto"
-                        (pointerdown)="openOnClick()"
-                        (pointerenter)="openOnEnter()"
-                        (pointerleave)="closeOnLeave()">
-                    </header>
-                    <p class="tx-blue">
-                        @for(skill of projects[index()].skills; track skill; let i = $index) {
-                            {{ skill + (i < projects[index()].skills.length - 1 ? ' | ' : '') }}
-                        }
-                    </p>
-                    <p>{{ `projects.${projects[index()].langKey}-desc` | translate }}</p>
-                    <footer class="w-full
-                    flex flex-col gap-4 
-                    min-[390px]:flex-row min-[390px]:justify-between 
-                    lg:justify-start lg:gap-8">
-                        <a href="https://github.com/elma1989/{{ projects[index()].github }}" target="_blank" 
-                        class="block btn-default">GitHub ➜</a>
-                        <a href="https://marco-elste.developerakademie.net/{{ projects[index()].url }}" target="_blank" 
-                        class="block btn-default">Live Test ➜</a>
-                    </footer>
-                    <div class="overlay bg-blue rounded-sm
-                    p-4 lg:p-8 lg:w-4/5
-                    absolute left-4 right-0 bottom-[calc(100%+0.5rem)]
-                    lg:right-8 lg:bottom-[calc(100%-1rem)] lg:left-auto
-                    flex flex-col gap-4"
-                    [class.open]="overlay()">
-                        @if(mobile()) {
-                            <header class="w-full flex justify-end">
-                                <button class="size-8"
-                                (click)="closeOnClick()">X</button>
-                            </header>
-                        }
-                        <p class="h-16 lg:h-8 hyphens-auto"
-                        >{{ `projects.${projects[index()].langKey}-impl` | translate }}</p>
-                    </div>
-                </div>
+                flex flex-col justify-center gap-8"
+                [project]="projects[index()]"></project-board>
                 <nav class="w-full py-8
                 flex justify-between">
                     <button class="inline-block font-bold"

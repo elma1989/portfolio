@@ -2,25 +2,16 @@ import { Component, computed, inject, Signal, signal, WritableSignal } from '@an
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
-
-type Project = {
-  name: string,
-  icon: string,
-  background: string,
-  flower: string,
-  screenschot: string,
-  langKey: string,
-  skills: string[],
-  github: string,
-  url: string
-}
+import { Project } from '../../shared/interfaces/project';
+import { ProjectBoardComponent } from "./project-board/project-board.component";
 
 @Component({
   selector: 'section[projects]',
   imports: [
     TranslatePipe,
-    CommonModule
-  ],
+    CommonModule,
+    ProjectBoardComponent
+],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css'
 })
@@ -49,7 +40,6 @@ export class ProjectsSectionComponent {
       url: 'el-pollo-loco/'
     }
   ]
-  overlay: WritableSignal<boolean> = signal<boolean>(false);
   private sec: SectionService = inject(SectionService);
   private _mobile: Signal<boolean> = computed(() => this.sec.mobile());
 
@@ -70,28 +60,6 @@ export class ProjectsSectionComponent {
     let i = this.index();
     i = i + i < this.projects.length - 1 ? i + 1 : 0;
     this._index.set(i);
-  }
-  // #endregion
-
-  // #region Overlay
-  /** Opens overlay on click. */
-  openOnClick(): void {
-    if(this.sec.mobile()) this.overlay.set(true);
-  }
-
-  /** Opens overlay on mousover. */
-  openOnEnter(): void {
-    if(!this.sec.mobile()) this.overlay.set(true);
-  }
-
-  /** Closes overlay on click on close-button. */
-  closeOnClick(): void {
-    if(this.sec.mobile()) this.overlay.set(false);
-  }
-
-  /** Closes overlay on leave */
-  closeOnLeave(): void {
-    if(!this.sec.mobile()) this.overlay.set(false);
   }
   // #endregion
 }
