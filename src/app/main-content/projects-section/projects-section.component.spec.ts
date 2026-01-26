@@ -3,6 +3,8 @@ import { ProjectsSectionComponent } from './projects-section.component';
 import { ElementRef, Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
 import { SectionService } from '../../shared/services/section.service';
+import { By } from '@angular/platform-browser';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -416,4 +418,46 @@ describe('ProjectsSectionComponent', () => {
         .toBe('translated: projects.next >>');
     });
   });
+
+  describe('Section Selector', () => {
+    const selector: () => HTMLElement | null = 
+      () => element.querySelector('.content>section-selector');
+
+    it('should not have selector on mobile', () => {
+      sec.mobile = true;
+      fixture.detectChanges();
+      expect(selector()).toBeNull();
+    });
+
+    describe('Desktop', () => {
+      beforeEach(() => {
+        sec.mobile = false;
+        fixture.detectChanges();
+      });
+
+      it('should have section selector', () => {
+        expect(selector()).toBeTruthy();
+      });
+
+      it('should have width 10%, full height', () => {
+        const sel = selector();
+        expect(sel?.classList).toContain('w-1/10');
+        expect(sel?.classList).toContain('h-full');
+      });
+
+      it('should align center', () => {
+        const sel = selector();
+        expect(sel?.classList).toContain('flex');
+        expect(sel?.classList).toContain('justify-center');
+        expect(sel?.classList).toContain('items-center');
+      });
+
+      it('should be index = 3', () => {
+        const selCom = fixture.debugElement
+          .query(By.directive(SectionSelectorComponent))
+          .componentInstance
+        expect(selCom.index()).toBe(3)
+      });
+    })
+  })
 });

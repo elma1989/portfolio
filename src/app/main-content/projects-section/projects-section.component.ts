@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { SectionService } from '../../shared/services/section.service';
 import { Project } from '../../shared/interfaces/project';
 import { ProjectBoardComponent } from "./project-board/project-board.component";
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
 @Component({
   selector: 'section[projects]',
   imports: [
     TranslatePipe,
     CommonModule,
-    ProjectBoardComponent
+    ProjectBoardComponent,
+    SectionSelectorComponent
 ],
   templateUrl: './projects-section.component.html',
   styleUrl: './projects-section.component.css'
