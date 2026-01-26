@@ -31,6 +31,18 @@ describe('ProjectBoardComponent', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(ProjectBoardComponent);
+    fixture.componentRef.setInput('project',
+      {
+        name: 'Join',
+        icon: 'check',
+        background: 'yellow',
+        flower: 'orange',
+        screenschot: 'join',
+        langKey: 'join',
+        skills: ['HTML', 'CSS', 'TypeScript', 'Angular', 'Firebase'],
+        github: 'join',
+        url: 'angular-projects/join/'
+      });
     component = fixture.componentInstance;
     element = fixture.nativeElement;
     sec = TestBed.inject(SectionService);
@@ -43,7 +55,7 @@ describe('ProjectBoardComponent', () => {
 
   describe('Header', () => {
     const boardHeader: () => HTMLElement | null =
-      () => element.querySelector('.header');
+      () => element.querySelector('header');
     const title: () => HTMLElement | null =
       () => element.querySelector('header>h2');
     const icon: () => HTMLImageElement | null =
@@ -87,7 +99,7 @@ describe('ProjectBoardComponent', () => {
 
   describe('Paragraphs', () => {
     const paragraphs: () => NodeListOf<HTMLParagraphElement> =
-      () => element.querySelectorAll('p');
+      () => element.querySelectorAll(':scope>p');
 
     it('should have 2 paragraphs', () => {
       expect(paragraphs().length).toBe(2);
