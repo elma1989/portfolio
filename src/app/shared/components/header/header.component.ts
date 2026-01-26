@@ -31,21 +31,8 @@ export class HeaderComponent {
 
   // FIXME: Error message in breackpoint.
   constructor() {
-    effect(() => {
-      const isMobile = this.mobile();
-      const wasMobile = this.prevMobile();
-
-      if (!this.isTestMode() && isMobile && !wasMobile) this.needsToCalc.set(true);
-      this.prevMobile.set(isMobile);
-    });
-
-    afterNextRender(() => {
-      if (!this.needsToCalc()) return;
-
-      this.calcSecPos();
-      this.needsToCalc.set(false);
-    });
-  };
+    this.calcSecPos();
+  }
 
   // #region Methods
   // #region Indicators
@@ -107,8 +94,9 @@ export class HeaderComponent {
 
     if (this.mobile()) {
       this.secPos = secIds.map(id => {
-        const elem: HTMLElement = this.getElemnt(id);
-        const rect = elem.getBoundingClientRect();
+        const elem: HTMLElement | null = this.getElemnt(id);
+        const rect = elem?.getBoundingClientRect();
+        if (!rect) return {id, top:0, bottom:0};
         const top = rect.top + window.scrollY;
         const bottom = rect.top + rect.height;
         return { id, top, bottom };
@@ -130,8 +118,7 @@ export class HeaderComponent {
   @HostListener('window:resize')
   onResize() {
     this.sec.mobile = this.sec.isMobile();
-    if (this.mobile()) this.calcSecPos();
-    console.log('Modus: ', this.mobile() ? 'Mobile' : 'Desktop');
+    this.calcSecPos();
   }
   // #endregion
   // #endregion
