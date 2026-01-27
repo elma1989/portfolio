@@ -89,4 +89,40 @@ describe('ReferencesSectionComponent', () => {
       expect(ar?.classList).toContain('gap-8');
     });
   });
+
+  describe('Title', () => {
+    const title: () => HTMLElement | null =
+      () => element.querySelector('.content-area>h1');
+
+    it('should have title', () => {
+      expect(title()).toBeTruthy();
+    });
+
+    it('should have font "Eczar"', () => {
+      expect(title()?.classList).toContain('font-eczar');
+    });
+
+    it('should have line-break', () => {
+      const h1 = title();
+      expect(h1?.classList).toContain('whitespace-normal');
+      expect(h1?.classList).toContain('wrap-break-word');
+    });
+
+    it('should be bold', () => {
+      expect(title()?.classList).toContain('font-bold');
+    })
+
+    it('should have font-size 2rem on mobile', () => {
+      expect(title()?.classList).toContain('text-[2rem]/[2rem]');
+    });
+
+    it('should have font-size 4.5rem on desktop', () => {
+      expect(title()?.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
+    });
+
+    it('should have content "translated: references.title"', () => {
+      expect(title()?.textContent)
+        .toBe('translated: references.title');
+    });
+  });
 });
