@@ -39,5 +39,9 @@
         "loco-impl": "Mein erstes JavaScript-Spiel.",
         "prev": "Vorheriges Projekt",
         "next": "Nächstes Projekt"
+    },
+    "references": {
+        "title": "Was meine Kollegen über mich sagen",
+        "marcus": "Marco bereichert das Team durch sein fundiertes Expertenwissen in aktuellen Frameworks. Er hat sich zu einem kommunikationsstarken Teamplayer entwickelt, dessen fachliche Impulse maßgeblich zu unserem Erfolg beitragen. Die Zusammenarbeit mit ihm ist fachlich wie menschlich ein Gewinn."
     }
 }
