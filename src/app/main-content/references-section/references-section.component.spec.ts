@@ -125,4 +125,32 @@ describe('ReferencesSectionComponent', () => {
         .toBe('translated: references.title');
     });
   });
+
+  describe('Ref-Area', () => {
+    const area: () => HTMLDivElement | null =
+      () => element.querySelector('.content-area>.ref-area');
+
+    it('should have ref-area', () => {
+      expect(area()).toBeTruthy();
+    });
+
+    it('should have full width',  () => {
+      expect(area()?.classList).toContain('w-full');
+    });
+
+    it('shouold have the rest of height', () => {
+      expect(area()?.classList).toContain('flex-1');
+    });
+
+    it('should have gap 2rem column', () => {
+      const ar = area();
+      expect(ar?.classList).toContain('flex');
+      expect(ar?.classList).toContain('flex-col');
+      expect(ar?.classList).toContain('gap-8');
+    });
+
+    it('should have direction row on desktop', () => {
+      expect(area()?.classList).toContain('lg:flex-row');
+    });
+  });
 });
