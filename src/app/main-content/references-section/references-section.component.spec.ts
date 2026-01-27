@@ -206,4 +206,30 @@ describe('ReferencesSectionComponent', () => {
       expect(ref?.classList).toContain('gap-4');
     });
   });
+
+  describe('Single Ref Name', () => {
+    const name: () => HTMLElement | null =
+      () => element.querySelector('.reference>h2');
+
+    it('shoulde have name', () => {
+      expect(name()).toBeTruthy();
+    });
+
+    it('should be bold text', () => {
+      expect(name()?.classList).toContain('font-bold');
+    });
+
+    it('should have padding-y 0.5rem', () => {
+      expect(name()?.classList).toContain('py-2');
+    });
+
+    it('should have font-size 1.5rem', () => {
+      expect(name()?.classList).toContain('text-[1.5rem]/[1.5rem]');
+    });
+
+    it('schould have full name as content', () => {
+      expect(name()?.textContent)
+        .toBe(component.referance.fullName);
+    });
+  });
 });

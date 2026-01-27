@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
+type Reference = {
+  name: string,
+  fullName: string,
+  position: string
+}
+
 @Component({
   selector: 'section[references]',
   imports: [
@@ -10,5 +16,11 @@ import { TranslatePipe } from '../../shared/pipes/translate.pipe';
   styleUrl: './references-section.component.css'
 })
 export class ReferencesSectionComponent {
+  private ref: Reference = {
+    name: 'marcus',
+    fullName: 'Marcus Gühne',
+    position: 'Team Partner'
+  }
 
+  get referance(): Reference {return this.ref; }
 }
