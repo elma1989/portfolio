@@ -134,7 +134,7 @@ describe('ReferencesSectionComponent', () => {
       expect(area()).toBeTruthy();
     });
 
-    it('should have full width',  () => {
+    it('should have full width', () => {
       expect(area()?.classList).toContain('w-full');
     });
 
@@ -151,6 +151,59 @@ describe('ReferencesSectionComponent', () => {
 
     it('should have direction row on desktop', () => {
       expect(area()?.classList).toContain('lg:flex-row');
+    });
+  });
+
+  describe('Ref-Container', () => {
+    const refConteiner: () => HTMLDivElement | null =
+      () => element.querySelector('.ref-area>.ref-container');
+
+    it('should have ref-container', () => {
+      expect(refConteiner()).toBeTruthy();
+    });
+
+    it('should have full width on mobile', () => {
+      expect(refConteiner()?.classList).toContain('w-full');
+    });
+
+    it('should have width 1/3 on desktop', () => {
+      expect(refConteiner()?.classList).toContain('lg:w-1/3');
+    });
+
+    it('should have full height on desktop', () => {
+      expect(refConteiner()?.classList).toContain('lg:h-full');
+    });
+  });
+
+  describe('Single Ref', () => {
+    const reference: () => HTMLDivElement | null =
+      () => element.querySelector('.ref-container>.reference');
+
+    it('should have reference', () => {
+      expect(reference()).toBeTruthy();
+    });
+
+    it('should have rounded corners', () => {
+      expect(reference()?.classList).toContain('rounded-sm');
+    })
+
+    it('should have full width', () => {
+      expect(reference()?.classList).toContain('w-full');
+    });
+
+    it('should have padding 1rem on mobile', () => {
+      expect(reference()?.classList).toContain('p-4');
+    });
+
+    it('should have padding 2rem on desktop', () => {
+      expect(reference()?.classList).toContain('lg:p-8');
+    });
+
+    it('should have gap 1rem column', () => {
+      const ref = reference();
+      expect(ref?.classList).toContain('flex');
+      expect(ref?.classList).toContain('flex-col');
+      expect(ref?.classList).toContain('gap-4');
     });
   });
 });
