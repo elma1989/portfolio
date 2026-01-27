@@ -229,7 +229,30 @@ describe('ReferencesSectionComponent', () => {
 
     it('schould have full name as content', () => {
       expect(name()?.textContent)
-        .toBe(component.referance.fullName);
+        .toBe(component.reference.fullName);
+    });
+  });
+
+  describe('Single Ref Paragraphs', () => {
+    const paragraphs: () => NodeListOf<HTMLParagraphElement> =
+      () => element.querySelectorAll('.reference>p');
+
+    it('should have 2 paragraphs', () => {
+      expect(paragraphs().length).toBe(2);
+    });
+
+    it('first paragraph should have content "translated: references.marcus', () => {
+      expect(paragraphs()[0]?.textContent)
+        .toBe('translated: references.marcus');
+    });
+
+    it('second paragraph should be bold', () => {
+      expect(paragraphs()[1]?.classList).toContain('font-bold');
+    });
+
+    it('second paragraph should have content positon of reference', () => {
+      expect(paragraphs()[1]?.textContent)
+        .toBe(component.reference.position);
     });
   });
 });

@@ -15,7 +15,9 @@
                 w-full rounded-sm p-4 lg:p-8
                 flex flex-col gap-4">
                     <h2 class="py-2 text-[1.5rem]/[1.5rem] font-bold"
-                    >{{ referance.fullName }}</h2>
+                    >{{ reference.fullName }}</h2>
+                    <p class="hyphens-auto">{{ `references.${reference.name}` | translate}}</p>
+                    <p class="font-bold">{{ reference.position }}</p>
                 </div>
             </div>
         </div>

@@ -22,5 +22,5 @@ export class ReferencesSectionComponent {
     position: 'Team Partner'
   }
 
-  get referance(): Reference {return this.ref; }
+  get reference(): Reference {return this.ref; }
 }
