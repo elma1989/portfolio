@@ -117,7 +117,7 @@ export class HeaderComponent {
 
   @HostListener('window:resize')
   onResize() {
-    this.sec.mobile = this.sec.isMobile();
+    this.sec.mobile = window.innerWidth < 1024;
     this.calcSecPos();
   }
   // #endregion

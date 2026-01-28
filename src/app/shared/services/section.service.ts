@@ -17,6 +17,6 @@ export class SectionService {
   set section(section: SectionType) { this._section.set(section) }
 
   isMobile(): boolean {
-    return window.innerWidth <= 672;
+    return window.innerWidth < 1024;
   }
 }
