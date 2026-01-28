@@ -271,8 +271,7 @@ describe('HeroSectionComponent', () => {
     });
 
     it('should have size 16rem on mobile', () => {
-      expect(flower()?.classList.contains('w-64') ?? false).toBeTrue();
-      expect(flower()?.classList.contains('h-64') ?? false).toBeTrue();
+      expect(flower()?.classList.contains('size-64') ?? false).toBeTrue();
     });
 
     it('should have size 32rem on deskop', () => {
