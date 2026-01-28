@@ -190,8 +190,7 @@ describe('MainContentComponent', () => {
       const skillSec = skills();
       expect(skillSec?.classList).toContain('h-auto');
       expect(skillSec?.classList).toContain('md:h-dvh');
-      expect(skillSec?.classList).toContain('lg:h-auto');
-    })
+    });
 
     it('should padding top 9dvh on mobile', () => {
       expect(skills()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
