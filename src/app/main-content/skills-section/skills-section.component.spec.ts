@@ -181,8 +181,8 @@ describe('SkillsSectionComponent', () => {
       expect(wrapper()?.classList).toContain('w-full');
     });
 
-    it('should have width 52rem on desktop', () => {
-      expect(wrapper()?.classList).toContain('lg:w-208');
+    it('should have width 60rem on desktop', () => {
+      expect(wrapper()?.classList).toContain('lg:w-240');
     });
 
     it('should have 0.75rem gap flex-wrap on mobile', () => {
