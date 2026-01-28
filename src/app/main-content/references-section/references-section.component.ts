@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { CommonModule } from '@angular/common';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { SectionService } from '../../shared/services/section.service';
 
 type Reference = {
   name: string,
@@ -10,7 +13,9 @@ type Reference = {
 @Component({
   selector: 'section[references]',
   imports: [
-    TranslatePipe
+    TranslatePipe,
+    CommonModule,
+    SectionSelectorComponent
   ],
   templateUrl: './references-section.component.html',
   styleUrl: './references-section.component.css'
@@ -21,6 +26,10 @@ export class ReferencesSectionComponent {
     fullName: 'Marcus Gühne',
     position: 'Team Partner'
   }
+  private sec: SectionService = inject(SectionService);
+  private _desktop = computed(() => !this.sec.mobile());
+  
+  get reference(): Reference { return this.ref; }
 
-  get reference(): Reference {return this.ref; }
+  get desktop(): Signal<boolean> { return this._desktop; }
 }

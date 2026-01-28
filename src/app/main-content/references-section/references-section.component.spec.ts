@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReferencesSectionComponent } from './references-section.component';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
+import { SectionService } from '../../shared/services/section.service';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { By } from '@angular/platform-browser';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -15,6 +18,7 @@ describe('ReferencesSectionComponent', () => {
   let component: ReferencesSectionComponent;
   let fixture: ComponentFixture<ReferencesSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,6 +35,7 @@ describe('ReferencesSectionComponent', () => {
     fixture = TestBed.createComponent(ReferencesSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -253,6 +258,48 @@ describe('ReferencesSectionComponent', () => {
     it('second paragraph should have content positon of reference', () => {
       expect(paragraphs()[1]?.textContent)
         .toBe(component.reference.position);
+    });
+  });
+
+  describe('SectionSelector', () => {
+    const selector: () => HTMLElement | null =
+      () => element.querySelector('.content>section-selector');
+
+    it('should not have SectionSelector on mobile', () => {
+      sec.mobile = true;
+      fixture.detectChanges();
+      expect(selector()).toBeNull();
+    });
+
+    describe('Mobile', () => {
+      beforeEach(() => {
+        sec.mobile = false;
+      fixture.detectChanges();
+      });
+
+      it('should have SectionSelector on desktop', () => {
+        expect(selector()).toBeTruthy();
+      });
+
+      it('should have width 10%', () => {
+        expect(selector()?.classList).toContain('w-1/10');
+      });
+
+      it('should have centered conentent', () => {
+        const select = selector();
+        expect(select?.classList).toContain('flex');
+        expect(select?.classList).toContain('justify-center');
+        expect(select?.classList).toContain('items-center');
+      });
+
+      it('should have index = 2', () => {
+        const selectorCom: SectionSelectorComponent = fixture
+          .debugElement
+          .query(By.directive(SectionSelectorComponent))
+          .componentInstance;
+
+        expect(selectorCom.index()).toBe(4);
+      });
     });
   });
 });
