@@ -14,7 +14,7 @@ flex justify-center">
         text-[2rem]/[2rem] lg:text-[4.5rem]/[4.5rem]
         py-4">{{ 'legal.title' | translate }}</h1>
         <header class="flex flex-col gap-4">
-            <h2 class="font-bold text-[1.5rem]/[1.5rem] tx-yellow">{{ 'legal.inprint' | translate }}</h2>
+            <h2 class="font-bold text-[1.5rem]/[1.5rem] tx-yellow">{{ 'legal.imprint' | translate }}</h2>
             <p>Marco Elste<br />Karl-Marx-Ring 5<br />06317 Seegebiet Mansfelder Land</p>
             <div>
                 <h3 class="font-bold tx-yellow">{{'legal.explore' | translate }}</h3>
@@ -25,12 +25,13 @@ flex justify-center">
             <inprint-paragraph>
                 <span paragraph-title>{{ `legal.${p.id}.title` | translate }}</span>
                 @for (i of getCounter(p.numberParagraphs); track i) {
-                    <p paragraph-body>{{ `legal.${p.id}.p-${i}` | translate }}</p>
+                    <p paragraph-body
+                    [innerHTML]="`legal.${p.id}.p-${i}` | translate"></p>
                 }
             </inprint-paragraph>
         }
         <footer class="flex flex-col gap-4">
-            <p>{{ 'legal.question' | translate }}</p>
+            <p>{{ 'legal.question' | translate }}marco.elste&#64;web.de.</p>
             <p>{{ 'legal.date' | translate }}</p>
         </footer>
     </div>

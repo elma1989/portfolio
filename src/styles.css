@@ -18,6 +18,10 @@ button {
     cursor: pointer;
 }
 
+mark {
+    background: none;
+    color: var(--yellow);
+}
 .content {
     width: 100%;
     max-width: 1920px;
