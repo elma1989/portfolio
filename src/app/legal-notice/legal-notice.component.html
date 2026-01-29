@@ -7,21 +7,27 @@ flex justify-center">
     <div class="content
     p-4 lg:px-28 py-8
     flex flex-col gap-8">
-    @if(mobile()) {
+        @if(mobile()) {
         <a href="/">⟵</a>
-    }
-    <h1 class="font-eczar font-bold 
+        }
+        <h1 class="font-eczar font-bold 
     text-[2rem]/[2rem] lg:text-[4.5rem]/[4.5rem]
     py-4">{{ 'legal.title' | translate }}</h1>
-    <header class="flex flex-col gap-4">
-        <h2 class="font-bold text-[1.5rem]/[1.5rem] tx-yellow"
-        >{{ 'legal.inprint' | translate }}</h2>
-        <p>Marco Elste<br/>Karl-Marx-Ring 5<br/>06317 Seegebiet Mansfelder Land</p>
-        <div>
-            <h3 class="font-bold tx-yellow"
-            >{{'legal.explore' | translate }}</h3>
-            marco.elste&#64;web.de
-        </div>
-    </header>
+        <header class="flex flex-col gap-4">
+            <h2 class="font-bold text-[1.5rem]/[1.5rem] tx-yellow">{{ 'legal.inprint' | translate }}</h2>
+            <p>Marco Elste<br />Karl-Marx-Ring 5<br />06317 Seegebiet Mansfelder Land</p>
+            <div>
+                <h3 class="font-bold tx-yellow">{{'legal.explore' | translate }}</h3>
+                marco.elste&#64;web.de
+            </div>
+        </header>
+        @for (p of paragraphs; track p.id) {
+            <inprint-paragraph>
+                <span paragraph-title>{{ `inprint.${p.id}.title` | translate }}</span>
+                @for (i of getCounter(p.numberParagraphs); track i) {
+                    <p paragraph-body>{{ `inprint.${p.id}.p-${i}` | translate }}</p>
+                }
+            </inprint-paragraph>
+        }
     </div>
 </main>
