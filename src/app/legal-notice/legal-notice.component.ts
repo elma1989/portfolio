@@ -5,6 +5,7 @@ import { SectionType } from '../shared/enums/section-type';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../shared/pipes/translate.pipe';
 import { InprintParagraphComponent } from './inprint-paragraph/inprint-paragraph.component';
+import { FooterComponent } from '../shared/components/footer/footer.component';
 
 type InprintParagraph = {
   id: string,
@@ -17,7 +18,8 @@ type InprintParagraph = {
     HeaderComponent,
     CommonModule,
     TranslatePipe,
-    InprintParagraphComponent
+    InprintParagraphComponent,
+    FooterComponent
   ],
   templateUrl: './legal-notice.component.html',
   styleUrl: './legal-notice.component.css'
