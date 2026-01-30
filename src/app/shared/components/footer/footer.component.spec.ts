@@ -105,4 +105,33 @@ describe('FooterComponent', () => {
       });
     });
   });
+
+  describe('link-container', () => {
+    const container: () => HTMLDivElement | null =
+      () => element.querySelector('.content>.link-container');
+
+    it('should have container', () => {
+      expect(container()).toBeTruthy();
+    });
+
+    it('should have full width on mobile', () => {
+      expect(container()?.classList).toContain('w-full');
+    });
+
+    it('should have auto-width on desktop', () => {
+      expect(container()?.classList).toContain('lg:w-auto');
+    });
+
+    it('should have x-between on mobile', () => {
+      const div = container();
+      expect(div?.classList).toContain('flex');
+      expect(div?.classList).toContain('justify-between');
+    });
+
+    it('should have align right, gap 2rem on desktop', () => {
+      const div = container();
+      expect(div?.classList).toContain('lg:justify-end');
+      expect(div?.classList).toContain('lg:gap-8');
+    });
+  });
 });

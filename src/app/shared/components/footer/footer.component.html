@@ -6,4 +6,12 @@ lg:flex-row lg:gap-0 lg:justify-between">
         <span></span>
     }
     <span>&copy; Marco Elste 2026</span>
+    <div class="link-container
+    w-full lg:w-auto
+    flex justify-between lg:justify-end lg:gap-8">
+        @for(link of visibleLinks(); track link.path) {
+            <a [href]="link.path" [target]="link.target"
+            >{{ link.name }}</a>
+        }
+    </div>
 </div>

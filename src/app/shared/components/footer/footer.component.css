@@ -1,3 +1,7 @@
 :host {
     background: var(--black);
 }
+
+a:hover {
+    color: var(--yellow);
+}
