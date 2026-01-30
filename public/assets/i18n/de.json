@@ -43,5 +43,37 @@
     "references": {
         "title": "Was meine Kollegen über mich sagen",
         "marcus": "Marco bereichert das Team durch sein fundiertes Expertenwissen in aktuellen Frameworks. Er hat sich zu einem kommunikationsstarken Teamplayer entwickelt, dessen fachliche Impulse maßgeblich zu unserem Erfolg beitragen. Die Zusammenarbeit mit ihm ist fachlich wie menschlich ein Gewinn."
+    },
+    "legal": {
+        "title": "Rechtliche Hinweise",
+        "imprint": "Impressum",
+        "explore": "Das Board erkunden",
+        "acceptance": {
+            "title": "Akzeptanz der Bedingungen",
+            "p-1": "Indem Sie auf <mark>Portfolio</mark> (Produkt) zugreifen und es nutzen, erkennen Sie die folgenden Geschäftsbedingungen sowie alle Richtlinien, Richtlinien oder Änderungen daran an, die Ihnen von Zeit zu Zeit vorgelegt werden, und stimmen ihnen zu. Wir, die aufgeführten Studenten, können die Allgemeinen Geschäftsbedingungen von Zeit zu Zeit ohne vorherige Ankündigung aktualisieren oder ändern."
+        },
+        "ownership": {
+            "title": "Umfang und Eigentum des Produkts",
+            "p-1": "Das <mark>Portfolio</mark> wurde im Rahmen eines studentischen Gruppenprojekts in einem Webentwicklungs-Bootcamp bei der <mark>Developer Akademie GmbH</mark> entwickelt. Es hat einen pädagogischen Zweck und ist nicht für den umfangreichen persönlichen und geschäftlichen Gebrauch bestimmt. Daher können wir keine gleichbleibende Verfügbarkeit, Zuverlässigkeit, Genauigkeit oder andere Qualitätsaspekte dieses Produkts garantieren.",
+            "p-2": "Das Design von <mark>Portfolio</mark> ist Eigentum der <mark>Developer Akademie GmbH</mark>. Die unbefugte Nutzung, Vervielfältigung, Änderung, Verbreitung oder Nachbildung des Designs ist strengstens untersagt."
+        },
+        "rights": {
+            "title": "Eigentumsrechte",
+            "p-1": "Abgesehen von dem Design, das der <mark>Developer Akademie GmbH</mark> gehört, behalten wir, die aufgeführten Studenten, alle Eigentumsrechte am <mark>Portfolio</mark>, einschließlich aller damit verbundenen urheberrechtlich geschützten Materialien, Marken und anderen geschützten Informationen."
+        },
+        "use": {
+            "title": "Nutzung des Produktes",
+            "p-1": "Das <mark>Portfolio</mark> darf nur für rechtmäßige Zwecke und in Übereinstimmung mit allen geltenden Gesetzen und Vorschriften verwendet werden. Jegliche Nutzung des <mark>Portfolios</mark> für illegale Aktivitäten oder zur Belästigung, Schädigung, Bedrohung oder Einschüchterung einer anderen Person ist strengstens untersagt. Sie tragen die alleinige Verantwortung für Ihre Interaktionen mit anderen Benutzern von <mark>Portfolio</mark>."
+        },
+        "disclaimer": {
+            "title": "Gewährleistungsausschluss und Haftungsbeschränkung",
+            "p-1": "Das <mark>Portfolio</mark> wird ohne Gewährleistung jeglicher Art, weder ausdrücklich noch stillschweigend, bereitgestellt, einschließlich, aber nicht beschränkt auf die stillschweigenden Gewährleistungen der Marktgängigkeit, der Eignung für einen bestimmten Zweck und der Nichtverletzung von Rechten Dritter. In keinem Fall haften wir, die aufgeführten Studenten oder die <mark>Developer Akademie</mark> für direkte, indirekte, zufällige, besondere, Folgeschäden oder exemplarische Schäden, einschließlich, aber nicht beschränkt auf Schäden aus entgangenem Gewinn, entgangenem Firmenwert, entgangener Nutzung, Daten oder anderen immateriellen Verlusten, selbst wenn wir auf die Möglichkeit solcher Schäden hingewiesen wurden, die sich aus oder im Zusammenhang mit der Nutzung oder Leistung des <mark>Portfolios</mark> ergeben."
+        },
+        "indemnity": {
+            "title": "Entschädigung",
+            "p-1": "Sie erklären sich damit einverstanden, uns, die aufgeführten Studenten, die Developer Akademie und unsere verbundenen Unternehmen, Partner, leitenden Angestellten, Direktoren, Vertreter und Mitarbeiter von allen Ansprüchen, Forderungen, Verlusten, Schäden, Kosten oder Haftungen (einschließlich angemessener Anwaltskosten) freizustellen, zu verteidigen und schadlos zu halten, die sich aus oder im Zusammenhang mit Ihrer Nutzung des Portfolios und/oder Ihrem Verstoß gegen diese rechtlichen Hinweise ergeben."
+        },
+        "question": "Für weitere Fragen oder Anmerkungen kontaktieren Sie mich unter ",
+        "date": "Datum: 29. Januar 2026"
     }
 }
