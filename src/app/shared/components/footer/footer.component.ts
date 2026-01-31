@@ -43,8 +43,8 @@ export class FooterComponent {
    * @returns All visible links.
    */
   visibleLinks(): Link[] {
-    return this.impressum()
-      ? this.links.filter((_, i) => i != 1)
-      : this.links.slice(1,4)
+    return this.links.filter(link =>
+      link.name != (this.impressum() ? 'Impressum' : 'Portfolio')
+    );
   }
 }

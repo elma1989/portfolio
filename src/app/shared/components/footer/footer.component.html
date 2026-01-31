@@ -1,4 +1,4 @@
-<div class="content
+<div class="content relative
 px-4 lg:px-28 pb-8
 flex flex-col gap-4 items-center
 lg:flex-row lg:gap-0 lg:justify-between">
@@ -13,5 +13,14 @@ lg:flex-row lg:gap-0 lg:justify-between">
             <a [href]="link.path" [target]="link.target"
             >{{ link.name }}</a>
         }
+    </div>
+    <div class="wheel-wrapper
+    relative w-full max-w-86 overflow-hidden
+    h-48 min-[350px]:h-56
+    lg:absolute lg:left-28 lg:bottom-0">
+        <img src="assets/img/06_footer/wheel-orange.png"
+        class="wheel-orange absolute left-0 bottom-0 h-2/3 rounded full">
+        <img src="assets/img/06_footer/wheel-blue.png"
+        class="wheel-blue absolute right-0 bottom-0 h-full rounded-full">
     </div>
 </div>

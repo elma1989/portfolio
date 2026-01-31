@@ -5,3 +5,20 @@
 a:hover {
     color: var(--yellow);
 }
+
+.wheel-orange {
+    animation: rotate 6000ms linear infinite;
+}
+
+.wheel-blue {
+    animation: rotateBack 6000ms linear infinite;
+}
+
+@keyframes rotateBack {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
