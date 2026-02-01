@@ -1,3 +1,11 @@
-.scroll-btn img {
-    animation: rotate 6000ms linear infinite;
+.scroll-btn {
+    img {
+        animation: rotate 6000ms linear infinite;
+    }
+    @media (min-width: 1024px) {
+        left: 7rem;
+    }
+    @media (min-width: 1024px) and (max-height: 729px) {
+        left: 22rem;
+    }
 }

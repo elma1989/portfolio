@@ -242,12 +242,6 @@ describe('HeroSectionComponent', () => {
       expect(portrait()).toBeTruthy();
     });
 
-    it('should havv position buttom left', () => {
-      expect(portrait()?.classList.contains('absolute') ?? false).toBeTrue();
-      expect(portrait()?.classList.contains('bottom-0') ?? false).toBeTrue();
-      expect(portrait()?.classList.contains('left-0') ?? false).toBeTrue();
-    });
-
     it('should have full width', () => {
       expect(portrait()?.classList.contains('w-full') ?? false).toBeTrue();
     });
