@@ -1,6 +1,5 @@
 :host {
-    display: flex;
-    justify-content: center;
+    display: block;
     background: var(--black);
     color: var(--white);
     width: 100%;
