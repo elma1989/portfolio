@@ -8,9 +8,7 @@ flex justify-center">
     <div class="content
     p-4 lg:px-28 py-8
     flex flex-col gap-8">
-        @if(mobile()) {
         <a href="/">⟵</a>
-        }
         <h1 class="font-eczar font-bold 
         text-[2rem]/[2rem] lg:text-[4.5rem]/[4.5rem]
         py-4">{{ 'legal.title' | translate }}</h1>
@@ -32,7 +30,9 @@ flex justify-center">
             </inprint-paragraph>
         }
         <footer class="flex flex-col gap-4">
-            <p>{{ 'legal.question' | translate }}<a href="mailto:marco.elste@web.de">marco.elste&#64;web.de</a></p>
+            <p>{{ 'legal.question' | translate }}
+                <a href="mailto:marco.elste@web.de"
+                class="tx-yellow hover:underline">marco.elste&#64;web.de</a></p>
             <p>{{ 'legal.date' | translate }}</p>
         </footer>
     </div>

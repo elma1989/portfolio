@@ -21,8 +21,7 @@ type InprintParagraph = {
     InprintParagraphComponent,
     FooterComponent
   ],
-  templateUrl: './legal-notice.component.html',
-  styleUrl: './legal-notice.component.css'
+  templateUrl: './legal-notice.component.html'
 })
 export class LegalNoticeComponent {
   private sec: SectionService = inject(SectionService);
