@@ -8,6 +8,7 @@ export class SectionService {
   private _mobile: WritableSignal<boolean> = signal<boolean>(this.isMobile());
   private _section: WritableSignal<SectionType> = signal<SectionType>(SectionType.HERO);
 
+  // #region Methods
   get mobile(): Signal<boolean> { return this._mobile.asReadonly() }
 
   set mobile(state: boolean) { this._mobile.set(state) }
@@ -16,10 +17,24 @@ export class SectionService {
 
   set section(section: SectionType) { 
     this._section.set(section);
-    console.log(this.section());
+    this.saveSection();
   }
 
   isMobile(): boolean {
     return window.innerWidth < 1024;
   }
+
+  // #region Storage
+  /** Saves the current section in local storage. */
+  saveSection(): void {
+    localStorage.setItem('section', this.section());
+  }
+
+  /** Loads section form local storage. */
+  loadSection(): void {
+    const storage = localStorage.getItem('section');
+    if (storage) this._section.set(storage as SectionType);
+  }
+  // #endregion
+  // #endregion
 }

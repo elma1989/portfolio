@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, computed, HostListener, inject, Signal } from '@angular/core';
 import { SectionService } from '../shared/services/section.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { AboutSectionComponent } from './about-section/about-section.component';
@@ -27,6 +27,7 @@ import { HeaderComponent } from "../shared/components/header/header.component";
 })
 export class MainContentComponent implements AfterViewInit {
   private sec: SectionService = inject(SectionService);
+  private scroller: ViewportScroller = inject(ViewportScroller);
   protected mobile: Signal<boolean> = computed(() => this.sec.mobile());
   protected section: Signal<SectionType> = computed(() => this.sec.section());
   protected SectionType = SectionType;
@@ -34,6 +35,8 @@ export class MainContentComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.calcSecPos();
+    this.sec.loadSection();
+    this.moveToCurrentSection();
   }
 
   // #region Background-Indicator
@@ -102,6 +105,11 @@ export class MainContentComponent implements AfterViewInit {
   onResize() {
     this.sec.mobile = window.innerWidth < 1024;
     this.calcSecPos();
+  }
+
+  /** Jumps to current section on load */
+  private moveToCurrentSection() {
+    this.scroller.scrollToAnchor(this.section());
   }
   // #endregion
 }
