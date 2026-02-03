@@ -14,7 +14,10 @@ export class SectionService {
 
   get section(): Signal<SectionType> { return this._section.asReadonly() }
 
-  set section(section: SectionType) { this._section.set(section) }
+  set section(section: SectionType) { 
+    this._section.set(section);
+    console.log(this.section());
+  }
 
   isMobile(): boolean {
     return window.innerWidth < 1024;

@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, Signal } from '@angular/core';
 import { SectionService } from '../shared/services/section.service';
-import { SectionType } from '../shared/enums/section-type';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { TranslatePipe } from '../shared/pipes/translate.pipe';
 
@@ -15,8 +14,5 @@ import { TranslatePipe } from '../shared/pipes/translate.pipe';
 })
 export class PrivacyPolicyComponent {
   private sec: SectionService = inject(SectionService);
-
-  constructor() {
-    this.sec.section = SectionType.SKILLS;
-  }
+  protected mobile: Signal<boolean> = computed(() => this.sec.mobile());
 }
