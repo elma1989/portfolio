@@ -1,5 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactSectionComponent } from './contact-section.component';
+import { Signal, signal } from '@angular/core';
+import { TranslationService } from '../../shared/services/translation.service';
+
+const langSignal = signal<'en' | 'de'>('en');
+
+const translationServiceMock = {
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('ContactSectionComponent', () => {
   let component: ContactSectionComponent;
@@ -8,9 +18,15 @@ describe('ContactSectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContactSectionComponent]
+      imports: [ContactSectionComponent],
+      providers: [
+        {
+          provide: TranslationService,
+          useValue: translationServiceMock
+        }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ContactSectionComponent);
     component = fixture.componentInstance;
@@ -76,6 +92,38 @@ describe('ContactSectionComponent', () => {
 
     it('should have dirction row on desktop', () => {
       expect(area()?.classList).toContain('lg:flex-row');
+    });
+  });
+
+  describe('Header', () => {
+    const header: () => HTMLElement | null =
+      () => element.querySelector('.content-area>header');
+
+    it('should have header', () => {
+      expect(header()).toBeTruthy();
+    });
+
+    it('should have full width on mobile', () => {
+      expect(header()?.classList).toContain('w-full');
+    });
+
+    it('should have 1/2 width on desktop', () => {
+      expect(header()?.classList).toContain('lg:w-1/2');
+    });
+
+    it('should have full height on desktop', () => {
+      expect(header()?.classList).toContain('lg:h-full');
+    });
+
+    it('should have gap 2rem column', () => {
+      const head = header();
+      expect(head?.classList).toContain('flex');
+      expect(head?.classList).toContain('flex-col');
+      expect(head?.classList).toContain('gap-8');
+    });
+
+    it('should have gap 4rem on desktop', () => {
+      expect(header()?.classList).toContain('lg:gap-16');
     });
   });
 });

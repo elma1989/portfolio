@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'section[contact]',
-  imports: [],
+  imports: [TranslatePipe],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'
 })
