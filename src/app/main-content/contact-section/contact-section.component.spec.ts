@@ -111,10 +111,6 @@ describe('ContactSectionComponent', () => {
       expect(header()?.classList).toContain('lg:w-1/2');
     });
 
-    it('should have full height on desktop', () => {
-      expect(header()?.classList).toContain('lg:h-full');
-    });
-
     it('should have gap 2rem column', () => {
       const head = header();
       expect(head?.classList).toContain('flex');
@@ -124,6 +120,96 @@ describe('ContactSectionComponent', () => {
 
     it('should have gap 4rem on desktop', () => {
       expect(header()?.classList).toContain('lg:gap-16');
+    });
+  });
+
+  describe('H1', () => {
+    const title: () => HTMLElement | null =
+      () => element.querySelector('header>h1');
+
+    it('should have h1', () => {
+      expect(title()).toBeTruthy();
+    });
+
+    it('should have font "Eczar"', () => {
+      expect(title()?.classList).toContain('font-eczar');
+    });
+
+    it('should have color yellow', () => {
+      expect(title()?.classList).toContain('tx-yellow');
+    });
+
+    it('should have size 2.5rem on mobile', () => {
+      expect(title()?.classList).toContain('text-[2.5rem]/[2.5rem]');
+    });
+
+    it('should have size 4.5rem on desktop', () => {
+      expect(title()?.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
+    });
+
+    it('should have content "translated: contact.title"', () => {
+      expect(title()?.textContent)
+        .toBe('translated: contact.title');
+    })
+  });
+
+  describe('Description', () => {
+    const desc: () => HTMLDivElement | null =
+      () => element.querySelector('header>.desc');
+
+    it('should have desc', () => {
+      expect(desc()).toBeTruthy();
+    });
+
+    it('should have full width', () => {
+      expect(desc()?.classList).toContain('w-full');
+    });
+
+    it('should have gap 1rem column', () => {
+      const d = desc();
+      expect(d?.classList).toContain('flex');
+      expect(d?.classList).toContain('flex-col');
+      expect(d?.classList).toContain('gap-4');
+    });
+  });
+
+  describe('H2', () => {
+    const subtitle: () => HTMLElement | null =
+      () => element.querySelector('.desc>h2');
+
+    it('should have h2', () => {
+      expect(subtitle()).toBeTruthy();
+    });
+
+    it('should have color orange', () => {
+      expect(subtitle()?.classList).toContain('tx-orange');
+    });
+
+    it('should have bold text', () => {
+      expect(subtitle()?.classList).toContain('font-bold');
+    });
+
+    it('should have size 1.5rem', () => {
+      expect(subtitle()?.classList).toContain('text-[1.5rem]/[1.5rem]');
+    });
+
+    it('should have content "translated: contact.h2"', () => {
+      expect(subtitle()?.textContent)
+        .toBe('translated: contact.h2');
+    });
+  });
+
+  describe('Desc.p', () => {
+    const paragraph: () => HTMLParagraphElement | null =
+      () => element.querySelector('.desc>p');
+
+    it('should have paragrah', () => {
+      expect(paragraph()).toBeTruthy();
+    });
+
+    it('should have content "contact.header-p"', () => {
+      expect(paragraph()?.textContent)
+        .toBe('translated: contact.header-p');
     });
   });
 });
