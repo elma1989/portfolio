@@ -1,0 +1,28 @@
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+input[type=text] {
+    width: 100%;
+    font-size: 1.5rem;
+    outline: none;
+    margin-top: 1rem;
+}
+
+.input-box {
+    border-bottom: 1px solid var(--yellow);
+}
+
+.orange-underline {
+    border-bottom-color: var(--orange);
+}
+
+.red-underline {
+    border-bottom-color: var(--error);
+}
+
+.error::placeholder {
+    color: var(--error);
+    font-weight: bold;
+}

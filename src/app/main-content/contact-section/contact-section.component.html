@@ -15,5 +15,47 @@
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
+        <form [formGroup]="form" (submit)="onSubmit()"
+        class="flex flex-col gap-8 w-full lg:w-1/2">
+            <div class="w-full
+            flex flex-col lg:flex-row gap-8">
+                <div class="input-box block w-full p-4"
+                [class.orange-underline]="isFocus('name')"
+                [class.red-underline]="name.invalid && name.touched">
+                    <label for="name"
+                    [class.tx-orange]="isFocus('name')">{{ 'contact.labels.name' | translate }}</label>
+                    <input type="text" id="name" 
+                    formControlName="name"
+                    [class.error]="name.invalid && name.touched"
+                    [placeholder]="namePlaceholder"
+                    (focus)="setFocus('name')"
+                    (blur)="setBlur('name')">
+                </div>
+                <div class="input-box block w-full p-4"
+                [class.orange-underline]="isFocus('email')"
+                [class.red-underline]="email.invalid && email.touched">
+                    <label for="email"
+                    [class.tx-orange]="isFocus('email')">{{ 'contact.labels.email' | translate }}</label>
+                    <input type="text" id="email" 
+                    formControlName="email"
+                    [class.error]="email.invalid && email.touched"
+                    [placeholder]="emailPlaceholder"
+                    (focus)="setFocus('email')"
+                    (blur)="setBlur('email')">
+                </div>
+            </div>
+            <div class="input-box block w-full p-4"
+            [class.orange-underline]="isFocus('question')"
+            [class.red-underline]="question.invalid && question.touched">
+                <label for="question"
+                [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
+                <input type="text" id="question" 
+                formControlName="question" 
+                [class.error]="question.invalid && question.touched"
+                [placeholder]="questionPlaceholder"
+                (focus)="setFocus('question')"
+                (blur)="setBlur('question')">
+            </div>
+        </form>
     </div>
 </div>
