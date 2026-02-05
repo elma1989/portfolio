@@ -16,12 +16,13 @@ export class ContactSectionComponent {
   private fb: FormBuilder = inject(FormBuilder);
   private ts: TranslationService = inject(TranslationService);
   protected form = this.fb.nonNullable.group({
-    name: ['', Validators.required, Validators.minLength(3)],
+    name: ['', Validators.required],
     email: ['', Validators.required],
     question: ['', Validators.required],
-    policy: [false]
+    policy: [false, Validators.requiredTrue]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
+  protected checkboxHover: boolean = false;
 
   // #region Getter
   get name() { return this.form.controls.name; }
@@ -58,6 +59,19 @@ export class ContactSectionComponent {
       return this.ts.translate('contact.error.question');
 
     return '';
+  }
+
+  get checkboxImage(): string {
+    let suffix: string = this.form.controls.policy.value 
+      ? (this.checkboxHover ? '-checked-hover' : '-checked')
+      : (this.checkboxHover ? '-hover' : '');
+    return `assets/img/05_contact/check${suffix}.png`
+  }
+
+  get errorPolicy(): string {
+    return this.form.controls.policy.touched 
+    && this.form.controls.policy.invalid
+      ? this.ts.translate('contact.error.policy') : '';
   }
   // #endregion
 

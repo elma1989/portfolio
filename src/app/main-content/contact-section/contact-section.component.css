@@ -22,7 +22,11 @@ input[type=text] {
     border-bottom-color: var(--error);
 }
 
-.error::placeholder {
+.error::placeholder, .error-msg {
     color: var(--error);
     font-weight: bold;
+}
+
+.small {
+    font-size: 1rem;
 }
