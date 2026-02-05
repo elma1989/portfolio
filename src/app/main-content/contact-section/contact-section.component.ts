@@ -61,7 +61,7 @@ export class ContactSectionComponent {
   }
   // #endregion
 
-  // #reqion Focus
+  // #region Focus
   setFocus(name: string): void {
     this.focusControl.set(name);
   }
@@ -73,6 +73,7 @@ export class ContactSectionComponent {
   isFocus(name: string): boolean {
     return name == this.focusControl();
   }
+  // #endregion
 
   onSubmit() {
 
