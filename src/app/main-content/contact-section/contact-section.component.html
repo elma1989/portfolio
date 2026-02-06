@@ -15,75 +15,87 @@
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
-        <form [formGroup]="form" (submit)="onSubmit()"
-        class="flex flex-col gap-8 w-full lg:w-1/2">
-            <div class="w-full
-            flex flex-col lg:flex-row gap-8">
-                <div class="input-box block w-full p-4"
-                [class.orange-underline]="isFocus('name')"
-                [class.red-underline]="name.invalid && name.touched">
-                    <label for="name"
-                    [class.tx-orange]="isFocus('name')">{{ 'contact.labels.name' | translate }}</label>
-                    <input type="text" id="name" 
-                    formControlName="name"
-                    [class.error]="name.invalid && name.touched"
-                    [placeholder]="namePlaceholder"
-                    (focus)="setFocus('name')"
-                    (blur)="setBlur('name')">
-                </div>
-                <div class="input-box block w-full p-4"
-                [class.orange-underline]="isFocus('email')"
-                [class.red-underline]="email.invalid && email.touched">
-                    <label for="email"
-                    [class.tx-orange]="isFocus('email')">{{ 'contact.labels.email' | translate }}</label>
-                    <input type="text" id="email" 
-                    formControlName="email"
-                    [class.error]="email.invalid && email.touched"
-                    [placeholder]="emailPlaceholder"
-                    (focus)="setFocus('email')"
-                    (blur)="setBlur('email')">
+        @if (sent()) {
+            <div class="w-full flex flex-col gap-8">
+                <p class="tx-orange font-bold
+                text-[1.5rem]/[1.5rem]">{{ 'contact.sent' | translate}}</p>
+                <div class="w-full flex justify-center">
+                    <button class="btn-default"
+                    (pointerdown)="sent.set(false)"
+                    >{{ 'contact.newmail' | translate }}</button>
                 </div>
             </div>
-            <div class="input-box block w-full p-4"
-            [class.orange-underline]="isFocus('question')"
-            [class.red-underline]="question.invalid && question.touched">
-                <label for="question"
-                [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
-                <input type="text" id="question" 
-                formControlName="question" 
-                [class.error]="question.invalid && question.touched"
-                [placeholder]="questionPlaceholder"
-                (focus)="setFocus('question')"
-                (blur)="setBlur('question')">
-            </div>
-            <div class="w-full px-4
-            flex flex-col gap-4">
-                <div class="flex gap-2">
-                    <div class="w-5 h-5 relative shrink-0">
-                        <img [src]="checkboxImage" 
-                        class="w-full h-full">
-                        <input type="checkbox" id="policy"
-                        class="w-full h-full opacity-0 cursor-pointer
-                        absolute top-0 left-0"
-                        formControlName="policy"
-                        (pointerenter)="checkboxHover=true"
-                        (pointerleave)="checkboxHover=false">
+        } @else {
+            <form [formGroup]="form" (submit)="onSubmit()"
+            class="flex flex-col gap-8 w-full lg:w-1/2">
+                <div class="w-full
+                flex flex-col lg:flex-row gap-8">
+                    <div class="input-box block w-full p-4"
+                    [class.orange-underline]="isFocus('name')"
+                    [class.red-underline]="name.invalid && name.touched">
+                        <label for="name"
+                        [class.tx-orange]="isFocus('name')">{{ 'contact.labels.name' | translate }}</label>
+                        <input type="text" id="name" 
+                        formControlName="name"
+                        [class.error]="name.invalid && name.touched"
+                        [placeholder]="namePlaceholder"
+                        (focus)="setFocus('name')"
+                        (blur)="setBlur('name')">
                     </div>
-                    <label for="policy"
-                    class="small"
-                    (pointerenter)="checkboxHover=true"
-                    (pointerleave)="checkboxHover=false">{{ 'contact.labels.policy-1' | translate }} 
-                        <a href="/privacy-policy" 
-                    class="tx-orange hover:underline">{{ 'contact.labels.policy-2' | translate }}</a> 
-                    {{ 'contact.labels.policy-3' | translate }}</label>
+                    <div class="input-box block w-full p-4"
+                    [class.orange-underline]="isFocus('email')"
+                    [class.red-underline]="email.invalid && email.touched">
+                        <label for="email"
+                        [class.tx-orange]="isFocus('email')">{{ 'contact.labels.email' | translate }}</label>
+                        <input type="text" id="email" 
+                        formControlName="email"
+                        [class.error]="email.invalid && email.touched"
+                        [placeholder]="emailPlaceholder"
+                        (focus)="setFocus('email')"
+                        (blur)="setBlur('email')">
+                    </div>
                 </div>
-                <div class="error-msg h-4">{{ errorPolicy }}</div>
-            </div>
-            <div class="w-full flex justify-center">
-                <input type="submit" [value]="submitValue"
-                class="btn-default"
-                [class.disabled]="form.invalid">
-            </div>
-        </form>
+                <div class="input-box block w-full p-4"
+                [class.orange-underline]="isFocus('question')"
+                [class.red-underline]="question.invalid && question.touched">
+                    <label for="question"
+                    [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
+                    <input type="text" id="question" 
+                    formControlName="question" 
+                    [class.error]="question.invalid && question.touched"
+                    [placeholder]="questionPlaceholder"
+                    (focus)="setFocus('question')"
+                    (blur)="setBlur('question')">
+                </div>
+                <div class="w-full px-4
+                flex flex-col gap-4">
+                    <div class="flex gap-2">
+                        <div class="w-5 h-5 relative shrink-0">
+                            <img [src]="checkboxImage" 
+                            class="w-full h-full">
+                            <input type="checkbox" id="policy"
+                            class="w-full h-full opacity-0 cursor-pointer
+                            absolute top-0 left-0"
+                            formControlName="policy"
+                            (pointerenter)="checkboxHover=true"
+                            (pointerleave)="checkboxHover=false">
+                        </div>
+                        <label for="policy"
+                        class="small"
+                        (pointerenter)="checkboxHover=true"
+                        (pointerleave)="checkboxHover=false">{{ 'contact.labels.policy-1' | translate }} 
+                            <a href="/privacy-policy" 
+                        class="tx-orange hover:underline">{{ 'contact.labels.policy-2' | translate }}</a> 
+                        {{ 'contact.labels.policy-3' | translate }}</label>
+                    </div>
+                    <div class="error-msg h-4">{{ errorPolicy }}</div>
+                </div>
+                <div class="w-full flex justify-center">
+                    <input type="submit" [value]="submitValue"
+                    class="btn-default"
+                    [class.disabled]="form.invalid">
+                </div>
+            </form>
+        }
     </div>
 </div>

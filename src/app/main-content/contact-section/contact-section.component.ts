@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
@@ -23,6 +23,7 @@ export class ContactSectionComponent implements OnInit {
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
+  protected sent: WritableSignal<boolean> = signal<boolean>(false);
 
   ngOnInit(): void {
     this.loadValues();
@@ -160,6 +161,7 @@ export class ContactSectionComponent implements OnInit {
     }
 
     this.form.reset();
+    this.sent.set(true);
   }
   // #endregion
 }
