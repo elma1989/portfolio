@@ -7,3 +7,13 @@
 .btn-default:hover {
     background-color: var(--orange);
 }
+
+.disabled {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.disabled:hover {
+    background-color: transparent;
+    cursor: default;
+}

@@ -14,7 +14,7 @@ html {
     color: var(--white);
 }
 
-button {
+button, input[type=submit] {
     cursor: pointer;
 }
 

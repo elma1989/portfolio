@@ -80,6 +80,10 @@ export class ContactSectionComponent implements OnInit {
     && this.form.controls.policy.invalid
       ? this.ts.translate('contact.error.policy') : '';
   }
+
+  get submitValue(): string {
+    return this.ts.translate('contact.submit');
+  }
   // #endregion
 
   // #region Focus
@@ -137,6 +141,7 @@ export class ContactSectionComponent implements OnInit {
   }
   // #endregion
 
+  // #region Form
   /**
    * Trims a control.
    * @param name Name of Control.
@@ -147,7 +152,14 @@ export class ContactSectionComponent implements OnInit {
       control.setValue(control.value.trim());
   }
 
+  /** Submits the form. */
   onSubmit() {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
+    this.form.reset();
   }
+  // #endregion
 }
