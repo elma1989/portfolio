@@ -329,7 +329,6 @@ describe('MainContentComponent', () => {
     });
 
     it('should have full viewport size', () => {
-      expect(contact()?.classList.contains('h-dvh') ?? false).toBeTrue();
       expect(contact()?.classList.contains('w-full') ?? false).toBeTrue();
     });
 

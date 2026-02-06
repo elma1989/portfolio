@@ -1,6 +1,6 @@
-import { Component, inject, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { TranslationService } from '../../shared/services/translation.service';
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'
 })
-export class ContactSectionComponent {
+export class ContactSectionComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private ts: TranslationService = inject(TranslationService);
   protected form = this.fb.nonNullable.group({
@@ -23,6 +23,13 @@ export class ContactSectionComponent {
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
+
+  ngOnInit(): void {
+    this.loadValues();
+    this.form.valueChanges.subscribe(() => {
+      this.saveValues();
+    });
+  }
 
   // #region Getter
   get name() { return this.form.controls.name; }
@@ -76,18 +83,69 @@ export class ContactSectionComponent {
   // #endregion
 
   // #region Focus
+  /**
+   * Sets focus on control.
+   * @param name Name of control.
+   */
   setFocus(name: string): void {
     this.focusControl.set(name);
   }
 
+  /**
+   * Usets focus from control.
+   * @param name Name of control.
+   */
   setBlur(name: string): void {
-    if(name == this.focusControl()) this.focusControl.set(null);
+    if(name == this.focusControl()) {
+      this.focusControl.set(null);
+      this.trimControl(name);
+    }
   }
 
+  /**
+   * Checks, if focus in on control.
+   * @param name Name of form.
+   * @returns True, if control is on focus.
+   */
   isFocus(name: string): boolean {
     return name == this.focusControl();
   }
   // #endregion
+
+  // #region Storage
+  /** Saves form values in local storage. */
+  private saveValues(): void {
+    const values = Object.keys(this.form.controls)
+      .map(key => ({
+        [key]: this.form.get(key)?.value
+      }))
+      .reduce((acc, obj) => {
+        return {...acc, ...obj}
+      });
+      localStorage.setItem('form', JSON.stringify(values));
+  }
+
+  /** Loads form values from local storage. */
+  private loadValues(): void {
+    const storage = localStorage.getItem('form');
+    if(storage) {
+      const values = JSON.parse(storage);
+      Object.keys(values).forEach(key => {
+        this.form.get(key)?.setValue(values[key]);
+      });
+    }
+  }
+  // #endregion
+
+  /**
+   * Trims a control.
+   * @param name Name of Control.
+   */
+  private trimControl(name: string) {
+    const control = this.form.get(name);
+    if(control && typeof control.value == 'string')
+      control.setValue(control.value.trim());
+  }
 
   onSubmit() {
 

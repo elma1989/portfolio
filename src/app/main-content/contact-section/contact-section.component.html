@@ -63,13 +63,16 @@
                         <img [src]="checkboxImage" 
                         class="w-full h-full">
                         <input type="checkbox" id="policy"
-                        class="w-full h-full opacity-0 absolute top-0 left-0"
+                        class="w-full h-full opacity-0 cursor-pointer
+                        absolute top-0 left-0"
                         formControlName="policy"
                         (pointerenter)="checkboxHover=true"
                         (pointerleave)="checkboxHover=false">
                     </div>
                     <label for="policy"
-                    class="small">{{ 'contact.labels.policy-1' | translate }} 
+                    class="small"
+                    (pointerenter)="checkboxHover=true"
+                    (pointerleave)="checkboxHover=false">{{ 'contact.labels.policy-1' | translate }} 
                         <a href="/privacy-policy" 
                     class="tx-orange hover:underline">{{ 'contact.labels.policy-2' | translate }}</a> 
                     {{ 'contact.labels.policy-3' | translate }}</label>
