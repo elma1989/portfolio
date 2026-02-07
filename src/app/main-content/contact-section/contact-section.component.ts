@@ -1,13 +1,15 @@
-import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 
 @Component({
   selector: 'section[contact]',
   imports: [
     TranslatePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FooterComponent
   ],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'

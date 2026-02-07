@@ -342,7 +342,7 @@ describe('MainContentComponent', () => {
 
     it('should content x-center', () => {
       expect(contact()?.classList.contains('flex') ?? false).toBeTrue();
-      expect(contact()?.classList.contains('justify-center') ?? false).toBeTrue();
+      expect(contact()?.classList.contains('items-center') ?? false).toBeTrue();
     });
 
     it('should have black background', () => {

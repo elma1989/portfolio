@@ -1,6 +1,7 @@
-<div class="content flex">
+<div class="content flex flex-1">
     <div class="content-area
-    w-full lg:w-9/10 h-full p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
+    w-full lg:w-9/10 h-full lg:h-[80dvh]
+    p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
     flex flex-col lg:flex-row gap-8">
         <header class="w-full lg:w-1/2
         flex flex-col gap-8 lg:gap-16">
@@ -27,7 +28,8 @@
             </div>
         } @else {
             <form [formGroup]="form" (submit)="onSubmit()"
-            class="flex flex-col gap-8 w-full lg:w-1/2">
+            class="w-full lg:w-1/2
+            flex flex-col gap-8 self-end">
                 <div class="w-full
                 flex flex-col lg:flex-row gap-8">
                     <div class="input-box block w-full p-4"
@@ -99,3 +101,5 @@
         }
     </div>
 </div>
+<footer app-footer
+class="w-full"></footer>
