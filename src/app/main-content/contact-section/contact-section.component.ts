@@ -25,7 +25,7 @@ export class ContactSectionComponent implements OnInit {
   private sec: SectionService = inject(SectionService);
   protected form = this.fb.nonNullable.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
     question: ['', Validators.required],
     policy: [false, Validators.requiredTrue]
   });
@@ -65,6 +65,11 @@ export class ContactSectionComponent implements OnInit {
     if(this.email.errors?.['required'])
       return this.ts.translate('contact.error.email');
 
+    if(this.email.errors?.['email']) {
+      this.email.setValue('');
+      return this.ts.translate('contact.error.email');
+    }
+
     return '';
   }
 
@@ -72,7 +77,7 @@ export class ContactSectionComponent implements OnInit {
     if (!this.question.touched || !this.question.invalid)
       return this.ts.translate('contact.placeholder.question');
 
-    if(this.email.errors?.['required'])
+    if(this.question.errors?.['required'])
       return this.ts.translate('contact.error.question');
 
     return '';
@@ -103,6 +108,7 @@ export class ContactSectionComponent implements OnInit {
    */
   setFocus(name: string): void {
     this.focusControl.set(name);
+    if(name =='email') this.email.reset();
   }
 
   /**
@@ -149,6 +155,11 @@ export class ContactSectionComponent implements OnInit {
       });
     }
   }
+
+  /** Removes form data from local storage */
+  private removeValues(): void {
+    localStorage.removeItem('form');
+  }
   // #endregion
 
   // #region Form
@@ -163,7 +174,7 @@ export class ContactSectionComponent implements OnInit {
   }
 
   /** Submits the form. */
-  onSubmit() {
+  onSubmit(): void {
     if(this.form.invalid) {
       this.form.markAllAsTouched();
       return;
@@ -173,6 +184,12 @@ export class ContactSectionComponent implements OnInit {
 
     this.form.reset();
     this.sent.set(true);
+  }
+
+  resetForm(): void {
+    this.removeValues();
+    this.form.reset();
+    this.sent.set(false);
   }
   // #endregion
 }

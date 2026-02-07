@@ -180,5 +180,31 @@
             }
         },
         "source": "Source:"
+    },
+    "contact": {
+        "title": "Let's build something Cool together!",
+        "h2": "Got a problem to solve?",
+        "header-p": "Encourage people to contact you and describe what role you are interested in.  Show that you will add value to their projects through your work.",
+        "labels": {
+            "name": "What's your name?",
+            "email": "What's your email?",
+            "question": "How can I help you?",
+            "policy-1": "I've read the",
+            "policy-2": "Privacy Policy",
+            "policy-3": "and agree to the processing of my data."
+        },
+        "placeholder": {
+            "name": "Your name goes here",
+            "email": "yourmail@mail.com",
+            "question": "Hello Marco, I am interested in ..."
+        },
+        "error": {
+            "name": "Oops! it seems your name is missing",
+            "email": "Hopola! your email is required",
+            "question": "What do you need to develop?",
+            "policy": "Please accept the privacy policy."
+        },
+        "sent": "Your request has been submitted.",
+        "newmail": "Next request"
     }
 }

@@ -22,7 +22,7 @@
                 text-[1.5rem]/[1.5rem]">{{ 'contact.sent' | translate}}</p>
                 <div class="w-full flex justify-center">
                     <button class="btn-default"
-                    (pointerdown)="sent.set(false)"
+                    (pointerdown)="resetForm()"
                     >{{ 'contact.newmail' | translate }}</button>
                 </div>
             </div>
