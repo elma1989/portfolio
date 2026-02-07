@@ -180,5 +180,31 @@
             }
         },
         "source": "Quelle:"
+    },
+    "contact": {
+        "title": "Lassen Sie uns etwas Cooles zusammen bauen!",
+        "h2": "Gibt es ein Problem zum Lösen?",
+        "header-p": "Kontaktieren Sie mich und beschreiben Sie für welche Stelle Sie Mitarbeiter suchen.",
+        "labels": {
+            "name": "Was ist Ihr Name?",
+            "email": "Was ist Ihre E-Mail-Adresse?",
+            "question": "Wie kann ich Ihnen helfen?",
+            "policy-1": "Ich habe die",
+            "policy-2": "Datenschutzerklärung",
+            "policy-3": "gelesen und akeptiere die Verabeitung meiner Daten."
+        },
+        "placeholder": {
+            "name": "Ihr Name ...",
+            "email": "ihremail@mail.com",
+            "question": "Hallo Marco, Ich bin interessiert an ..."
+        },
+        "error": {
+            "name": "Oops! Der Name scheint zu fehlen.",
+            "email": "Hopola! Ihre E-Mail wird benötigt.",
+            "question": "Was benötigen Sie zum Entwickeln?",
+            "policy": "Akzeptieren Sie bitte die Datenschutzerklärung."
+        },
+        "sent": "Ihre Anfrage wurde übermittelt.",
+        "newmail": "Nächste Anfrage"
     }
 }
