@@ -90,6 +90,7 @@ export class MainContentComponent implements AfterViewInit {
     }
   }
 
+  /** Will be executed on scrollikng. */
   @HostListener('window:scroll', [])
   onScroll() {
     if (!this.isTestMode() && this.mobile()) {
@@ -101,10 +102,12 @@ export class MainContentComponent implements AfterViewInit {
     }
   }
 
+  /** Will be executed on resizing. */
   @HostListener('window:resize')
   onResize() {
     this.sec.mobile = window.innerWidth < 1024;
     this.calcSecPos();
+    this.moveToCurrentSection();
   }
 
   /** Jumps to current section on load */
