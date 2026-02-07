@@ -1,15 +1,20 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { SectionService } from '../../shared/services/section.service';
+import { CommonModule } from '@angular/common';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
 @Component({
   selector: 'section[contact]',
   imports: [
     TranslatePipe,
     ReactiveFormsModule,
-    FooterComponent
+    FooterComponent,
+    CommonModule,
+    SectionSelectorComponent
   ],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'
@@ -17,6 +22,7 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 export class ContactSectionComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private ts: TranslationService = inject(TranslationService);
+  private sec: SectionService = inject(SectionService);
   protected form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
@@ -26,6 +32,7 @@ export class ContactSectionComponent implements OnInit {
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
+  protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
 
   ngOnInit(): void {
     this.loadValues();
@@ -161,6 +168,8 @@ export class ContactSectionComponent implements OnInit {
       this.form.markAllAsTouched();
       return;
     }
+
+    const {policy, ...data} = this.form.getRawValue();
 
     this.form.reset();
     this.sent.set(true);

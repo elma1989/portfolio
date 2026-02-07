@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContactSectionComponent } from './contact-section.component';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../shared/services/translation.service';
+import { SectionService } from '../../shared/services/section.service';
+import { By } from '@angular/platform-browser';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -15,6 +18,7 @@ describe('ContactSectionComponent', () => {
   let component: ContactSectionComponent;
   let fixture: ComponentFixture<ContactSectionComponent>;
   let element: HTMLElement;
+  let sec: SectionService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -31,6 +35,7 @@ describe('ContactSectionComponent', () => {
     fixture = TestBed.createComponent(ContactSectionComponent);
     component = fixture.componentInstance;
     element = fixture.nativeElement;
+    sec = TestBed.inject(SectionService);
     fixture.detectChanges();
   });
 
@@ -210,6 +215,46 @@ describe('ContactSectionComponent', () => {
     it('should have content "contact.header-p"', () => {
       expect(paragraph()?.textContent)
         .toBe('translated: contact.header-p');
+    });
+  });
+
+  describe('Section Selector', () => {
+    const selector: () => HTMLElement | null =
+      () => element.querySelector('.content>section-selector');
+
+    it('should not render selector on mobile', () => {
+      sec.mobile = true;
+      fixture.detectChanges();
+      expect(selector()).toBeNull();
+    });
+
+    describe('Desktop', () => {
+      beforeEach(() => {
+        sec.mobile = false;
+        fixture.detectChanges();
+      });
+
+      it('should render', () => {
+        expect(selector()).toBeTruthy();
+      });
+
+      it('should have width 10%', () => {
+        expect(selector()?.classList).toContain('w-1/10');
+      });
+
+      it('should have content center', () => {
+        const sel = selector();
+        expect(sel?.classList).toContain('flex');
+        expect(sel?.classList).toContain('justify-center');
+        expect(sel?.classList).toContain('items-center');
+      });
+
+      it('should be index=5', () => {
+        const selComp = fixture.debugElement
+          .query(By.directive(SectionSelectorComponent))
+          .componentInstance;
+        expect(selComp.index()).toBe(5);
+      });
     });
   });
 });
