@@ -1,5 +1,5 @@
 <div class="content flex flex-1">
-    <div class="content-area
+    <div class="content-area relative
     w-full lg:w-9/10 h-full lg:h-[80dvh]
     p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
     flex flex-col lg:flex-row gap-8">
@@ -37,7 +37,7 @@
                     [class.red-underline]="name.invalid && name.touched">
                         <label for="name"
                         [class.tx-orange]="isFocus('name')">{{ 'contact.labels.name' | translate }}</label>
-                        <input type="text" id="name" 
+                        <input type="text" id="name" autocomplete="off"
                         formControlName="name"
                         [class.error]="name.invalid && name.touched"
                         [placeholder]="namePlaceholder"
@@ -49,7 +49,7 @@
                     [class.red-underline]="email.invalid && email.touched">
                         <label for="email"
                         [class.tx-orange]="isFocus('email')">{{ 'contact.labels.email' | translate }}</label>
-                        <input type="text" id="email" 
+                        <input type="text" id="email" autocomplete="off"
                         formControlName="email"
                         [class.error]="email.invalid && email.touched"
                         [placeholder]="emailPlaceholder"
@@ -62,7 +62,7 @@
                 [class.red-underline]="question.invalid && question.touched">
                     <label for="question"
                     [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
-                    <input type="text" id="question" 
+                    <input type="text" id="question" autocomplete="off"
                     formControlName="question" 
                     [class.error]="question.invalid && question.touched"
                     [placeholder]="questionPlaceholder"
@@ -99,6 +99,15 @@
                 </div>
             </form>
         }
+        <button class="btn-uparrow w-4 h-24
+        absolute right-4 lg:-right-20 bottom-4 lg:bottom-0 lg:top-8
+        flex items-end"
+        (pointerdown)="goToHero()">
+            <svg class="arrow w-4 h-8
+            absolute left-0 bottom-0" viewBox="0 0 16 32">
+                <path d="M8 32v-32l-8 8M8 0l8 8"/>
+            </svg>
+        </button>
     </div>
     @if(desktop()) {
         <section-selector

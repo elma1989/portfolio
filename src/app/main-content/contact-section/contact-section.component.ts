@@ -6,6 +6,7 @@ import { FooterComponent } from '../../shared/components/footer/footer.component
 import { SectionService } from '../../shared/services/section.service';
 import { CommonModule } from '@angular/common';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { SectionType } from '../../shared/enums/section-type';
 
 @Component({
   selector: 'section[contact]',
@@ -20,6 +21,7 @@ import { SectionSelectorComponent } from '../../shared/components/section-select
   styleUrl: './contact-section.component.css'
 })
 export class ContactSectionComponent implements OnInit {
+  // #region Attributes
   private fb: FormBuilder = inject(FormBuilder);
   private ts: TranslationService = inject(TranslationService);
   private sec: SectionService = inject(SectionService);
@@ -40,7 +42,9 @@ export class ContactSectionComponent implements OnInit {
       this.saveValues();
     });
   }
-
+  // #endregion
+  
+  // #region Methods
   // #region Getter
   get name() { return this.form.controls.name; }
 
@@ -185,11 +189,24 @@ export class ContactSectionComponent implements OnInit {
     this.form.reset();
     this.sent.set(true);
   }
-
+  
+  /** Resets the form. */
   resetForm(): void {
     this.removeValues();
     this.form.reset();
     this.sent.set(false);
+  }
+  // #endregion
+
+  /** goes to hero-section. */
+  goToHero() {
+    this.sec.section = SectionType.HERO;
+    if (!this.desktop()) {
+      document.getElementById('hero')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
   // #endregion
 }
