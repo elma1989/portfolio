@@ -31,43 +31,70 @@
             class="w-full lg:w-1/2
             flex flex-col gap-8 self-end">
                 <div class="w-full
-                flex flex-col lg:flex-row gap-8">
-                    <div class="input-box block w-full p-4"
-                    [class.orange-underline]="isFocus('name')"
-                    [class.red-underline]="name.invalid && name.touched">
-                        <label for="name"
-                        [class.tx-orange]="isFocus('name')">{{ 'contact.labels.name' | translate }}</label>
-                        <input type="text" id="name" autocomplete="off"
-                        formControlName="name"
-                        [class.error]="name.invalid && name.touched"
-                        [placeholder]="namePlaceholder"
-                        (focus)="setFocus('name')"
-                        (blur)="setBlur('name')">
-                    </div>
-                    <div class="input-box block w-full p-4"
-                    [class.orange-underline]="isFocus('email')"
-                    [class.red-underline]="email.invalid && email.touched">
-                        <label for="email"
-                        [class.tx-orange]="isFocus('email')">{{ 'contact.labels.email' | translate }}</label>
-                        <input type="text" id="email" autocomplete="off"
-                        formControlName="email"
-                        [class.error]="email.invalid && email.touched"
-                        [placeholder]="emailPlaceholder"
-                        (focus)="setFocus('email')"
-                        (blur)="setBlur('email')">
-                    </div>
-                </div>
-                <div class="input-box block w-full p-4"
-                [class.orange-underline]="isFocus('question')"
-                [class.red-underline]="question.invalid && question.touched">
-                    <label for="question"
-                    [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
-                    <input type="text" id="question" autocomplete="off"
-                    formControlName="question" 
-                    [class.error]="question.invalid && question.touched"
-                    [placeholder]="questionPlaceholder"
-                    (focus)="setFocus('question')"
-                    (blur)="setBlur('question')">
+                flex flex-col gap-8">
+                    @if(desktop()) {
+                        <div class="flex gap-8">
+                            @for(input of inputsDesktop; track input) {
+                                <div class="input-box block w-full p-4"
+                                [class.orange-underline]="isFocus(input)"
+                                [class.red-underline]="control(input).invalid && control(input).touched">
+                                    <label [for]="input"
+                                    [class.tx-orange]="isFocus(input)">{{ `contact.labels.${input}` | translate }}</label>
+                                    <div class="relative w-full">
+                                        <input type="text" [id]="input" autocomplete="off"
+                                            [formControlName="input"
+                                            [placeholder]="placeholder(input)"
+                                            (focus)="setFocus(input)"
+                                            (blur)="setBlur(input)">
+                                        @if (control(input).invalid && control(input).touched && !isFocus(input)) {
+                                            <span class="error-msg bg-cblack w-full
+                                            absolute top-4 left-0"
+                                            (pointerdown)="setFocus(input)">{{ error(input) }}</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="input-box block w-full p-4"
+                                [class.orange-underline]="isFocus('question')"
+                                [class.red-underline]="control('question').invalid && control('question').touched">
+                                    <label for="question"
+                                    [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
+                                    <div class="relative w-full">
+                                        <input type="text" id="question" autocomplete="off"
+                                            [formControlName="input"
+                                            [placeholder]="placeholder('question')"
+                                            (focus)="setFocus('question')"
+                                            (blur)="setBlur('question')">
+                                        @if (control('question').invalid && control('question').touched && !isFocus('question')) {
+                                            <span class="error-msg bg-cblack w-full
+                                            absolute top-4 left-0"
+                                            (pointerdown)="setFocus('question')">{{ error('question') }}</span>
+                                        }
+                                    </div>
+                                </div>
+                    }@else {
+                        @for(input of inputsMobile; track input) {
+                            <div class="input-box block w-full p-4"
+                            [class.orange-underline]="isFocus(input)"
+                            [class.red-underline]="control(input).invalid && control(input).touched">
+                                <label [for]="input"
+                                [class.tx-orange]="isFocus(input)">{{ `contact.labels.${input}` | translate }}</label>
+                                <div class="relative w-full">
+                                    <input type="text" [id]="input" autocomplete="off"
+                                        [formControlName="input"
+                                        [placeholder]="placeholder(input)"
+                                        (focus)="setFocus(input)"
+                                        (blur)="setBlur(input)">
+                                    @if (control(input).invalid && control(input).touched && !isFocus(input)) {
+                                        <span class="error-msg bg-cblack w-full
+                                        absolute top-4 left-0"
+                                        (pointerdown)="setFocus(input)">{{ error(input) }}</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
                 <div class="w-full px-4
                 flex flex-col gap-4">

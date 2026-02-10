@@ -7,6 +7,9 @@ import { SectionService } from '../../shared/services/section.service';
 import { CommonModule } from '@angular/common';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 import { SectionType } from '../../shared/enums/section-type';
+import { CustomValidator } from '../../shared/classes/validators';
+
+type InputType = 'name' | 'email' | 'question';
 
 @Component({
   selector: 'section[contact]',
@@ -25,9 +28,10 @@ export class ContactSectionComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private ts: TranslationService = inject(TranslationService);
   private sec: SectionService = inject(SectionService);
+  
   protected form = this.fb.nonNullable.group({
     name: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
+    email: ['', [Validators.required, CustomValidator.strongEmail()]],
     question: ['', Validators.required],
     policy: [false, Validators.requiredTrue]
   });
@@ -35,6 +39,8 @@ export class ContactSectionComponent implements OnInit {
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
+  protected inputsMobile: InputType[] = ['name', 'email', 'question'];
+  protected inputsDesktop: InputType[] = ['name', 'email'];
 
   ngOnInit(): void {
     this.loadValues();
@@ -52,7 +58,7 @@ export class ContactSectionComponent implements OnInit {
 
   get question() { return this.form.controls.question; }
 
-  get namePlaceholder() {
+  get nameError() {
     if (!this.name.touched || !this.name.invalid)
       return this.ts.translate('contact.placeholder.name');
 
@@ -62,30 +68,16 @@ export class ContactSectionComponent implements OnInit {
     return '';
   }
 
-  get emailPlaceholder() {
-    if (!this.email.touched || !this.email.invalid)
-      return this.ts.translate('contact.placeholder.email');
-
+  get emailError() {
     if(this.email.errors?.['required'])
-      return this.ts.translate('contact.error.email');
+      return this.ts.translate('contact.error.email.required');
 
-    if(this.email.errors?.['email']) {
-      this.email.setValue('');
-      return this.ts.translate('contact.error.email');
-    }
-
-    return '';
+    if(this.email.errors?.['strongEmail'])
+      return this.ts.translate('contact.error.email.not-email');
+    return ''
   }
 
-  get questionPlaceholder() {
-    if (!this.question.touched || !this.question.invalid)
-      return this.ts.translate('contact.placeholder.question');
-
-    if(this.question.errors?.['required'])
-      return this.ts.translate('contact.error.question');
-
-    return '';
-  }
+  get questionError() {return ''; }
 
   get checkboxImage(): string {
     let suffix: string = this.form.controls.policy.value 
@@ -112,7 +104,6 @@ export class ContactSectionComponent implements OnInit {
    */
   setFocus(name: string): void {
     this.focusControl.set(name);
-    if(name =='email') this.email.reset();
   }
 
   /**
@@ -175,6 +166,23 @@ export class ContactSectionComponent implements OnInit {
     const control = this.form.get(name);
     if(control && typeof control.value == 'string')
       control.setValue(control.value.trim());
+  }
+
+  control<C extends keyof typeof this.form.controls>(name: C) {
+    return this.form.controls[name]
+  }
+
+  placeholder(control:string): string {
+    return this.ts.translate(`contact.placeholder.${control}`)
+  }
+
+  error<C extends keyof typeof this.form.controls>(name: C): string {
+    const errors = this.control(name).errors;
+
+    if(errors?.['required'])
+      return `contact.error.${name}.required`;
+
+    return '';
   }
 
   /** Submits the form. */
