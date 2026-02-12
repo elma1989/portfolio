@@ -12,6 +12,9 @@
 html {
     font: 16px Quicksand;
     color: var(--white);
+    @media(min-width: 1920px) {
+        font-size: 24px;
+    }
 }
 
 button, input[type=submit] {

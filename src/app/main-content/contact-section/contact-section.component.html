@@ -2,7 +2,7 @@
     <div class="content-area relative
     w-full lg:w-9/10 h-full lg:h-[80dvh]
     p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
-    flex flex-col lg:flex-row gap-8">
+    flex flex-col lg:flex-row 2xl:flex-col gap-8">
         <header class="w-full lg:w-1/2
         flex flex-col gap-8 lg:gap-16">
             <h1 class="font-eczar tx-yellow
@@ -17,7 +17,7 @@
             </div>
         </header>
         <form [formGroup]="form" (submit)="onSubmit()"
-        class="w-full lg:w-1/2
+        class="w-full lg:w-1/2 2xl:w-full
         flex flex-col gap-8 self-end">
             <div class="w-full
             flex flex-col gap-8">
@@ -138,4 +138,4 @@
     }
 </div>
 <footer app-footer
-class="w-full"></footer>
+class="w-full flex justify-center"></footer>
