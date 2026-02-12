@@ -42,7 +42,7 @@
                                     [class.tx-orange]="isFocus(input)">{{ `contact.labels.${input}` | translate }}</label>
                                     <div class="relative w-full">
                                         <input type="text" [id]="input" autocomplete="off"
-                                            [formControlName="input"
+                                            [formControlName]="input"
                                             [placeholder]="placeholder(input)"
                                             (focus)="setFocus(input)"
                                             (blur)="setBlur(input)">
@@ -62,7 +62,7 @@
                                     [class.tx-orange]="isFocus('question')">{{ 'contact.labels.question' | translate }}</label>
                                     <div class="relative w-full">
                                         <input type="text" id="question" autocomplete="off"
-                                            [formControlName="input"
+                                            formControlName="question"
                                             [placeholder]="placeholder('question')"
                                             (focus)="setFocus('question')"
                                             (blur)="setBlur('question')">
@@ -82,7 +82,7 @@
                                 [class.tx-orange]="isFocus(input)">{{ `contact.labels.${input}` | translate }}</label>
                                 <div class="relative w-full">
                                     <input type="text" [id]="input" autocomplete="off"
-                                        [formControlName="input"
+                                        [formControlName]="input"
                                         [placeholder]="placeholder(input)"
                                         (focus)="setFocus(input)"
                                         (blur)="setBlur(input)">

@@ -187,7 +187,7 @@
         "header-p": "Kontaktieren Sie mich und beschreiben Sie für welche Stelle Sie Mitarbeiter suchen.",
         "labels": {
             "name": "Was ist Ihr Name?",
-            "email": "Was ist Ihre E-Mail-Adresse?",
+            "email": "E-Mail-Adresse?",
             "question": "Wie kann ich Ihnen helfen?",
             "policy-1": "Ich habe die",
             "policy-2": "Datenschutzerklärung",
@@ -199,9 +199,21 @@
             "question": "Hallo Marco, Ich bin interessiert an ..."
         },
         "error": {
-            "name": "Oops! Der Name scheint zu fehlen.",
-            "email": "Hopola! Ihre E-Mail wird benötigt.",
-            "question": "Was benötigen Sie zum Entwickeln?",
+            "name": {
+                "required": "Der Name fehlt",
+                "uppercase": "Beginnt mit Großbuchstaben",
+                "minlength": "Name hat min. 2 Zeichen"
+            },
+            "email": {
+                "required": "E-Mail fehlt",
+                "minlength": "E-Mail hat min. 5 Zeichen",
+                "non-email": "E-Mail ist falsch"
+            },
+            "question": {
+                "required": "Was brauchen Sie zum entwickeln?",
+                "uppercase": "Beginnt mit Großbuchstaben",
+                "minlength": "Frage hat min. 10 Zeichen"
+            },
             "policy": "Akzeptieren Sie bitte die Datenschutzerklärung."
         },
         "sent": "Ihre Anfrage wurde übermittelt.",

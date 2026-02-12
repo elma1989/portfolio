@@ -199,9 +199,21 @@
             "question": "Hello Marco, I am interested in ..."
         },
         "error": {
-            "name": "Oops! it seems your name is missing",
-            "email": "Hopola! your email is required",
-            "question": "What do you need to develop?",
+            "name": {
+                "required": "Your name is missing",
+                "uppercase": "First letter in upper case",
+                "minlength": "Name has 2 chars"
+            },
+            "email": {
+                "required": "Your email is required",
+                "minlength": "E-Mail has 5 chars",
+                "non-email": "It's not an E-Mail"
+            },
+            "question": {
+                "required": "What do you need to develop?",
+                "uppercase": "First letter should be upper case",
+                "minlength": "Question should have 10 characters"
+            },
             "policy": "Please accept the privacy policy."
         },
         "sent": "Your request has been submitted.",

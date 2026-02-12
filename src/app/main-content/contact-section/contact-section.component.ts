@@ -30,9 +30,9 @@ export class ContactSectionComponent implements OnInit {
   private sec: SectionService = inject(SectionService);
   
   protected form = this.fb.nonNullable.group({
-    name: ['', Validators.required],
-    email: ['', [Validators.required, CustomValidator.strongEmail()]],
-    question: ['', Validators.required],
+    name: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.minLength(5), CustomValidator.strongEmail()]],
+    question: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(10)]],
     policy: [false, Validators.requiredTrue]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
@@ -52,33 +52,6 @@ export class ContactSectionComponent implements OnInit {
   
   // #region Methods
   // #region Getter
-  get name() { return this.form.controls.name; }
-
-  get email() { return this.form.controls.email; }
-
-  get question() { return this.form.controls.question; }
-
-  get nameError() {
-    if (!this.name.touched || !this.name.invalid)
-      return this.ts.translate('contact.placeholder.name');
-
-    if(this.name.errors?.['required'])
-      return this.ts.translate('contact.error.name');
-
-    return '';
-  }
-
-  get emailError() {
-    if(this.email.errors?.['required'])
-      return this.ts.translate('contact.error.email.required');
-
-    if(this.email.errors?.['strongEmail'])
-      return this.ts.translate('contact.error.email.not-email');
-    return ''
-  }
-
-  get questionError() {return ''; }
-
   get checkboxImage(): string {
     let suffix: string = this.form.controls.policy.value 
       ? (this.checkboxHover ? '-checked-hover' : '-checked')
@@ -180,7 +153,16 @@ export class ContactSectionComponent implements OnInit {
     const errors = this.control(name).errors;
 
     if(errors?.['required'])
-      return `contact.error.${name}.required`;
+      return this.ts.translate(`contact.error.${name}.required`);
+
+    if(errors?.['firstUpperCase'])
+      return this.ts.translate(`contact.error.${name}.uppercase`);
+
+    if(errors?.['minlength'])
+      return this.ts.translate(`contact.error.${name}.minlength`);
+
+    if(errors?.['strongEmail'])
+      return this.ts.translate(`contact.error.${name}.non-email`);
 
     return '';
   }
