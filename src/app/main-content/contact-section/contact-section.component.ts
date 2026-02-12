@@ -176,7 +176,7 @@ export class ContactSectionComponent implements OnInit {
 
     const {policy, ...data} = this.form.getRawValue();
 
-    this.form.reset();
+    this.resetForm();
     this.sent.set(true);
   }
   

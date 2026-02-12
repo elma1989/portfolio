@@ -217,6 +217,6 @@
             "policy": "Please accept the privacy policy."
         },
         "sent": "Your request has been submitted.",
-        "newmail": "Next request"
+        "submit": "Drop a line"
     }
 }
