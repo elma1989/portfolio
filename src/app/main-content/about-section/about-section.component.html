@@ -5,17 +5,18 @@
         lg:text-[4.5rem]/[4.5rem]">{{ 'about.title' | translate }}</h1>
         <img src="assets/img/02_about/me-orange.png" class="portrait
         absolute top-20 left-4 w-1/2 
-        lg:top-auto lg:left-28 lg:bottom-0 lg:w-9/20">
+        lg:top-auto lg:left-28 lg:bottom-0 lg:w-9/20 2xl:w-full">
         <div class="desc-area bg-cblack tx-white rounded-sm
-        w-7/10 min-[390px]:w-1/2
-        absolute right-4 top-56 p-4 flex flex-col gap-4
+        w-7/10 min-[390px]:w-1/2 2xl:w-4/5
+        absolute right-4 top-56 2xl:top-16 p-4 flex flex-col gap-4
+        2xl:text-[2rem]/[2rem]
         lg:p-8 lg:gap-8">
             <p class="hyphens-auto lg:text-justify">{{ 'about.p1' | translate }}</p>
             <p class="hyphens-auto lg:text-justify">{{ 'about.p2' | translate }}</p>
             <footer class="flex justify-between items-center">
                 <button class="btn-default"
                 (click)="goToContact()">{{ 'about.contact-btn' | translate }}</button>
-                <button class="smile w-8 h-8"
+                <button class="smile size-8 2xl:size-12"
                 (pointerdown)="openOverlayOnClick()"
                 (mouseenter)="openOverlayOnHover()"
                 (mouseleave)="closeOverlayOnLeave()">
@@ -24,7 +25,7 @@
             </footer>
         </div>
         <about-overlay class="bg-blue tx-white rounded-sm
-        w-68 p-4 lg:p-8 flex flex-col gap-4 
+        w-68 2xl:w-lg p-4 lg:p-8 flex flex-col gap-4 
         absolute bottom-0 left-0 lg:left-auto lg:right-0"
         [class.open]="overlay()"
         (closed)="closeOverlay()"></about-overlay>
