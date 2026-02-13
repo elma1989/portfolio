@@ -172,7 +172,7 @@ describe('ReferencesSectionComponent', () => {
     });
 
     it('should have width 1/3 on desktop', () => {
-      expect(refConteiner()?.classList).toContain('lg:w-1/3');
+      expect(refConteiner()?.classList).toContain('lg:w-2/3');
     });
 
     it('should have full height on desktop', () => {

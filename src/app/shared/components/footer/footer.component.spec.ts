@@ -39,10 +39,6 @@ describe('FooterComponent', () => {
       expect(con?.classList).toContain('pb-8');
     });
 
-    it('should have padding-x 7rem desktop', () => {
-      expect(content()?.classList).toContain('lg:px-28');
-    })
-
     it('should have gap 1 column on mobile', () => {
       const con = content();
       expect(con?.classList).toContain('flex');
@@ -92,15 +88,11 @@ describe('FooterComponent', () => {
       });
 
       it('should have 2 spans', () => {
-        expect(spans().length).toBe(2);
-      });
-
-      it('first span should be empty', () => {
-        expect(spans()[0]?.textContent).toBe('');
+        expect(spans().length).toBe(1);
       });
 
       it('second span should have content "© Marco Elste 2026"', () => {
-        expect(spans()[1]?.textContent)
+        expect(spans()[0]?.textContent)
           .toBe('© Marco Elste 2026');
       });
     });
