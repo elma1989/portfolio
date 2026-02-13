@@ -4,16 +4,17 @@
         (click)="close()">X</button>
     </div>
 }
-<header class="w-full text-center font-bold text-[1.5rem]/[2rem]"
+<header class="w-full text-center font-bold text-[1.5rem]/[2rem] 2xl:text-[3rem]/[3rem]"
 >{{ 'skills.overlay-title' | translate }}</header>
-<p class="w-full text-justify">{{ 'skills.overlay-desc' | translate }}</p>
+<p class="w-full text-justify
+2xl:text-[1.5rem]/[1.5rem]">{{ 'skills.overlay-desc' | translate }}</p>
 <footer class="w-full flex justify-center gap-10">
     @for(skill of skills; track skill.name) {
-        <div class="skill w-12 h-16
+        <div class="skill aspect-3/4 w-12 2xl:w-24
         flex flex-col justify-between items-center">
             <img src="assets/img/03_skills/{{ skill.img }}.png"
-            class="size-10">
-            <span>{{ skill.name }}</span>
+            class="aspect-square w-full">
+            <span class="2xl:text-[1.5rem]/[1.5rem]">{{ skill.name }}</span>
         </div>
     }
 </footer>

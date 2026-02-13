@@ -458,6 +458,6 @@ describe('ProjectsSectionComponent', () => {
           .componentInstance
         expect(selCom.index()).toBe(3)
       });
-    })
-  })
+    });
+  });
 });

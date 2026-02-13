@@ -1,27 +1,28 @@
 <div class="content flex h-full">
     <div class="content-area relative overflow-y-hidden
     w-full h-full lg:w-9/10 p-4 lg:py-8 lg:pr-0 lg:pl-28
-    flex flex-col gap-8">
+    flex flex-col gap-8 2xl:gap-16">
         <h1 class="font-eczar
         text-[1.8rem]/[1.8rem] min-[390px]:text-[2.25rem]/[2.25rem] lg:text-[4.5rem]/[4.5rem]"
         >{{ 'skills.title' | translate }}</h1>
         <div class="desc bg-blue rounded-sm
-        w-full lg:w-152 p-4 lg:p-8 
+        w-full lg:w-152 p-4 lg:p-8
+        2xl:text-[1.5rem]/[1.5rem]
         text-justify hyphens-auto">{{ 'skills.desc' | translate }}</div>
         <div class="skill-wrapper
         w-full lg:w-240
         flex flex-wrap gap-3 justify-center lg:gap-8 lg:self-end">
             @for (skill of skills; track skill.name) {
                 <div class="skill
-                w-20 h-24 lg:w-24 lg:h-32
+                aspect-3/4 w-20 lg:w-24 2xl:w-32
                 flex flex-col justify-between items-center">
                     <div class="img-wrapper
-                    size-20 lg:size-24
+                    aspect-square w-full
                     flex justify-center items-center">
                         <img src="assets/img/03_skills/{{ skill.img }}.png"
                         class="w-3/4 h-3/4 lg:hover:size-full">
                     </div>
-                    <span class="text-center">{{ skill.name }}</span>
+                    <span class="text-center 2xl:text-[1.5rem]/[1.5rem]">{{ skill.name }}</span>
                 </div>
             }
         </div>
@@ -38,7 +39,7 @@
             class="learn w-10 h-10 z-1">
         </button>
         <skills-overlay class="bg-yellow z-1 rounded-sm
-        w-[100%-2rem] lg:w-90 p-4 lg:p-8
+        w-[100%-2rem] lg:w-90 2xl:w-lg p-4 lg:p-8
         absolute bottom-0 left-4 right-4 lg:left-64 lg:right-auto
         flex flex-col gap-4 lg:gap-8"
         [class.open]="overlay()"
