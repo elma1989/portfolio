@@ -312,8 +312,7 @@ describe('AboutSectionComponent', () => {
     });
 
     it('2nd button should have size 2rem', () => {
-      expect(btns()[1]?.classList).toContain('w-8');
-      expect(btns()[1]?.classList).toContain('h-8');
+      expect(btns()[1]?.classList).toContain('size-8');
     });
 
     it('2nd button should have an image', () => {

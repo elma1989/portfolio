@@ -21,6 +21,10 @@ export class HeroSectionComponent {
   private readonly router: Router = inject(Router)
   protected readonly mobile: Signal<boolean> = computed(() => this.sec.mobile());
 
+  get fullName(): string {
+    return this.mobile() ? 'Marco Elste' : 'Marco';
+  }
+
   /** Goes to contect-section. */
   goToContact(): void {
     this.sec.section = SectionType.CONTACT;

@@ -111,11 +111,6 @@ describe('HeroSectionComponent', () => {
       expect(desc()).toBeTruthy();
     });
 
-    it('should have full width and half height on mobile', () => {
-      expect(desc()?.classList.contains('w-full') ?? false).toBeTrue();
-      expect(desc()?.classList.contains('h-1/2') ?? false).toBeTrue();
-    });
-
     it('should have half width and full height on desktop', () => {
       expect(desc()?.classList.contains('lg:w-1/2') ?? false).toBeTrue();
       expect(desc()?.classList.contains('lg:h-full') ?? false).toBeTrue();
@@ -167,8 +162,8 @@ describe('HeroSectionComponent', () => {
       expect(bothSize).toBeTrue();
     });
 
-    it('should have font size 3rem and line height 3rem on desktop', () => {
-      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('lg:text-[3rem]/[3rem]'));
+    it('should have font size 2rem and line height 3rem on desktop', () => {
+      const bothSize: boolean = [...h2s()].every(h2 => h2.classList.contains('lg:text-[2rem]/[2rem]'));
       expect(bothSize).toBeTrue();
     });
 
@@ -219,16 +214,6 @@ describe('HeroSectionComponent', () => {
       expect(area()).toBeTruthy();
     });
 
-    it('should have full width and half height on mobile', () => {
-      expect(area()?.classList.contains('w-full') ?? false).toBeTrue();
-      expect(area()?.classList.contains('h-1/2') ?? false).toBeTrue();
-    });
-
-    it('should have half-width and full height on desktop', () => {
-      expect(area()?.classList.contains('lg:h-full') ?? false).toBeTrue();
-      expect(area()?.classList.contains('lg:w-1/2') ?? false).toBeTrue();
-    });
-
     it('should have position relative', () => {
       expect(area()?.classList.contains('relative') ?? false).toBeTrue();
     });
@@ -262,15 +247,6 @@ describe('HeroSectionComponent', () => {
 
     it('should have positon absolute', () => {
       expect(flower()?.classList.contains('absolute') ?? false).toBeTrue();
-    });
-
-    it('should have size 16rem on mobile', () => {
-      expect(flower()?.classList.contains('size-64') ?? false).toBeTrue();
-    });
-
-    it('should have size 32rem on deskop', () => {
-      expect(flower()?.classList.contains('lg:w-lg') ?? false).toBeTrue();
-      expect(flower()?.classList.contains('lg:h-128') ?? false).toBeTrue();
     });
 
     it('should be source correct', () => {

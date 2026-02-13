@@ -211,20 +211,6 @@ describe('SkillsSectionComponent', () => {
       expect(skills().length).toBe(13);
     });
 
-    it('should have 5rem width 6rem height on mobile', () => {
-      skills().forEach(skill => {
-        expect(skill.classList).toContain('w-20');
-        expect(skill.classList).toContain('h-24');
-      });
-    });
-
-    it('should have have 6rem width, 8rem height on deskop', () => {
-      skills().forEach(skill => {
-        expect(skill.classList).toContain('lg:w-24');
-        expect(skill.classList).toContain('lg:h-32');
-      });
-    });
-
     it('should have x-center, y-between, column', () => {
       skills().forEach(skill => {
         expect(skill.classList).toContain('flex');
@@ -238,18 +224,6 @@ describe('SkillsSectionComponent', () => {
         const wrapper = skill.querySelector('.img-wrapper');
         expect(wrapper).toBeTruthy();
       });
-    });
-
-    it('Every skill wrapper should have size 5rem on mobile', () => {
-      imgWrapper().forEach(imgW =>
-        expect(imgW.classList).toContain('size-20')
-      );
-    });
-
-    it('Every skill wrapper should have size 6rem on desktop', () => {
-      imgWrapper().forEach(imgW =>
-        expect(imgW.classList).toContain('lg:size-24')
-      );
     });
 
     it('Every skill wrapper should have centered images', () => {

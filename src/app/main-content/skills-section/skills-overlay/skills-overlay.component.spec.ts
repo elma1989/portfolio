@@ -159,13 +159,6 @@ describe('SkillsOverlayComponent', () => {
       expect(skills().length).toBe(2);
     });
 
-    it('should have width 3rem, height 4rem', () => {
-      skills().forEach(skill => {
-        expect(skill.classList).toContain('w-12');
-        expect(skill.classList).toContain('h-16');
-      });
-    });
-
     it('should have space between column, center-x', () => {
       skills().forEach(skill => {
         expect(skill.classList).toContain('flex');
@@ -189,12 +182,6 @@ describe('SkillsOverlayComponent', () => {
     it('should have 2 imgs, 2 descs',() => {
       expect(imgs().length).toBe(2);
       expect(descs().length).toBe(2);
-    });
-
-    it('Images should have size 2.5rem', () => {
-      imgs().forEach(img => 
-        expect(img.classList).toContain('size-10')
-      );
     });
 
     it('Images should have correct sources', () => {

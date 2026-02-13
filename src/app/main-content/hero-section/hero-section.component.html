@@ -2,22 +2,24 @@
     <div class="content-area relative 
     w-full h-full flex flex-col p-4 pb-0 
     lg:flex-row lg:w-9/10 lg:pt-24 lg:pr-0 lg:pb-0 lg:pl-28">
-        <div class="desc-area w-full h-1/2 lg:w-1/2 lg:h-full">
-            <h2 class="text-[1.5rem]/[1.5rem] lg:text-[3rem]/[3rem] mb-2">{{ 'hero.greating' | translate }}</h2>
-            <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">Marco</h1>
-            <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">Elste</h1>
-            <h2 class="text-[1.5rem]/[1.5rem] lg:text-[3rem]/[3rem]">Frontend Developer</h2>
+        <div class="desc-area w-full lg:w-1/2 lg:h-full">
+            <h2 class="text-[1.5rem]/[1.5rem] lg:text-[2rem]/[2rem] mb-2">{{ 'hero.greating' | translate }}</h2>
+            <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">{{ fullName }}</h1>
+            @if(!mobile()) {
+                <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">Elste</h1>
+            }
+            <h2 class="text-[1.5rem]/[1.5rem] lg:text-[2rem]/[2rem]">Frontend Developer</h2>
             <button class="btn-default mt-8"
             (click)="goToContact()">{{ 'hero.btn' | translate }}</button>
         </div>
         <div class="img-area 
-        w-full h-1/2 lg:w-1/2 lg:h-full relative
+        w-full flex-1 lg:w-1/2 lg:h-full relative
         flex justify-center">
             <img src="assets/img/01_hero/flower.png" class="flower
-            size-64 lg:w-lg lg:h-128
+            size-96 lg:w-lg lg:h-128
             absolute lg:bottom-0 2xl:bottom-96">
             <img src="assets/img/01_hero/me.png" class="portrait 
-            w-full max-w-70 lg:max-w-max absolute bottom-0">
+            w-full max-w-100 absolute bottom-0">
         </div>
         <button class="
         scroll-btn w-20 h-20 absolute bottom-4 left-4 rounded-full bg-blue 
