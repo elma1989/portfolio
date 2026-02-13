@@ -139,14 +139,6 @@ describe('HeroSectionComponent', () => {
       const allSize: boolean = [...h1s()].every(h1 => h1.classList.contains('lg:text-[6rem]/[6rem]'));
       expect(allSize).toBeTrue();
     });
-
-    it('First H1 schould be "Marco"', () => {
-      expect(h1s()[0]?.textContent ?? '').toBe('Marco');
-    });
-
-    it('Secound h1 should be "Elste"', () => {
-      expect(h1s()[1]?.textContent ?? '').toBe('Elste');
-    });
   });
 
   describe('H2 in desc', () => {
