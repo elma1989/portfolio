@@ -1,21 +1,21 @@
 <header class="w-full h-10
                     flex justify-between items-end">
-    <h2 class="font-bold text-[2rem]/[2rem]">{{ project().name }}</h2>
+    <h2 class="font-bold text-[2rem]/[2rem] 2xl:text-[3rem]/[3rem]">{{ project().name }}</h2>
     <img src="assets/img/04_projects/{{ project().icon }}.png" class="size-8 cursor-pointer lg:cursor-auto"
         (pointerdown)="openOnClick()" (pointerenter)="openOnEnter()" (pointerleave)="closeOnLeave()">
 </header>
-<p class="tx-blue">
+<p class="tx-blue 2xl:text-[1.5rem]/[1.5rem]">
     @for(skill of project().skills; track skill; let i = $index) {
     {{ skill + (i < project().skills.length - 1 ? ' | ' : '' ) }} } </p>
-<p>{{ `projects.${project().langKey}-desc` | translate }}</p>
+<p class="2xl:text-[1.5rem]/[1.5rem]">{{ `projects.${project().langKey}-desc` | translate }}</p>
 <footer class="w-full
 flex flex-col gap-4 
 min-[390px]:flex-row min-[390px]:justify-between 
 lg:justify-start lg:gap-8">
     <a href="https://github.com/elma1989/{{ project().github }}" target="_blank"
-        class="block btn-default">GitHub ➜</a>
+        class="block btn-default 2xl:text-[1.5rem]/[1.5rem]">GitHub ➜</a>
     <a href="https://marco-elste.developerakademie.net/{{ project().url }}" target="_blank"
-        class="block btn-default">Live Test ➜</a>
+        class="block btn-default 2xl:text-[1.5rem]/[1.5rem]">Live Test ➜</a>
 </footer>
 <div class="overlay bg-blue rounded-sm
 p-4 lg:p-8 lg:w-4/5
