@@ -10,3 +10,10 @@ skills-overlay {
 .open {
     transform: translateY(0);
 }
+
+.btn-overlay {
+    @media (min-width: 1180px) {
+        top: auto;
+        bottom: 1rem;
+    }
+}

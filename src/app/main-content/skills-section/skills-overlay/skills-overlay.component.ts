@@ -10,8 +10,7 @@ import { Skill } from '../../../shared/interfaces/skill';
     CommonModule,
     TranslatePipe
   ],
-  templateUrl: './skills-overlay.component.html',
-  styleUrl: './skills-overlay.component.css'
+  templateUrl: './skills-overlay.component.html'
 })
 export class SkillsOverlayComponent {
   protected skills: Skill[] = [
