@@ -32,6 +32,10 @@ export class MainContentComponent implements AfterViewInit {
   protected section: Signal<SectionType> = computed(() => this.sec.section());
   protected SectionType = SectionType;
   private secPos: { id: string, top: number, bottom: number }[] = [];
+  private sections: SectionType[] = [
+    SectionType.HERO, SectionType.ABOUT, SectionType.SKILLS,
+    SectionType.PROJECTS, SectionType.REFERENCES, SectionType.CONTACT
+  ]
 
   ngAfterViewInit(): void {
     this.calcSecPos();
@@ -61,6 +65,38 @@ export class MainContentComponent implements AfterViewInit {
    */
   isTestMode(): boolean {
     return typeof window == 'undefined' || !!(window as any).jasmine;
+  }
+  // #endregion
+
+  // #region Section
+  /**
+   * Gets the index of current section.
+   * @returns Index of section.
+   */
+  private getSectionIndex(): number {
+    switch(this.sec.section()) {
+      case SectionType.HERO:
+        return 0;
+      case SectionType.ABOUT:
+        return 1;
+      case SectionType.SKILLS:
+        return 2;
+      case SectionType.PROJECTS:
+        return 3;
+      case SectionType.REFERENCES:
+        return 4;
+      case SectionType.CONTACT:
+        return 5;
+    }
+  }
+
+  /**
+   * Changes the section from index.
+   * @param index - Index of section.
+   */
+  private selectSection(index: number): void {
+    if(index >= 0 && index < this.sections.length) 
+      this.sec.section = this.sections[index];
   }
   // #endregion
 
@@ -113,6 +149,18 @@ export class MainContentComponent implements AfterViewInit {
   /** Jumps to current section on load */
   private moveToCurrentSection() {
     this.scroller.scrollToAnchor(this.section());
+  }
+
+  /** Checks mouse wheel on desktop. */
+  @HostListener('window:wheel', ['$event'])
+  onWheel(event: WheelEvent) {
+    if(!this.mobile()) {
+      const index: number = this.getSectionIndex();
+      if (event.deltaY > 0)
+        this.selectSection(index + 1);
+      else if(event.deltaY < 0)
+        this.selectSection(index - 1);
+    }
   }
   // #endregion
 
