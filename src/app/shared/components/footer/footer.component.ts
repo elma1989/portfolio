@@ -21,11 +21,11 @@ export class FooterComponent {
   private links: Link[] = [
     {
       name: 'Portfolio',
-      path: '/',
+      path: '',
       target: '_self'
     }, {
       name: 'Impressum',
-      path: '/impressum',
+      path: 'impressum',
       target: '_self'
     }, {
       name: 'LinkedIn',

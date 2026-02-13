@@ -34,10 +34,6 @@ export class LegalNoticeComponent {
     {id: 'indemnity', numberParagraphs: 1}
   ]
 
-  constructor() {
-    this.sec.section = SectionType.SKILLS;
-  }
-
   get mobile(): Signal<boolean> { return this.sec.mobile; }
 
   get paragraphs(): InprintParagraph[] { return this.ps; }
