@@ -115,4 +115,13 @@ export class MainContentComponent implements AfterViewInit {
     this.scroller.scrollToAnchor(this.section());
   }
   // #endregion
+
+  /**
+   * Checks, if social media is in on header.
+   * @returns True if social media is on header.
+   */
+  hasSocialMedia() {
+    if (this.mobile()) return false;
+    return this.section() == SectionType.HERO;
+  }
 }

@@ -1,4 +1,4 @@
-import { afterNextRender, AfterViewInit, Component, computed, effect, HostListener, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, effect, HostListener, inject, input, InputSignal, signal, Signal, WritableSignal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
@@ -18,26 +18,17 @@ import { MenuOverlayComponent } from '../menu-overlay/menu-overlay.component';
 })
 export class HeaderComponent {
   // #region Attributes
+  socialMedia: InputSignal<boolean> = input<boolean>(false);
   private readonly ts: TranslationService = inject(TranslationService);
   private readonly sec: SectionService = inject(SectionService);
   protected lang: Signal<'en' | 'de'> = computed(() => this.ts.lang());
   private section: Signal<SectionType> = computed(() => this.sec.section());
   private mobile: Signal<boolean> = computed(() => this.sec.mobile());
-  private prevMobile: WritableSignal<boolean> = signal<boolean>(false);
-  private needsToCalc: WritableSignal<boolean> = signal<boolean>(false);
   menu: WritableSignal<boolean> = signal<boolean>(false);
   // #endregion
 
   // #region Methods
   // #region Indicators
-  /**
-   * Checks, if social media is in on header.
-   * @returns True if social media is on header.
-   */
-  hasSocialMedia() {
-    if (this.mobile()) return false;
-    return this.section() == SectionType.HERO;
-  }
 
   /**
    * Checks if section is dark.
