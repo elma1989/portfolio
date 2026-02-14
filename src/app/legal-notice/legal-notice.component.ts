@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../shared/pipes/translate.pipe';
 import { InprintParagraphComponent } from './inprint-paragraph/inprint-paragraph.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
+import { RouterLink } from "@angular/router";
 
 type InprintParagraph = {
   id: string,
@@ -19,8 +20,9 @@ type InprintParagraph = {
     CommonModule,
     TranslatePipe,
     InprintParagraphComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    RouterLink
+],
   templateUrl: './legal-notice.component.html'
 })
 export class LegalNoticeComponent {

@@ -3,13 +3,15 @@ import { SectionService } from '../shared/services/section.service';
 import { HeaderComponent } from '../shared/components/header/header.component';
 import { TranslatePipe } from '../shared/pipes/translate.pipe';
 import { FooterComponent } from "../shared/components/footer/footer.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'privacy-policy',
   imports: [
     HeaderComponent,
     TranslatePipe,
-    FooterComponent
+    FooterComponent,
+    RouterLink
 ],
   templateUrl: './privacy-policy.component.html',
   styleUrl: './privacy-policy.component.css'
