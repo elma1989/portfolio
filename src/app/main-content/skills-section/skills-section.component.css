@@ -1,0 +1,19 @@
+.flower {
+    animation: rotate 6000ms linear infinite;
+}
+
+skills-overlay {
+    transform: translateY(100%);
+    transition: transform 300ms ease-in-out;
+}
+
+.open {
+    transform: translateY(0);
+}
+
+.btn-overlay {
+    @media (min-width: 1180px) {
+        top: auto;
+        bottom: 1rem;
+    }
+}

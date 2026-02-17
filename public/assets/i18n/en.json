@@ -10,5 +10,213 @@
     "hero": {
         "greating": "Hello there! I'm",
         "btn": "Get in Touch"
+    },
+    "about": {
+        "title": "About me",
+        "p1": "Hey there. I'am Marco. After I passed high scool diploma, I had studied mathematics and informatics for teaching position on secundary schools.",
+        "p2": "Now I became a frontend webdeveloper and I want to create awesome applications.",
+        "contact-btn": "Let's Talk",
+        "overlay-title": "More about me",
+        "overlay-first": "Team player",
+        "ovelray-second": "Continously learning",
+        "overlay-third": "Creative Thinker",
+        "overlay-fourth": "Based in Halle(Saale)",
+        "overlay-fifth": "Open to work remote",
+        "overlay-sixth": "Open to relocate"
+    },
+    "skills": {
+        "title": "Core Competencies",
+        "desc": "During my continuing eduction for froentend webdeveloper I have earned the following skills. One backend skill I learned before education.",
+        "overlay-title": "Don't see the skill are you looking for?",
+        "overlay-desc": "Feel free to contact me. I look forward to expanding my previous knowladge. Also I have special interest in learning:"
+    },
+    "projects": {
+        "title": "My work",
+        "desc": "Explore a selection of my work here - Interact with the projects to see my skills in action.",
+        "join-desc": "Task manager inpired by the Konbon System. Create and organize tasks using drag and drop functions, assign users and categories.",
+        "join-impl": "My first huge project working in a team.",
+        "loco-desc": "A simple Jump-and-Run game based on object-oriented approach. Help Pepe to hunt lots of chicken for his restauant. Fight against a boss at the end of level.",
+        "loco-impl": "My first game based on JavaScript.",
+        "prev": "Previous project",
+        "next": "Next project"
+    },
+    "references": {
+        "title": "What my colleagues say about me",
+        "marcus": "Marco enriches the team with his in-depth expertise in current frameworks. He has developed into a highly communicative team player whose professional contributions significantly contribute to our success. Working with him is a benefit both professionally and personally."
+    },
+    "legal": {
+        "title": "Legal Notice",
+        "imprint": "Imprint",
+        "explore": "Exploring the Board",
+        "acceptance": {
+            "title": "Acceptance of terms",
+            "p-1": "By accessing and using <mark>Portfolio</mark> (Product), you acknowledge and agree to the following terms and conditions, and any policies, guidelines, or amendments thereto that may be presented to you from time to time. We, the listed students, may update or change the terms and conditions from time to time without notice."
+        },
+        "ownership": {
+            "title": "Scope and ownership of the product",
+            "p-1": "<mark>Portfolio</mark> has been developed as part of a student group project in a web development bootcamp at the <mark>Developer Akademie GmbH</mark>. It has an educational purpose and is not intended for extensive personal & business usage. As such, we cannot guarantee consistent availability, reliability, accuracy, or any other aspect of quality regarding this Product.",
+            "p-2": "The design of <mark>Portfolio</mark> is owned by the <mark>Developer Akademie GmbH</mark>. Unauthorized use, reproduction, modification, distribution, or replication of the design is strictly prohibited."
+        },
+        "rights": {
+            "title": "Proprietary rights",
+            "p-1": "Aside from the design owned by <mark>Developer Akademie GmbH</mark>, we, the listed students, retain all proprietary rights in <mark>Portfolio</mark>, including any associated copyrighted material, trademarks, and other proprietary information."
+        },
+        "use": {
+            "title": "Use of the product",
+            "p-1": "<mark>Portfolio</mark> is intended to be used for lawful purposes only, in accordance with all applicable laws and regulations. Any use of <mark>Portfolio</mark> for illegal activities, or to harass, harm, threaten, or intimidate another person, is strictly prohibited. You are solely responsible for your interactions with other users of <mark>Portfolio.</mark>"
+        },
+        "disclaimer": {
+            "title": "Disclaimer of warranties and limitation of liability",
+            "p-1": "<mark>Portfolio</mark> is provided as is without warranty of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event will we, the listed students, or the <mark>Developer Akademie</mark>, be liable for any direct, indirect, incidental, special, consequential or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data, or other intangible losses, even if we have been advised of the possibility of such damages, arising out of or in connection with the use or performance of <mark>Portfolio</mark>."
+        },
+        "indemnity": {
+            "title": "Indemnity",
+            "p-1": "You agree to indemnify, defend and hold harmless us, the listed students, the <mark>Developer Akademie</mark>, and our affiliates, partners, officers, directors, agents, and employees, from and against any claim, demand, loss, damage, cost, or liability (including reasonable legal fees) arising out of or relating to your use of <mark>Portfolio</mark> and/or your breach of this Legal Notice."
+        },
+        "question": "For any questions or notices, please contact me at ",
+        "date": "Date: January 29, 2026"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "data-protection": {
+            "title": "Data protection at a glance",
+            "general": {
+                "title": "General information",
+                "p-1": "The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is any data that can be used to personally identify you. Detailed information on the subject of data protection can be found in our data protection declaration listed below this text."
+            },
+            "data-collection": {
+                "title": "Data collection on this website",
+                "p-1": "Data processing on this website is carried out by the website operator. You can find their contact details in the “Note on the responsible body” section in this data protection declaration.",
+                "p-2": "On the one hand, your data is collected when you provide it to us. This can be e.g. This could, for example, be data that you enter into a contact form.",
+                "p-3": "Other data is collected automatically or with your consent by our IT systems when you visit the website. This is primarily technical data (e.g. internet browser, operating system or time of page access). This data is collected automatically as soon as you enter this website.",
+                "p-4": "Some of the data is collected to ensure that the website is provided error-free. Other data may be used to analyze your user behavior. If contracts can be concluded or initiated via the website, the data transmitted will also be processed for contract offers, orders or other order inquiries.",
+                "p-5": "You have the right at any time to receive information free of charge about the origin, recipient and purpose of your stored personal data. You also have the right to request the correction or deletion of this data. If you have given your consent to data processing, you can revoke this consent at any time in the future. You also have the right to request that the processing of your personal data be restricted in certain circumstances. You also have the right to lodge a complaint with the responsible supervisory authority.",
+                "p-6": "You can contact us at any time if you have any further questions about data protection. You can contact us at any time if you have any further questions about data protection."
+            }
+        },
+        "hosting": {
+            "title": "Hosting",
+            "p-1": "We host the content of our website with the following provider:",
+            "external": {
+                "title": "External Hosting",
+                "p-1": "This website is hosted externally. The personal data collected on this website is stored on the server(s) of the host(s). This can be v. a. These include IP addresses, contact requests, meta and communication data, contract data, contact details, names, website access and other data generated via a website.",
+                "p-2": "External hosting is carried out for the purpose of fulfilling the contract with our potential and existing customers (Art. 6 Para. 1 lit. b GDPR) and in the interest of a secure, fast and efficient provision of our online offering by a professional provider (Art. 6 Para. 1 lit. f GDPR). If appropriate consent has been requested, processing is carried out exclusively on the basis of Article 6 Paragraph 1 Letter a GDPR and Section 25 Paragraph 1 TDDDG, insofar as the consent includes the storage of cookies or access to information on the user's end device (e.g. device fingerprinting) within the meaning of the TDDDG. Consent can be revoked at any time.",
+                "p-3": "Our host(s) will only process your data to the extent necessary to fulfill its service obligations and follow our instructions regarding this data.",
+                "p-4": "We use the following host(s):"
+            }
+        },
+        "notice": {
+            "title": "General information and mandatory information",
+            "data-protection": {
+                "title": "Data protection",
+                "p-1": "The operators of these sites take the protection of your personal data very seriously. We treat your personal data confidentially and in accordance with statutory data protection regulations and this data protection declaration.",
+                "p-2": "When you use this website, various personal data is collected. Personal data is data that can be used to personally identify you. This data protection declaration explains what data we collect and what we use it for. It also explains how and for what purpose this happens.",
+                "p-3": "We would like to point out that data transmission over the Internet (e.g. when communicating via email) can have security gaps. Complete protection of data from access by third parties is not possible."
+            },
+            "body": {
+                "title": "Note on the responsible body",
+                "p-1": "The responsible body for data processing on this website is:",
+                "p-2": "The responsible body is the natural or legal person who alone or jointly with others decides on the purposes and means of processing personal data (e.g. names, email addresses, etc.)."
+            },
+            "data-processing": {
+                "title": "Storage period",
+                "p-1": "Unless a specific storage period is specified in this data protection declaration, your personal data will remain with us until the purpose for data processing no longer applies. If you make a legitimate request for deletion or revoke your consent to data processing, your data will be deleted unless we have other legally permissible reasons for storing your personal data (e.g. tax or commercial law retention periods); In the latter case, the deletion takes place after these reasons no longer apply."
+            },
+            "legal-bases": {
+                "title": "General information on the legal basis for data processing on this website", 
+                "p-1": "If you have consented to data processing, we will process your personal data on the basis of Art. 6 Para. 1 lit. a GDPR or Art. 9 Para. 2 lit. a GDPR, provided that special data categories are processed in accordance with Art. In the event of express consent to the transfer of personal data to third countries, data processing is also carried out on the basis of Art. 49 Para. 1 lit. a GDPR. If you have consented to the storage of cookies or to the access to information on your device (e.g. via device fingerprinting), data processing will also be carried out on the basis of Section 25 Paragraph 1 TDDDG. Consent can be revoked at any time. If your data is necessary to fulfill the contract or to carry out pre-contractual measures, we process your data on the basis of Art. 6 Para. 1 lit. b GDPR. Furthermore, we process your data if it is necessary to fulfill a legal obligation on the basis of Art. 6 Para. 1 lit. c GDPR. Data processing can also be carried out on the basis of our legitimate interest in accordance with Article 6 (1) (f) GDPR. Information about the relevant legal bases in each individual case is provided in the following paragraphs of this data protection declaration."
+            },
+            "receiver": {
+                "title": "Recipients of personal data",
+                "p-1": "As part of our business activities, we work with various external bodies. In some cases, it is also necessary to transmit personal data to these external bodies. We only pass on personal data to external parties if this is necessary to fulfill a contract, if we are legally obliged to do so (e.g. passing on data to tax authorities), if we have a legitimate interest in the transfer in accordance with Article 6 Paragraph 1 Letter f of the GDPR or if another legal basis permits the transfer of data. When using order processors, we only pass on our customers' personal data on the basis of a valid order processing contract. In the case of joint processing, a joint processing contract is concluded."
+            },
+            "consent": {
+                "title": "Revocation of your consent to data processing",
+                "p-1": "Many data processing operations are only possible with your express consent. You can revoke any consent you have already given at any time. The lawfulness of the data processing carried out until the revocation remains unaffected by the revocation."
+            },
+            "right-to-object": {
+                "title": "Right to object to data collection in special cases and to direct advertising (Art. 21 GDPR)", 
+                "p-1": "IF THE DATA PROCESSING IS BASED ON ART. 6 ABS. 1 LITER. E OR F GDPR, YOU HAVE THE RIGHT TO OBJECT TO THE PROCESSING OF YOUR PERSONAL DATA AT ANY TIME FOR REASONS ARISING FROM YOUR PARTICULAR SITUATION; THIS ALSO APPLIES TO PROFILING BASED ON THESE TERMS. THE APPLICABLE LEGAL BASIS ON WHICH PROCESSING IS BASED CAN BE FOUND IN THIS DATA PROTECTION POLICY. IF YOU OBJECT, WE WILL NO LONGER PROCESS YOUR PERSONAL DATA AFFECTED UNLESS WE CAN PROOF COMPULSORY REASONS FOR THE PROCESSING THAT OUTWEIGH YOUR INTERESTS, RIGHTS AND FREEDOM OR THE PROCESSING IS USED TO ASSERT, EXERCISE OR DEFENSE OF LEGAL CLAIMS (OBJECTION PURSUANT TO ARTICLE 21 (1) GDPR).",
+                "p-2": "IF YOUR PERSONAL DATA IS PROCESSED FOR DIRECT ADVERTISING, YOU HAVE THE RIGHT TO OBJECT AT ANY TIME TO THE PROCESSING OF PERSONAL DATA CONCERNING YOU FOR THE PURPOSE OF SUCH ADVERTISING; THIS ALSO APPLIES TO PROFILING TO THE EXTENT IT IS CONNECTED WITH SUCH DIRECT ADVERTISING. IF YOU OBJECT, YOUR PERSONAL DATA WILL NO LONGER BE USED FOR THE PURPOSE OF DIRECT ADVERTISING (OBJECTION PURSUANT TO ARTICLE 21 (2) GDPR)."
+            },
+            "right-to-complain": {
+                "title": "Right to lodge a complaint with the responsible supervisory authority",
+                "p-1": "In the event of violations of the GDPR, those affected have the right to lodge a complaint with a supervisory authority, in particular in the member state of their habitual residence, their place of work or the place of the alleged violation. The right to lodge a complaint exists without prejudice to any other administrative or judicial remedies."
+            },
+            "right-to-data-transfer": {
+                "title": "Right to data portability",
+                "p-1": "You have the right to have data that we process automatically based on your consent or in fulfillment of a contract handed over to you or to a third party in a common, machine-readable format. If you request the data to be transferred directly to another person responsible, this will only be done if it is technically feasible."
+            },
+            "delete": {
+                "title": "Information, correction and deletion",
+                "p-1": "Within the framework of the applicable legal provisions, you have the right to free information at any time about your stored personal data, its origin and recipient and the purpose of data processing and, if necessary, a right to correction or deletion of this data. You can contact us at any time about this or if you have any further questions on the subject of personal data."
+            },
+            "restriction": {
+                "title": "Right to restriction of processing",
+                "p-1": "You have the right to request that the processing of your personal data be restricted. You can contact us at any time about this. The right to restriction of processing exists in the following cases:",
+                "i-1": "If you dispute the accuracy of the personal data we hold about you, we will generally need time to verify this. For the duration of the review, you have the right to request that the processing of your personal data be restricted",
+                "i-2": "If the processing of your personal data was/is occurring unlawfully, you can request that data processing be restricted instead of deletion.",
+                "i-3": "If we no longer need your personal data, but you need it to exercise, defend or assert legal claims, you have the right to request that the processing of your personal data be restricted instead of deletion.",
+                "i-4": "If you have lodged an objection in accordance with Article 21 Para. 1 GDPR, a balance must be made between your interests and ours. As long as it is not yet clear whose interests prevail, you have the right to request that the processing of your personal data be restricted.",
+                "p-2": "If you have restricted the processing of your personal data, these data - with the exception of their storage - may only be processed with your consent or to assert, exercise or defend legal claims or to protect the rights of another natural or legal person or for reasons of important public interest of the European Union or a Member State."
+            }
+        },
+        "data-collection": {
+            "title": "Data collection on this website",
+            "cookies": {
+                "title":"Cookies",
+                "p-1": "Our websites use so-called “cookies”. Cookies are small data packages and do not cause any damage to your device. They are stored on your device either temporarily for the duration of a session (session cookies) or permanently (persistent cookies). Session cookies are automatically deleted at the end of your visit. Permanent cookies remain stored on your device until you delete them yourself or your web browser automatically deletes them",
+                "p-2": "Cookies can come from us (first-party cookies) or from third-party companies (so-called third-party cookies). Third-party cookies enable the integration of certain services from third-party companies within websites (e.g. cookies for processing payment services).",
+                "p-3": "Cookies have various functions. Numerous cookies are technically necessary because certain website functions would not work without them (e.g. the shopping cart function or the display of videos). Other cookies can be used to evaluate user behavior or for advertising purposes.",
+                "p-4": "Cookies that are necessary to carry out the electronic communication process, to provide certain functions you want (e.g. for the shopping cart function) or to optimize the website (e.g. cookies to measure the web audience) (necessary cookies) are stored on the basis of Art. 6 Para. 1 lit. f GDPR, unless another legal basis is specified. The website operator has a legitimate interest in storing necessary cookies for the technically error-free and optimized provision of its services. If consent to the storage of cookies and comparable recognition technologies has been requested, processing is carried out exclusively on the basis of this consent (Art. 6 Para. 1 lit. a GDPR and Section 25 Para. 1 TDDDG); consent can be revoked at any time.",
+                "p-5": "You can set your browser so that you are informed about the setting of cookies and only allow cookies in individual cases, exclude the acceptance of cookies for certain cases or in general, and activate the automatic deletion of cookies when you close the browser. If cookies are deactivated, the functionality of this website may be restricted.",
+                "p-6": "You can find out which cookies and services are used on this website in this data protection declaration."
+            },
+            "request": {
+                "title": "Inquiry by email",
+                "p-1": "If you contact us by email, telephone or fax, your request, including all resulting personal data (name, request), will be stored and processed by us for the purpose of processing your request. We will not pass on this data without your consent.",
+                "p-2": "This data is processed on the basis of Art. 6 Para. 1 lit. b GDPR, provided your request is related to the fulfillment of a contract or is necessary to carry out pre-contractual measures. In all other cases, the processing is based on our legitimate interest in the effective processing of the inquiries addressed to us (Art. 6 Para. 1 lit. f GDPR) or on your consent (Art. 6 Para. 1 lit. a GDPR) if this has been requested; consent can be revoked at any time.",
+                "p-3": "The data you send to us via contact requests will remain with us until you request us to delete it, revoke your consent to storage or the purpose for data storage no longer applies (e.g. after your request has been processed). Mandatory legal provisions – in particular statutory retention periods – remain unaffected."
+            }
+        },
+        "source": "Source:"
+    },
+    "contact": {
+        "title": "Let's build something Cool together!",
+        "h2": "Got a problem to solve?",
+        "header-p": "Encourage people to contact you and describe what role you are interested in.  Show that you will add value to their projects through your work.",
+        "labels": {
+            "name": "What's your name?",
+            "email": "What's your email?",
+            "question": "How can I help you?",
+            "policy-1": "I've read the",
+            "policy-2": "Privacy Policy",
+            "policy-3": "and agree to the processing of my data."
+        },
+        "placeholder": {
+            "name": "Your name goes here",
+            "email": "yourmail@mail.com",
+            "question": "Hello Marco, I am interested in ..."
+        },
+        "error": {
+            "name": {
+                "required": "Your name is missing",
+                "uppercase": "First letter in upper case",
+                "minlength": "Name has 2 chars"
+            },
+            "email": {
+                "required": "Your email is required",
+                "minlength": "E-Mail has 5 chars",
+                "non-email": "It's not an E-Mail"
+            },
+            "question": {
+                "required": "What do you need to develop?",
+                "uppercase": "First letter should be upper case",
+                "minlength": "Question should have 10 characters"
+            },
+            "policy": "Please accept the privacy policy."
+        },
+        "sent": "Your request has been submitted.",
+        "submit": "Drop a line"
     }
 }

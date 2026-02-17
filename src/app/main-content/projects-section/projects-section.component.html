@@ -1,1 +1,47 @@
-<p>projects-section works!</p>
+<div class="content flex">
+    <div class="content-area
+    w-full lg:w-9/10 h-full p-4 lg:pt-8 lg:pr-0 lg:pb-28 lg:pl-28
+    flex flex-col gap-8">
+        <header class="w-full lg:w-3/4 2xl:w-full lg:h-28
+        flex flex-col gap-8 lg:flex-row lg:items-center">
+            <h1 class="font-eczar 
+            text-[2.5rem]/[2.5rem] lg:text-[4.5rem]/[4.5rem]"
+            >{{ 'projects.title' | translate }}</h1>
+            <p class="lg:px-8 lg:flex-1 2xl:text-[1.5rem]/[1.5rem]">{{ 'projects.desc' | translate }}</p>
+        </header>
+        <div class="projects-area size-full lg:max-h-128
+        flex flex-col lg:flex-row 2xl:flex-col gap-8 2xl:gap-16">
+            <div class="preview rounded-sm aspect-square bg-{{ projects[index()].background }}
+            w-full lg:w-auto lg:h-full px-4 lg:px-8 2xl:py-8 relative
+            flex justify-center items-center">
+                <img src="assets/img/04_projects/flower-{{ projects[index()].flower }}.png" 
+                class="flower size-32 lg:size-36
+                absolute bottom-0 left-0">
+                <img src="assets/img/04_projects/{{ projects[index()].screenschot }}.png" 
+                class="screenshot rounded-sm
+                w-full 2xl:w-auto 2xl:h-full
+                aspect-4/3 z-1
+                object-cover object-center">
+            </div>
+            <div class="details-area
+            size-full lg:pt-8 flex flex-col">
+                <project-board class="bg-cblack tx-white rounded-sm relative
+                w-full flex-1 p-4 lg:p-8
+                flex flex-col justify-center gap-8"
+                [project]="projects[index()]"></project-board>
+                <nav class="w-full py-8
+                flex justify-between">
+                    <button class="inline-block font-bold 2xl:text-[1.5rem]/[1.5rem]"
+                    (click)="prev()">&lt;&lt; {{ 'projects.prev' | translate }}</button>
+                    <button class="inline-block font-bold 2xl:text-[1.5rem]/[1.5rem]"
+                    (click)="next()">{{ 'projects.next' | translate }} &gt;&gt;</button>
+                </nav>
+            </div>
+        </div>
+    </div>
+    @if(!mobile()) {
+        <section-selector class="w-1/10 h-full
+        flex justify-center items-center"
+        [index]="3"></section-selector>
+    }
+</div>

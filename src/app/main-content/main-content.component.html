@@ -1,6 +1,10 @@
 <header app-header class="
 w-full h-[9dvh] lg:h-[10dvh] flex justify-center
-fixed top-0 left-0 z-1"></header>
+fixed top-0 left-0 z-2"
+[socialMedia]="hasSocialMedia()"
+[class.bg-blue]="isBackgroundBlue()"
+[class.bg-cblack]="isBackgroundBlack()"
+[class.bg-cwhite]="isBackgroundWhite()"></header>
 @if (mobile()) {
     <section hero class=
     "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
@@ -11,11 +15,11 @@ fixed top-0 left-0 z-1"></header>
     flex justify-center bg-cwhite"
     id="about"></section>
     <section skills class=
-    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    "w-full h-auto md:h-dvh lg:h-auto pt-[9dvh] lg:pt-[10dvh]
     flex justify-center bg-cblack"
     id="skills"></section>
     <section projects class=
-    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+    "w-full lg:h-dvh pt-[9dvh] lg:pt-[10dvh]
     flex justify-center bg-cwhite"
     id="projects"></section>
     <section references class=
@@ -23,8 +27,8 @@ fixed top-0 left-0 z-1"></header>
     flex justify-center bg-blue"
     id="references"></section>
     <section contact class=
-    "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
-    flex justify-center bg-cblack"
+    "w-full min-h-dvh pt-[9dvh] lg:pt-[10dvh]
+    flex flex-col items-center bg-cblack"
     id="contact"></section>
 } @else {
     @switch (section()) {
@@ -44,14 +48,14 @@ fixed top-0 left-0 z-1"></header>
 
         @case (SectionType.SKILLS) {
             <section skills class=
-            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            "w-full h-auto md:h-dvh pt-[9dvh] lg:pt-[10dvh]
             flex justify-center bg-cblack"
             id="skills"></section>
         }
 
         @case (SectionType.PROJECTS) {
             <section projects class=
-            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            "w-full lg:h-dvh pt-[9dvh] lg:pt-[10dvh]
             flex justify-center bg-cwhite"
             id="projects"></section>
         }
@@ -65,8 +69,8 @@ fixed top-0 left-0 z-1"></header>
 
         @case (SectionType.CONTACT) {
             <section contact class=
-            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
-            flex justify-center bg-cblack"
+            "w-full min-h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex flex-col items-center bg-cblack"
             id="contact"></section>
         }
     }

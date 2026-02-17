@@ -2,15 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainContentComponent } from './main-content.component';
 import { SectionService } from '../shared/services/section.service';
 import { SectionType } from '../shared/enums/section-type';
-import { signal } from '@angular/core';
+import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../shared/services/translation.service';
 import { MockTranslatePipe } from '../shared/pipes/mock-translate.pipe';
 import { CommonModule } from '@angular/common';
-import { MenuOverlayComponent } from '../shared/components/menu-overlay/menu-overlay.component';
+
+const langSignal = signal<'en' | 'de'>('en');
 
 const translationServiceMock = {
-  lang: signal<'en' | 'de'>('en')
-}
+  get lang(): Signal<'en' | 'de'> { return langSignal.asReadonly(); },
+  set lang(lang: 'en' | 'de') { langSignal.set(lang); },
+  translate: (key: string) => `translated: ${key}`
+};
 
 describe('MainContentComponent', () => {
   let component: MainContentComponent;
@@ -20,7 +23,11 @@ describe('MainContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainContentComponent],
+      imports: [
+        MainContentComponent,
+        CommonModule,
+        MockTranslatePipe
+      ],
       providers: [
         {
           provide: TranslationService,
@@ -28,14 +35,6 @@ describe('MainContentComponent', () => {
         }
       ]
     })
-      .overrideComponent(MenuOverlayComponent, {
-            set: {
-              imports: [
-                CommonModule,
-                MockTranslatePipe
-              ]
-            }
-          })
       .compileComponents();
 
     fixture = TestBed.createComponent(MainContentComponent);
@@ -183,9 +182,14 @@ describe('MainContentComponent', () => {
       expect(skills()).toBeTruthy();
     });
 
-    it('should have full viewport size', () => {
-      expect(skills()?.classList.contains('h-dvh') ?? false).toBeTrue();
+    it('should have full width', () => {
       expect(skills()?.classList.contains('w-full') ?? false).toBeTrue();
+    });
+
+    it('should have full height on moble, auto height on tablet and full height on desktop', () => {
+      const skillSec = skills();
+      expect(skillSec?.classList).toContain('h-auto');
+      expect(skillSec?.classList).toContain('md:h-dvh');
     });
 
     it('should padding top 9dvh on mobile', () => {
@@ -229,10 +233,13 @@ describe('MainContentComponent', () => {
       expect(projects()).toBeTruthy();
     });
 
-    it('should have full viewport size', () => {
-      expect(projects()?.classList.contains('h-dvh') ?? false).toBeTrue();
-      expect(projects()?.classList.contains('w-full') ?? false).toBeTrue();
+    it('should have full width', () => {
+      expect(projects()?.classList).toContain('w-full');
     });
+
+    it('should have viewport height on desktop', () => {
+      expect(projects()?.classList).toContain('lg:h-dvh');
+    })
 
     it('should padding top 9dvh on mobile', () => {
       expect(projects()?.classList.contains('pt-[9dvh]') ?? false).toBeTrue();
@@ -322,7 +329,6 @@ describe('MainContentComponent', () => {
     });
 
     it('should have full viewport size', () => {
-      expect(contact()?.classList.contains('h-dvh') ?? false).toBeTrue();
       expect(contact()?.classList.contains('w-full') ?? false).toBeTrue();
     });
 
@@ -336,7 +342,7 @@ describe('MainContentComponent', () => {
 
     it('should content x-center', () => {
       expect(contact()?.classList.contains('flex') ?? false).toBeTrue();
-      expect(contact()?.classList.contains('justify-center') ?? false).toBeTrue();
+      expect(contact()?.classList.contains('items-center') ?? false).toBeTrue();
     });
 
     it('should have black background', () => {
@@ -375,8 +381,8 @@ describe('MainContentComponent', () => {
       expect(header()?.classList.contains('justify-center') ?? false).toBeTrue();
     });
 
-    it('should have Z-index 1', () => {
-      expect(header()?.classList.contains('z-1') ?? false).toBeTrue();
-    })
-  })
+    it('should have Z-index 2', () => {
+      expect(header()?.classList.contains('z-2') ?? false).toBeTrue();
+    });
+  });
 });

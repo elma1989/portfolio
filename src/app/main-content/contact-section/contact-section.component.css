@@ -1,0 +1,68 @@
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    @media(min-width: 1920px) {
+        font-size: 3rem;
+    }
+}
+
+input[type=text] {
+    width: 100%;
+    font-size: 1rem;
+    outline: none;
+    margin-top: 1rem;
+    @media(min-width: 1920px) {
+        font-size: 2rem;
+    }
+}
+
+.input-box {
+    border-bottom: 1px solid var(--yellow);
+}
+
+.orange-underline {
+    border-bottom-color: var(--orange);
+}
+
+.red-underline {
+    border-bottom-color: var(--error);
+}
+
+.error-msg {
+    color: var(--error);
+    font-weight: bold;
+    @media(min-width: 1920px) {
+        font-size: 2rem;
+    }
+}
+
+.small {
+    font-size: 1rem;
+}
+
+.arrow {
+    transform-origin: center top;
+    animation: moveArrow 1000ms ease-in-out infinite;
+}
+
+.arrow path {
+    stroke: #fff;
+    stroke-width: 2;
+    fill: none;
+}
+
+.btn-uparrow:hover {
+    border-bottom: 2px solid var(--orange);
+    path {
+        stroke: var(--orange);
+    }
+}
+
+@keyframes moveArrow {
+    0%{
+        transform: scaleY(1) translateY(0);
+    }
+    100%{
+        transform: scaleY(2) translateY(-100%);
+    }
+}
