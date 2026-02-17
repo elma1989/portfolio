@@ -1,0 +1,18 @@
+<header class="flex justify-between items-center text-[2rem]">
+    <h2 class="menu-desc tx-blue font-bold text-[2rem]">{{ 'menu.title' | translate }}</h2>
+    <button class="close-btn tx-yellow font-bold"
+    (click)="close()">X</button>
+</header>
+<nav>
+    <ul class="flex flex-col gap-2">
+        @for (item of items; track item.navId; let i = $index) {
+            <li class="font-bold cursor-pointer text-[1.5rem] group">
+                <a href="#{{ item.navId }}"
+                (click)="navigate(i)">
+                    <img src="assets/img/00_header/hover-flower.png" 
+                    class="w-5 h-5 mr-1 hidden group-hover:inline">
+                {{ item.transId | translate }}</a>
+            </li>
+        }
+    </ul>
+</nav>

@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeaderComponent } from './header.component';
 import { SectionService } from '../../services/section.service';
 import { SectionType } from '../../enums/section-type';
 import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../../services/translation.service';
+import { MockTranslatePipe } from '../../pipes/mock-translate.pipe';
+import { CommonModule } from '@angular/common';
+import { MenuOverlayComponent } from '../menu-overlay/menu-overlay.component';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -29,6 +31,14 @@ describe('HeaderComponent', () => {
         }
       ]
     })
+    .overrideComponent(MenuOverlayComponent, {
+          set: {
+            imports: [
+              MockTranslatePipe,
+              CommonModule
+            ]
+          }
+        })
     .compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
@@ -79,7 +89,19 @@ describe('HeaderComponent', () => {
       fixture.detectChanges();
       expect(translationServiceMock.lang()).toBe('en');
     });
-  })
+
+    it('should openMenu() works', () => {
+      component.openMenu();
+      fixture.detectChanges();
+      expect(component.menu()).toBeTrue();
+    })
+
+    it('should closeMenu() works', () => {
+      component.closeMenu();
+      fixture.detectChanges();
+      expect(component.menu()).toBeFalse();
+    })
+  });
 
   describe('Content', () => {
     const content: () => HTMLDivElement | null =
@@ -101,6 +123,10 @@ describe('HeaderComponent', () => {
 
     it('should have pedding-x 4.5rem on deskop', () => {
       expect(content()?.classList.contains('lg:px-18') ?? false).toBeTrue();
+    });
+
+    it('should have overlow-x: hidden', () => {
+      expect(content()?.classList.contains('overflow-x-hidden') ?? false).toBeTrue();
     });
   });
 
@@ -179,7 +205,9 @@ describe('HeaderComponent', () => {
     const settings: () => HTMLDivElement | null = 
       () => element.querySelector('.content>.settings');
     const langSelBtn: () => HTMLButtonElement | null =
-      () => element.querySelector('.settings>.lang-sel')
+      () => element.querySelector('.settings>.lang-sel');
+    const menuBtn: () => HTMLButtonElement | null =
+      () => element.querySelector('.settings>.menu-btn')
     
     it('should exist' ,() => {
       expect(settings()).toBeTruthy();
@@ -262,6 +290,82 @@ describe('HeaderComponent', () => {
       langSelBtn()?.click();
       fixture.detectChanges();
       expect(translationServiceMock.lang()).toBe('de')
+    });
+
+    it('should have menu-btn', () => {
+      expect(menuBtn()).toBeTruthy();
+    });
+
+    it('menu-btn should have direction colum', () => {
+      expect(menuBtn()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(menuBtn()?.classList.contains('flex-col') ?? false).toBeTrue()
+    });
+
+    it('should have gap 0.25 rem', () => {
+      expect(menuBtn()?.classList.contains('gap-1') ?? false).toBeTrue()
+    })
+
+    it('menu-btn should have 3 spans', () => {
+      const spans: NodeListOf<HTMLSpanElement> = element.querySelectorAll('.menu-btn>span');
+      expect(spans.length).toBe(3);
+    });
+
+    it('sould click on menu-btn', () => {
+      menuBtn()?.click();
+      fixture.detectChanges();
+      expect(component.menu()).toBeTrue();
+    });
+  });
+
+  describe('Menu-Overlay', () => {
+    const getOverlay: () => HTMLElement | null =
+      () => element.querySelector('menu-overlay');
+
+    it('should allways render ', () => {
+      expect(getOverlay()).toBeTruthy();
+    });
+
+    it('should have class open on open', () => {
+      component.menu.set(true);
+      fixture.detectChanges();
+      expect(getOverlay()?.classList.contains('open') ?? false).toBeTrue();
+    });
+
+    it('should not have class open on close', () => {
+      component.menu.set(false);
+      fixture.detectChanges();
+      expect(getOverlay()?.classList.contains('open') ?? false).toBeFalse();
+    })
+
+    it('should have width 13rem', () => {
+      expect(getOverlay()?.classList.contains('w-52') ?? false).toBeTrue();
+    });
+
+    it('should have direction column', () => {
+      expect(getOverlay()?.classList.contains('flex') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('flex-col') ?? false).toBeTrue();
+    });
+
+    it('should have gap 1rem', () => {
+      expect(getOverlay()?.classList.contains('gap-4') ?? false).toBeTrue();
+    });
+
+    it('should have padding 1rem', () => {
+      expect(getOverlay()?.classList.contains('p-4') ?? false).toBeTrue();
+    })
+
+    it('should have white background', () => {
+      expect(getOverlay()?.classList.contains('bg-cwhite') ?? false).toBeTrue();
+    });
+
+    it('should have position top-right', () => {
+      expect(getOverlay()?.classList.contains('absolute') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('top-0') ?? false).toBeTrue();
+      expect(getOverlay()?.classList.contains('right-0') ?? false).toBeTrue();
+    });
+
+    it('should have position right 4.5rem on desktop', () => {
+      expect(getOverlay()?.classList.contains('lg:right-18') ?? false).toBeTrue();
     });
   });
 });

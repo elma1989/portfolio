@@ -1,11 +1,202 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { TranslatePipe } from '../../shared/pipes/translate.pipe';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslationService } from '../../shared/services/translation.service';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { SectionService } from '../../shared/services/section.service';
+import { CommonModule } from '@angular/common';
+import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { SectionType } from '../../shared/enums/section-type';
+import { CustomValidator } from '../../shared/classes/validators';
+
+type InputType = 'name' | 'email' | 'question';
 
 @Component({
   selector: 'section[contact]',
-  imports: [],
+  imports: [
+    TranslatePipe,
+    ReactiveFormsModule,
+    FooterComponent,
+    CommonModule,
+    SectionSelectorComponent
+  ],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'
 })
-export class ContactSectionComponent {
+export class ContactSectionComponent implements OnInit {
+  // #region Attributes
+  private fb: FormBuilder = inject(FormBuilder);
+  private ts: TranslationService = inject(TranslationService);
+  private sec: SectionService = inject(SectionService);
+  
+  protected form = this.fb.nonNullable.group({
+    name: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.minLength(5), CustomValidator.strongEmail()]],
+    question: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(10)]],
+    policy: [false, Validators.requiredTrue]
+  });
+  private focusControl: WritableSignal<string | null> = signal<string | null>(null);
+  protected checkboxHover: boolean = false;
+  protected sent: WritableSignal<boolean> = signal<boolean>(false);
+  protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
+  protected inputsMobile: InputType[] = ['name', 'email', 'question'];
+  protected inputsDesktop: InputType[] = ['name', 'email'];
 
+  ngOnInit(): void {
+    this.loadValues();
+    this.form.valueChanges.subscribe(() => {
+      this.saveValues();
+    });
+  }
+  // #endregion
+  
+  // #region Methods
+  // #region Getter
+  get checkboxImage(): string {
+    let suffix: string = this.form.controls.policy.value 
+      ? (this.checkboxHover ? '-checked-hover' : '-checked')
+      : (this.checkboxHover ? '-hover' : '');
+    return `assets/img/05_contact/check${suffix}.png`
+  }
+
+  get errorPolicy(): string {
+    return this.form.controls.policy.touched 
+    && this.form.controls.policy.invalid
+      ? this.ts.translate('contact.error.policy') : '';
+  }
+
+  get submitValue(): string {
+    return this.ts.translate('contact.submit');
+  }
+  // #endregion
+
+  // #region Focus
+  /**
+   * Sets focus on control.
+   * @param name Name of control.
+   */
+  setFocus(name: string): void {
+    this.focusControl.set(name);
+  }
+
+  /**
+   * Usets focus from control.
+   * @param name Name of control.
+   */
+  setBlur(name: string): void {
+    if(name == this.focusControl()) {
+      this.focusControl.set(null);
+      this.trimControl(name);
+    }
+  }
+
+  /**
+   * Checks, if focus in on control.
+   * @param name Name of form.
+   * @returns True, if control is on focus.
+   */
+  isFocus(name: string): boolean {
+    return name == this.focusControl();
+  }
+  // #endregion
+
+  // #region Storage
+  /** Saves form values in local storage. */
+  private saveValues(): void {
+    const values = Object.keys(this.form.controls)
+      .map(key => ({
+        [key]: this.form.get(key)?.value
+      }))
+      .reduce((acc, obj) => {
+        return {...acc, ...obj}
+      });
+      localStorage.setItem('form', JSON.stringify(values));
+  }
+
+  /** Loads form values from local storage. */
+  private loadValues(): void {
+    const storage = localStorage.getItem('form');
+    if(storage) {
+      const values = JSON.parse(storage);
+      Object.keys(values).forEach(key => {
+        this.form.get(key)?.setValue(values[key]);
+      });
+    }
+  }
+
+  /** Removes form data from local storage */
+  private removeValues(): void {
+    localStorage.removeItem('form');
+  }
+  // #endregion
+
+  // #region Form
+  /**
+   * Trims a control.
+   * @param name Name of Control.
+   */
+  private trimControl(name: string) {
+    const control = this.form.get(name);
+    if(control && typeof control.value == 'string')
+      control.setValue(control.value.trim());
+  }
+
+  control<C extends keyof typeof this.form.controls>(name: C) {
+    return this.form.controls[name]
+  }
+
+  placeholder(control:string): string {
+    return this.ts.translate(`contact.placeholder.${control}`)
+  }
+
+  error<C extends keyof typeof this.form.controls>(name: C): string {
+    const errors = this.control(name).errors;
+
+    if(errors?.['required'])
+      return this.ts.translate(`contact.error.${name}.required`);
+
+    if(errors?.['firstUpperCase'])
+      return this.ts.translate(`contact.error.${name}.uppercase`);
+
+    if(errors?.['minlength'])
+      return this.ts.translate(`contact.error.${name}.minlength`);
+
+    if(errors?.['strongEmail'])
+      return this.ts.translate(`contact.error.${name}.non-email`);
+
+    return '';
+  }
+
+  /** Submits the form. */
+  onSubmit(): void {
+    if(this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const {policy, ...data} = this.form.getRawValue();
+
+    this.resetForm();
+    this.sent.set(true);
+  }
+  
+  /** Resets the form. */
+  resetForm(): void {
+    this.removeValues();
+    this.form.reset();
+    this.sent.set(false);
+  }
+  // #endregion
+
+  /** goes to hero-section. */
+  goToHero() {
+    this.sec.section = SectionType.HERO;
+    if (!this.desktop()) {
+      document.getElementById('hero')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
+  // #endregion
 }

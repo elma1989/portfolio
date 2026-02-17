@@ -1,5 +1,5 @@
-<div class="content px-4 lg:px-18 flex justify-between items-center">
-    @if (hasSocialMedia()) {
+<div class="content px-4 lg:px-18 flex justify-between items-center overflow-x-hidden">
+    @if (socialMedia()) {
         <social-media></social-media>
     }
     <div class="logo-area flex items-center font-titanone text-[1.5rem]" [class.tx-black]="isSectionDark()">
@@ -9,5 +9,14 @@
         [class.tx-black]="isSectionDark()"
         [class.bd-black]="isSectionDark()"
         (click)="switchLang()">{{ lang() == 'en'? 'EN':'DE' }}</button>
+        <button class="menu-btn flex flex-col gap-1 justify-center"
+        (click)="openMenu()">
+            <span [class.bd-black]="isSectionDark()"></span>
+            <span [class.bd-black]="isSectionDark()"></span>
+            <span [class.bd-black]="isSectionDark()"></span>
+        </button>
     </div>
+    <menu-overlay class="w-52 flex flex-col absolute top-0 right-0 lg:right-18 gap-4 p-4 bg-cwhite"
+    [class.open]="menu()"
+    (closed)="closeMenu()"></menu-overlay>
 </div>
