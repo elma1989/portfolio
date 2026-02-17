@@ -1,0 +1,41 @@
+<header app-header class="bg-cblack
+w-full h-[9dvh] lg:h-[10dvh] flex justify-center
+fixed top-0 left-0"></header>
+<main class="bg-cblack
+w-full min-h-[calc(100dvh-52px)] pt-[9dvh] lg:pt[10dvh]
+lg:pb-42
+flex justify-center">
+    <div class="content
+    p-4 lg:px-28 py-8
+    flex flex-col gap-8">
+        <a routerLink="/">⟵</a>
+        <h1 class="font-eczar font-bold 
+        text-[2rem]/[2rem] lg:text-[4.5rem]/[4.5rem]
+        py-4">{{ 'legal.title' | translate }}</h1>
+        <header class="flex flex-col gap-4">
+            <h2 class="font-bold text-[1.5rem]/[1.5rem] tx-yellow">{{ 'legal.imprint' | translate }}</h2>
+            <p>Marco Elste<br />Karl-Marx-Ring 5<br />06317 Seegebiet Mansfelder Land</p>
+            <div>
+                <h3 class="font-bold tx-yellow">{{'legal.explore' | translate }}</h3>
+                <a href="mailto:marco.elste@web.de">marco.elste&#64;web.de</a>
+            </div>
+        </header>
+        @for (p of paragraphs; track p.id) {
+            <inprint-paragraph>
+                <span paragraph-title>{{ `legal.${p.id}.title` | translate }}</span>
+                @for (i of getCounter(p.numberParagraphs); track i) {
+                    <p paragraph-body
+                    [innerHTML]="`legal.${p.id}.p-${i}` | translate"></p>
+                }
+            </inprint-paragraph>
+        }
+        <footer class="flex flex-col gap-4">
+            <p>{{ 'legal.question' | translate }}
+                <a href="mailto:marco.elste@web.de"
+                class="tx-yellow hover:underline">marco.elste&#64;web.de</a></p>
+            <p>{{ 'legal.date' | translate }}</p>
+        </footer>
+    </div>
+</main>
+<footer app-footer [impressum]="true"
+class="w-full flex justify-center"></footer>

@@ -14,6 +14,7 @@ export class TranslationService {
 
   constructor() {
     this.http  = inject(HttpClient);
+    this.loadLang();
 
     effect(() => {
       const lang = this.lang();
@@ -34,7 +35,10 @@ export class TranslationService {
 
   get lang(): Signal<Lang> { return this._lang.asReadonly(); }
 
-  set lang(lang: Lang) { this._lang.set(lang); }
+  set lang(lang: Lang) { 
+    this._lang.set(lang); 
+    this.saveLang();
+  }
 
   translate(key: string): string {
     const value: string = key
@@ -42,4 +46,17 @@ export class TranslationService {
       .reduce<any>((acc, part) => acc?.[part], this.translations());
     return typeof value == 'string' ? value : key
   }
+
+  // #region Storage
+  /** Saves current language in local storage. */
+  private saveLang(): void { 
+    localStorage.setItem('lang', this.lang());
+  }
+
+  /** Loads language from local storage. */
+  private loadLang(): void {
+    const storedLang: string | null = localStorage.getItem('lang');
+    if(storedLang && storedLang != 'en') this.lang = 'de';
+  }
+  // #endregion
 }

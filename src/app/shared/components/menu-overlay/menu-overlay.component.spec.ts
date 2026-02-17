@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MenuOverlayComponent } from './menu-overlay.component';
 import { MockTranslatePipe } from '../../pipes/mock-translate.pipe';
 import { CommonModule } from '@angular/common';
@@ -172,6 +171,7 @@ describe('MenuOverlayComponent', () => {
       it('should have correct source', () => {
         const allSrc: boolean =  [...flowers()].every(fl => 
           fl.src == 'http://localhost:9876/assets/img/00_header/hover-flower.png')
-      })
+        expect(allSrc).toBeTrue();
+      });
   });
 });

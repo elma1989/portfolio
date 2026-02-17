@@ -1,0 +1,11 @@
+.flower {
+    animation: rotate 6000ms linear infinite;
+}
+
+.preview {
+    border: 1px solid var(--black);
+}
+
+nav>button:hover, nav>button:active {
+    color: var(--orange);
+}
