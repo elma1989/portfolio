@@ -16,7 +16,94 @@
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
-
+        <form class="w-full lg:w-1/2 mb-4
+        flex flex-col gap-8 justify-end"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()">
+            @if(desktop()) {
+                <div class="w-full
+                flex gap-8">
+                    <div class="input-box w-1/2 p-4 block"
+                    [class.lb-orange]="isFocus('name')">
+                        <label for="name">{{ 'contact.labels.name' | translate }}</label>
+                        <div class="relative">
+                            <input type="text" id="name"
+                            formControlName="name"
+                            [placeholder]="placeholder('name')"
+                            (focus)="setFocus('name')"
+                            (blur)="setBlur('name')">
+                        </div>
+                    </div>
+                    <div class="input-box w-1/2 p-4 block"
+                    [class.lb-orange]="isFocus('email')">
+                        <label for="email">{{ 'contact.labels.email' | translate }}</label>
+                        <div class="relative">
+                            <input type="text" id="email"
+                            formControlName="email"
+                            [placeholder]="placeholder('email')"
+                            (focus)="setFocus('email')"
+                            (blur)="setBlur('email')">
+                        </div>
+                    </div>
+                </div>
+                <div class="input-box w-full p-4"
+                [class.lb-orange]="isFocus('question')">
+                    <label for="question">{{ 'contact.labels.question' | translate }}</label>
+                        <div class="relative">
+                            <input type="text" id="question"
+                            formControlName="question"
+                            [placeholder]="placeholder('question')"
+                            (focus)="setFocus('question')"
+                            (blur)="setBlur('question')">
+                        </div>
+                </div>
+            } @else {
+                @for (field of fields; track field) {
+                    <div class="input-box w-full p-4"
+                    [class.lb-orange]="isFocus(field)">
+                    <label [for]="field">{{ 'contact.labels.question' | translate }}</label>
+                        <div class="relative">
+                            <input type="text" [id]="field"
+                            [formControlName]="field"
+                            [placeholder]="placeholder(field)"
+                            (focus)="setFocus('question')"
+                            (blur)="setBlur('question')">
+                        </div>
+                    </div>
+                }
+            }
+            <div class="w-full flex flex-col gap-4">
+                <div class="w-full flex gap-2 items-center">
+                    <div class="relative w-4 h-4 shrink-0 cursor-pointer">
+                        <img [src]="checkboxImage" 
+                        class="w-full h-hull">
+                        <input type="checkbox" id="policy" 
+                        formControlName="policy"
+                        class="w-full h-full opacity-0
+                        absolute top-0 left-0">
+                    </div>
+                    <label for="policy" class="small cursor-pointer">
+                        {{ 'contact.labels.policy-1' | translate }}
+                        <a routerLink="privacy-policy"
+                        class="tx-orange hover:underline">
+                            {{ 'contact.labels.policy-2' | translate }}</a>
+                        {{ 'contact.labels.policy-3' | translate }}
+                    </label>
+                </div>
+            </div>
+            <div class="w-full
+            flex justify-center">
+                <input type="submit" class="btn-default"
+                value="{{ 'contact.submit' | translate }}">
+            </div>
+            <div class="w-full h-8
+            flex justify-center
+            text-[2rem]/[2rem] tx-orange font-bold">
+                @if(sent()) {
+                    {{ 'contact.sent' | translate }}
+                }
+            </div>
+        </form>
         <button class="btn-uparrow w-4 h-24
         absolute right-4 lg:-right-20 bottom-4 lg:bottom-0 lg:top-8
         flex items-end"
