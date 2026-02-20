@@ -26,10 +26,10 @@ export class ContactSectionComponent implements OnInit {
   private ts: TranslationService = inject(TranslationService);
   private sec: SectionService = inject(SectionService);
   protected form = this.fb.nonNullable.group({
-    name: [''],
-    email: [''],
-    question: [''],
-    policy: [false]
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    question: ['', [Validators.required]],
+    policy: [false, [Validators.requiredTrue]]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
