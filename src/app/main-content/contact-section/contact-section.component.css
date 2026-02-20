@@ -20,7 +20,7 @@ input[type=text] {
     border-bottom: 1px solid var(--yellow);
 }
 
-.lb-orange {
+.orange-underline {
     border-bottom-color: var(--orange);
 }
 
@@ -38,7 +38,6 @@ input[type=text] {
 
 .small {
     font-size: 1rem;
-    font-weight: normal;
 }
 
 .arrow {

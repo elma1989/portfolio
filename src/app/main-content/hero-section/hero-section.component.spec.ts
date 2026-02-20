@@ -122,7 +122,7 @@ describe('HeroSectionComponent', () => {
       () => element.querySelectorAll('.desc-area>h1');
 
     it('should have 2 h1', () => {
-      expect(h1s().length).toBe(1);
+      expect(h1s().length).toBe(2);
     });
 
     it('should have font "Eczar"', () => {
