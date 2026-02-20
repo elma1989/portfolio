@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { SectionService } from '../../shared/services/section.service';
@@ -28,10 +28,10 @@ export class ContactSectionComponent implements OnInit {
   private ts: TranslationService = inject(TranslationService);
   private sec: SectionService = inject(SectionService);
   protected form = this.fb.nonNullable.group({
-    name: [''],
-    email: [''],
-    question: [''],
-    policy: [false]
+    name: ['', [Validators.required]],
+    email: ['', [Validators.required]],
+    question: ['',[Validators.required]],
+    policy: [false, [Validators.requiredTrue]]
   });
 
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
