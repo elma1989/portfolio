@@ -24,8 +24,12 @@ input[type=text] {
     border-bottom-color: var(--orange);
 }
 
-.red-underline {
+.lb-red {
     border-bottom-color: var(--error);
+}
+
+.tx-red {
+    color: var(--error);
 }
 
 .error::placeholder, .error-msg {
