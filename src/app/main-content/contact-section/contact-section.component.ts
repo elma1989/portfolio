@@ -1,12 +1,13 @@
 import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { SectionService } from '../../shared/services/section.service';
 import { CommonModule } from '@angular/common';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 import { SectionType } from '../../shared/enums/section-type';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'section[contact]',
@@ -15,8 +16,9 @@ import { SectionType } from '../../shared/enums/section-type';
     ReactiveFormsModule,
     FooterComponent,
     CommonModule,
-    SectionSelectorComponent
-  ],
+    SectionSelectorComponent,
+    RouterLink
+],
   templateUrl: './contact-section.component.html',
   styleUrl: './contact-section.component.css'
 })
@@ -35,6 +37,7 @@ export class ContactSectionComponent implements OnInit {
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
+  protected fields: string[] = ['name', 'email', 'question'];
 
   ngOnInit(): void {
     this.loadValues();
@@ -46,58 +49,11 @@ export class ContactSectionComponent implements OnInit {
   
   // #region Methods
   // #region Getter
-  get name() { return this.form.controls.name; }
-
-  get email() { return this.form.controls.email; }
-
-  get question() { return this.form.controls.question; }
-
-  get namePlaceholder() {
-    if (!this.name.touched || !this.name.invalid)
-      return this.ts.translate('contact.placeholder.name');
-
-    if(this.name.errors?.['required'])
-      return this.ts.translate('contact.error.name');
-
-    return '';
-  }
-
-  get emailPlaceholder() {
-    if (!this.email.touched || !this.email.invalid)
-      return this.ts.translate('contact.placeholder.email');
-
-    if(this.email.errors?.['required'])
-      return this.ts.translate('contact.error.email');
-
-    if(this.email.errors?.['email']) {
-      this.email.setValue('');
-      return this.ts.translate('contact.error.email');
-    }
-
-    return '';
-  }
-
-  get questionPlaceholder() {
-    if (!this.question.touched || !this.question.invalid)
-      return this.ts.translate('contact.placeholder.question');
-
-    if(this.question.errors?.['required'])
-      return this.ts.translate('contact.error.question');
-
-    return '';
-  }
-
   get checkboxImage(): string {
     let suffix: string = this.form.controls.policy.value 
       ? (this.checkboxHover ? '-checked-hover' : '-checked')
       : (this.checkboxHover ? '-hover' : '');
     return `assets/img/05_contact/check${suffix}.png`
-  }
-
-  get errorPolicy(): string {
-    return this.form.controls.policy.touched 
-    && this.form.controls.policy.invalid
-      ? this.ts.translate('contact.error.policy') : '';
   }
 
   get submitValue(): string {
@@ -112,7 +68,6 @@ export class ContactSectionComponent implements OnInit {
    */
   setFocus(name: string): void {
     this.focusControl.set(name);
-    if(name =='email') this.email.reset();
   }
 
   /**
@@ -194,7 +149,25 @@ export class ContactSectionComponent implements OnInit {
   resetForm(): void {
     this.removeValues();
     this.form.reset();
-    this.sent.set(false);
+  }
+
+
+  /**
+   * Gets a label from a control.
+   * @param name Name of control.
+   * @returns Label of control.
+   */
+  label(name: string): string {
+    return this.ts.translate(`contact.labels.${name}`);
+  }
+
+  /**
+   * Gets placeholder from control
+   * @param name - Name of control.
+   * @returns 
+   */
+  placeholder(name: string): string {
+    return this.ts.translate(`contact.placeholder.${name}`);
   }
   // #endregion
 

@@ -16,11 +16,11 @@ input[type=text] {
     }
 }
 
-.input-box {
+.lb-yellow {
     border-bottom: 1px solid var(--yellow);
 }
 
-.orange-underline {
+.lb-orange {
     border-bottom-color: var(--orange);
 }
 
@@ -38,6 +38,7 @@ input[type=text] {
 
 .small {
     font-size: 1rem;
+    font-weight: normal;
 }
 
 .arrow {
