@@ -214,7 +214,9 @@
                 "uppercase": "Beginnt mit Großbuchstaben",
                 "minlength": "Frage hat min. 10 Zeichen"
             },
-            "policy": "Akzeptieren Sie bitte die Datenschutzerklärung."
+            "policy": {
+                "required": "Akzeptieren Sie bitte die Datenschutzerklärung."
+            }
         },
         "sent": "Ihre Anfrage wurde übermittelt.",
         "submit": "Anfrage stellen"

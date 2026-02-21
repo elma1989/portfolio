@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { SectionService } from '../../shared/services/section.service';
@@ -8,6 +8,16 @@ import { CommonModule } from '@angular/common';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 import { SectionType } from '../../shared/enums/section-type';
 import { RouterLink } from "@angular/router";
+import { CustomValidator } from '../../shared/classes/validators';
+
+interface ContactForm {
+  name: FormControl<string>;
+  email: FormControl<string>;
+  question: FormControl<string>;
+  policy: FormControl<boolean>
+}
+
+type ControlName = keyof ContactForm;
 
 @Component({
   selector: 'section[contact]',
@@ -28,16 +38,16 @@ export class ContactSectionComponent implements OnInit {
   private ts: TranslationService = inject(TranslationService);
   private sec: SectionService = inject(SectionService);
   protected form = this.fb.nonNullable.group({
-    name: [''],
-    email: [''],
-    question: [''],
-    policy: [false]
+    name: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(2)]],
+    email: ['', [Validators.required, CustomValidator.strongEmail(), Validators.minLength(5)]],
+    question: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(10)]],
+    policy: [false, [Validators.requiredTrue]]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
-  protected fields: string[] = ['name', 'email', 'question'];
+  protected fields: ControlName[] = ['name', 'email', 'question'];
 
   ngOnInit(): void {
     this.loadValues();
@@ -171,6 +181,28 @@ export class ContactSectionComponent implements OnInit {
   }
   // #endregion
 
+  /**
+   * Checks, if control has error.
+   * @param name - Name of control.
+   * @returns True, if control has error.
+   */
+  hasError(name: ControlName): boolean {
+    return this.form.controls[name].touched && this.form.controls[name].invalid;
+  }
+
+  errorMessage(name: ControlName): string {
+    const errors = this.form.controls[name].errors;
+    const key: string = `contact.error.${name}`;
+    if (!errors) return '';
+    if (errors['required'])
+      return this.ts.translate(key + '.required');
+    if (errors['firstUpperCase'])
+      return this.ts.translate(key + '.uppercase');
+    if (errors['strongEmail'])
+      return this.ts.translate(key + '.non-email');
+    return this.ts.translate(key + '.minlength');
+  }
+  
   /** goes to hero-section. */
   goToHero() {
     this.sec.section = SectionType.HERO;

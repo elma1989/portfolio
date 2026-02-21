@@ -24,55 +24,103 @@
                 <div class="w-full
                 flex gap-8">
                     <div class="lb-yellow w-1/2 p-4"
-                    [class.lb-orange]="isFocus(fields[0])">
-                            <label [for]="fields[0]"
-                            [class.tx-orange]="isFocus(fields[0])">
-                            {{ label(fields[0]) }}</label>
+                    [class.lb-orange]="isFocus(fields[0])"
+                    [class.lb-red]="hasError(fields[0])">
+                        <label [for]="fields[0]"
+                        [class.tx-orange]="isFocus(fields[0])"
+                        [class.tx-red]="hasError(fields[0])">
+                        {{ label(fields[0]) }}</label>
+                        <div class="w-full relative">
                             <input type="text" [id]="fields[0]"
                             [formControlName]="fields[0]"
                             autocomplete="off"
                             [placeholder]="placeholder(fields[0])"
                             (focus)="setFocus(fields[0])"
                             (blur)="setBlur(fields[0])">
+                            @if (!isFocus(fields[0]) && hasError(fields[0])) {
+                                <div class="error-msg bg-cblack cursor-pointer
+                                w-full h-full flex items-end
+                                absolute top-0 left-0"
+                                (click)="setFocus(fields[0])">
+                                    {{ errorMessage(fields[0]) }}
+                                </div>
+                            }
+                        </div>
                     </div>
                     <div class="lb-yellow w-1/2 p-4"
-                    [class.lb-orange]="isFocus(fields[1])">
-                            <label [for]="fields[1]"
-                            [class.tx-orange]="isFocus(fields[1])">
-                            {{ label(fields[1]) }}</label>
+                    [class.lb-orange]="isFocus(fields[1])"
+                    [class.lb-red]="hasError(fields[1])">
+                        <label [for]="fields[1]"
+                        [class.tx-orange]="isFocus(fields[1])"
+                        [class.tx-red]="hasError(fields[1])">
+                        {{ label(fields[1]) }}</label>
+                        <div class="w-full relative">
                             <input type="text" [id]="fields[1]"
                             [formControlName]="fields[1]"
                             autocomplete="off"
                             [placeholder]="placeholder(fields[1])"
                             (focus)="setFocus(fields[1])"
                             (blur)="setBlur(fields[1])">
+                            @if (!isFocus(fields[1]) && hasError(fields[1])) {
+                                <div class="error-msg bg-cblack cursor-pointer
+                                w-full h-full flex items-end
+                                absolute top-0 left-0"
+                                (click)="setFocus(fields[1])">
+                                    {{ errorMessage(fields[1]) }}
+                                </div>
+                            }
+                        </div>
                     </div>
                 </div>
                 <div class="lb-yellow w-full p-4"
-                [class.lb-orange]="isFocus(fields[2])">
+                [class.lb-orange]="isFocus(fields[2])"
+                [class.lb-red]="hasError(fields[2])">
                     <label [for]="fields[2]"
-                    [class.tx-orange]="isFocus(fields[2])">
+                    [class.tx-orange]="isFocus(fields[2])"
+                    [class.tx-red]="hasError(fields[2])">
                     {{ label(fields[2]) }}</label>
-                    <input type="text" [id]="fields[2]"
-                    [formControlName]="fields[2]"
-                    autocomplete="off"
-                    [placeholder]="placeholder(fields[2])"
-                    (focus)="setFocus(fields[2])"
-                    (blur)="setBlur(fields[2])">
+                    <div class="w-full relative">
+                        <input type="text" [id]="fields[2]"
+                        [formControlName]="fields[2]"
+                        autocomplete="off"
+                        [placeholder]="placeholder(fields[2])"
+                        (focus)="setFocus(fields[2])"
+                        (blur)="setBlur(fields[2])">
+                        @if (!isFocus(fields[2]) && hasError(fields[2])) {
+                            <div class="error-msg bg-cblack cursor-pointer
+                            w-full h-full flex items-end
+                            absolute top-0 left-0"
+                            (click)="setFocus(fields[2])">
+                                {{ errorMessage(fields[2]) }}
+                            </div>
+                        }
+                    </div>
                 </div>
             } @else {
                 @for (field of fields; track field) {
                     <div class="lb-yellow w-full p-4"
-                    [class.lb-orange]="isFocus(field)">
+                    [class.lb-orange]="isFocus(field)"
+                    [class.lb-red]="hasError(field)">
                         <label [for]="field"
-                        [class.tx-orange]="isFocus(field)">
+                        [class.tx-orange]="isFocus(field)"
+                        [class.tx-red]="hasError(field)">
                         {{ label(field) }}</label>
-                        <input type="text" [id]="field"
-                        [formControlName]="field"
-                        autocomplete="off"
-                        [placeholder]="placeholder(field)"
-                        (focus)="setFocus(field)"
-                        (blur)="setBlur(field)">
+                        <div class="w-full relative">
+                            <input type="text" [id]="field"
+                            [formControlName]="field"
+                            autocomplete="off"
+                            [placeholder]="placeholder(field)"
+                            (focus)="setFocus(field)"
+                            (blur)="setBlur(field)">
+                            @if (!isFocus(field) && hasError(field)) {
+                                <div class="error-msg bg-cblack cursor-pointer
+                                w-full h-full flex items-end
+                                absolute top-0 left-0"
+                                (click)="setFocus(field)">
+                                    {{ errorMessage(field) }}
+                                </div>
+                            }
+                        </div>
                     </div>
                 }
             }
@@ -95,6 +143,11 @@
                         class="tx-orange hover:underline">{{ label('policy-2') }}</a>
                         {{ label('policy-3') }}
                     </label>
+                </div>
+                <div class="error-msg h-4 w-full">
+                    @if (hasError('policy')) {
+                        {{ errorMessage('policy')}}
+                    }
                 </div>
             </div>
             <div class="w-full
