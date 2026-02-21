@@ -18,6 +18,9 @@ input[type=text] {
 
 .lb-yellow {
     border-bottom: 1px solid var(--yellow);
+    @media (min-width: 1920px) {
+        border-bottom-width: 5px;
+    }
 }
 
 .lb-orange {
@@ -43,6 +46,9 @@ input[type=text] {
 .small {
     font-size: 1rem;
     font-weight: normal;
+    @media(min-width: 1920px) {
+        font-size: 2rem;
+    }
 }
 
 .arrow {
