@@ -3,7 +3,7 @@
     w-full lg:w-9/10 h-full lg:h-[80dvh]
     p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
     flex flex-col lg:flex-row 2xl:flex-col gap-8">
-        <header class="w-full lg:w-1/2
+        <header class="w-full lg:w-1/2 2xl:w-full
         flex flex-col gap-8 lg:gap-16">
             <h1 class="font-eczar tx-yellow
             text-[2.5rem]/[2.5rem] lg:text-[4.5rem]/[4.5rem]"
@@ -16,7 +16,7 @@
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
-        <form class="w-full lg:w-1/2 mb-8
+        <form class="w-full lg:w-1/2 2xl:w-full mb-8
         flex flex-col justify-end gap-8"
         [formGroup]="form"
         (ngSubmit)="onSubmit()">
