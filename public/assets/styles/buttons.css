@@ -2,6 +2,11 @@
     border: 1px solid var(--white);
     border-radius: 6.25rem;
     padding: 0.75rem 1.5rem;
+    @media(min-width: 1920px) {
+        border-width: 5px;
+        font-size: 2rem;
+        padding: 2rem 3rem;
+    }
 }
 
 .btn-default:hover {
