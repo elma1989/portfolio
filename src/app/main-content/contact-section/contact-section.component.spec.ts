@@ -5,6 +5,7 @@ import { TranslationService } from '../../shared/services/translation.service';
 import { SectionService } from '../../shared/services/section.service';
 import { By } from '@angular/platform-browser';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
+import { provideRouter } from '@angular/router';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -27,7 +28,8 @@ describe('ContactSectionComponent', () => {
         {
           provide: TranslationService,
           useValue: translationServiceMock
-        }
+        },
+        provideRouter([])
       ]
     })
       .compileComponents();
