@@ -2,15 +2,16 @@
     <div class="content-area
     w-full lg:w-9/10 h-full p-4 lg:pt-8 lg:pr-0 lg:pb-28 lg:pl-28
     flex flex-col gap-8">
-        <header class="w-full lg:w-3/4 2xl:w-full lg:h-28
+        <header class="w-full lg:h-28
         flex flex-col gap-8 lg:flex-row lg:items-center">
             <h1 class="font-eczar 
             text-[2.5rem]/[2.5rem] lg:text-[4.5rem]/[4.5rem]"
             >{{ 'projects.title' | translate }}</h1>
-            <p class="lg:px-8 lg:flex-1 2xl:text-[1.5rem]/[1.5rem]">{{ 'projects.desc' | translate }}</p>
+            <p class="lg:px-8 lg:flex-1 
+            md:text-[1.5rem]/[1.5rem] 2xl:text-[2rem]/[2rem]">{{ 'projects.desc' | translate }}</p>
         </header>
         <div class="projects-area size-full lg:max-h-128
-        flex flex-col lg:flex-row 2xl:flex-col gap-8 2xl:gap-16">
+        flex flex-col md:items-center md:flex-row 2xl:flex-col gap-8 2xl:gap-16">
             <div class="preview rounded-sm aspect-square bg-{{ projects[index()].background }}
             w-full lg:w-auto lg:h-full px-4 lg:px-8 2xl:py-8 relative
             flex justify-center items-center">
@@ -24,17 +25,29 @@
                 object-cover object-center">
             </div>
             <div class="details-area
-            size-full lg:pt-8 flex flex-col">
+            size-full lg:pt-8 
+            flex flex-col">
                 <project-board class="bg-cblack tx-white rounded-sm relative
                 w-full flex-1 p-4 lg:p-8
                 flex flex-col justify-center gap-8"
                 [project]="projects[index()]"></project-board>
                 <nav class="w-full py-8
-                flex justify-between">
-                    <button class="inline-block font-bold 2xl:text-[1.5rem]/[1.5rem]"
-                    (click)="prev()">&lt;&lt; {{ 'projects.prev' | translate }}</button>
-                    <button class="inline-block font-bold 2xl:text-[1.5rem]/[1.5rem]"
-                    (click)="next()">{{ 'projects.next' | translate }} &gt;&gt;</button>
+                flex justify-between gap-4
+                font-bold">
+                    <div class="w-1/2
+                    flex justify-start gap-2 items-center">
+                        <span>&lt;&lt;</span>
+                        <button class="inline-block text-left
+                        2xl:text-[1.5rem]/[1.5rem]"
+                        (click)="prev()"> {{ 'projects.prev' | translate }}</button>
+                    </div>
+                    <div class="w-2/5
+                    flex justify-end gap-2 items-center">
+                        <button class="inline-block text-right
+                        2xl:text-[1.5rem]/[1.5rem]"
+                        (click)="next()"> {{ 'projects.next' | translate }}</button>
+                        <span>&gt;&gt;</span>
+                    </div>
                 </nav>
             </div>
         </div>

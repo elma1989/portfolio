@@ -1,6 +1,10 @@
 menu-overlay {
     transform: translateX(150%);
     transition: transform 500ms ease-in-out;
+    border: 1px solid var(--black);
+    @media(min-width: 1920px) {
+        border-width: 5px;
+    }
 }
 
 .logo-area:hover {

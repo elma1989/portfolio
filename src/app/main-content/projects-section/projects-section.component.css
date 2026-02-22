@@ -6,6 +6,6 @@
     border: 1px solid var(--black);
 }
 
-nav>button:hover, nav>button:active {
+nav>div:hover, nav>div:active {
     color: var(--orange);
 }
