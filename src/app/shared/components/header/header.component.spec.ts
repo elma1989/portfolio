@@ -126,8 +126,8 @@ describe('HeaderComponent', () => {
       expect(content()?.classList.contains('lg:px-18') ?? false).toBeTrue();
     });
 
-    it('should have overlow-x: hidden', () => {
-      expect(content()?.classList.contains('overflow-x-hidden') ?? false).toBeTrue();
+    it('should have overlow-x: clip', () => {
+      expect(content()?.classList.contains('overflow-x-clip') ?? false).toBeTrue();
     });
   });
 

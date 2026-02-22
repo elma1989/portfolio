@@ -6,6 +6,7 @@ import { Signal, signal } from '@angular/core';
 import { TranslationService } from '../shared/services/translation.service';
 import { MockTranslatePipe } from '../shared/pipes/mock-translate.pipe';
 import { CommonModule } from '@angular/common';
+import { provideRouter } from '@angular/router';
 
 const langSignal = signal<'en' | 'de'>('en');
 
@@ -32,7 +33,8 @@ describe('MainContentComponent', () => {
         {
           provide: TranslationService,
           useValue: translationServiceMock
-        }
+        },
+        provideRouter([])
       ]
     })
       .compileComponents();

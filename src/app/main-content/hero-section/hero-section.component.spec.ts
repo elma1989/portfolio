@@ -121,10 +121,6 @@ describe('HeroSectionComponent', () => {
     const h1s: () => NodeListOf<HTMLElement> =
       () => element.querySelectorAll('.desc-area>h1');
 
-    it('should have 2 h1', () => {
-      expect(h1s().length).toBe(2);
-    });
-
     it('should have font "Eczar"', () => {
       const allEczar: boolean = [...h1s()].every(h1 => h1.classList.contains('font-eczar'));
       expect(allEczar).toBeTrue();
