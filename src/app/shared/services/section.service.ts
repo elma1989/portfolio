@@ -5,7 +5,7 @@ import { SectionType } from '../enums/section-type';
   providedIn: 'root'
 })
 export class SectionService {
-  private _mobile: WritableSignal<boolean> = signal<boolean>(this.isMobile());
+  private _mobile: WritableSignal<boolean> = signal<boolean>(false);
   private _section: WritableSignal<SectionType> = signal<SectionType>(SectionType.HERO);
 
   // #region Methods
@@ -18,10 +18,6 @@ export class SectionService {
   set section(section: SectionType) { 
     this._section.set(section);
     this.saveSection();
-  }
-
-  isMobile(): boolean {
-    return window.innerWidth < 1024;
   }
 
   // #region Storage

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, HostListener, inject, Signal } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, HostListener, inject, Injector, Signal } from '@angular/core';
 import { SectionService } from '../shared/services/section.service';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
@@ -36,12 +36,41 @@ export class MainContentComponent implements AfterViewInit {
     SectionType.HERO, SectionType.ABOUT, SectionType.SKILLS,
     SectionType.PROJECTS, SectionType.REFERENCES, SectionType.CONTACT
   ]
+  private prevMobile: boolean = false;
+  private programmicScroll: boolean = false;
+
+  constructor() {
+    afterNextRender(() => {
+      if(this.mobile()) {
+        this.calcSecPos();
+        this.moveToCurrentSection();
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
-    this.calcSecPos();
+    const mobile: boolean = this.isMobile();
+    this.sec.mobile = mobile;
+    this.prevMobile = mobile;
     this.sec.loadSection();
-    this.moveToCurrentSection();
+    if (mobile) {
+    }
   }
+
+/**
+   * Checks, if social media is in on header.
+   * @returns True if social media is on header.
+   */
+  hasSocialMedia() {
+    if (this.mobile()) return false;
+    return this.section() == SectionType.HERO;
+  }
+
+  /**
+   * Checks if user has mobile screen.
+   * @returns True, if user has mobile screen.
+   */
+  private isMobile(): boolean { return window.innerWidth < 1024; }
 
   // #region Background-Indicator
   isBackgroundBlue(): boolean {
@@ -129,11 +158,12 @@ export class MainContentComponent implements AfterViewInit {
   /** Will be executed on scrollikng. */
   @HostListener('window:scroll', [])
   onScroll() {
-    if (!this.isTestMode() && this.mobile()) {
+    if (!this.isTestMode() && this.mobile() && !this.programmicScroll) {
       const currentY = window.scrollY + 0.04 * window.innerHeight;
       for (const section of this.secPos) {
-        if (currentY >= section.top && currentY < section.bottom)
-          this.sec.section = section.id as SectionType
+        if (currentY >= section.top && currentY < section.bottom) {
+          this.sec.section = section.id as SectionType;
+        }
       }
     }
   }
@@ -141,14 +171,28 @@ export class MainContentComponent implements AfterViewInit {
   /** Will be executed on resizing. */
   @HostListener('window:resize')
   onResize() {
-    this.sec.mobile = window.innerWidth < 1024;
-    this.calcSecPos();
-    this.moveToCurrentSection();
+    const mobile = this.isMobile();
+    if(mobile) {
+      this.calcSecPos();
+      this.moveToCurrentSection();
+    }
+    if(!this.prevMobile && mobile) {
+      this.prevMobile = true;
+      this.sec.mobile = true;
+    }
+    if(this.prevMobile && !mobile) {
+      this.prevMobile = false;
+      this.sec.mobile = false;
+    }
   }
 
   /** Jumps to current section on load */
   private moveToCurrentSection() {
+    this.programmicScroll = this.programmicScroll = true;
     this.scroller.scrollToAnchor(this.section());
+    setTimeout(() => {
+      this.programmicScroll = false;
+    }, 500);
   }
 
   /** Checks mouse wheel on desktop. */
@@ -163,13 +207,4 @@ export class MainContentComponent implements AfterViewInit {
     }
   }
   // #endregion
-
-  /**
-   * Checks, if social media is in on header.
-   * @returns True if social media is on header.
-   */
-  hasSocialMedia() {
-    if (this.mobile()) return false;
-    return this.section() == SectionType.HERO;
-  }
 }
