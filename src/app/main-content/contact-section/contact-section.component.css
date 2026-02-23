@@ -1,5 +1,4 @@
 label {
-    font-size: 1.5rem;
     font-weight: bold;
     @media(min-width: 1920px) {
         font-size: 3rem;
