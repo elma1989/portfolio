@@ -12,14 +12,15 @@
             <button class="btn-default mt-8"
             (click)="goToContact()">{{ 'hero.btn' | translate }}</button>
         </div>
-        <div class="img-area 
-        w-full flex-1 lg:w-1/2 lg:h-full 2xl:w-full 2xl:h-auto relative
-        flex justify-center">
+        <div class="img-area relative
+        w-full flex-1 min-h-0 lg:w-1/2 lg:h-full 2xl:w-full 2xl:h-auto">
             <img src="assets/img/01_hero/flower.png" class="flower
-            w-full max-w-lg 2xl:max-w-220 aspect-square
-            absolute bottom-0">
+            w-full h-full 
+            aspect-square object-contain object-bottom
+            absolute bottom-4">
             <img src="assets/img/01_hero/me.png" class="portrait 
-            w-full max-w-lg lg:max-w-none absolute bottom-0">
+            w-full h-full object-contain object-bottom
+            absolute bottom-0">
         </div>
         <button class="
         scroll-btn w-20 h-20 absolute bottom-4 left-4 rounded-full bg-blue 

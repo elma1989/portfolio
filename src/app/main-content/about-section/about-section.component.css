@@ -1,6 +1,10 @@
 about-overlay {
     transform: translateY(100%);
     transition: transform 300ms ease-in-out;
+    border: 1px solid var(--black);
+    @media(min-width: 1920px) {
+        border-width: 5px;
+    }
 }
 
 .open {
