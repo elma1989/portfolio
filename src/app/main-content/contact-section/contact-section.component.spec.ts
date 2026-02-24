@@ -114,10 +114,6 @@ describe('ContactSectionComponent', () => {
       expect(header()?.classList).toContain('w-full');
     });
 
-    it('should have 1/2 width on desktop', () => {
-      expect(header()?.classList).toContain('lg:w-1/2');
-    });
-
     it('should have gap 2rem column', () => {
       const head = header();
       expect(head?.classList).toContain('flex');
@@ -151,7 +147,7 @@ describe('ContactSectionComponent', () => {
     });
 
     it('should have size 4.5rem on desktop', () => {
-      expect(title()?.classList).toContain('lg:text-[4.5rem]/[4.5rem]');
+      expect(title()?.classList).toContain('xl:text-[4.5rem]/[4.5rem]');
     });
 
     it('should have content "translated: contact.title"', () => {

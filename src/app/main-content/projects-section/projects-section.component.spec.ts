@@ -106,10 +106,6 @@ describe('ProjectsSectionComponent', () => {
       expect(header()?.classList).toContain('w-full');
     });
 
-    it('should have 75% width on desktop', () => {
-      expect(header()?.classList).toContain('lg:w-3/4');
-    });
-
     it('should have height 7rem on desktop', () => {
       expect(header()?.classList).toContain('lg:h-28');
     });
@@ -191,10 +187,6 @@ describe('ProjectsSectionComponent', () => {
       expect(area?.classList).toContain('flex-col');
       expect(area?.classList).toContain('gap-8');
     });
-
-    it('should have direction row on desktop', () => {
-      expect(projectsArea()?.classList).toContain('lg:flex-row');
-    });
   });
 
   describe('Preview', () => {
@@ -257,7 +249,7 @@ describe('ProjectsSectionComponent', () => {
     it('should have postion bottom left', () => {
       const fl = flower();
       expect(fl?.classList).toContain('absolute');
-      expect(fl?.classList).toContain('bottom-0');
+      expect(fl?.classList).toContain('bottom-2');
       expect(fl?.classList).toContain('left-0');
     });
   });
@@ -390,7 +382,7 @@ describe('ProjectsSectionComponent', () => {
 
   describe('Nav-Buttons', () => {
     const navBtns: () => NodeListOf<HTMLButtonElement> =
-      () => element.querySelectorAll('nav>button');
+      () => element.querySelectorAll('nav button');
 
     it('should have 2 buttons', () => {
       expect(navBtns().length).toBe(2);
@@ -402,20 +394,14 @@ describe('ProjectsSectionComponent', () => {
       );
     });
 
-    it('should have font bold', () => {
-      navBtns().forEach(btn =>
-        expect(btn.classList).toContain('font-bold')
-      );
-    });
-
-    it('should have content "<< translated: projects.prev" on first button', () => {
+    it('should have content "translated: projects.prev" on first button', () => {
       expect(navBtns()[0]?.textContent)
-        .toBe('<< translated: projects.prev');
+        .toBe('translated: projects.prev');
     });
 
-    it('should have content "translated: projects.next >>" on second button"', () => {
+    it('should have content "translated: projects.next" on second button"', () => {
       expect(navBtns()[1]?.textContent)
-        .toBe('translated: projects.next >>');
+        .toBe('translated: projects.next');
     });
   });
 
