@@ -1,6 +1,7 @@
 <div class="content flex">
     <div class="content-area
-    w-full lg:w-9/10 h-full p-4 lg:pt-8 lg:pr-0 lg:pb-28 lg:pl-28
+    w-full lg:w-9/10 min-h-0 
+    p-4 lg:pt-8 lg:pr-0 lg:pb-16 lg:pl-28
     flex flex-col gap-8">
         <header class="w-full lg:h-28
         flex flex-col gap-8 lg:flex-row lg:items-center">
@@ -10,26 +11,26 @@
             <p class="lg:px-8 lg:flex-1 
             md:text-[1.5rem]/[1.5rem] 2xl:text-[2rem]/[2rem]">{{ 'projects.desc' | translate }}</p>
         </header>
-        <div class="projects-area size-full lg:max-h-128
+        <div class="projects-area w-full lg:flex-1
         flex flex-col md:items-center md:flex-row 2xl:flex-col gap-8 2xl:gap-16">
             <div class="preview rounded-sm aspect-square bg-{{ projects[index()].background }}
-            w-full lg:w-auto lg:h-full px-4 lg:px-8 2xl:py-8 relative
+            w-full lg:w-2/5
+            px-4 lg:px-8 2xl:py-8 relative
             flex justify-center items-center">
                 <img src="assets/img/04_projects/flower-{{ projects[index()].flower }}.png" 
                 class="flower size-32 lg:size-36
-                absolute bottom-2 left-0">
+                absolute bottom-0 left-0">
                 <img src="assets/img/04_projects/{{ projects[index()].screenschot }}.png" 
                 class="screenshot rounded-sm
-                w-full 2xl:w-auto 2xl:h-full
-                aspect-4/3 z-1
-                object-cover object-center">
+                w-full z-1
+                object-contain object-center">
             </div>
             <div class="details-area
-            size-full lg:pt-8 
-            flex flex-col">
+            w-full lg:w-3/5 lg:h-full lg:pt-8 
+            flex flex-col justify-center">
                 <project-board class="bg-cblack tx-white rounded-sm relative
-                w-full flex-1 p-4 lg:p-8
-                flex flex-col justify-center gap-8"
+                w-full lg:h-[44dvh] 2xl:h-[30dvh] p-4 lg:p-8
+                flex flex-col gap-8"
                 [project]="projects[index()]"></project-board>
                 <nav class="w-full py-8
                 flex justify-between gap-4
