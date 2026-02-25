@@ -17,7 +17,7 @@
             flex justify-center items-center">
                 <img src="assets/img/04_projects/flower-{{ projects[index()].flower }}.png" 
                 class="flower size-32 lg:size-36
-                absolute bottom-0 left-0">
+                absolute bottom-2 left-0">
                 <img src="assets/img/04_projects/{{ projects[index()].screenschot }}.png" 
                 class="screenshot rounded-sm
                 w-full 2xl:w-auto 2xl:h-full
@@ -34,18 +34,18 @@
                 <nav class="w-full py-8
                 flex justify-between gap-4
                 font-bold">
-                    <div class="w-1/2
+                    <div class="prev w-1/2
                     flex justify-start gap-2 items-center">
                         <span>&lt;&lt;</span>
                         <button class="inline-block text-left
                         2xl:text-[1.5rem]/[1.5rem]"
-                        (click)="prev()"> {{ 'projects.prev' | translate }}</button>
+                        (click)="prev()">{{ 'projects.prev' | translate }}</button>
                     </div>
-                    <div class="w-2/5
+                    <div class="right w-2/5
                     flex justify-end gap-2 items-center">
                         <button class="inline-block text-right
                         2xl:text-[1.5rem]/[1.5rem]"
-                        (click)="next()"> {{ 'projects.next' | translate }}</button>
+                        (click)="next()">{{ 'projects.next' | translate }}</button>
                         <span>&gt;&gt;</span>
                     </div>
                 </nav>

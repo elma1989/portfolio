@@ -32,28 +32,4 @@ describe('SectionService', () => {
     service.section = SectionType.SKILLS;
     expect(section()).toBe(SectionType.SKILLS)
   });
-
-  describe('Mobile', () => {
-    it('should isMobile() true on mobile', () => {
-      setWindowWidth(672);
-      window.dispatchEvent(new Event('resize'));
-      expect(service.isMobile()).toBeTrue();
-    });
-
-    it('should isMobile() false on mobile', () => {
-      setWindowWidth(1024);
-      window.dispatchEvent(new Event('resize'));
-      expect(service.isMobile()).toBeFalse();
-    });
-
-    it('should couputed value corrct change', () => {
-      const mobile = computed(() => service.mobile());
-
-      service.mobile = true;
-      expect(mobile()).toBeTrue();
-
-      service.mobile = false;
-      expect(mobile()).toBeFalse();
-    });
-  });
 });

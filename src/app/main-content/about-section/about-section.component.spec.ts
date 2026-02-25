@@ -173,26 +173,15 @@ describe('AboutSectionComponent', () => {
 
   describe('Portait', () => {
     const portrait: () => HTMLImageElement | null =
-      () => element.querySelector('.content-area>.portrait')
+      () => element.querySelector('.content-area>div>.portrait')
 
     it('should have portrait', () => {
       expect(portrait()).toBeTruthy();
     });
 
-    it('should have width 50%', () => {
-      expect(portrait()?.classList).toContain('w-1/2')
-    });
-
-    it('should have position left 1rem top 5rem on mobile', () => {
-      expect(portrait()?.classList).toContain('absolute');
-      expect(portrait()?.classList).toContain('top-20');
-      expect(portrait()?.classList).toContain('left-4');
-    });
-
-    it('should have position bottom 0 left 7rem', () => {
-      expect(portrait()?.classList).toContain('lg:top-auto');
-      expect(portrait()?.classList).toContain('lg:left-28');
-      expect(portrait()?.classList).toContain('lg:bottom-0');
+    it('should have full-size', () => {
+      expect(portrait()?.classList).toContain('w-full');
+      expect(portrait()?.classList).toContain('h-full');
     });
 
     it('should source be correct', () => {
