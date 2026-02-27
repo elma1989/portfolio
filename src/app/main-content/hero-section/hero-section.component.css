@@ -9,3 +9,18 @@
         left: 22rem;
     }
 }
+
+@media (min-width: 1920px) and (max-height: 1400px) {
+    .content-area {
+        flex-direction: row;
+    }
+    .desc-area {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1920px) and (max-height: 1180px) {
+    .scroll-btn {
+        display: none;
+    }
+}
