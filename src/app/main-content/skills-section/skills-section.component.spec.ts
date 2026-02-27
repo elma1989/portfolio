@@ -169,38 +169,6 @@ describe('SkillsSectionComponent', () => {
     });
   });
 
-  describe('Skill Wrapper', () => {
-    const wrapper: () => HTMLDivElement | null =
-      () => element.querySelector('.content-area>.skill-wrapper');
-
-    it('should have skill wrapper', () => {
-      expect(wrapper()).toBeTruthy();
-    });
-
-    it('should have full width on mobile', () => {
-      expect(wrapper()?.classList).toContain('w-full');
-    });
-
-    it('should have width 60rem on desktop', () => {
-      expect(wrapper()?.classList).toContain('lg:w-240');
-    });
-
-    it('should have 0.75rem gap flex-wrap on mobile', () => {
-      const elem: HTMLDivElement | null = wrapper();
-      expect(elem?.classList).toContain('flex');
-      expect(elem?.classList).toContain('flex-wrap');
-      expect(elem?.classList).toContain('gap-3');
-    });
-
-    it('schould have gap 2rem on desktop', () => {
-      expect(wrapper()?.classList).toContain('lg:gap-8');
-    });
-
-    it('should have self align right on desktop', () => {
-      expect(wrapper()?.classList).toContain('lg:self-end');
-    });
-  });
-
   describe('Skill-Elements', () => {
     const skills: () => NodeListOf<HTMLDivElement> =
       () => element.querySelectorAll('.skill-wrapper>.skill');

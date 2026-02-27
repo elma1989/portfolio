@@ -1,3 +1,19 @@
+.skill-wrapper {
+    display: grid;
+    width: 100%;
+    max-width: 512px;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+    place-items: center;
+    @media (min-width: 660px) {
+        max-width: 690px;
+    }
+    @media (min-width: 1920px) {
+        max-width: 50rem;
+        grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+    }
+}
+
 .flower {
     animation: rotate 6000ms linear infinite;
 }
