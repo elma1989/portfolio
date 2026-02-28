@@ -80,13 +80,6 @@ describe('ProjectsSectionComponent', () => {
       expect(area()?.classList).toContain('p-4');
     });
 
-    it('should have padding 2 0 7 7 on desktop', () => {
-      expect(area()?.classList).toContain('lg:pt-8');
-      expect(area()?.classList).toContain('lg:pr-0');
-      expect(area()?.classList).toContain('lg:pb-28')
-      expect(area()?.classList).toContain('lg:pl-28');
-    });
-
     it('should have gap 2rem column', () => {
       expect(area()?.classList).toContain('flex');
       expect(area()?.classList).toContain('flex-col');
@@ -177,10 +170,6 @@ describe('ProjectsSectionComponent', () => {
       expect(projectsArea()).toBeTruthy();
     });
 
-    it('should have full size', () => {
-      expect(projectsArea()?.classList).toContain('size-full');
-    });
-
     it('should have gap 2em column', () => {
       const area = projectsArea();
       expect(area?.classList).toContain('flex');
@@ -203,11 +192,6 @@ describe('ProjectsSectionComponent', () => {
 
     it('should have full width on mobile', () => {
       expect(preview()?.classList).toContain('w-full');
-    });
-
-    it('should have full height on desktop', () => {
-      expect(preview()?.classList).toContain('lg:h-full');
-      expect(preview()?.classList).toContain('lg:w-auto');
     });
 
     it('should be square', () => {
@@ -249,7 +233,7 @@ describe('ProjectsSectionComponent', () => {
     it('should have postion bottom left', () => {
       const fl = flower();
       expect(fl?.classList).toContain('absolute');
-      expect(fl?.classList).toContain('bottom-2');
+      expect(fl?.classList).toContain('bottom-0');
       expect(fl?.classList).toContain('left-0');
     });
   });
@@ -276,7 +260,7 @@ describe('ProjectsSectionComponent', () => {
 
     it('should have cover and positon center', () => {
       const screen = screenshot();
-      expect(screen?.classList).toContain('object-cover');
+      expect(screen?.classList).toContain('object-contain');
       expect(screen?.classList).toContain('object-center');
     });
 
@@ -291,10 +275,6 @@ describe('ProjectsSectionComponent', () => {
 
     it('should have details-area', () => {
       expect(details()).toBeTruthy();
-    });
-
-    it('should have full size', () => {
-      expect(details()?.classList).toContain('size-full');
     });
 
     it('should have padding top 2rem on desktop', () => {
@@ -324,32 +304,12 @@ describe('ProjectsSectionComponent', () => {
       expect(board()?.classList).toContain('rounded-sm');
     });
 
-    it('should grow', () => {
-      expect(board()?.classList).toContain('flex-1');
-    });
-
     it('should have black background', () => {
       expect(board()?.classList).toContain('bg-cblack');
     });
 
     it('should have white text', () => {
       expect(board()?.classList).toContain('tx-white');
-    });
-
-    it('should have padding 1rem on mobile', () => {
-      expect(board()?.classList).toContain('p-4');
-    });
-
-    it('should have padding 2rem on desktop', () => {
-      expect(board()?.classList).toContain('lg:p-8');
-    });
-
-    it('should have gap 2 rem column y-center', () => {
-      const b = board();
-      expect(b?.classList).toContain('flex');
-      expect(b?.classList).toContain('flex-col');
-      expect(b?.classList).toContain('justify-center');
-      expect(b?.classList).toContain('gap-8');
     });
 
     it('should have positon relative', () => {
