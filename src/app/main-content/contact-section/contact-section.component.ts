@@ -19,6 +19,11 @@ interface ContactForm {
 
 type ControlName = keyof ContactForm;
 
+type FormField = {
+  name: ControlName,
+  maxLength: number
+}
+
 @Component({
   selector: 'section[contact]',
   imports: [
@@ -47,7 +52,11 @@ export class ContactSectionComponent implements OnInit {
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
-  protected fields: ControlName[] = ['name', 'email', 'question'];
+  protected fields: FormField[] = [
+    { name: 'name', maxLength: 30 },
+    { name: 'email', maxLength: 30 },
+    { name: 'question', maxLength: 50 }
+  ]
 
   ngOnInit(): void {
     this.loadValues();
