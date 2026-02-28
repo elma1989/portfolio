@@ -26,7 +26,7 @@
                     <div class="lb-yellow w-1/2 p-4"
                     [class.lb-orange]="isFocus(fields[0].name)"
                     [class.lb-red]="hasError(fields[0].name)">
-                        <label [for]="fields[0]"
+                        <label [for]="fields[0].name"
                         [class.tx-orange]="isFocus(fields[0].name)"
                         [class.tx-red]="hasError(fields[0].name)">
                         {{ label(fields[0].name) }}</label>
