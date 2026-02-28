@@ -19,6 +19,11 @@ interface ContactForm {
 
 type ControlName = keyof ContactForm;
 
+type FormField = {
+  name: ControlName,
+  maxLength: number
+}
+
 @Component({
   selector: 'section[contact]',
   imports: [
@@ -40,14 +45,18 @@ export class ContactSectionComponent implements OnInit {
   protected form = this.fb.nonNullable.group({
     name: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(2)]],
     email: ['', [Validators.required, CustomValidator.strongEmail(), Validators.minLength(5)]],
-    question: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(10)]],
+    question: ['', [Validators.required, Validators.minLength(10)]],
     policy: [false, [Validators.requiredTrue]]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
-  protected fields: ControlName[] = ['name', 'email', 'question'];
+  protected fields: FormField[] = [
+    { name: 'name', maxLength: 30 },
+    { name: 'email', maxLength: 30 },
+    { name: 'question', maxLength: 50 }
+  ]
 
   ngOnInit(): void {
     this.loadValues();

@@ -68,6 +68,34 @@ input[type=text] {
     }
 }
 
+@media (min-width: 1920px) and (max-height: 2050px) {
+    .content-area {
+        flex-direction: row;
+    }
+
+    header {
+        width: 40%;
+    }
+    
+    h1 {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    form {
+        width: 60%;
+    }
+
+    p, label, input[type=text], .small {
+        font-size: 1.5rem;
+    }
+}
+
 @keyframes moveArrow {
     0%{
         transform: scaleY(1) translateY(0);
