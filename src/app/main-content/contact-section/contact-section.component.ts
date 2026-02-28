@@ -40,7 +40,7 @@ export class ContactSectionComponent implements OnInit {
   protected form = this.fb.nonNullable.group({
     name: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(2)]],
     email: ['', [Validators.required, CustomValidator.strongEmail(), Validators.minLength(5)]],
-    question: ['', [Validators.required, CustomValidator.firstUpperCase(), Validators.minLength(10)]],
+    question: ['', [Validators.required, Validators.minLength(10)]],
     policy: [false, [Validators.requiredTrue]]
   });
   private focusControl: WritableSignal<string | null> = signal<string | null>(null);
