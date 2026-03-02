@@ -1,6 +1,5 @@
 .skill-wrapper {
     display: grid;
-    /* width: 100%; */
     max-width: 512px;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.5rem;
