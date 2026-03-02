@@ -4,6 +4,9 @@ about-overlay {
     border: 1px solid var(--black);
     @media(min-width: 1920px) {
         border-width: 5px;
+        @media  (min-height: 1770px) {
+            width: 32rem;
+        }
     }
 }
 
@@ -17,6 +20,20 @@ about-overlay {
 
 .smile:hover {
     animation-play-state: paused;
+}
+
+@media (min-width: 1920px) {
+    @media (min-height: 1760px) {
+        .desc-area {
+            width: 80%;
+            top: 12rem;
+        }
+    }
+    @media (min-height: 2450px) {
+        .img-wrapper {
+            width: 90%;
+        }
+    }
 }
 
 @keyframes upDown {
