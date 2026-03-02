@@ -2,7 +2,6 @@ import { Component, computed, HostListener, inject, signal, Signal, WritableSign
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { SectionService } from '../../shared/services/section.service';
 import { SectionType } from '../../shared/enums/section-type';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SectionSelectorComponent } from '../../shared/components/section-selector/section-selector.component';
 
