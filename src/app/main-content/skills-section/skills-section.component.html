@@ -6,15 +6,15 @@
         text-[1.8rem]/[1.8rem] min-[390px]:text-[2.25rem]/[2.25rem] lg:text-[4.5rem]/[4.5rem]"
         >{{ 'skills.title' | translate }}</h1>
         <div class="desc bg-blue rounded-sm
-        w-full lg:w-152 p-4 lg:p-8
-        2xl:text-[1.5rem]/[2rem]
+        w-full lg:w-152 xl:w-3/4 p-4 lg:p-8
+        xl:text-[1.5rem]/[2rem]
         text-justify hyphens-auto">{{ 'skills.desc' | translate }}</div>
-        <div class="w-full
-        flex justify-center">
+        <div class="w-full flex-1
+        flex justify-center items-center">
                 <div class="skill-wrapper">
                 @for (skill of skills; track skill.name) {
                     <div class="skill
-                    aspect-3/4 w-20 2xl:w-32
+                    aspect-3/4 w-20 xl:w-32
                     flex flex-col justify-between items-center">
                         <div class="img-wrapper
                         aspect-square w-full
@@ -22,7 +22,7 @@
                             <img src="assets/img/03_skills/{{ skill.img }}.png"
                             class="w-3/4 h-3/4 lg:hover:size-full">
                         </div>
-                        <span class="text-center 2xl:text-[1.5rem]/[1.5rem]">{{ skill.name }}</span>
+                        <span class="text-center xl:text-[1.5rem]/[1.5rem]">{{ skill.name }}</span>
                     </div>
                 }
             </div>

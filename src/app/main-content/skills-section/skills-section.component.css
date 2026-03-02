@@ -1,6 +1,6 @@
 .skill-wrapper {
     display: grid;
-    width: 100%;
+    /* width: 100%; */
     max-width: 512px;
     grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
     gap: 0.5rem;
@@ -8,9 +8,14 @@
     @media (min-width: 660px) {
         max-width: 690px;
     }
+    @media (min-width: 1280px) {
+        max-width: none;
+        grid-template-columns: repeat(7, 128px);
+        gap: 1rem;
+    }
     @media (min-width: 1920px) {
-        max-width: 50rem;
-        grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
+        grid-template-columns: repeat(7, 164px);
+        gap: 2rem;
     }
 }
 
