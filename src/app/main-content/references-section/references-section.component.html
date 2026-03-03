@@ -4,21 +4,20 @@
     flex flex-col gap-8">
         <h1 class="font-eczar 
         whitespace-normal wrap-break-word
-        font-bold text-[2rem]/[2rem] md:text-[4.5rem]/[4.5rem] 2xl:text-[6rem]/[6rem]"
+        font-bold text-[2rem]/[2rem] xl:text-[3rem]/[3rem] min-[1920px]:!text-[4.5rem]/[4.5rem]"
         >{{ 'references.title' | translate }}</h1>
         <div class="ref-area
         w-full flex-1
         flex flex-col gap-8 lg:flex-row">
             <div class="ref-container
-            w-full md:w-2/3 lg:h-full
-            2xl:flex 2xl:items-center">
+            w-full md:w-2/3 lg:h-full">
                 <div class="reference
                 w-full rounded-sm p-4 lg:p-8
                 flex flex-col gap-4">
-                    <h2 class="py-2 text-[1.5rem]/[1.5rem] lg:text-[2rem]/[2rem] 2xl:text-[3rem]/[4rem] font-bold"
+                    <h2 class="py-2 text-[1.5rem]/[1.5rem] md:text-[2rem]/[2rem] min-[1920px]:!text-[3rem]/[4rem] font-bold"
                     >{{ reference.fullName }}</h2>
-                    <p class="hyphens-auto md:text-[1.5rem]/[1.5rem] 2xl:text-[2.5rem]/[3rem]">{{ `references.${reference.name}` | translate }}</p>
-                    <p class="font-bold md:text-[1.5rem]/[1.5rem] 2xl:text-[2.5rem]/[2.5rem]">{{ reference.position }}</p>
+                    <p class="hyphens-auto md:text-[1.5rem]/[2rem]">{{ `references.${reference.name}` | translate }}</p>
+                    <p class="font-bold md:text-[2rem]/[2rem]">{{ reference.position }}</p>
                 </div>
             </div>
         </div>
