@@ -9,10 +9,11 @@
             text-[2.5rem]/[2.5rem] lg:text-[4.5rem]/[4.5rem]"
             >{{ 'projects.title' | translate }}</h1>
             <p class="lg:px-8 lg:flex-1 
-            md:text-[1.5rem]/[1.5rem] 2xl:text-[2rem]/[2rem]">{{ 'projects.desc' | translate }}</p>
+            md:text-[1.5rem]/[1.5rem] 2xl:text-[2rem]/[2rem] 
+            min-[1920px]:!text-[1.5rem]/[1.5rem]">{{ 'projects.desc' | translate }}</p>
         </header>
         <div class="projects-area w-full lg:flex-1
-        flex flex-col md:items-center md:flex-row 2xl:flex-col gap-8 2xl:gap-16">
+        flex flex-col md:items-center md:flex-row gap-8">
             <div class="preview rounded-sm aspect-square bg-{{ projects[index()].background }}
             w-full lg:w-2/5
             px-4 lg:px-8 2xl:py-8 relative
@@ -29,23 +30,21 @@
             w-full lg:w-3/5 lg:h-full lg:pt-8 
             flex flex-col justify-center">
                 <project-board class="bg-cblack tx-white rounded-sm relative
-                w-full lg:h-[44dvh] 2xl:h-[30dvh] p-4 lg:p-8
+                w-full lg:h-[50dvh] p-4 lg:p-8
                 flex flex-col gap-8"
                 [project]="projects[index()]"></project-board>
                 <nav class="w-full py-8
                 flex justify-between gap-4
-                font-bold">
+                font-bold lg:text-[1.5rem]/[1.5rem]">
                     <div class="prev w-1/2
                     flex justify-start gap-2 items-center">
                         <span>&lt;&lt;</span>
-                        <button class="inline-block text-left
-                        2xl:text-[1.5rem]/[1.5rem]"
+                        <button class="inline-block text-left w-32"
                         (click)="prev()">{{ 'projects.prev' | translate }}</button>
                     </div>
                     <div class="right w-2/5
                     flex justify-end gap-2 items-center">
-                        <button class="inline-block text-right
-                        2xl:text-[1.5rem]/[1.5rem]"
+                        <button class="inline-block text-right w-32"
                         (click)="next()">{{ 'projects.next' | translate }}</button>
                         <span>&gt;&gt;</span>
                     </div>

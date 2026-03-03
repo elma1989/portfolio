@@ -9,3 +9,13 @@
 nav>div:hover, nav>div:active {
     color: var(--orange);
 }
+
+@media (min-width: 1920px) and (min-height: 1850px) {
+    .projects-area {
+        flex-direction: column;
+    }
+
+    project-board {
+        height: 30dvh;
+    }
+}
