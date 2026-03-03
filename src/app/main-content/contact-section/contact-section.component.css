@@ -1,8 +1,5 @@
 label {
     font-weight: bold;
-    @media(min-width: 1920px) {
-        font-size: 3rem;
-    }
 }
 
 input[type=text] {
@@ -10,16 +7,10 @@ input[type=text] {
     font-size: 1rem;
     outline: none;
     margin-top: 1rem;
-    @media(min-width: 1920px) {
-        font-size: 2rem;
-    }
 }
 
 .lb-yellow {
     border-bottom: 1px solid var(--yellow);
-    @media (min-width: 1920px) {
-        border-bottom-width: 5px;
-    }
 }
 
 .lb-orange {
@@ -37,17 +28,11 @@ input[type=text] {
 .error::placeholder, .error-msg {
     color: var(--error);
     font-weight: bold;
-    @media(min-width: 1920px) {
-        font-size: 2rem;
-    }
 }
 
 .small {
     font-size: 1rem;
     font-weight: normal;
-    @media(min-width: 1920px) {
-        font-size: 2rem;
-    }
 }
 
 .arrow {
@@ -68,31 +53,32 @@ input[type=text] {
     }
 }
 
-@media (min-width: 1920px) and (max-height: 2050px) {
-    .content-area {
-        flex-direction: row;
-    }
+@media (min-width: 1920px) and (min-height: 1500px) {
 
-    header {
-        width: 40%;
-    }
-    
-    h1 {
-        font-size: 3rem;
-        line-height: 3rem;
-    }
-    
-    h2 {
-        font-size: 2rem;
-        line-height: 2.5rem;
-    }
-
-    form {
-        width: 60%;
-    }
-
-    p, label, input[type=text], .small {
+    .content-area, .small, input[type=text] {
         font-size: 1.5rem;
+    }
+
+    .content-area {
+        flex-direction: column;
+    }
+
+    header, form {
+        width: 100%;
+        height: auto;
+    }
+
+    .lb-yellow {
+        border-bottom-width: 5px;
+    }
+
+    .check-field {
+        gap: 2rem;
+    }
+
+    .check-wrapper {
+        height: 1.5rem;
+        width: 1.5rem
     }
 }
 
