@@ -14,8 +14,4 @@ nav>div:hover, nav>div:active {
     .projects-area {
         flex-direction: column;
     }
-
-    project-board {
-        height: 30dvh;
-    }
 }
