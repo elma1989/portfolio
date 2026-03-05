@@ -2,11 +2,9 @@ about-overlay {
     transform: translateY(100%);
     transition: transform 300ms ease-in-out;
     border: 1px solid var(--black);
-    @media(min-width: 1920px) {
+    @media (min-height: 1550px) {
+        width: 32rem;
         border-width: 5px;
-        @media  (min-height: 1770px) {
-            width: 32rem;
-        }
     }
 }
 
@@ -22,17 +20,20 @@ about-overlay {
     animation-play-state: paused;
 }
 
-@media (min-width: 1920px) {
-    @media (min-height: 1760px) {
-        .desc-area {
-            width: 80%;
-            top: 12rem;
-        }
+@media (min-height: 2460px) {
+    .desc-area {
+        font-size: 2rem;
+        width: 80%;
+        top: 12rem;
     }
-    @media (min-height: 2450px) {
-        .img-wrapper {
-            width: 90%;
-        }
+
+    .smile {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .img-wrapper {
+        width: 90%;
     }
 }
 

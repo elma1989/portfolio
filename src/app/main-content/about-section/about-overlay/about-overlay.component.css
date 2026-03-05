@@ -2,11 +2,11 @@ button:active {
     color: var(--orange);
 }
 
-@media (min-width: 1920px) and (min-height: 1770px) {
+@media (min-height: 1550px) {
     h2 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
     ul {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
