@@ -1,24 +1,22 @@
 <div class="content flex">
     <div class="content-area relative h-full w-full p-4 overflow-y-hidden
-    lg:w-9/10 lg:px-28 lg:py-18">
+    lg:w-9/10 lg:p-0 lg:pl-28">
         <h1 class="font-eczar text-right text-[2.5rem]/[2.5rem]
-        lg:text-[4.5rem]/[4.5rem]">{{ 'about.title' | translate }}</h1>
-        <div class="img-wrapper w-1/2 lg:w-9/20
-        absolute top-20 left-4 lg:top-auto lg:left-28 lg:bottom-0">
+        lg:text-[3.5rem]/[3.5rem] pt-4">{{ 'about.title' | translate }}</h1>
+        <div class="img-wrapper w-1/2 lg:w-9/20 lg:h-full">
             <img src="assets/img/02_about/me-orange.png" class="portrait
-            w-full h-full ojbect-cover object-center">
+            w-full h-full object-cover object-center">
         </div>
         <div class="desc-area bg-cblack tx-white rounded-sm
         w-7/10 min-[390px]:w-1/2
         absolute right-4 top-56 p-4 flex flex-col gap-4
-        min-[1920px]:text-[2rem]/[2rem]
         lg:p-8 lg:gap-8">
             <p class="hyphens-auto lg:text-justify">{{ 'about.p1' | translate }}</p>
             <p class="hyphens-auto lg:text-justify">{{ 'about.p2' | translate }}</p>
             <footer class="flex justify-between items-center">
                 <button class="btn-default"
                 (click)="goToContact()">{{ 'about.contact-btn' | translate }}</button>
-                <button class="smile size-8 min-[1920px]:size-12"
+                <button class="smile size-8"
                 (pointerdown)="openOverlayOnClick()"
                 (mouseenter)="openOverlayOnHover()"
                 (mouseleave)="closeOverlayOnLeave()">
