@@ -1,7 +1,8 @@
 <div class="content max-h-400 flex overflow-y-hidden">
     <div class="content-area relative 
     w-full h-full p-4 pb-0 
-    flex lg:w-9/10 lg:pt-24 lg:pr-0 lg:pb-0 lg:pl-28">
+    lg:w-9/10 lg:pt-24 lg:pr-0 lg:pb-0 lg:pl-28
+    flex gap-4">
         <div class="desc-area">
             <h2 class="text-[1.5rem]/[1.5rem] lg:text-[2rem]/[2rem] mb-2">{{ 'hero.greating' | translate }}</h2>
             <h1 class="text-[4.5rem]/[4.5rem] lg:text-[6rem]/[6rem] font-eczar">{{ fullName }}</h1>
@@ -16,13 +17,13 @@
             <img src="assets/img/01_hero/flower.png" class="flower
             w-full h-full 
             aspect-square object-contain object-bottom
-            absolute bottom-4">
+            absolute top-0 lg:top-auto lg:bottom-4">
             <img src="assets/img/01_hero/me.png" class="portrait 
             w-full h-full object-contain object-bottom
             absolute bottom-0">
         </div>
         <button class="
-        scroll-btn w-20 h-20 absolute bottom-4 left-4 rounded-full bg-blue 
+        scroll-btn size-24 absolute bottom-4 left-4 rounded-full bg-blue 
         lg:w-36 lg:h-36 lg:left-28 lg:bottom-8
         font-bold felx justify-center items-center text-[2rem]"
         (click)="goToContact()">
