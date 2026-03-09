@@ -1,0 +1,11 @@
+header {
+    border-bottom: 0.5rem solid var(--blue);
+}
+
+header.bg-cblack {
+    border-bottom-color: var(--black);
+}
+
+header.bg-cwhite {
+    border-bottom-color: var(--white);
+}
