@@ -70,7 +70,7 @@ skills-overlay {
     }
 }
 
-@media (min-height: 1400px) {
+@media (min-height: 2000px) {
     .desc {
         font-size: 2rem;
     }
