@@ -1,3 +1,19 @@
 .reference {
     border: 1px solid var(--white);
 }
+
+@media (min-height: 1400px) {
+    h1 {
+        font-size: 4.5rem;
+        line-height: 4.5rem;
+    }
+
+    h2{
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+    .reference {
+        border-width: 5px;
+    }
+}
