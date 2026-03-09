@@ -2,22 +2,21 @@
     <div class="content-area relative
     w-full lg:w-9/10 h-full lg:h-[80dvh]
     p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
-    flex flex-col lg:flex-row gap-8">
+    flex flex-col lg:flex-row gap-2">
         <header class="w-full lg:w-2/5 xl:w-1/2
-        flex flex-col gap-8 lg:gap-16">
+        flex flex-col gap-2 lg:gap-16">
             <h1 class="font-eczar tx-yellow
-            text-[2.5rem]/[2.5rem]"
+            lg:text-[2.5rem]/[2.5rem]"
             >{{ 'contact.title' | translate }}</h1>
             <div class="desc w-full
-            flex flex-col gap-4">
-                <h2 class="tx-orange font-bold
-                text-[1.5rem]/[1.5rem]"
+            flex flex-col gap-2">
+                <h2 class="tx-orange lg:text-[1.2em]/[1.2rem] font-bold"
                 >{{ 'contact.h2' | translate }}</h2>
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
-        <form class="w-full lg:w-3/5 xl:w-1/2 mb-8
-        flex flex-col justify-end gap-8"
+        <form class="w-full max-w-100 lg:max-w-none lg:w-3/5 xl:w-1/2
+        flex flex-col justify-end gap-2 lg:gap-4"
         [formGroup]="form"
         (ngSubmit)="onSubmit()">
             @if(desktop()) {
@@ -101,7 +100,7 @@
                 </div>
             } @else {
                 @for (field of fields; track field) {
-                    <div class="lb-yellow w-full p-4"
+                    <div class="lb-yellow w-full px-4 py-2"
                     [class.lb-orange]="isFocus(field.name)"
                     [class.lb-red]="hasError(field.name)">
                         <label [for]="field.name"
@@ -128,7 +127,7 @@
                 }
             }
             <div class="w-full
-            flex flex-col gap-4">
+            flex flex-col gap-2">
                 <div class="check-field w-full
                 flex gap-2">
                     <div class="check-wrapper w-4 h-4
@@ -148,7 +147,7 @@
                         {{ label('policy-3') }}
                     </label>
                 </div>
-                <div class="error-msg h-4 w-full">
+                <div class="error-msg h-10 min-[420px]:h-4 w-full mb-4">
                     @if (hasError('policy')) {
                         {{ errorMessage('policy')}}
                     }
@@ -159,8 +158,7 @@
                 <input type="submit" [value]="submitValue" 
                 class="btn-default">
             </div>
-            <div class="tx-orange w-full h-12
-            text-[1.5rem]/[1.5rem] font-bold">
+            <div class="tx-orange w-full h-4 font-bold">
                 @if(sent()) {
                     {{ 'contact.sent' | translate }}
                 }
