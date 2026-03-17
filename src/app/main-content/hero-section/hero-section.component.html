@@ -13,22 +13,27 @@
             <button class="btn-default mt-8"
             (click)="goToContact()">{{ 'hero.btn' | translate }}</button>
         </div>
-        <div class="img-area relative min-h-0 flex-1">
-            <img src="assets/img/01_hero/flower.png" class="flower
-            w-full h-full 
-            aspect-square object-contain object-bottom
-            absolute top-0 lg:top-auto lg:bottom-4">
-            <img src="assets/img/01_hero/me.png" class="portrait 
-            w-full h-full object-contain object-bottom
-            absolute bottom-0">
+        <div class="img-area min-h-0 flex-1
+        flex justify-center items-end">
+            <div class="img-wrapper w-full max-w-80 lg:max-w-none h-75 lg:h-120 relative">
+                <img src="assets/img/01_hero/flower.png" class="flower
+                w-2/3 lg:w-3/4 aspect-square 
+                object-contain object-bottom
+                absolute top-0 right-0">
+                <img src="assets/img/01_hero/me.png" class="portrait 
+                w-full h-full object-contain object-bottom
+                absolute bottom-0">
+                </div>
         </div>
         <button class="
-        scroll-btn size-24 absolute bottom-4 left-4 rounded-full bg-blue 
-        lg:w-36 lg:h-36 lg:left-28 lg:bottom-8
+        scroll-btn size-20 absolute bottom-0 left-0 rounded-full bg-blue 
+        lg:size-36 lg:left-28 lg:bottom-8
         font-bold felx justify-center items-center text-[2rem]"
         (click)="goToContact()">
         <img src="assets/img/01_hero/scroll-down.png" class="rounded-full w-full h-full absolute top-0 left-0">
-        <span class="absolute top-0 left-0 w-full h-full flex justify-center items-center">⬇</span>
+        <span class="absolute top-0 left-0 w-full h-full 
+        flex justify-center items-center
+        text-[3rem]/[3rem]">🡓</span>
         </button>
     </div>
     @if (!mobile()) {
