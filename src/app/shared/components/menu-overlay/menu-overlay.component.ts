@@ -1,9 +1,10 @@
-import { Component, inject, output, OutputEmitterRef } from '@angular/core';
+import { Component, computed, inject, output, OutputEmitterRef, Signal } from '@angular/core';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 import { SectionType } from '../../enums/section-type';
 import { SectionService } from '../../services/section.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SocialMediaComponent } from '../social-media/social-media.component';
 
 type NavItem = {
   transId: string,
@@ -15,7 +16,8 @@ type NavItem = {
   selector: 'menu-overlay',
   imports: [
     TranslatePipe,
-    CommonModule
+    CommonModule,
+    SocialMediaComponent
 ],
   templateUrl: './menu-overlay.component.html',
   styleUrl: './menu-overlay.component.css'
@@ -47,6 +49,7 @@ export class MenuOverlayComponent {
       navId: 'contact'
     }
   ]
+  protected mobile: Signal<boolean> = computed(() => this.sec.mobile());
 
   /** Closes the menu. */
   close(): void {

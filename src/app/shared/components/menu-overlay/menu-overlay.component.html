@@ -6,7 +6,7 @@
 <nav>
     <ul class="flex flex-col gap-2">
         @for (item of items; track item.navId; let i = $index) {
-            <li class="font-bold cursor-pointer text-[1.5rem] group">
+            <li class="font-bold cursor-pointer text-[1.25rem] group">
                 <a href="#{{ item.navId }}"
                 (click)="navigate(i)">
                     <img src="assets/img/00_header/hover-flower.png" 
@@ -16,3 +16,6 @@
         }
     </ul>
 </nav>
+@if(mobile()) {
+    <social-media [dark]="true"></social-media>
+}
