@@ -1,10 +1,25 @@
 .skill-wrapper {
     display: grid;
-    height: 100%;
     grid-template-columns: repeat(3, 4.5rem);
-    grid-template-rows: repeat(5, 3rem);
+    grid-template-rows: repeat(5, 3.5rem);
     gap: 1rem;
     place-items: center;
+}
+
+.skill-icon {
+    transform: scale(0.9, 0.9);
+}
+
+.skill-ani {
+    animation: grow 800ms linear infinite;
+}
+
+.skill-hover {
+    transition: transform 200ms ease-in-out;
+}
+
+.skill-hover:hover {
+    transform: scale(1,1);
 }
 
 .flower {
@@ -33,22 +48,13 @@ skills-overlay {
         grid-template-rows: repeat(4, 4.5rem);
     }
 
-    .skill-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-}
-
-@media (min-width: 768px) {
-    .skill-wrapper {
-        grid-template-columns: repeat(5, 5rem);
-        grid-template-rows: repeat(3, 4.5rem);
-        height: auto;
-    }
-
-    .skill-icon {
+    .img-wrapper {
         width: 3rem;
         height: 3rem;
+    }
+
+    .desc {
+        padding: 1rem;
     }
 }
 
@@ -60,11 +66,11 @@ skills-overlay {
 
 @media (min-width: 1280px) {
     .skill-wrapper {
-        grid-template-columns: repeat(5, 5.5rem);
-        grid-template-rows: repeat(3, 6rem);
+        grid-template-columns: repeat(5, 5rem);
+        grid-template-rows: repeat(3, 5rem);
     }
 
-    .skill-icon {
+    .img-wrapper {
         width: 4rem;
         height: 4rem;
     }
@@ -75,9 +81,13 @@ skills-overlay {
         font-size: 2rem;
     }
 
+    .skill-area {
+        align-items: flex-start;
+    }
+
     .skill-wrapper {
-        grid-template-columns: repeat(4, 10rem);
-        grid-template-rows: repeat(4, 8rem);
+        grid-template-columns: repeat(5, 10rem);
+        grid-template-rows: repeat(3, 8rem);
         gap: 4rem;
     }
 
@@ -99,8 +109,23 @@ skills-overlay {
         height: 10rem;
     }
 
+    .overlay-area {
+        width: calc(100% - 38rem);
+        left: 12rem;
+        font-size: 1.5rem;
+    }
+
     .learn {
         width: 4rem;
         height: 4rem;
+    }
+}
+
+@keyframes grow {
+    0% {
+        transform: scale(0.9, 0.9);
+    }
+    50% {
+        transform: scale(1,1);
     }
 }
