@@ -13,12 +13,12 @@
             xl:text-[1.5rem]/[1.5rem]">{{ 'projects.desc' | translate }}</p>
         </header>
         <div class="projects-area w-full flex-1
-        flex flex-col md:items-center md:flex-row gap-4 lg:gap-8">
+        flex flex-col md:flex-row gap-4 lg:gap-8">
             <div class="preview-wrapper w-full lg:w-2/5
-            flex flex-col justify-center items-center">
+            flex flex-col items-center">
                 <div class="preview rounded-sm aspect-16/9 md:aspect-square 
                 bg-{{ projects[index()].background }}
-                h-[13dvh] min-[390px]:h-[25dvh] md:h-auto md:w-full
+                h-[13dvh] min-[390px]:h-[25dvh] max-h-100 md:h-auto md:w-full
                 px-4 lg:px-8 2xl:py-8 relative
                 flex justify-center items-center">
                     <img src="assets/img/04_projects/flower-{{ projects[index()].flower }}.png" 
@@ -32,12 +32,12 @@
             </div>
             <div class="details-area
             w-full lg:w-3/5 lg:h-full
-            flex flex-col lg:justify-center">
+            flex flex-col items-center">
                 <project-board class="bg-cblack tx-white rounded-sm relative
-                w-full p-4 lg:p-8
+                w-full max-w-88 md:max-w-none p-4 lg:p-8
                 flex flex-col gap-4 lg:gap-8"
                 [project]="projects[index()]"></project-board>
-                <nav class="w-full py-4
+                <nav class="w-full max-w-88 md:max-w-none py-4
                 flex justify-between gap-4
                 font-bold xl:text-[1.5rem]/[1.5rem]">
                     <div class="prev w-1/2
