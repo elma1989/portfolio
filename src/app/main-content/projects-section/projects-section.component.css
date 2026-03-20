@@ -10,9 +10,11 @@ nav>div:hover, nav>div:active {
     color: var(--orange);
 }
 
-@media (min-height: 2050px) {
+@media (min-height: 1700px) {
     .projects-area {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .preview-wrapper {
