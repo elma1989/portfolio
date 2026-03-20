@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, HostListener, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';
@@ -52,6 +52,7 @@ export class ContactSectionComponent implements OnInit {
   protected checkboxHover: boolean = false;
   protected sent: WritableSignal<boolean> = signal<boolean>(false);
   protected desktop: Signal<boolean> = computed(() => !this.sec.mobile());
+  protected bigScreen: WritableSignal<boolean> = signal<boolean>(false);
   protected fields: FormField[] = [
     { name: 'name', maxLength: 30 },
     { name: 'email', maxLength: 30 },
@@ -221,6 +222,22 @@ export class ContactSectionComponent implements OnInit {
         block: 'start'
       });
     }
+  }
+
+  /**
+   * Checks is device is big screen.
+   * @returns True, if height greater or equal 1600px.
+   */
+  private isBigScreen(): boolean {
+    return window.innerHeight >= 1600;
+  }
+
+  /** Will be executed on resize event. */
+  @HostListener('window:resize')
+  onResize() {
+    const bigScreen: boolean = this.bigScreen();
+    if (!bigScreen && this.isBigScreen()) this.bigScreen.set(true);
+    if (bigScreen && !this.isBigScreen()) this.bigScreen.set(false);
   }
   // #endregion
 }

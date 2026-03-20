@@ -1,169 +1,173 @@
 <div class="content flex flex-1">
     <div class="content-area relative
-    w-full lg:w-9/10 h-full lg:h-[80dvh]
+    w-full lg:w-9/10 h-full md:h-[65dvh] lg:h-[80dvh]
     p-4 lg:pt-8 lg:pr-0 lg:pb-0 lg:pl-28
-    flex flex-col lg:flex-row gap-2">
+    flex flex-col lg:flex-row gap-2 lg:gap-6">
         <header class="w-full lg:w-2/5 xl:w-1/2
-        flex flex-col gap-2 lg:gap-16">
+        flex flex-col gap-2 sm:gap-4 lg:gap-16">
             <h1 class="font-eczar tx-yellow
-            lg:text-[2.5rem]/[2.5rem]"
+            sm:text-[2.5rem]/[2.5rem] xl:text-[4rem]/[4rem]"
             >{{ 'contact.title' | translate }}</h1>
             <div class="desc w-full
-            flex flex-col gap-2">
-                <h2 class="tx-orange lg:text-[1.2em]/[1.2rem] font-bold"
+            flex flex-col gap-2 sm:gap-4">
+                <h2 class="tx-orange sm:text-[1.5em]/[1.5rem] font-bold"
                 >{{ 'contact.h2' | translate }}</h2>
                 <p>{{ 'contact.header-p' | translate }}</p>
             </div>
         </header>
-        <form class="w-full max-w-100 lg:max-w-none lg:w-3/5 xl:w-1/2
-        flex flex-col justify-end gap-2 lg:gap-4"
-        [formGroup]="form"
-        (ngSubmit)="onSubmit()">
-            @if(desktop()) {
-                <div class="w-full
-                flex gap-8">
-                    <div class="lb-yellow w-1/2 p-4"
-                    [class.lb-orange]="isFocus(fields[0].name)"
-                    [class.lb-red]="hasError(fields[0].name)">
-                        <label [for]="fields[0].name"
-                        [class.tx-orange]="isFocus(fields[0].name)"
-                        [class.tx-red]="hasError(fields[0].name)">
-                        {{ label(fields[0].name) }}</label>
-                        <div class="w-full relative">
-                            <input type="text" [id]="fields[0].name"
-                            [formControlName]="fields[0].name"
-                            autocomplete="off"
-                            [maxlength]="fields[0].maxLength"
-                            [placeholder]="placeholder(fields[0].name)"
-                            (focus)="setFocus(fields[0].name)"
-                            (blur)="setBlur(fields[0].name)">
-                            @if (!isFocus(fields[0].name) && hasError(fields[0].name)) {
-                                <div class="error-msg bg-cblack cursor-pointer
-                                w-full h-full flex items-end
-                                absolute top-0 left-0"
-                                (click)="setFocus(fields[0].name)">
-                                    {{ errorMessage(fields[0].name) }}
-                                </div>
-                            }
-                        </div>
-                    </div>
-                    <div class="lb-yellow w-1/2 p-4"
-                    [class.lb-orange]="isFocus(fields[1].name)"
-                    [class.lb-red]="hasError(fields[1].name)">
-                        <label [for]="fields[1].name"
-                        [class.tx-orange]="isFocus(fields[1].name)"
-                        [class.tx-red]="hasError(fields[1].name)">
-                        {{ label(fields[1].name) }}</label>
-                        <div class="w-full relative">
-                            <input type="text" [id]="fields[1].name"
-                            [formControlName]="fields[1].name"
-                            autocomplete="off"
-                            [maxlength]="fields[0].maxLength"
-                            [placeholder]="placeholder(fields[1].name)"
-                            (focus)="setFocus(fields[1].name)"
-                            (blur)="setBlur(fields[1].name)">
-                            @if (!isFocus(fields[1].name) && hasError(fields[1].name)) {
-                                <div class="error-msg bg-cblack cursor-pointer
-                                w-full h-full flex items-end
-                                absolute top-0 left-0"
-                                (click)="setFocus(fields[1].name)">
-                                    {{ errorMessage(fields[1].name) }}
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-                <div class="lb-yellow w-full p-4"
-                [class.lb-orange]="isFocus(fields[2].name)"
-                [class.lb-red]="hasError(fields[2].name)">
-                    <label [for]="fields[2].name"
-                    [class.tx-orange]="isFocus(fields[2].name)"
-                    [class.tx-red]="hasError(fields[2].name)">
-                    {{ label(fields[2].name) }}</label>
-                    <div class="w-full relative">
-                        <input type="text" [id]="fields[2].name"
-                        [formControlName]="fields[2].name"
-                        autocomplete="off"
-                        [maxlength]="fields[0].maxLength"
-                        [placeholder]="placeholder(fields[2].name)"
-                        (focus)="setFocus(fields[2].name)"
-                        (blur)="setBlur(fields[2].name)">
-                        @if (!isFocus(fields[2].name) && hasError(fields[2].name)) {
-                            <div class="error-msg bg-cblack cursor-pointer
-                            w-full h-full flex items-end
-                            absolute top-0 left-0"
-                            (click)="setFocus(fields[2].name)">
-                                {{ errorMessage(fields[2].name) }}
+        <div class="form-wrapper w-full flex-1 min-h-0 sm:pt-6 lg:p-0
+        flex justify-center items-center lg:items-end">
+            <form class="w-full max-w-100 lg:max-w-none lg:w-full
+            flex flex-col justify-end gap-2 sm:gap-4"
+            [formGroup]="form"
+            (ngSubmit)="onSubmit()">
+                @if(!desktop() || bigScreen()) {
+                    @for (field of fields; track field) {
+                        <div class="lb-yellow w-full px-4 py-2"
+                        [class.lb-orange]="isFocus(field.name)"
+                        [class.lb-red]="hasError(field.name)">
+                            <label [for]="field.name"
+                            [class.tx-orange]="isFocus(field.name)"
+                            [class.tx-red]="hasError(field.name)">
+                            {{ label(field.name) }}</label>
+                            <div class="w-full relative">
+                                <input type="text" [id]="field.name"
+                                [formControlName]="field.name"
+                                autocomplete="off"
+                                [placeholder]="placeholder(field.name)"
+                                (focus)="setFocus(field.name)"
+                                (blur)="setBlur(field.name)">
+                                @if (!isFocus(field.name) && hasError(field.name)) {
+                                    <div class="error-msg bg-cblack cursor-pointer
+                                    w-full h-full flex items-end
+                                    absolute top-0 left-0"
+                                    (click)="setFocus(field.name)">
+                                        {{ errorMessage(field.name) }}
+                                    </div>
+                                }
                             </div>
+                        </div>
+                    }
+                    
+                } @else {
+                    <div class="w-full
+                    flex gap-8">
+                        <div class="lb-yellow w-1/2 p-4"
+                        [class.lb-orange]="isFocus(fields[0].name)"
+                        [class.lb-red]="hasError(fields[0].name)">
+                            <label [for]="fields[0].name"
+                            [class.tx-orange]="isFocus(fields[0].name)"
+                            [class.tx-red]="hasError(fields[0].name)">
+                            {{ label(fields[0].name) }}</label>
+                            <div class="w-full relative">
+                                <input type="text" [id]="fields[0].name"
+                                [formControlName]="fields[0].name"
+                                autocomplete="off"
+                                [maxlength]="fields[0].maxLength"
+                                [placeholder]="placeholder(fields[0].name)"
+                                (focus)="setFocus(fields[0].name)"
+                                (blur)="setBlur(fields[0].name)">
+                                @if (!isFocus(fields[0].name) && hasError(fields[0].name)) {
+                                    <div class="error-msg bg-cblack cursor-pointer
+                                    w-full h-full flex items-end
+                                    absolute top-0 left-0"
+                                    (click)="setFocus(fields[0].name)">
+                                        {{ errorMessage(fields[0].name) }}
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="lb-yellow w-1/2 p-4"
+                        [class.lb-orange]="isFocus(fields[1].name)"
+                        [class.lb-red]="hasError(fields[1].name)">
+                            <label [for]="fields[1].name"
+                            [class.tx-orange]="isFocus(fields[1].name)"
+                            [class.tx-red]="hasError(fields[1].name)">
+                            {{ label(fields[1].name) }}</label>
+                            <div class="w-full relative">
+                                <input type="text" [id]="fields[1].name"
+                                [formControlName]="fields[1].name"
+                                autocomplete="off"
+                                [maxlength]="fields[0].maxLength"
+                                [placeholder]="placeholder(fields[1].name)"
+                                (focus)="setFocus(fields[1].name)"
+                                (blur)="setBlur(fields[1].name)">
+                                @if (!isFocus(fields[1].name) && hasError(fields[1].name)) {
+                                    <div class="error-msg bg-cblack cursor-pointer
+                                    w-full h-full flex items-end
+                                    absolute top-0 left-0"
+                                    (click)="setFocus(fields[1].name)">
+                                        {{ errorMessage(fields[1].name) }}
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lb-yellow w-full p-4"
+                    [class.lb-orange]="isFocus(fields[2].name)"
+                    [class.lb-red]="hasError(fields[2].name)">
+                        <label [for]="fields[2].name"
+                        [class.tx-orange]="isFocus(fields[2].name)"
+                        [class.tx-red]="hasError(fields[2].name)">
+                        {{ label(fields[2].name) }}</label>
+                        <div class="w-full relative">
+                            <input type="text" [id]="fields[2].name"
+                            [formControlName]="fields[2].name"
+                            autocomplete="off"
+                            [maxlength]="fields[0].maxLength"
+                            [placeholder]="placeholder(fields[2].name)"
+                            (focus)="setFocus(fields[2].name)"
+                            (blur)="setBlur(fields[2].name)">
+                            @if (!isFocus(fields[2].name) && hasError(fields[2].name)) {
+                                <div class="error-msg bg-cblack cursor-pointer
+                                w-full h-full flex items-end
+                                absolute top-0 left-0"
+                                (click)="setFocus(fields[2].name)">
+                                    {{ errorMessage(fields[2].name) }}
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <div class="w-full
+                flex flex-col gap-2">
+                    <div class="check-field w-full
+                    flex gap-2">
+                        <div class="check-wrapper w-4 h-4
+                        relative shrink-0">
+                            <img [src]="checkboxImage"
+                            class="w-full h-full">
+                            <input type="checkbox" id="policy"
+                            class="w-full h-full opacity-0
+                            absolute top-0 left-0 cursor-pointer"
+                            formControlName="policy">
+                        </div>
+                        <label for="policy"
+                        class="small cursor-pointer">
+                            {{ label('policy-1') }}
+                            <a routerLink="privacy-policy"
+                            class="tx-orange hover:underline">{{ label('policy-2') }}</a>
+                            {{ label('policy-3') }}
+                        </label>
+                    </div>
+                    <div class="error-msg h-10 min-[420px]:h-4 w-full mb-4">
+                        @if (hasError('policy')) {
+                            {{ errorMessage('policy')}}
                         }
                     </div>
                 </div>
-            } @else {
-                @for (field of fields; track field) {
-                    <div class="lb-yellow w-full px-4 py-2"
-                    [class.lb-orange]="isFocus(field.name)"
-                    [class.lb-red]="hasError(field.name)">
-                        <label [for]="field.name"
-                        [class.tx-orange]="isFocus(field.name)"
-                        [class.tx-red]="hasError(field.name)">
-                        {{ label(field.name) }}</label>
-                        <div class="w-full relative">
-                            <input type="text" [id]="field.name"
-                            [formControlName]="field.name"
-                            autocomplete="off"
-                            [placeholder]="placeholder(field.name)"
-                            (focus)="setFocus(field.name)"
-                            (blur)="setBlur(field.name)">
-                            @if (!isFocus(field.name) && hasError(field.name)) {
-                                <div class="error-msg bg-cblack cursor-pointer
-                                w-full h-full flex items-end
-                                absolute top-0 left-0"
-                                (click)="setFocus(field.name)">
-                                    {{ errorMessage(field.name) }}
-                                </div>
-                            }
-                        </div>
-                    </div>
-                }
-            }
-            <div class="w-full
-            flex flex-col gap-2">
-                <div class="check-field w-full
-                flex gap-2">
-                    <div class="check-wrapper w-4 h-4
-                    relative shrink-0">
-                        <img [src]="checkboxImage"
-                        class="w-full h-full">
-                        <input type="checkbox" id="policy"
-                        class="w-full h-full opacity-0
-                        absolute top-0 left-0 cursor-pointer"
-                        formControlName="policy">
-                    </div>
-                    <label for="policy"
-                    class="small cursor-pointer">
-                        {{ label('policy-1') }}
-                        <a routerLink="privacy-policy"
-                        class="tx-orange hover:underline">{{ label('policy-2') }}</a>
-                        {{ label('policy-3') }}
-                    </label>
+                <div class="w-full
+                flex justify-center">
+                    <input type="submit" [value]="submitValue" 
+                    class="btn-default">
                 </div>
-                <div class="error-msg h-10 min-[420px]:h-4 w-full mb-4">
-                    @if (hasError('policy')) {
-                        {{ errorMessage('policy')}}
+                <div class="tx-orange w-full h-4 font-bold">
+                    @if(sent()) {
+                        {{ 'contact.sent' | translate }}
                     }
                 </div>
-            </div>
-            <div class="w-full
-            flex justify-center">
-                <input type="submit" [value]="submitValue" 
-                class="btn-default">
-            </div>
-            <div class="tx-orange w-full h-4 font-bold">
-                @if(sent()) {
-                    {{ 'contact.sent' | translate }}
-                }
-            </div>
-        </form>
+            </form>
+        </div>
         <button class="btn-uparrow w-4 h-24
         absolute right-4 lg:-right-20 bottom-4 lg:bottom-0 lg:top-8
         flex items-end"
