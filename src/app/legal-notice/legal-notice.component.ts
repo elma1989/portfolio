@@ -1,7 +1,6 @@
 import { Component, inject, Signal } from '@angular/core';
 import { HeaderComponent } from "../shared/components/header/header.component";
 import { SectionService } from '../shared/services/section.service';
-import { SectionType } from '../shared/enums/section-type';
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../shared/pipes/translate.pipe';
 import { InprintParagraphComponent } from './inprint-paragraph/inprint-paragraph.component';
@@ -23,7 +22,8 @@ type InprintParagraph = {
     FooterComponent,
     RouterLink
 ],
-  templateUrl: './legal-notice.component.html'
+  templateUrl: './legal-notice.component.html',
+  styleUrl: './legal-notice.component.css'
 })
 export class LegalNoticeComponent {
   private sec: SectionService = inject(SectionService);
