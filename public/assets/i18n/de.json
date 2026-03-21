@@ -32,7 +32,7 @@
     },
     "projects": {
         "title": "Meine Arbeit",
-        "desc": "Erkunden Sie Auswahl von meiner Arbeit hier.",
+        "desc": "Erkunden Sie eine Auswahl von meiner Arbeit hier.",
         "join-desc": "Ein Aufgabenplaner anglehnt an das Kanban System.",
         "join-impl": "Mein erstes großes Projekt in Team-Arbeit.",
         "loco-desc": "Ein einfaches Jump-'n'-Run-Spiel.",
