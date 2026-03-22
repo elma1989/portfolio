@@ -1,0 +1,19 @@
+@media (min-width: 1400px)  {
+    h2  {
+        font-size: 4rem;
+        line-height: 4.5rem;
+    }
+
+    h3 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    inprint-paragraph, p, a {
+        font-size: 2rem;
+        span {
+            line-height: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+}

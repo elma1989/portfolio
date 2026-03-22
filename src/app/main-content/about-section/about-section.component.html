@@ -1,18 +1,21 @@
 <div class="content flex">
     <div class="content-area relative h-full w-full p-4 overflow-y-hidden
-    lg:w-9/10 lg:p-0 lg:pl-28">
+    lg:w-9/10 lg:p-0 lg:pl-28
+    flex flex-col">
         <h1 class="font-eczar text-right text-[2.5rem]/[2.5rem]
         lg:text-[3.5rem]/[3.5rem] pt-4">{{ 'about.title' | translate }}</h1>
-        <div class="img-wrapper w-1/2 lg:w-9/20 lg:h-full">
+        <div class="img-wrapper w-2/3 lg:w-9/20 lg:h-full">
             <img src="assets/img/02_about/me-orange.png" class="portrait
-            w-full h-full object-contain object-center">
+            w-full max-w-100 lg:max-w-none h-full object-contain object-top">
         </div>
         <div class="desc-area bg-cblack tx-white rounded-sm
-        w-7/10 min-[390px]:w-1/2
-        absolute right-4 top-56 p-4 flex flex-col gap-4
+        w-7/12
+        absolute right-4 
+        top-56 min-[390px]:top-72 min-[450px]:top-80 min-[500px]:top-96 min-[650px]:top-104 min-[1024px]:top-56
+        p-4 flex flex-col gap-4
         lg:p-8 lg:gap-8">
-            <p class="hyphens-auto lg:text-justify">{{ 'about.p1' | translate }}</p>
-            <p class="hyphens-auto lg:text-justify">{{ 'about.p2' | translate }}</p>
+            <p class="hyphens-auto text-justify">{{ 'about.p1' | translate }}</p>
+            <p class="text-justify">{{ 'about.p2' | translate }}</p>
             <footer class="flex justify-between items-center">
                 <button class="btn-default"
                 (click)="goToContact()">{{ 'about.contact-btn' | translate }}</button>
