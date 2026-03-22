@@ -26,7 +26,11 @@
     animation: rotate 6000ms linear infinite;
 }
 
-skills-overlay {
+.d-none {
+    display: none;
+}
+
+.overlay-area {
     transform: translateY(100%);
     transition: transform 300ms ease-in-out;
 }

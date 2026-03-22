@@ -36,17 +36,17 @@
             class="flower size-full rounded-full
             absolute top-0 left-0">
             <img src="assets/img/03_skills/learn.png" 
-            class="learn size-8 lg:size-12 z-1">
+            class="relative learn size-8 lg:size-12">
         </button>
         <div class="overlay-area w-[calc(100%-2rem)] lg:w-[calc(100%-38rem)] xl:w-[calc(100%-48rem)]
         absolute bottom-0 lg:left-42
-        flex justify-center md:justify-end lg:justify-start">
+        flex justify-center md:justify-end lg:justify-start"
+        [class.open]="overlay()">
             <div class="overlay-wrapper 
-            w-full md:w-[calc(100%-24rem)] lg:w-full">
-                <skills-overlay class="bg-yellow z-1 rounded-sm
+            w-full max-w-100 md:w-[calc(100%-24rem)] md:max-w-none lg:w-full">
+                <skills-overlay class="bg-yellow rounded-sm
                 w-full p-4 lg:p-8
                 flex flex-col gap-4 lg:gap-8"
-                [class.open]="overlay()"
                 (closed)="closeOverlay()"></skills-overlay>
             </div>
         </div>
