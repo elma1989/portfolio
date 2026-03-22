@@ -20,11 +20,11 @@ about-overlay {
     animation-play-state: paused;
 }
 
-@media (min-height: 2460px) {
+@media (min-height: 1650px) {
     .desc-area {
         font-size: 2rem;
         width: 80%;
-        top: 12rem;
+        top: 6rem;
     }
 
     .smile {
