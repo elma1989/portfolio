@@ -13,8 +13,8 @@
     },
     "about": {
         "title": "Über mich",
-        "p1": "Hallo, Ich bin Marco. Nachdem ich mein Abitur bestanden hatte, habe ich Mathematik und Informatik auf Lehramt an Sekundarschulen studiert.",
-        "p2": "Nun bin ich Frontend-Webentwickler geworden und ich möchte großartige Apps erstellen.",
+        "p1": "Hallo, Ich bin Marco. Nachdem ich mein Abitur bestanden hat\u00ADte, ha\u00ADbe ich Mathe\u00ADmatik und In\u00ADfor\u00ADmatik auf Lehr\u00ADamt an Se\u00ADkundar\u00ADschulen stu\u00ADdiert.",
+        "p2": "Nun bin ich Front\u00ADend-Web\u00ADent\u00ADwickler ge\u00ADwor\u00ADden und ich möchte groß\u00ADartige Apps er\u00ADstellen.",
         "contact-btn": "Kontakt",
         "overlay-title": "Mehr über mich",
         "overlay-first": "Team Player",
