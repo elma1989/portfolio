@@ -149,7 +149,7 @@ export class MainContentComponent implements AfterViewInit {
         const rect = elem?.getBoundingClientRect();
         if (!rect) return {id, top:0, bottom:0};
         const top = rect.top + window.scrollY;
-        const bottom = rect.top + rect.height;
+        const bottom = rect.top + rect.height + window.scrollY;
         return { id, top, bottom };
       });
     }
@@ -172,10 +172,7 @@ export class MainContentComponent implements AfterViewInit {
   @HostListener('window:resize')
   onResize() {
     const mobile = this.isMobile();
-    if(mobile) {
-      this.calcSecPos();
-      this.moveToCurrentSection();
-    }
+
     if(!this.prevMobile && mobile) {
       this.prevMobile = true;
       this.sec.mobile = true;
@@ -183,6 +180,11 @@ export class MainContentComponent implements AfterViewInit {
     if(this.prevMobile && !mobile) {
       this.prevMobile = false;
       this.sec.mobile = false;
+    }
+
+    if(mobile) {
+      this.calcSecPos();
+      this.moveToCurrentSection();
     }
   }
 
