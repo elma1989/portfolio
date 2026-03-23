@@ -14,8 +14,14 @@
                 <div class="reference
                 w-full rounded-sm p-4 lg:p-8
                 flex flex-col gap-4">
-                    <h2 class="py-2 text-[1.5rem]/[1.5rem] sm:text-[2rem]/[2rem] font-bold"
-                    >{{ reference.fullName }}</h2>
+                    <header class="flex justify-between items-center">
+                        <h2 class="py-2 width-auto text-[1.5rem]/[1.5rem] sm:text-[2rem]/[2rem] font-bold
+                        flex"
+                        >{{ reference.fullName }}</h2>
+                        <img src="assets/img/01_hero/flower.png"
+                        class="hover-flower size-12 opacity-0"
+                        [class.hover-flower-hover]="desktop()">
+                    </header>
                     <p class="hyphens-auto sm:text-[1.5rem]/[2rem]">{{ `references.${reference.name}` | translate }}</p>
                     <p class="font-bold sm:text-[2rem]/[2rem]">{{ reference.position }}</p>
                 </div>
