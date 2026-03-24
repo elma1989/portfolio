@@ -55,7 +55,7 @@ export class ContactSectionComponent implements OnInit {
   protected bigScreen: WritableSignal<boolean> = signal<boolean>(false);
   protected fields: FormField[] = [
     { name: 'name', maxLength: 30 },
-    { name: 'email', maxLength: 30 },
+    { name: 'email', maxLength: 50 },
     { name: 'question', maxLength: 50 }
   ]
 

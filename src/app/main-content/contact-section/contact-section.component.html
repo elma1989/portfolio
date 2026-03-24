@@ -34,6 +34,7 @@
                                 <input type="text" [id]="field.name"
                                 [formControlName]="field.name"
                                 autocomplete="off"
+                                [maxlength]="field.maxLength"
                                 [placeholder]="placeholder(field.name)"
                                 (focus)="setFocus(field.name)"
                                 (blur)="setBlur(field.name)">
