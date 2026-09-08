@@ -1,4 +1,4 @@
-import { afterNextRender, AfterViewInit, Component, computed, HostListener, inject, Injector, Signal } from '@angular/core';
+import { afterNextRender, AfterViewInit, Component, computed, HostListener, inject, signal, Signal, WritableSignal } from '@angular/core';
 import { SectionService } from '../shared/services/section.service';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
@@ -36,6 +36,9 @@ export class MainContentComponent implements AfterViewInit {
     SectionType.HERO, SectionType.ABOUT, SectionType.SKILLS,
     SectionType.PROJECTS, SectionType.REFERENCES, SectionType.CONTACT
   ]
+  protected displayStates: WritableSignal<Array<'flex' | 'none'>> = signal<Array<'flex' | 'none'>>([
+    'none', 'none', 'none', 'none', 'none', 'none'
+  ]);
   private prevMobile: boolean = false;
   private programmicScroll: boolean = false;
 
@@ -44,6 +47,10 @@ export class MainContentComponent implements AfterViewInit {
       if(this.mobile()) {
         this.calcSecPos();
         this.moveToCurrentSection();
+      } else {
+        const curIndex = this.getSectionIndex();
+        this.displayStates.update(states =>
+          states.map((state, i) => curIndex == i ? 'flex' : 'none'));
       }
     });
   }
@@ -53,8 +60,6 @@ export class MainContentComponent implements AfterViewInit {
     this.sec.mobile = mobile;
     this.prevMobile = mobile;
     this.sec.loadSection();
-    if (mobile) {
-    }
   }
 
 /**
@@ -124,8 +129,24 @@ export class MainContentComponent implements AfterViewInit {
    * @param index - Index of section.
    */
   private selectSection(index: number): void {
-    if(index >= 0 && index < this.sections.length) 
+    if(index >= 0 && index < this.sections.length) {
+      this.displayStates.update(states =>
+        states.map((state, i) => index == i ? 'flex' : state)
+      );
       this.sec.section = this.sections[index];
+    }
+  }
+
+  /**
+   * Will be exectute after transtition.
+   * @param event - Evetn of transiton.
+   */
+  onTransitionEnd(event: TransitionEvent): void {
+    if (event.propertyName != 'opacity') return;
+    const index = this.getSectionIndex();
+    this.displayStates.update(states =>
+      states.map((state, i) => index == i ? 'flex' : 'none')
+    )
   }
   // #endregion
 
