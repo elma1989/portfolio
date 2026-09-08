@@ -1,5 +1,6 @@
 header {
     border-bottom: 0.5rem solid var(--blue);
+    transition: background-color 300ms linear;
 }
 
 header.bg-cblack {
@@ -8,4 +9,13 @@ header.bg-cblack {
 
 header.bg-cwhite {
     border-bottom-color: var(--white);
+}
+
+section {
+    opacity: 1;
+    transition: opacity 300ms linear;
+}
+
+.transparent {
+    opacity: 0;
 }
