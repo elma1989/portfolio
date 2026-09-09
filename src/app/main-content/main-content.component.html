@@ -31,51 +31,53 @@ fixed top-0 left-0 z-2"
         flex flex-col items-center bg-cblack"
         id="contact"></section>
 } @else {
-    <section hero class=
-        "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex justify-center bg-blue"
-        [class.transparent]="section() != SectionType.HERO"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[0]"
-        id="hero"></section>
+    <div class="section-wrapper">
+        <section hero class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-blue"
+            [class.transparent]="section() != SectionType.HERO"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[0]"
+            id="hero"></section>
 
-    <section about class=
-        "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex justify-center bg-cwhite"
-        [class.transparent]="section() != SectionType.ABOUT"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[1]"
-        id="about"></section>
+        <section about class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-cwhite"
+            [class.transparent]="section() != SectionType.ABOUT"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[1]"
+            id="about"></section>
 
-    <section skills class=
-        "w-full h-auto md:h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex justify-center bg-cblack"
-        [class.transparent]="section() != SectionType.SKILLS"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[2]"
-        id="skills"></section>
+        <section skills class=
+            "w-full h-auto md:h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-cblack"
+            [class.transparent]="section() != SectionType.SKILLS"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[2]"
+            id="skills"></section>
 
-    <section projects class=
-        "w-full lg:h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex justify-center bg-cwhite"
-        [class.transparent]="section() != SectionType.PROJECTS"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[3]"
-        id="projects"></section>
+        <section projects class=
+            "w-full lg:h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-cwhite"
+            [class.transparent]="section() != SectionType.PROJECTS"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[3]"
+            id="projects"></section>
 
-    <section references class=
-        "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex justify-center bg-blue"
-        [class.transparent]="section() != SectionType.REFERENCES"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[4]"
-        id="references"></section>
+        <section references class=
+            "w-full h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex justify-center bg-blue"
+            [class.transparent]="section() != SectionType.REFERENCES"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[4]"
+            id="references"></section>
 
-    <section contact class=
-        "w-full min-h-dvh pt-[9dvh] lg:pt-[10dvh]
-        flex flex-col items-center bg-cblack"
-        [class.transparent]="section() != SectionType.CONTACT"
-        (transitionend)="onTransitionEnd($event)"
-        [style.display]="displayStates()[5]"
-        id="contact"></section>
+        <section contact class=
+            "w-full min-h-dvh pt-[9dvh] lg:pt-[10dvh]
+            flex flex-col items-center bg-cblack"
+            [class.transparent]="section() != SectionType.CONTACT"
+            (transitionend)="onTransitionEnd($event)"
+            [style.display]="displayStates()[5]"
+            id="contact"></section>
+    </div>
 }
