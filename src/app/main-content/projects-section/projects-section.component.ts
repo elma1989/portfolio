@@ -29,17 +29,17 @@ export class ProjectsSectionComponent {
       langKey: 'join',
       skills: ['HTML', 'CSS', 'TypeScript', 'Angular', 'Firebase'],
       github: 'join',
-      url: 'angular-projects/join/'
+      url: 'join'
     }, {
-      name: 'El Pollo Loco',
-      icon: 'chicken',
+      name: 'Sharkie',
+      icon: 'shark',
       background: 'orange',
       flower: 'yellow',
-      screenschot: 'el-pollo-loco',
+      screenschot: 'sharkie',
       langKey: 'loco',
       skills: ['HTML', 'CSS', 'JavaScript'],
-      github: 'el-pollo-loco',
-      url: 'el-pollo-loco/'
+      github: 'sharkie',
+      url: 'sharkie'
     }
   ]
   private sec: SectionService = inject(SectionService);
