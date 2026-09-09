@@ -2,7 +2,11 @@ label {
     font-weight: bold;
 }
 
-input[type=text] {
+input[type=text],
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
     width: 100%;
     font-size: 1rem;
     outline: none;

@@ -20,7 +20,6 @@ html {
 body {
     @media (min-width: 1000px) {
         height: 100dvh;
-        overflow-y: hidden;
     }
 }
 
