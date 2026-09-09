@@ -29,7 +29,7 @@ export class FooterComponent {
       target: '_self'
     }, {
       name: 'LinkedIn',
-      path: 'https://de.linkedin.com',
+      path: 'https://www.linkedin.com/in/marco-elste-a1aa45411/',
       target: '_blank'
     }, {
       name: 'GitHub',
