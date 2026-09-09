@@ -55,8 +55,8 @@ export class ContactSectionComponent implements OnInit {
   protected bigScreen: WritableSignal<boolean> = signal<boolean>(false);
   protected fields: FormField[] = [
     { name: 'name', maxLength: 30 },
-    { name: 'email', maxLength: 50 },
-    { name: 'question', maxLength: 50 }
+    { name: 'email', maxLength: 100 },
+    { name: 'question', maxLength: 100 }
   ]
 
   ngOnInit(): void {
@@ -156,11 +156,10 @@ export class ContactSectionComponent implements OnInit {
   onSubmit(): void {
     if(this.form.invalid) {
       this.form.markAllAsTouched();
-      return;
+    } else {
+      const {policy, ...data} = this.form.getRawValue();
+      console.log(data);
     }
-
-    const {policy, ...data} = this.form.getRawValue();
-
     this.resetForm();
     this.sent.set(true);
   }
