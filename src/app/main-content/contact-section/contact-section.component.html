@@ -89,7 +89,7 @@
                                 <input type="text" [id]="fields[1].name"
                                 [formControlName]="fields[1].name"
                                 autocomplete="off"
-                                [maxlength]="fields[0].maxLength"
+                                [maxlength]="fields[1].maxLength"
                                 [placeholder]="placeholder(fields[1].name)"
                                 (focus)="setFocus(fields[1].name)"
                                 (blur)="setBlur(fields[1].name)">
@@ -115,7 +115,7 @@
                             <input type="text" [id]="fields[2].name"
                             [formControlName]="fields[2].name"
                             autocomplete="off"
-                            [maxlength]="fields[0].maxLength"
+                            [maxlength]="fields[2].maxLength"
                             [placeholder]="placeholder(fields[2].name)"
                             (focus)="setFocus(fields[2].name)"
                             (blur)="setBlur(fields[2].name)">
