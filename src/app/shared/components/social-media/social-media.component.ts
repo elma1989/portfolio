@@ -33,7 +33,7 @@ export class SocialMediaComponent {
       darkHover: 'github-dark-hover.svg',
       hover: false
     }, {
-      link: 'https://linkedin.com',
+      link: 'https://www.linkedin.com/in/marco-elste-a1aa45411/',
       light: 'linkedin-light.svg',
       lightHover: 'linkedin-light-hover.svg',
       dark: 'linkedin-dark.svg',
