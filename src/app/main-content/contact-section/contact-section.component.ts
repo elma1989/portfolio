@@ -152,13 +152,31 @@ export class ContactSectionComponent implements OnInit {
       control.setValue(control.value.trim());
   }
 
+  /** Sends form data to backend. */
+  private async sendContactData() {
+    const {policy, ...data} = this.form.getRawValue();
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (!response.ok) throw new Error(`HTTP-Error: ${response.status}`)
+
+    } catch (e) {
+      console.error('Submitting Error:', e);
+    }
+  }
+
   /** Submits the form. */
   onSubmit(): void {
     if(this.form.invalid) {
       this.form.markAllAsTouched();
     } else {
-      const {policy, ...data} = this.form.getRawValue();
-      console.log(data);
+      this.sendContactData();
     }
     this.resetForm();
     this.sent.set(true);
