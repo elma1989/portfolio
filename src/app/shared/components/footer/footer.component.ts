@@ -1,10 +1,11 @@
 import { Component, computed, inject, input, InputSignal, Signal } from '@angular/core';
 import { SectionService } from '../../services/section.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'footer[app-footer]',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'
 })
