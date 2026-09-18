@@ -1,4 +1,4 @@
-import { Component, computed, effect, HostListener, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, HostListener, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { TranslatePipe } from '../../shared/pipes/translate.pipe';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TranslationService } from '../../shared/services/translation.service';

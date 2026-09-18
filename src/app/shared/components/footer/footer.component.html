@@ -7,10 +7,13 @@ lg:flex-row lg:gap-0 lg:justify-between
     <div class="link-container
     w-full lg:w-auto
     flex justify-between lg:justify-end lg:gap-8">
-        @for(link of visibleLinks(); track link.path) {
-            <a [href]="link.path" [target]="link.target"
-            >{{ link.name }}</a>
+        @if (impressum()) {
+            <a href="/">Portfolio</a>
+        } @else {
+            <a routerLink="impressum">Impressum</a>
         }
+        <a href="https://www.linkedin.com/in/marco-elste-a1aa45411/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/elma1989" target="_blank">Github</a>
     </div>
     <div class="wheel-wrapper
     relative w-full max-w-86 overflow-hidden
