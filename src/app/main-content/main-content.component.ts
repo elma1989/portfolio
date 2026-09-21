@@ -1,4 +1,5 @@
-import { afterNextRender, AfterViewInit, Component, computed, HostListener, inject, signal, Signal, WritableSignal } from '@angular/core';
+import { OnInit, afterNextRender, AfterViewInit, Component, computed, effect,
+  viewChild, ElementRef, HostListener, inject, Signal } from '@angular/core';
 import { SectionService } from '../shared/services/section.service';
 import { CommonModule, ViewportScroller } from '@angular/common';
 import { SectionType } from '../shared/enums/section-type';
@@ -26,8 +27,8 @@ import { HeaderComponent } from "../shared/components/header/header.component";
   styleUrl: './main-content.component.css'
 })
 export class MainContentComponent implements AfterViewInit {
+  private sectionWrapper = viewChild.required<ElementRef<HTMLDivElement>>('sectionWrapper');
   private sec: SectionService = inject(SectionService);
-  private scroller: ViewportScroller = inject(ViewportScroller);
   protected mobile: Signal<boolean> = computed(() => this.sec.mobile());
   protected section: Signal<SectionType> = computed(() => this.sec.section());
   protected SectionType = SectionType;
@@ -36,9 +37,6 @@ export class MainContentComponent implements AfterViewInit {
     SectionType.HERO, SectionType.ABOUT, SectionType.SKILLS,
     SectionType.PROJECTS, SectionType.REFERENCES, SectionType.CONTACT
   ]
-  protected displayStates: WritableSignal<Array<'flex' | 'none'>> = signal<Array<'flex' | 'none'>>([
-    'none', 'none', 'none', 'none', 'none', 'none'
-  ]);
   private prevMobile: boolean = false;
   private programmicScroll: boolean = false;
 
@@ -52,6 +50,9 @@ export class MainContentComponent implements AfterViewInit {
         this.displayStates.update(states =>
           states.map((state, i) => curIndex == i ? 'flex' : 'none'));
       }
+    effect(() => {
+      const section = this.section();
+      this.moveToSection(section);
     });
   }
 
@@ -130,23 +131,9 @@ export class MainContentComponent implements AfterViewInit {
    */
   private selectSection(index: number): void {
     if(index >= 0 && index < this.sections.length) {
-      this.displayStates.update(states =>
-        states.map((state, i) => index == i ? 'flex' : state)
-      );
       this.sec.section = this.sections[index];
+      this.moveToSection(this.section());
     }
-  }
-
-  /**
-   * Will be exectute after transtition.
-   * @param event - Evetn of transiton.
-   */
-  onTransitionEnd(event: TransitionEvent): void {
-    if (event.propertyName != 'opacity') return;
-    const index = this.getSectionIndex();
-    this.displayStates.update(states =>
-      states.map((state, i) => index == i ? 'flex' : 'none')
-    )
   }
   // #endregion
 
@@ -177,10 +164,10 @@ export class MainContentComponent implements AfterViewInit {
   }
 
   /** Will be executed on scrollikng. */
-  @HostListener('window:scroll', [])
   onScroll() {
     if (!this.isTestMode() && this.mobile() && !this.programmicScroll) {
-      const currentY = window.scrollY + 0.04 * window.innerHeight;
+      const scrollY = this.sectionWrapper().nativeElement.scrollTop;
+      const currentY = scrollY + 0.04 * window.innerHeight;
       for (const section of this.secPos) {
         if (currentY >= section.top && currentY < section.bottom) {
           this.sec.section = section.id as SectionType;
@@ -209,13 +196,22 @@ export class MainContentComponent implements AfterViewInit {
     }
   }
 
-  /** Jumps to current section on load */
-  private moveToCurrentSection() {
-    this.programmicScroll = this.programmicScroll = true;
-    this.scroller.scrollToAnchor(this.section());
+  /**
+   * Scrolls inner sectiion-wrapper to section.
+   * @param section - Section to scroll
+   */
+  private moveToSection(section: SectionType) {
+    const wrapper = this.sectionWrapper().nativeElement;
+    const sectionElement = wrapper.querySelector<HTMLElement>(`#${section}`);
+    if (!sectionElement) return;
+    this.programmicScroll = true;
+    wrapper.scrollTo({
+      top: sectionElement.offsetTop,
+      behavior: 'smooth'
+    });
     setTimeout(() => {
       this.programmicScroll = false;
-    }, 500);
+    }, 1500);
   }
 
   /** Checks mouse wheel on desktop. */
