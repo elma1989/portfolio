@@ -1,4 +1,4 @@
-import { HostListener, Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { Injectable, Signal, signal, WritableSignal } from '@angular/core';
 import { SectionType } from '../enums/section-type';
 
 @Injectable({
@@ -18,6 +18,14 @@ export class SectionService {
   set section(section: SectionType) { 
     this._section.set(section);
     this.saveSection();
+  }
+
+  /**
+   * Checks, if user has mobile device.
+   * @returns True, if user has mobile device.
+   */
+  isMobile(): boolean {
+    return window.innerWidth <= 1024;
   }
 
   // #region Storage

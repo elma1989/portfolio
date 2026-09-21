@@ -10,6 +10,7 @@ import { ProjectsSectionComponent } from './projects-section/projects-section.co
 import { ReferencesSectionComponent } from './references-section/references-section.component';
 import { ContactSectionComponent } from './contact-section/contact-section.component';
 import { HeaderComponent } from "../shared/components/header/header.component";
+import { debounceTime, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-main-content',
@@ -37,29 +38,29 @@ export class MainContentComponent implements AfterViewInit {
     SectionType.HERO, SectionType.ABOUT, SectionType.SKILLS,
     SectionType.PROJECTS, SectionType.REFERENCES, SectionType.CONTACT
   ]
-  private prevMobile: boolean = false;
   private programmicScroll: boolean = false;
 
   constructor() {
     afterNextRender(() => {
-      if(this.mobile()) {
-        this.calcSecPos();
-        this.moveToCurrentSection();
-      } else {
-        const curIndex = this.getSectionIndex();
-        this.displayStates.update(states =>
-          states.map((state, i) => curIndex == i ? 'flex' : 'none'));
-      }
+      this.calcSecPos();
+    });
+
     effect(() => {
       const section = this.section();
       this.moveToSection(section);
     });
   }
 
+  ngOnInit() {
+    fromEvent(window, 'resize')
+      .pipe(debounceTime(700))
+      .subscribe(() => {
+        this.onResize();
+      });
+  }
+
   ngAfterViewInit(): void {
-    const mobile: boolean = this.isMobile();
-    this.sec.mobile = mobile;
-    this.prevMobile = mobile;
+    this.sec.mobile = this.sec.isMobile();
     this.sec.loadSection();
   }
 
@@ -71,12 +72,6 @@ export class MainContentComponent implements AfterViewInit {
     if (this.mobile()) return false;
     return this.section() == SectionType.HERO;
   }
-
-  /**
-   * Checks if user has mobile screen.
-   * @returns True, if user has mobile screen.
-   */
-  private isMobile(): boolean { return window.innerWidth < 1024; }
 
   // #region Background-Indicator
   isBackgroundBlue(): boolean {
@@ -143,24 +138,21 @@ export class MainContentComponent implements AfterViewInit {
    * @param elemid - id of element
    * @returns founndet element.
    */
-  private getElemnt(elemid: string) {
+  private getElement(elemid: string) {
     return document.getElementById(elemid)!
   }
 
   /** Calculates sections positions. */
   private calcSecPos() {
     const secIds = ['hero', 'about', 'skills', 'projects', 'references', 'contact'];
-
-    if (this.mobile()) {
-      this.secPos = secIds.map(id => {
-        const elem: HTMLElement | null = this.getElemnt(id);
-        const rect = elem?.getBoundingClientRect();
-        if (!rect) return {id, top:0, bottom:0};
-        const top = rect.top + window.scrollY;
-        const bottom = rect.top + rect.height + window.scrollY;
-        return { id, top, bottom };
-      });
-    }
+    this.secPos = secIds.map(id => {
+      const elem: HTMLElement | null = this.getElement(id);
+      const rect = elem?.getBoundingClientRect();
+      if (!rect) return { id, top:0, bottom:0 };
+      const top = rect.top + window.scrollY;
+      const bottom = rect.top + rect.height + window.scrollY;
+      return { id, top, bottom };
+    });
   }
 
   /** Will be executed on scrollikng. */
@@ -177,23 +169,9 @@ export class MainContentComponent implements AfterViewInit {
   }
 
   /** Will be executed on resizing. */
-  @HostListener('window:resize')
   onResize() {
-    const mobile = this.isMobile();
-
-    if(!this.prevMobile && mobile) {
-      this.prevMobile = true;
-      this.sec.mobile = true;
-    }
-    if(this.prevMobile && !mobile) {
-      this.prevMobile = false;
-      this.sec.mobile = false;
-    }
-
-    if(mobile) {
-      this.calcSecPos();
-      this.moveToCurrentSection();
-    }
+    this.calcSecPos();
+    this.sec.mobile = this.sec.isMobile();
   }
 
   /**
