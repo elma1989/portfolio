@@ -31,7 +31,7 @@
 }
 
 .overlay-area {
-    transform: translateY(100%);
+    transform: translateY(150%);
     transition: transform 300ms ease-in-out;
 }
 
@@ -42,7 +42,7 @@
 .btn-overlay {
     @media (min-width: 1180px) {
         top: auto;
-        bottom: 1rem;
+        bottom: 6rem;
     }
 }
 

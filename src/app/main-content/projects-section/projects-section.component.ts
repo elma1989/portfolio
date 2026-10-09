@@ -29,7 +29,7 @@ export class ProjectsSectionComponent {
       langKey: 'join',
       skills: ['HTML', 'CSS', 'TypeScript', 'Angular', 'Firebase'],
       github: 'join',
-      url: 'join'
+      url: 'https://join.marco-elste.dev'
     }, {
       name: 'Sharkie',
       icon: 'shark',
@@ -39,7 +39,7 @@ export class ProjectsSectionComponent {
       langKey: 'loco',
       skills: ['HTML', 'CSS', 'JavaScript'],
       github: 'sharkie',
-      url: 'sharkie'
+      url: 'https://sharkie.marco-elste.dev'
     }
   ]
   private sec: SectionService = inject(SectionService);
