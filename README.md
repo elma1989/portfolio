@@ -9,7 +9,7 @@ It shows the most important information about me and the most important apps I h
 [Porfolio-Website](https://marco-elste.dev)  
 [Development-History](https://github.com/users/elma1989/projects/2)
 
-## Porjects
+## Projects
 
 [Sharkie](https://sharkie.marco-elste.dev)  
 [Join](https://join.marco-elste.dev)
